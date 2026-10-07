@@ -47,7 +47,7 @@ class LiberoPrimitives:
     """Wraps a single-env LIBERO-shaped env + VLA policy with primitive-
     level methods.
 
-    ``pi0_pick`` and ``pi0_doubled`` override ``obs['task_descriptions']``
+    ``pi0_pick``, ``pi0_place`` and ``pi0_doubled`` override ``obs['task_descriptions']``
     with a sub-instruction. ``move_to`` and friends are scripted (no VLM
     call) and drive the underlying OSC controller directly.
     """
@@ -148,7 +148,9 @@ class LiberoPrimitives:
             "libero_terminated": self.env.terminated or self.env.truncated,
         }
 
-    def _vlm_chunk(self, instruction: str):
+    def _vlm_chunk(
+        self, instruction: str, *, stop_after_step: Callable[[], bool] | None = None
+    ):
         """One model forward + ``chunk_size`` env steps. Overrides prompt."""
         self._check_cancelled()
         original_task = self._last_obs.get("task_descriptions")
@@ -165,7 +167,37 @@ class LiberoPrimitives:
                 else -1
             )
 
-            if not self._recording and self._flywheel is None:
+            if stop_after_step is not None:
+                actions = np.asarray(actions)
+                if (
+                    actions.ndim != 2
+                    or actions.shape[1] != 7
+                    or not len(actions)
+                    or not np.isfinite(actions).all()
+                ):
+                    raise ValueError(
+                        "VLA must return a nonempty finite (steps, 7) action array"
+                    )
+                for index, action in enumerate(actions):
+                    self._check_cancelled()
+                    obs, reward, terminated, truncated, _info = self.env.step(action)
+                    if self._flywheel is not None:
+                        self._flywheel.add_transition(
+                            action,
+                            obs,
+                            reward,
+                            terminated,
+                            truncated,
+                            vla_id=vla_id,
+                            proposal_index=index,
+                        )
+                    self.set_obs(obs)
+                    if self._recording:
+                        self.record_frame(obs)
+                    stop = stop_after_step()
+                    if stop or self.env.terminated or self.env.truncated:
+                        break
+            elif not self._recording and self._flywheel is None:
                 chunk_obs, _r, _t, _tr, _i = self.env.chunk_step(actions)
                 obs = chunk_obs[-1] if self.env.return_all_frames else chunk_obs
             else:
@@ -191,6 +223,96 @@ class LiberoPrimitives:
         finally:
             if original_task is not None:
                 self._last_obs["task_descriptions"] = original_task
+
+    def pi0_place(
+        self,
+        prompt: str,
+        *,
+        holding_confirmed: bool,
+        max_chunks: int = 4,
+        max_steps: int = 100,
+        gripper_open_thresh: float = 0.07,
+        open_hold_steps: int = 3,
+    ) -> dict[str, Any]:
+        """Run local VLA placement until sustained measured opening or a budget.
+
+        The caller must verify retention from current images before handoff.
+        Opening detects release, not correct placement or object detachment.
+        No forced release or retreat is performed on any exit path.
+        """
+        for name, value in (
+            ("max_chunks", max_chunks),
+            ("max_steps", max_steps),
+            ("open_hold_steps", open_hold_steps),
+        ):
+            if type(value) is not int or value <= 0:
+                raise ValueError(f"{name} must be a positive integer")
+        if not isinstance(prompt, str) or not prompt.strip():
+            raise ValueError("prompt must be a nonempty placement instruction")
+        if type(holding_confirmed) is not bool:
+            raise ValueError("holding_confirmed must be a boolean")
+        if (
+            not np.isfinite(gripper_open_thresh)
+            or not 0.0 < gripper_open_thresh <= 0.08
+        ):
+            raise ValueError("gripper_open_thresh must be in (0, 0.08] meters")
+        start_grip = float(self._last_obs_gripper)
+        steps = chunks = open_steps = 0
+        released = False
+        reason = None
+        if self.env.terminated:
+            reason = "task_terminated"
+        elif self.env.truncated:
+            reason = "environment_truncated"
+        elif (
+            not holding_confirmed
+            or not np.isfinite(start_grip)
+            or start_grip <= 0.001
+            or start_grip >= gripper_open_thresh
+        ):
+            reason = "handoff_rejected"
+
+        def stop_after_step() -> bool:
+            nonlocal steps, open_steps, released, reason
+            steps += 1
+            gap = float(self._last_obs_gripper)
+            open_steps = (
+                open_steps + 1 if np.isfinite(gap) and gap >= gripper_open_thresh else 0
+            )
+            released = open_steps >= open_hold_steps
+            if self.env.terminated:
+                reason = "task_terminated"
+            elif self.env.truncated:
+                reason = "environment_truncated"
+            elif not np.isfinite(gap):
+                reason = "invalid_observation"
+            elif released:
+                reason = "release_detected"
+            elif steps >= max_steps:
+                reason = "budget_exhausted"
+            return reason is not None
+
+        while reason is None and chunks < max_chunks:
+            self._vlm_chunk(prompt, stop_after_step=stop_after_step)
+            chunks += 1
+        return {
+            "name": "pi0_place",
+            "instruction": prompt,
+            "stop_reason": reason or "budget_exhausted",
+            "release_detected": released,
+            "budget_exhausted": reason in (None, "budget_exhausted"),
+            "chunks_used": chunks,
+            "steps_used": steps,
+            "start_gripper_opening": start_grip if np.isfinite(start_grip) else None,
+            "final_gripper_opening": float(self._last_obs_gripper)
+            if np.isfinite(self._last_obs_gripper)
+            else None,
+            "open_hold_steps_observed": open_steps,
+            "gripper_open_thresh": gripper_open_thresh,
+            "open_hold_steps": open_hold_steps,
+            "terminated": self.env.terminated,
+            "truncated": self.env.truncated,
+        }
 
     def pi0_pick(
         self,
@@ -1277,8 +1399,8 @@ TOOLS_SPEC = [
     {
         "name": "pi0_pick",
         "description": (
-            "Pi0.5 closed-loop pick. Use it for the grasp; YOU then do "
-            "every move_to and release. Use modest max_chunks and verify "
+            "Pi0.5 closed-loop pick. Use it for the grasp; then plan the carry "
+            "and use pi0_place for local placement or scripted release. Use modest max_chunks and verify "
             "the grasp from EEF lift, gripper closure, and available images."
         ),
         "input_schema": {
@@ -1310,6 +1432,40 @@ TOOLS_SPEC = [
                 },
             },
             "required": ["prompt"],
+        },
+    },
+    {
+        "name": "pi0_place",
+        "description": (
+            "Bounded local VLA placement of the currently held object. First "
+            "visually confirm retention and stage near the visible target with "
+            "payload clearance. Set holding_confirmed only after that check. "
+            "Use a single-object placement prompt, excluding later tasks. "
+            "Stops within a chunk when actual gripper opening stays above the "
+            "threshold; this detects release, NOT placement success or detachment. "
+            "Inspect returned images before retreating or continuing. On budget "
+            "exhaustion re-observe; never force release or blindly repeat. Current "
+            "tool rules supersede older memory requiring scripted placement."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "prompt": {"type": "string", "minLength": 1},
+                "holding_confirmed": {
+                    "type": "boolean",
+                    "description": "Current visual confirmation of a retained object; gap alone is insufficient.",
+                },
+                "max_chunks": {"type": "integer", "minimum": 1, "default": 4},
+                "max_steps": {"type": "integer", "minimum": 1, "default": 100},
+                "gripper_open_thresh": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "maximum": 0.08,
+                    "default": 0.07,
+                },
+                "open_hold_steps": {"type": "integer", "minimum": 1, "default": 3},
+            },
+            "required": ["prompt", "holding_confirmed"],
         },
     },
     {

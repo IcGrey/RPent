@@ -158,7 +158,7 @@ tools. Do not start, stop, restart, or otherwise manage `env_server.py`.
 - Do NOT issue file-based protocol commands.
 - Do NOT emit plain-text pseudo tool calls or JSON action commands.
 - Call the real structured tools exposed by the runtime.
-- Use bare tool names in this prompt: `move_to`, `pi0_pick`, `release`,
+- Use bare tool names in this prompt: `move_to`, `pi0_pick`, `pi0_place`, `release`,
   `set_gripper`, `rotate_wrist`, `rotate_pitch`, `move_pose`, `pi0_doubled`,
   `view_env_state`, `view_camera_meta`, `back_project`, `segment`,
   `read_text_file`, `write_text_file`, `list_dir`, `finish`.
@@ -193,14 +193,21 @@ RULES = """Rule 0 — USE IMAGES. After every primitive tool call, inspect the r
     your spatial-reasoning input; the returned `state` field only gives
     proprioception + object names.
 
-Rule 1 — Pi0 is ONLY for the grasp. Use:
+Rule 1 — Use pi0_pick for grasping. Use:
      pi0_pick({
        "prompt": "<carefully chosen prompt>",
        "max_chunks": 20,
        "lift_thresh": 0.05,
        "gripper_closed_thresh": 0.06
      })
-   YOU do every `move_to` and the `release`. NEVER let Pi0 finish the place.
+   Plan the carry yourself. Near the visible target, after visually confirming
+   the object is still retained, use pi0_place(prompt=<single-object placement>,
+   holding_confirmed=true) for local alignment, descent and release. It stops on
+   sustained measured opening or budget, not on independent placement success.
+   Inspect the returned images for placement and lingering hooks before retreat.
+   Budget exhaustion requires fresh inspection, not forced release or blind retries.
+   Scripted release remains available. These rules supersede older memory that
+   requires every placement/release to be scripted.
    ⚠ Do NOT pass object pose / tracking oracles unless explicitly running a
    debug/oracle ablation. The GT object-lift oracle leaks privileged coords and
    can mis-fire when two objects share a name. You judge the grasp YOURSELF — see
@@ -450,7 +457,7 @@ the new state view, log, and embedded images. Inspect `agentview_high.png` and
 `wrist_high.png` as needed, call `back_project` for geometry, decide, and repeat.
 """,
     """ALLOWED PRIMITIVES (physics-only; full schemas in the tool list/guides):
-`move_to`, `pi0_pick`, `pi0_doubled`, `release`, `set_gripper`,
+`move_to`, `pi0_pick`, `pi0_place`, `pi0_doubled`, `release`, `set_gripper`,
 `rotate_wrist`, `rotate_pitch`, `move_pose`. ⛔ `reset` is FORBIDDEN here
 (SINGLE-ATTEMPT MODE). FORBIDDEN: `exit`, `set_object_pose`, `articulate_to`,
 `js_move_to`, `carry_object`.

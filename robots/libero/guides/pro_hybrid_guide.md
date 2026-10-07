@@ -4,8 +4,8 @@ You are picking up the **LIBERO-Pro** evaluation track in **perception-isolated*
 mode — the only mode in this repository (the legacy oracle-state mode is not
 included here).
 
-> **Pi0.5 only does the grasp (`pi0_pick`). The LLM (you) handles every motion
-> (`move_to`), every release, sequencing, retries — and you do not get GT object
+> **Pi0.5 handles grasping (`pi0_pick`) and bounded local placement (`pi0_place`).
+> The LLM handles carry planning, handoff verification, sequencing, retries — and you do not get GT object
 > coordinates. You localize objects yourself from the depth + camera calibration
 > the runtime dumps each step.**
 
@@ -411,9 +411,8 @@ perception protocol). Write the audit with `write_text_file` to
   spatial truth — inspect the embedded image and describe the scene before deciding
   targets.
 - **Rule 1 (no `pi0_end_to_end`).** Pi0 does the grasp via `pi0_pick`; the LLM
-  scripts every motion + release. Under PRO this is doubly important — handing
-  back to Pi0 means handing back to the prompt-blind / memorized-place habit you
-  are trying to falsify.
+  plans carries and may use bounded `pi0_place` near the target. Verify the selected
+  target and retained object first; VLA may still follow memorized destinations.
 - **Rule 2 (single-episode current run).** This is a one-shot eval: do not call
   `reset` or `exit`. Recover *within* the episode when safe (re-localize,
   re-pre-position, re-`pi0_pick`, walk the prompt ladder,
@@ -504,3 +503,22 @@ When in doubt about *how to localize* or a primitive, the source of truth is
 perturbation semantics*, see
 [`scripts/install_libero_pro_plus.sh`](../../../../scripts/install_libero_pro_plus.sh)
 and §2.
+
+## Local VLA placement
+
+Use `pi0_place` after carrying the visually retained object near the visible
+target, before contact jams develop. Pass a single-object placement instruction
+and `holding_confirmed: true` only after a fresh image check. These tool rules
+supersede older memory requiring all placement to be scripted.
+
+Defaults are 4 chunks, 100 environment steps, and measured gripper opening at
+least 0.07 m for 3 consecutive steps. These are initial parameters requiring
+empirical validation. The tool checks every executed step and discards remaining
+chunk actions on exit. An already-open or almost fully closed gripper rejects
+handoff. Width alone cannot establish retention.
+
+`stop_reason` distinguishes `release_detected`, `budget_exhausted`,
+`handoff_rejected`, `task_terminated`, `environment_truncated`, and
+`invalid_observation`. `release_detected` does not establish placement success or
+physical detachment. Inspect the returned images before choosing a retreat.
+Budget exhaustion performs no forced opening or retreat; re-observe before retry.

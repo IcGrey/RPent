@@ -48,10 +48,18 @@ class LiberoToolkit(Toolkit):
         mode: str = "evaluation",
         attempts_per_session: int = 0,
         state_output_dir: Path | str | None = None,
+        require_vla_place: bool = False,
     ) -> None:
         if mode not in {"evaluation", "exploration"}:
             raise ValueError(f"unsupported LIBERO toolkit mode: {mode!r}")
         self._state_output_dir = Path(state_output_dir or get_output_dir())
+        from robots.libero.placement_guard import PlacementGuard
+
+        self._placement_guard = (
+            PlacementGuard(self._state_output_dir / "placement_guard.jsonl")
+            if require_vla_place
+            else None
+        )
         state = EnvState(self._state_output_dir)
         super().__init__(
             dashboard_events=dashboard_events,
@@ -94,6 +102,10 @@ class LiberoToolkit(Toolkit):
                     continue  # spec without a backing primitive method
                 handler = partial(self._execute_primitive, name, handler)
             self.add_tool(name, spec, handler)
+        if self._placement_guard is not None:
+            from robots.libero.placement_guard import RECOVERY_SPEC
+
+            self.add_tool("placement_recovery", RECOVERY_SPEC, self._placement_recovery)
         if self._mode == "exploration":
             reset_spec = next(
                 spec for spec in libero_tools.TOOLS_SPEC if spec["name"] == "reset"
@@ -105,11 +117,26 @@ class LiberoToolkit(Toolkit):
             )
 
     def _execute_primitive(self, name: str, handler: Any, **kwargs: Any) -> Any:
+        guard = self._placement_guard
+        if guard is not None:
+            if self._primitives.env.terminated or self._primitives.env.truncated:
+                return {"error": "episode ended; no further physical actions allowed"}
+            refusal = guard.before(name, kwargs)
+            if refusal is not None:
+                return refusal
         self._primitives.begin_primitive(name)
         try:
-            return handler(**kwargs)
+            result = handler(**kwargs)
+            if guard is not None:
+                guard.after(name, result, self._primitives._last_obs_gripper)
+            return result
         finally:
             self._primitives.end_primitive()
+
+    @readonly
+    def _placement_recovery(self, mode: str, reason: str) -> dict[str, Any]:
+        """Record a recovery declaration without moving the robot."""
+        return self._placement_guard.recover(mode, reason)
 
     @readonly
     def _guarded_finish(self, inner: Any, **kwargs: Any) -> dict[str, Any]:
@@ -142,6 +169,8 @@ class LiberoToolkit(Toolkit):
         self._attempt += 1
         self._session_attempt += 1
         result = self._primitives.reset_episode(reason=reason)
+        if self._placement_guard is not None:
+            self._placement_guard.reset()
         result["attempt"] = self._attempt
         result["notice"] = (
             f"Episode restarted; this is attempt {self._attempt}. The original "

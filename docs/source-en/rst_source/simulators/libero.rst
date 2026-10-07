@@ -285,6 +285,12 @@ LIBERO tools fall into two groups: physical action tools and read-only tools.
 **Physical action tools:**
 
 - ``pi0_pick(prompt, ...)`` — use Pi0.5 to execute a closed-loop grasp.
+- ``pi0_place(prompt, holding_confirmed=True, ...)`` — bounded local VLA placement.
+  Confirm retention from current images first. Defaults: 4 chunks, 100 steps,
+  measured opening of at least 0.07 m for 3 consecutive steps. Execution stops
+  within the chunk; release detection does not prove correct placement or
+  detachment. Inspect images before retreat. Budget exhaustion does not force
+  opening; re-observe before retrying. These initial thresholds need validation.
 - ``pi0_doubled(prompt, ...)`` — use Pi0.5 for a non-pick contact action.
 - ``move_to(xyz, ...)`` — move the end effector to a world-frame position.
 - ``move_pose(xyz, target_pitch=..., target_yaw=..., ...)`` — move position
@@ -298,6 +304,24 @@ LIBERO tools fall into two groups: physical action tools and read-only tools.
 - ``release(...)`` — open the gripper.
 
 Physical action tools advance the environment and record new state and images.
+
+**Experimental placement guard:**
+
+Add ``--require-vla-place`` to opt into per-grasp tool-order enforcement.
+After a pick or scripted closure, scripted opening and re-picking are blocked.
+A ``pi0_place`` call must execute at least one step before
+``placement_recovery(mode="scripted_fallback", reason="...")`` can authorize
+scripted release. Rejected, zero-step calls do not count. VLA release permits
+open retreat; the next grasp starts a new requirement. Opening through
+``move_to``, ``move_pose``, rotations or ``set_gripper`` is also guarded;
+``pi0_doubled`` is disabled in this experiment.
+
+For a visually verified empty or lost grasp, declare
+``placement_recovery(mode="empty_gripper", reason="...")`` before retrying.
+This is the planner's observation assertion, not an independent grasp detector.
+Declarations, refusals and fallback actions are recorded in
+``placement_guard.jsonl`` under the session output. The experiment prompt omits
+legacy scripted-placement recipes. This flag does not alter default runs.
 
 **Read-only tools:**
 

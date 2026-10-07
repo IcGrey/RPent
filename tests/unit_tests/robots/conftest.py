@@ -72,6 +72,9 @@ class FakeSingleArmPrimitives:
     def pi0_pick(self, **kwargs: Any) -> dict[str, Any]:
         return self._operation("pi0_pick", **kwargs)
 
+    def pi0_place(self, **kwargs: Any) -> dict[str, Any]:
+        return self._operation("pi0_place", **kwargs)
+
     def pi0_doubled(self, **kwargs: Any) -> dict[str, Any]:
         return self._operation("pi0_doubled", **kwargs)
 

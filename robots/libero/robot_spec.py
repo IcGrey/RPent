@@ -98,6 +98,7 @@ LIBERO_DASHBOARD_SPEC: DashboardSpec = {
     "primitives": (
         "move_to",
         "pi0_pick",
+        "pi0_place",
         "pi0_doubled",
         "release",
         "set_gripper",
@@ -165,6 +166,7 @@ def get_toolkit(
         mode=mode,
         attempts_per_session=attempts_per_session,
         state_output_dir=state_output_dir,
+        require_vla_place=bool(config.prompt_vars.get("require_vla_place", False)),
     )
 
 
@@ -186,6 +188,11 @@ def _add_cli_args(parser: argparse.ArgumentParser, use_dashboard: bool) -> None:
         help="HF memory: auto selects by model; explicit versions override. Effort describes memory generation only.",
     )
     parser.add_argument("--max-episode-steps", type=int, default=10000)
+    parser.add_argument(
+        "--require-vla-place",
+        action="store_true",
+        help="Experimental: require VLA placement before an audited scripted release fallback.",
+    )
     parser.add_argument(
         "--libero-type",
         default=None,
@@ -336,6 +343,7 @@ def _parse_config(args: argparse.Namespace) -> RunConfig:
                 "run exploration first or use --memory-profile hf"
             )
     prompt_vars = {
+        "require_vla_place": getattr(args, "require_vla_place", False),
         "suite": args.suite,
         "task": args.task,
         "seed": args.seed,

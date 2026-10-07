@@ -203,7 +203,7 @@ audit, RECORD the memory files you read (or state that none matched), so memory
 consultation is auditable."""
 
 STEP_PRIMITIVES = """ALLOWED PRIMITIVES (physics-only; full schemas in the tool list/guides):
-`move_to`, `pi0_pick`, `pi0_doubled`, `release`, `set_gripper`,
+`move_to`, `pi0_pick`, `pi0_place`, `pi0_doubled`, `release`, `set_gripper`,
 `rotate_wrist`, `rotate_pitch`, `move_pose`, AND `reset` (🔁 allowed here —
 close out the attempt first, see below).
 FORBIDDEN: `exit`, `set_object_pose`, `articulate_to`, `js_move_to`,

@@ -4,8 +4,8 @@ You are taking over a hybrid LIBERO experiment in **perception-isolated** mode
 — the only mode in this repository (the legacy oracle-state mode, where the
 state JSON carried GT object coordinates, is not included here).
 
-> **Pi0.5 only does the grasp (`pi0_pick`). The LLM (you) handles every motion
-> (`move_to`), every release, sequencing, retries — and you do not get GT
+> **Pi0.5 handles grasping (`pi0_pick`) and bounded local placement (`pi0_place`).
+> The LLM handles carry planning, handoff verification, sequencing, retries — and you do not get GT
 > object coordinates. You localize objects yourself from the depth + camera
 > calibration the toolkit dumps each step.**
 
@@ -142,8 +142,7 @@ For bowl→plate spatial tasks always also read `feedback_bowl_eef_y_offset.md`
 
 ## Rule 1 — `pi0_pick` is grasp-only (no oracle)
 
-`pi0_end_to_end` is FORBIDDEN. `pi0_pick` is for the grasp only; you script every
-`move_to` and every `release`. Use:
+`pi0_end_to_end` is FORBIDDEN. `pi0_pick` is for the grasp only; you plan the carry and may hand local placement to `pi0_place`. Use:
 
 ```
 pi0_pick({
@@ -156,8 +155,7 @@ pi0_pick({
 
 `pi0_pick` takes **no object-tracking / oracle argument** — it is grasp-only
 and reads NO GT object pose. Passing a name would do nothing even if you tried.
-You judge "did I grab the target?" yourself (Rule 1b). NEVER let Pi0 finish the
-place — YOU do every `move_to` and the `release`.
+You judge "did I grab the target?" yourself (Rule 1b). For local placement, use `pi0_place` only after verifying retention and target clearance.
 
 ## Rule 1b — JUDGE THE GRASP from perception, NOT from a name
 
@@ -576,7 +574,7 @@ which step failed. Then call `finish` (NO reset, NO second attempt).
   images + depth + the precomputed agentview and wrist world maps (via
   `back_project`).
 - **No teleport primitives.** The four are deleted.
-- **Pi0 only does the grasp.** You script every motion + release.
+- **Pi0 uses separate grasp and local-placement tools.** You plan carries and verify handoffs.
 - **Fully oracle-free, including the grasp.** There is no GT-lift oracle —
   `pi0_pick` reads NO GT object pose and takes no tracking argument. You judge
   the grasp from gripper width + the wrist cam, and TASK success from
@@ -601,3 +599,22 @@ Begin with `view_env_state({"step": 0})` and inspect `task_language` and
 `agentview_high.png` (+ metadata via `view_camera_meta`). Read
 `memory/libero/MEMORY.md` and matching task memories, then localize the target
 object via `back_project`, plan, and execute.
+
+## Local VLA placement
+
+Use `pi0_place` after carrying the visually retained object near the visible
+target, before contact jams develop. Pass a single-object placement instruction
+and `holding_confirmed: true` only after a fresh image check. These tool rules
+supersede older memory requiring all placement to be scripted.
+
+Defaults are 4 chunks, 100 environment steps, and measured gripper opening at
+least 0.07 m for 3 consecutive steps. These are initial parameters requiring
+empirical validation. The tool checks every executed step and discards remaining
+chunk actions on exit. An already-open or almost fully closed gripper rejects
+handoff. Width alone cannot establish retention.
+
+`stop_reason` distinguishes `release_detected`, `budget_exhausted`,
+`handoff_rejected`, `task_terminated`, `environment_truncated`, and
+`invalid_observation`. `release_detected` does not establish placement success or
+physical detachment. Inspect the returned images before choosing a retreat.
+Budget exhaustion performs no forced opening or retreat; re-observe before retry.

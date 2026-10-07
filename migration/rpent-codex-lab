@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+"""Start Codex for RPent using the local lab Responses provider.
+
+Select with CODEX_BIN=/data/gc02/bin/rpent-codex-lab.
+Credentials are loaded only into the child environment, never CLI arguments.
+"""
+
+import json
+import os
+import sys
+import tomllib
+from pathlib import Path
+
+
+def main():
+    config_root = Path(os.environ.get("RPENT_RELAY_CONFIG_DIR", str(Path.home() / ".codex")))
+    config = tomllib.loads((config_root / "lab-relay.config.toml").read_text())
+    provider = config["model_provider"]
+    settings = config["model_providers"][provider]
+    if settings["wire_api"] != "responses":
+        raise ValueError("Lab provider must use Responses")
+    binary = os.environ["RPENT_CODEX_EXECUTABLE"]
+    overrides = {
+        "model": config["model"],
+        "model_provider": provider,
+    }
+    for field in ("name", "base_url", "wire_api", "env_key", "requires_openai_auth"):
+        if field in settings:
+            overrides[f"model_providers.{provider}.{field}"] = settings[field]
+    args = [binary]
+    for key, value in overrides.items():
+        args.extend(["-c", f"{key}={json.dumps(value)}"])
+    args.extend(sys.argv[1:])
+    secret = (config_root / "lab-relay.key").read_text().strip()
+    if not secret:
+        raise ValueError("Lab credential is empty")
+    env = dict(os.environ)
+    env[settings["env_key"]] = secret
+    os.execve(binary, args, env)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, ValueError, KeyError):
+        sys.exit("RPent lab adapter could not load or launch the local configuration")

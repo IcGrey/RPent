@@ -35,6 +35,7 @@ EVALUATION_TOOLS = COMMON_TOOLS | {
     "view_env_state",
     "move_to",
     "pi0_pick",
+    "pi0_place",
     "pi0_doubled",
     "release",
     "set_gripper",
