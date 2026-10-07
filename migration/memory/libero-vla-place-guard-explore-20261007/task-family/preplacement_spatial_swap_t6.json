@@ -1,0 +1,78 @@
+{
+  "task": "spatial_swap_t6",
+  "source": "task-specific/spatial_swap_t6_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [
+    {
+      "source_lines_1_based": [
+        1,
+        2
+      ],
+      "historical_steps": [
+        {
+          "action": "move_to",
+          "xyz": [
+            0.065,
+            0.185,
+            1.075
+          ],
+          "gripper": -1,
+          "step_clip": 0.01,
+          "max_steps": 160,
+          "tol": 0.012
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "pick up the bowl next to the cookies box",
+          "max_chunks": 8,
+          "lift_thresh": 0.05,
+          "gripper_closed_thresh": 0.06
+        }
+      ]
+    },
+    {
+      "source_lines_1_based": [
+        5,
+        7
+      ],
+      "historical_steps": [
+        {
+          "action": "move_to",
+          "xyz": [
+            0.148,
+            -0.034,
+            1.06
+          ],
+          "gripper": -1,
+          "step_clip": 0.01,
+          "max_steps": 180,
+          "tol": 0.012
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "pick up the akita black bowl",
+          "max_chunks": 12,
+          "lift_thresh": 0.05,
+          "gripper_closed_thresh": 0.06
+        },
+        {
+          "action": "move_pose",
+          "xyz": [
+            -0.05,
+            0.03,
+            1.13
+          ],
+          "target_pitch": 0.0,
+          "target_yaw": 0.0,
+          "gripper": 1,
+          "step_clip": 0.008,
+          "max_steps": 220,
+          "tol": 0.012,
+          "ori_tol": 0.06
+        }
+      ]
+    }
+  ],
+  "status": "curated_historical_excerpt"
+}

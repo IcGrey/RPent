@@ -1,0 +1,8 @@
+{
+  "task": "goal_swap_t0",
+  "source": "task-specific/goal_swap_t0_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [],
+  "status": "no_grasp_recipe_available_or_contact_only"
+}

@@ -1,0 +1,18 @@
+# Working Notes
+
+## Attempt 1
+- Task language: `put the bottle in the bottom drawer of the cabinet and close it`.
+- Agentview semantic identity: one upright dark-green bottle with tan cork; manual high-res body samples gave xy around `(-0.106, 0.030)`. Drawer-floor region samples gave median `(-0.0206, 0.1639, 0.9243)`; far-right wall sample was rejected. Wrist bottle refinement at step 1 gave xy around `(-0.118, 0.031)`, within 1-2 cm of the agentview anchor, so the refinement was accepted.
+- `move_to` to `(-0.106, 0.030, 1.120)` was stable (final distance 7.9 mm).
+- Full task prompt with `pi0_pick(max_chunks=20, lift_thresh=0.05, gripper_closed_thresh=0.06)` descended 10.4 cm but had `peak_lift_m=0.0`, `min_gripper_opening=0.07955`, and final opening `0.07990`; wrist/agentview showed the bottle still on the table. This was a clean empty grasp, not a held payload.
+- After `placement_recovery(mode=empty_gripper)`, a lower generic-retry pre-position was attempted from the Pi0-shifted pose `(-0.052, 0.0248, 1.0155)`. The guard-released move to `(-0.090, 0.027, 1.080)` completed, but the arm crossed the bottle/drawer-side region at low clearance and tipped the bottle horizontal near the lower drawer handle.
+- Wall measured under this method: a low lateral correction after a failed Pi0 pick can contact the bottle and create an unrecoverable episode state. This is an observation about the recovery geometry, not about the drawer task.
+- Next attempt lever: after any failed grasp, first retreat/restore to a high-clearance carry pose, then re-localize and approach vertically; do not sweep laterally at bottle height.
+
+## Attempt 2
+- Fresh-scene perception agreed with the prior identity: agentview bottle body samples clustered around `(-0.108, 0.028)`; SAM3 bottle score was `0.48` with world median near `(-0.114, 0.031, 0.966)`. Drawer-floor region back-projection gave median `(-0.0261, 0.1577, 0.9243)` and SAM3 drawer score `0.222`; wrist drawer region at step 1 gave `(0.0077, 0.1598, 0.9238)`, a 3.4 cm x-consistent refinement. Wrist bottle samples were `(-0.116 to -0.119, 0.031-0.033)`, accepted within about 1 cm.
+- High direct pre-position `(-0.108, 0.028, 1.15)` was stable. `pi0_pick("pick up the wine bottle", max_chunks=30, lift_thresh=0.08)` descended 12.6 cm but produced `peak_lift_m=0.00125`, final opening `0.07958`, and no retained bottle.
+- Empty-gripper recovery was followed by a vertical-only retreat to z=1.243, then `move_pose` neutralized pitch/yaw over the bottle. The full task-language prompt with `max_chunks=30, lift_thresh=0.05` again produced zero lift and final opening `0.07994`.
+- A second vertical retreat and a 5 cm left offset high pre-position `(-0.150, 0.028, 1.181)` tested the offset-reposition rung. The color/shape/spatial prompt with `max_chunks=40` again produced zero lift and final opening `0.07979`; the final image showed the bottle contacted/leaning near the drawer-side area rather than retained.
+- Observed wall is bounded to these three Pi0 prompt/pre-position combinations: direct high + generic, neutral high + full task, and 5 cm offset high + spatial description. High-clearance recovery prevented the earlier low lateral sweep from immediately hitting the bottle, but the last grasp still created contact/tipping. This does not establish an unreachable drawer or impossible grasp.
+- Classes tried: generic/full/spatial Pi0 prompt ladder, high vertical recovery, neutralized orientation, and 5 cm offset pre-position. Next fresh episode should change contact geometry: try a deliberate wrist yaw/neck approach or a farther high staging pose before Pi0, then re-localize. Do not repeat the same direct/neutral/offset combinations.

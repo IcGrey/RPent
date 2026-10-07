@@ -1,0 +1,54 @@
+{
+  "task": "goal_task_t3",
+  "source": "task-specific/goal_task_t3_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [
+    {
+      "source_lines_1_based": [
+        1,
+        7
+      ],
+      "historical_steps": [
+        {
+          "action": "segment",
+          "prompt": "the cream cheese box",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "the top drawer handle",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "the open top drawer",
+          "camera": "agentview"
+        },
+        {
+          "action": "pi0_doubled",
+          "prompt": "open the top drawer",
+          "max_chunks": 20
+        },
+        {
+          "action": "segment",
+          "prompt": "the cream cheese box",
+          "camera": "wrist"
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "pick up the cream cheese box",
+          "max_chunks": 20,
+          "lift_thresh": 0.05,
+          "gripper_closed_thresh": 0.06
+        },
+        {
+          "action": "set_gripper",
+          "gripper": 1,
+          "steps": 8
+        }
+      ]
+    }
+  ],
+  "status": "curated_historical_excerpt"
+}

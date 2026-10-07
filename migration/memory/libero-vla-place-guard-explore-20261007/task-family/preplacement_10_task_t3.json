@@ -1,0 +1,69 @@
+{
+  "task": "10_task_t3",
+  "source": "task-specific/10_task_t3_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [
+    {
+      "source_lines_1_based": [
+        5,
+        9
+      ],
+      "historical_steps": [
+        {
+          "action": "move_pose",
+          "xyz": [
+            -0.2,
+            0,
+            1.17
+          ],
+          "target_pitch": 0,
+          "target_yaw": 0,
+          "gripper": -1,
+          "step_clip": 0.006,
+          "pitch_step": 0.04,
+          "yaw_step": 0.04,
+          "max_steps": 200,
+          "tol": 0.012
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "put the bottle in the bottom drawer of the cabinet and close it",
+          "max_chunks": 20,
+          "lift_thresh": 0.05,
+          "gripper_closed_thresh": 0.06
+        },
+        {
+          "action": "set_gripper",
+          "gripper": 1,
+          "steps": 8
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.119,
+            0.054,
+            1.25
+          ],
+          "gripper": 1,
+          "step_clip": 0.008,
+          "max_steps": 140,
+          "tol": 0.01
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            0.02,
+            0.12,
+            1.24
+          ],
+          "gripper": 1,
+          "step_clip": 0.008,
+          "max_steps": 140,
+          "tol": 0.01
+        }
+      ]
+    }
+  ],
+  "status": "curated_historical_excerpt"
+}

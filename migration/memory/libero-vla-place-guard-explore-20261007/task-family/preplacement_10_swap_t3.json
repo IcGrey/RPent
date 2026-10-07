@@ -1,0 +1,63 @@
+{
+  "task": "10_swap_t3",
+  "source": "task-specific/10_swap_t3_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [
+    {
+      "source_lines_1_based": [
+        1,
+        7
+      ],
+      "historical_steps": [
+        {
+          "action": "segment",
+          "prompt": "the patterned bowl on the table",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "the open drawer of the cabinet",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "the green wine bottle",
+          "camera": "agentview"
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.164,
+            0.045,
+            1.05
+          ],
+          "gripper": -1,
+          "max_steps": 60
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "pick up the black bowl",
+          "max_chunks": 12,
+          "lift_thresh": 0.05
+        },
+        {
+          "action": "set_gripper",
+          "gripper": 1,
+          "steps": 10
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.16,
+            -0.09,
+            1.05
+          ],
+          "gripper": 1,
+          "max_steps": 60
+        }
+      ]
+    }
+  ],
+  "status": "curated_historical_excerpt"
+}

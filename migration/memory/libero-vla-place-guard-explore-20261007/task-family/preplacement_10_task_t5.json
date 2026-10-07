@@ -1,0 +1,94 @@
+{
+  "task": "10_task_t5",
+  "source": "task-specific/10_task_t5_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [
+    {
+      "source_lines_1_based": [
+        1,
+        12
+      ],
+      "historical_steps": [
+        {
+          "action": "segment",
+          "prompt": "white and yellow mug",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "white and yellow mug",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "white and yellow mug",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "white and yellow mug",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "white and yellow mug",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "white and yellow mug",
+          "camera": "agentview"
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.135,
+            0.035,
+            1.06
+          ],
+          "gripper": -1
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "pick up the white and yellow mug",
+          "max_chunks": 10,
+          "lift_thresh": 0.05
+        },
+        {
+          "action": "set_gripper",
+          "gripper": 1,
+          "steps": 8
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.1,
+            0.05,
+            1.2
+          ],
+          "gripper": 1
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.27,
+            -0.02,
+            1.2
+          ],
+          "gripper": 1
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.41,
+            -0.088,
+            1.2
+          ],
+          "gripper": 1
+        }
+      ]
+    }
+  ],
+  "status": "curated_historical_excerpt"
+}

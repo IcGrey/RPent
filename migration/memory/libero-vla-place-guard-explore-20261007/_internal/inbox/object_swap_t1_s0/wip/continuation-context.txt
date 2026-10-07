@@ -1,0 +1,1 @@
+Continuation of VLA placement exploration. Seed 0 only; do not load legacy placement recipes from other corpora. Preserve existing WIP; read existing notes before acting. Scripted fallback is not independent VLA placement success. For tasks with no object placement, use the applicable original contact tools; do not invent a placement step.

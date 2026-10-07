@@ -1,0 +1,177 @@
+{
+  "task": "10_task_t4",
+  "source": "task-specific/10_task_t4_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [
+    {
+      "source_lines_1_based": [
+        1,
+        7
+      ],
+      "historical_steps": [
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.016,
+            0.085,
+            0.62
+          ],
+          "gripper": -1,
+          "step_clip": 0.012,
+          "max_steps": 100,
+          "tol": 0.012
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "grasp the yellow mug by the handle loop",
+          "max_chunks": 8,
+          "lift_thresh": 0.05,
+          "gripper_closed_thresh": 0.06
+        },
+        {
+          "action": "set_gripper",
+          "gripper": 1,
+          "steps": 10
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            0.08,
+            0.1,
+            0.72
+          ],
+          "gripper": 1,
+          "step_clip": 0.008,
+          "max_steps": 100,
+          "tol": 0.01
+        },
+        {
+          "action": "rotate_wrist",
+          "delta_yaw": 1.5708,
+          "gripper": 1,
+          "max_steps": 50,
+          "step_clip": 0.07,
+          "tol": 0.02
+        },
+        {
+          "action": "move_pose",
+          "xyz": [
+            0.15,
+            -0.1,
+            0.72
+          ],
+          "target_yaw": 1.574,
+          "target_pitch": 0,
+          "gripper": 1,
+          "step_clip": 0.008,
+          "max_steps": 120,
+          "tol": 0.012,
+          "ori_tol": 0.05,
+          "pitch_step": 0.05,
+          "yaw_step": 0.05
+        },
+        {
+          "action": "move_pose",
+          "xyz": [
+            0.051,
+            -0.298,
+            0.66
+          ],
+          "target_yaw": 1.574,
+          "target_pitch": 0,
+          "gripper": 1,
+          "step_clip": 0.006,
+          "max_steps": 150,
+          "tol": 0.012,
+          "ori_tol": 0.05,
+          "pitch_step": 0.04,
+          "yaw_step": 0.04
+        }
+      ]
+    },
+    {
+      "source_lines_1_based": [
+        12,
+        18
+      ],
+      "historical_steps": [
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.075,
+            -0.1,
+            0.62
+          ],
+          "gripper": -1,
+          "step_clip": 0.012,
+          "max_steps": 110,
+          "tol": 0.012
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "grasp the white mug by the handle",
+          "max_chunks": 8,
+          "lift_thresh": 0.05,
+          "gripper_closed_thresh": 0.06
+        },
+        {
+          "action": "set_gripper",
+          "gripper": 1,
+          "steps": 8
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.072,
+            -0.105,
+            0.72
+          ],
+          "gripper": 1,
+          "step_clip": 0.008,
+          "max_steps": 100,
+          "tol": 0.01
+        },
+        {
+          "action": "rotate_wrist",
+          "delta_yaw": 1.5708,
+          "gripper": 1,
+          "max_steps": 50,
+          "step_clip": 0.07,
+          "tol": 0.02
+        },
+        {
+          "action": "move_pose",
+          "xyz": [
+            0.12,
+            0.15,
+            0.7
+          ],
+          "target_yaw": 1.37,
+          "target_pitch": 0,
+          "gripper": 1,
+          "step_clip": 0.008,
+          "max_steps": 120,
+          "tol": 0.012,
+          "ori_tol": 0.05
+        },
+        {
+          "action": "move_pose",
+          "xyz": [
+            -0.044,
+            0.312,
+            0.66
+          ],
+          "target_yaw": 1.37,
+          "target_pitch": 0,
+          "gripper": 1,
+          "step_clip": 0.006,
+          "max_steps": 150,
+          "tol": 0.012,
+          "ori_tol": 0.05
+        }
+      ]
+    }
+  ],
+  "status": "curated_historical_excerpt"
+}

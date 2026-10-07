@@ -1,0 +1,61 @@
+{
+  "task": "spatial_task_t3",
+  "source": "task-specific/spatial_task_t3_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [
+    {
+      "source_lines_1_based": [
+        1,
+        7
+      ],
+      "historical_steps": [
+        {
+          "action": "segment",
+          "prompt": "the black patterned bowl on top of the dark cabinet",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "the dark cabinet top",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "the white plate with red rings",
+          "camera": "agentview"
+        },
+        {
+          "action": "segment",
+          "prompt": "the black patterned bowl on the cookie box",
+          "camera": "agentview"
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            0.02,
+            -0.265,
+            1.18
+          ],
+          "gripper": -1,
+          "step_clip": 0.012,
+          "max_steps": 120,
+          "tol": 0.015
+        },
+        {
+          "action": "segment",
+          "prompt": "the patterned bowl",
+          "camera": "wrist"
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "pick up the black patterned bowl on top of the cabinet",
+          "max_chunks": 14,
+          "lift_thresh": 0.05,
+          "gripper_closed_thresh": 0.06
+        }
+      ]
+    }
+  ],
+  "status": "curated_historical_excerpt"
+}

@@ -1,0 +1,9 @@
+{
+  "task": "goal_task_t7",
+  "source": "task-specific/goal_task_t7_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [],
+  "status": "contact_only_no_object_handoff",
+  "guidance": "Use fixture operation appropriate to task. Do not invent pi0_place. Existing tool availability/guard restrictions still apply."
+}

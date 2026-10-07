@@ -2,8 +2,8 @@
 
 This branch preserves the local LIBERO VLA-placement experiment on base
 ca48092f41ac3191f5d0514c881978ed1ff11095. It does not include the fork's newer
-unrelated commits. Experiment outputs, memory, model weights and credentials
-are deliberately transferred separately over SSH.
+unrelated commits. Experiment outputs, model weights and credentials are transferred separately
+over SSH. A snapshot of the experimental memory is included below.
 
 ## Rebuild
 
@@ -58,3 +58,25 @@ before starting a multi-GPU batch. Existing relay latency and placeholder-call
 issues are unresolved; this branch preserves the experiment, not a fix for those
 issues. Planner timeouts skip the normal automatic memory merge even if the
 environment succeeded. Review success and memory publication separately.
+
+## Included experimental memory
+
+`migration/memory/libero-vla-place-guard-explore-20261007` contains the exact
+158-file snapshot, including `_internal/inbox` continuation notes. Checksums are
+in `migration/memory-manifest.json`. This is unfinished exploration memory, not
+a validated or frozen evaluation release. Old unsuccessful observations remain
+historical evidence; 28-task runs timed out and did not complete normal automatic
+memory merging. Original evaluation memory is not included.
+
+To continue exploration, copy the snapshot to a writable corpus:
+
+```bash
+mkdir -p memory
+cp -a migration/memory/libero-vla-place-guard-explore-20261007 memory/
+```
+
+The snapshot preserves source paths for traceability. On a server with a different
+checkout path, replace `/data/gc02/RPent` in the WORKING copy with the destination
+checkout path before use. References to deleted historical logs are provenance,
+not available assets: do not follow them as executable recipes. Do not modify the
+snapshot in place while running experiments; point `--memory-dir` to the copy.

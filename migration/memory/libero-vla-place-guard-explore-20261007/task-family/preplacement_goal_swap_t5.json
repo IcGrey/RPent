@@ -1,0 +1,37 @@
+{
+  "task": "goal_swap_t5",
+  "source": "task-specific/goal_swap_t5_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [
+    {
+      "source_lines_1_based": [
+        1,
+        2
+      ],
+      "historical_steps": [
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.199,
+            -0.008,
+            1.04
+          ],
+          "gripper": -1,
+          "target_yaw": 0,
+          "step_clip": 0.015,
+          "max_steps": 100,
+          "tol": 0.012
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "pick up the red plate",
+          "max_chunks": 14,
+          "lift_thresh": 0.025,
+          "gripper_closed_thresh": 0.06
+        }
+      ]
+    }
+  ],
+  "status": "curated_historical_excerpt"
+}

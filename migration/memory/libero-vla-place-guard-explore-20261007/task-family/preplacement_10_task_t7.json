@@ -1,0 +1,92 @@
+{
+  "task": "10_task_t7",
+  "source": "task-specific/10_task_t7_s0_recipe.jsonl",
+  "purpose": "Pre-placement reference only; no scripted final lowering/insertion/release/recovery",
+  "handoff": "Current visually confirmed retained payload at a clearance-preserving PRE-CONTACT target pose; then pi0_place",
+  "blocks": [
+    {
+      "source_lines_1_based": [
+        1,
+        4
+      ],
+      "historical_steps": [
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.092,
+            0.072,
+            0.58
+          ],
+          "gripper": -1
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "pick up the cream cheese box",
+          "max_chunks": 16
+        },
+        {
+          "action": "set_gripper",
+          "gripper": 1,
+          "steps": 8
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            0.03,
+            0.21,
+            0.62
+          ],
+          "gripper": 1
+        }
+      ]
+    },
+    {
+      "source_lines_1_based": [
+        8,
+        12
+      ],
+      "historical_steps": [
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.05,
+            0.04,
+            0.62
+          ],
+          "gripper": -1
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            -0.157,
+            -0.132,
+            0.6
+          ],
+          "gripper": -1
+        },
+        {
+          "action": "pi0_pick",
+          "prompt": "pick up the ketchup bottle",
+          "max_chunks": 18,
+          "lift_thresh": 0.05
+        },
+        {
+          "action": "set_gripper",
+          "gripper": 1,
+          "steps": 6
+        },
+        {
+          "action": "move_to",
+          "xyz": [
+            0.01,
+            0.19,
+            0.66
+          ],
+          "gripper": 1,
+          "step_clip": 0.02
+        }
+      ]
+    }
+  ],
+  "status": "curated_historical_excerpt"
+}

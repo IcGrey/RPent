@@ -1,0 +1,28 @@
+Continuation of VLA placement exploration. Seed 0 only; do not load legacy placement recipes from other corpora. Preserve existing WIP; read existing notes before acting. Scripted fallback is not independent VLA placement success. For tasks with no object placement, use the applicable original contact tools; do not invent a placement step.
+Previous verified exploration findings:
+[
+  {
+    "case": "libero_10_task / TASK 4 / SEED 0",
+    "attempts": 2,
+    "native_success": false,
+    "exit": "Agent finished unsolved after both attempts; third reset was refused. Not a timeout.",
+    "vla_place_steps": [
+      38,
+      60,
+      19,
+      80,
+      60
+    ],
+    "vla_release_events": 2,
+    "scripted_fallback_releases": 1,
+    "observations": [
+      "Attempt 1: yellow-white mug released after 38 steps. White mug released after 60+19 steps but visibly tilted on the plate edge after retreat; native task remained false.",
+      "Attempt 2: changed object order, yaw/handoff and prompt together. Two white-mug placement calls (80 and 60 steps, separated by re-staging) did not release; agent declared fallback and released by script. Later yellow-white grasp/recovery failed and the mug tipped.",
+      "Three direct opening/re-pick attempts were refused with zero physical steps. Empty-gripper declarations then permitted recovery."
+    ],
+    "causal_limit": "Multiple variables changed; no isolated causal claim about order, yaw, prompt or budget. Visual cup/plate overlap and release detection did not establish native success.",
+    "video": "explore/libero_10_task-t4-s0/sessions/session_001/episode.mp4",
+    "guard_log": "explore/libero_10_task-t4-s0/sessions/session_001/placement_guard.jsonl",
+    "image_evidence": "explore/libero_10_task-t4-s0/sessions/session_001/agentview_high.png/23.png"
+  }
+]

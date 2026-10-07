@@ -1,0 +1,19 @@
+Continuation of VLA placement exploration. Seed 0 only; do not load legacy placement recipes from other corpora. Preserve existing WIP; read existing notes before acting. Scripted fallback is not independent VLA placement success. For tasks with no object placement, use the applicable original contact tools; do not invent a placement step.
+Previous verified exploration findings:
+[
+  {
+    "case": "libero_10_swap / TASK 5 / SEED 0",
+    "attempts": 1,
+    "native_success": true,
+    "vla_place_steps": [
+      20,
+      20
+    ],
+    "vla_release_detected": false,
+    "scripted_fallback_releases": 1,
+    "observation": "Book stayed held and began dividerward pitch during VLA placement. Agent declared the observed reason, then used scripted release; vertical open retreat triggered native success. This validates guarded hybrid execution, not independent VLA book release.",
+    "video": "explore/libero_10_swap-t5-s0/sessions/session_001/episode.mp4",
+    "guard_log": "explore/libero_10_swap-t5-s0/sessions/session_001/placement_guard.jsonl"
+  }
+]
+Later relay validation completed one 20-step pi0_place without release, then hit the 900s planner deadline. This was a runtime timeout, not proof of an impossible placement.
