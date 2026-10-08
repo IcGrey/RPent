@@ -42,7 +42,25 @@ rpent-check-llm --planner codex --model gpt-5.5 --json
 
 The adapter reads the existing Responses provider configuration and injects the
 key into the child environment. RPENT_RELAY_CONFIG_DIR optionally changes the
-configuration directory. Python 3.11+ must be on PATH.
+configuration directory. Python 3.11+ must be on PATH, with the frozen MCP and
+HTTPX dependencies installed.
+
+The adapter enumerates the connected RPent MCP server's tools and uses a
+loopback Responses proxy to expose only the `mcp__rpent` namespace to the model.
+It disables unrelated Codex tool sources and rejects streamed executable calls
+outside the registered RPent tools before SDK dispatch. The connectivity check
+runs with an empty tool catalog. The proxy keeps credentials in memory and does
+not log requests or keys.
+
+For the default destination layout, activate the environment with:
+
+```bash
+cd /data/gc02/RPent
+source migration-env.sh
+```
+
+Adjust the paths in this script when the checkout or Codex executable lives
+elsewhere.
 
 ## Experiment queue
 
@@ -54,10 +72,25 @@ model, sessions, attempts_per_session, planner_timeout_s, max_turns,
 max_episode_steps and auto_merge_memory.
 
 Validate CUDA, assets, model loading, image/tool calls and one bounded episode
-before starting a multi-GPU batch. Existing relay latency and placeholder-call
-issues are unresolved; this branch preserves the experiment, not a fix for those
-issues. Planner timeouts skip the normal automatic memory merge even if the
-environment succeeded. Review success and memory publication separately.
+before starting a multi-GPU batch. Relay responses can take several minutes;
+tool isolation does not eliminate this latency. Planner timeouts skip the normal
+automatic memory merge even if the environment succeeded. Review success and
+memory publication separately.
+
+## Destination validation
+
+The filtered adapter passed 56 focused unit tests and a live SDK `read_text_file`
+probe. A LIBERO-Pro smoke run on 2026-10-07 used `libero_10_task`, task 5, seed 0,
+`gpt-5.5`, reasoning effort `xhigh`, and GPU 0. The run exited with code 0 after
+about 36 minutes. All 78 tool calls used the RPent server, with no `placeholder`
+resource requests. Pi0.5 grasp and placement and SAM3 segmentation executed;
+the final state recorded `terminated=true`, `truncated=false`. The episode video
+was readable and the owned services released GPU memory. This verifies one
+episode, not the full 28-task exploration queue.
+
+Local evidence is in `logs/migration-smoke-20261007T231906Z`, including
+`smoke-verification.json`, `states.json`, the SDK stream and `episode.mp4`.
+Generated logs and results are not included in Git.
 
 ## Included experimental memory
 
