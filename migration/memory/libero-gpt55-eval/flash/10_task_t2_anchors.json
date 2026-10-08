@@ -1,0 +1,28 @@
+{
+  "anchors": [
+    {
+      "phrase": "the stove knob",
+      "locator": "molmo",
+      "median_xy": [
+        -0.245,
+        0.27
+      ]
+    },
+    {
+      "phrase": "the pan",
+      "locator": "molmo",
+      "median_xy": [
+        -0.055,
+        -0.15
+      ]
+    },
+    {
+      "phrase": "the stove burner",
+      "locator": "molmo",
+      "median_xy": [
+        -0.016,
+        0.324
+      ]
+    }
+  ]
+}

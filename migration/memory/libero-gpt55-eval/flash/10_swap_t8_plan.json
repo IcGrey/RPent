@@ -1,0 +1,346 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.164,
+          -0.205,
+          1.16
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "max_steps": 100,
+        "tol": 0.012
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.164,
+          -0.205,
+          1.025
+        ],
+        "gripper": -1,
+        "step_clip": 0.004,
+        "max_steps": 130,
+        "tol": 0.012
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 20
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.164,
+          -0.205,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.003,
+        "max_steps": 90,
+        "tol": 0.012
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "point": [
+          123,
+          50
+        ],
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.02,
+          -0.15,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "max_steps": 130,
+        "tol": 0.014
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.1,
+          -0.05,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "max_steps": 130,
+        "tol": 0.014
+      },
+      "anchor": "the both moka pots",
+      "offset": [
+        -0.093,
+        -0.048
+      ],
+      "anchor_distance": 0.1047
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.178,
+          0.063,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "max_steps": 130,
+        "tol": 0.014
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.006,
+        0.012
+      ],
+      "anchor_distance": 0.0134
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.172,
+          0.051,
+          1.055
+        ],
+        "gripper": 1,
+        "step_clip": 0.003,
+        "max_steps": 100,
+        "tol": 0.012
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.172,
+          0.051,
+          1.18
+        ],
+        "gripper": -1,
+        "step_clip": 0.006,
+        "max_steps": 100,
+        "tol": 0.014
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.047,
+          0.283,
+          1.16
+        ],
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "gripper": -1,
+        "step_clip": 0.008,
+        "pitch_step": 0.05,
+        "yaw_step": 0.05,
+        "max_steps": 180,
+        "tol": 0.014,
+        "ori_tol": 0.08
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.047,
+          0.283,
+          1.025
+        ],
+        "gripper": -1,
+        "step_clip": 0.004,
+        "max_steps": 140,
+        "tol": 0.012
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 20
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.047,
+          0.283,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.003,
+        "max_steps": 90,
+        "tol": 0.012
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.02,
+          0.1,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "max_steps": 120,
+        "tol": 0.014
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        -0.192,
+        0.049
+      ],
+      "anchor_distance": 0.1982
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.02,
+          -0.1,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "max_steps": 120,
+        "tol": 0.014
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.19,
+          -0.1,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "max_steps": 130,
+        "tol": 0.014
+      },
+      "anchor": "the both moka pots",
+      "offset": [
+        -0.003,
+        -0.098
+      ],
+      "anchor_distance": 0.098
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.193,
+          0.012,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "max_steps": 120,
+        "tol": 0.014
+      },
+      "anchor": "the both moka pots",
+      "offset": [
+        0.0,
+        0.014
+      ],
+      "anchor_distance": 0.014
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.193,
+          -0.002,
+          1.055
+        ],
+        "gripper": 1,
+        "step_clip": 0.003,
+        "max_steps": 120,
+        "tol": 0.012
+      },
+      "anchor": "the both moka pots",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    }
+  ]
+}

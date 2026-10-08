@@ -1,0 +1,15 @@
+{"action":"move_to","xyz":[-0.028,0.096,0.58],"gripper":-1,"step_clip":0.025}
+{"action":"pi0_pick","prompt":"pick up the chocolate pudding box","max_chunks":14,"lift_thresh":0.05}
+{"action":"set_gripper","gripper":1,"steps":6}
+{"action":"move_to","xyz":[0.142,0.14,0.52],"gripper":1,"step_clip":0.025}
+{"action":"release","max_steps":15}
+{"action":"move_to","xyz":[0.148,0.143,0.63],"gripper":-1,"step_clip":0.025}
+{"action":"move_to","xyz":[-0.02,0.06,0.63],"gripper":-1,"step_clip":0.025}
+{"action":"move_to","xyz":[-0.19,0.045,0.62],"gripper":-1,"step_clip":0.025}
+{"action":"pi0_pick","prompt":"grasp the red mug by the handle","max_chunks":15,"lift_thresh":0.05}
+{"action":"set_gripper","gripper":1,"steps":8}
+{"action":"move_to","xyz":[0.092,0.012,0.62],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[0.092,0.012,0.56],"gripper":1,"step_clip":0.015}
+{"action":"release","max_steps":20}
+{"action":"move_to","xyz":[0.092,0.012,0.64],"gripper":-1,"step_clip":0.02}
+{"action":"move_to","xyz":[0.181,0.14,0.55],"gripper":-1,"step_clip":0.025}

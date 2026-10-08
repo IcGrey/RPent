@@ -1,0 +1,70 @@
+{
+  "suite": "libero_object_swap",
+  "task_id": 0,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Pick the alphabet soup and place it in the basket",
+  "perturbation_semantics": "Loose grocery objects and basket are localized visually in the object-frame scene; no coordinates were reused from references.",
+  "expected_baseline_behavior": "A prompt-memory baseline may grab a look-alike can or use stale object/basket positions under the swap perturbation.",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_read": [
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "localization": {
+    "alphabet_soup_agentview": {
+      "evidence": "blue/yellow cylindrical can near rear-center; distinct from front red/green tomato sauce can",
+      "pixels_rc": [[435,453],[450,455],[420,445]],
+      "samples_world_xyz": [[-0.1781,-0.0582,0.0699],[-0.1804,-0.0567,0.0518],[-0.2057,-0.0673,0.0721]],
+      "sam_prompt": "the blue and yellow alphabet soup can",
+      "sam_score": 0.707,
+      "sam_world_xyz": [-0.1744,-0.0811,0.0567]
+    },
+    "alphabet_soup_wrist_refine_step1": {
+      "evidence": "same blue/yellow can visible under wrist after pre-position, no semantic override",
+      "pixels_rc": [[704,534],[690,510],[720,570]],
+      "samples_world_xyz": [[-0.1932,-0.0812,0.0717],[-0.1887,-0.0736,0.0715],[-0.1985,-0.0927,0.0718]],
+      "sam_prompt": "the blue and yellow can",
+      "sam_score": 0.224,
+      "sam_world_xyz": [-0.1971,-0.0816,0.0718],
+      "accepted": true
+    },
+    "basket_cavity": {
+      "evidence": "open white-lined woven basket on image right; place into visible interior, not outer rim",
+      "agentview_region_rc": {"row_range": [365,535], "col_range": [760,930], "z_band": [0.0,0.08]},
+      "region_center_xyz": [-0.2646,0.3672,0.0009],
+      "sam_prompt": "the inside of the basket",
+      "sam_score": 0.309,
+      "sam_world_xyz": [-0.0566,0.2747,0.109],
+      "final_strategy": "Use visual cavity center and low descent; basket mask is liner/rim-biased. Pi0 carried the can near the basket, then scripted descent/release/retreat completed the predicate."
+    }
+  },
+  "command_sequence": [
+    {"action":"move_to","xyz":[-0.174,-0.081,0.18],"gripper":-1,"step_clip":0.015,"max_steps":100,"tol":0.01},
+    {"action":"pi0_pick","prompt":"pick up the alphabet soup can","max_chunks":20,"lift_thresh":0.05,"gripper_closed_thresh":0.06},
+    {"action":"set_gripper","gripper":1,"steps":5},
+    {"action":"move_to","xyz":[-0.02,0.285,0.15],"gripper":1,"step_clip":0.01,"max_steps":100,"tol":0.012},
+    {"action":"release","max_steps":30},
+    {"action":"move_to","xyz":[-0.016,0.287,0.245],"gripper":-1,"step_clip":0.01,"max_steps":80,"tol":0.012}
+  ],
+  "pick_result": {
+    "alphabet_soup_pi0_pick_step2": {
+      "success": false,
+      "chunks_used": 20,
+      "peak_lift_m": 0.18846672773361206,
+      "final_gripper_opening": 0.06878545880317688,
+      "visual_judgement": "Despite heuristic success=false, wrist and agentview showed the alphabet soup can held in the gripper and already above the basket mouth."
+    }
+  },
+  "strategy_notes": "Localized the target alphabet soup by agentview RGB/label and SAM mask, then accepted a wrist refinement within 3 cm of the identity anchor. Pre-positioned above the can, used Pi0 only for the grasp, judged the visual grasp as valid despite Pi0's closure-threshold false negative, firmed the gripper, descended into the basket interior, released, and retreated upward with the gripper open; the predicate fired during the retreat/settle step.",
+  "final_state": {
+    "robot0_eef_pos": [-0.016254722038527673,0.28674073632330466,0.1906473837562442],
+    "robot0_eef_quat": [0.995779114333327,-0.0320399231866933,-0.027789716995834404,-0.08139490407277393],
+    "robot0_gripper_qpos": [0.04000937512035287,-0.03940155647713982],
+    "object_names": ["alphabet_soup_1","basket_1","butter_1","cream_cheese_1","milk_1","salad_dressing_1","tomato_sauce_1"]
+  }
+}

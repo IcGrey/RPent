@@ -1,0 +1,72 @@
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan handle","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"black frying pan bowl","camera":"agentview"}
+{"action":"segment","prompt":"the black frying pan bowl","camera":"wrist"}
+{"action":"move_to","xyz":[-0.052,-0.092,1.1],"gripper":-1,"step_clip":0.01,"max_steps":100,"tol":0.01}
+{"action":"move_to","xyz":[-0.036,0.2,1.13],"gripper":-1,"step_clip":0.01,"max_steps":100,"tol":0.01}
+{"action":"move_to","xyz":[-0.208,0,1.173],"gripper":-1,"step_clip":0.01,"max_steps":120,"tol":0.012}
+{"action":"pi0_pick","prompt":"turn on the stove","max_chunks":12,"lift_thresh":999,"gripper_closed_thresh":0}
+{"action":"pi0_pick","prompt":"turn on the stove","max_chunks":1,"lift_thresh":999,"gripper_closed_thresh":0}
+{"action":"pi0_pick","prompt":"turn on the stove","max_chunks":1,"lift_thresh":999,"gripper_closed_thresh":0}
+{"action":"pi0_pick","prompt":"turn on the stove","max_chunks":1,"lift_thresh":999,"gripper_closed_thresh":0}
+{"action":"move_to","xyz":[-0.208,0,1.173],"gripper":-1,"step_clip":0.01,"max_steps":120,"tol":0.012}
+{"action":"move_to","xyz":[-0.056,-0.103,1],"gripper":-1,"step_clip":0.008,"max_steps":120,"tol":0.012}
+{"action":"pi0_pick","prompt":"grasp the pan handle","max_chunks":8,"lift_thresh":0.05,"gripper_closed_thresh":0.06}
+{"action":"set_gripper","gripper":1,"steps":10}
+{"action":"move_to","xyz":[-0.063,-0.103,1.08],"gripper":1,"step_clip":0.006,"max_steps":100,"tol":0.012}
+{"action":"rotate_wrist","delta_yaw":1.5708,"gripper":1,"step_clip":0.08,"max_steps":50,"tol":0.03}
+{"action":"rotate_wrist","delta_yaw":1.5708,"gripper":1,"step_clip":0.08,"max_steps":50,"tol":0.03}
+{"action":"move_to","xyz":[-0.086,0.087,1.09],"gripper":1,"step_clip":0.004,"max_steps":100,"tol":0.01}
+{"action":"rotate_wrist","delta_yaw":-1.5708,"gripper":1,"step_clip":0.08,"max_steps":50,"tol":0.03}
+{"action":"move_to","xyz":[-0.149,0.152,1.09],"gripper":1,"step_clip":0.004,"max_steps":100,"tol":0.01}
+{"action":"move_to","xyz":[-0.14,0.211,1.09],"gripper":1,"step_clip":0.004,"max_steps":120,"tol":0.01}
+{"action":"move_to","xyz":[-0.137,0.223,1.09],"gripper":1,"step_clip":0.003,"max_steps":100,"tol":0.008}
+{"action":"move_to","xyz":[-0.137,0.215,1],"gripper":1,"step_clip":0.003,"max_steps":100,"tol":0.008}
+{"action":"move_to","xyz":[-0.137,0.215,0.98],"gripper":1,"step_clip":0.003,"max_steps":80,"tol":0.008}
+{"action":"release","max_steps":12}

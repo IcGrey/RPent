@@ -1,0 +1,47 @@
+{
+  "suite": "libero_spatial_swap",
+  "task_id": 6,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "task_language": "Pick the akita black bowl next to the cookies box and place it on the plate",
+  "libero_terminated": true,
+  "attempts": 49,
+  "localization": {
+    "method": "agentview_high semantic identity plus manual back_project; wrist image used only to confirm the same cookies-adjacent bowl at the source prepose and visible plate overlap at placement",
+    "target_bowl_samples_rc_xyz": [
+      {"pixel_rc": [765, 760], "world_xyz": [0.0732, 0.1809, 0.9004]},
+      {"pixel_rc": [735, 770], "world_xyz": [0.0517, 0.1906, 0.9087]}
+    ],
+    "cookies_sample_rc_xyz": {"pixel_rc": [646, 536], "world_xyz": [-0.0485, 0.0193, 0.9004]},
+    "duplicate_bowl_sample_rc_xyz": {"pixel_rc": [780, 318], "world_xyz": [0.121, -0.1315, 0.9429]},
+    "plate_samples_rc_xyz": [
+      {"pixel_rc": [480, 414], "world_xyz": [-0.2286, -0.0886, 0.9312]},
+      {"pixel_rc": [515, 394], "world_xyz": [-0.1852, -0.1038, 0.9258]},
+      {"region_rc": [[450, 540], [360, 465]], "median_xyz": [-0.2153, -0.0897, 0.9258]}
+    ]
+  },
+  "commands": [
+    {"step": 1, "action": "move_to", "xyz": [0.065, 0.185, 1.075], "gripper": -1, "step_clip": 0.01, "max_steps": 160, "tol": 0.012},
+    {"step": 2, "action": "pi0_pick", "prompt": "pick up the bowl next to the cookies box", "max_chunks": 8, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06, "result": "rim contact but insufficient lift; target remained upright"},
+    {"step": 3, "action": "move_to", "xyz": [0.052, 0.225, 1.08], "gripper": 1, "step_clip": 0.004, "max_steps": 160, "tol": 0.012, "result": "closed vertical lift did not free the bowl"},
+    {"step": 4, "action": "release", "max_steps": 20, "result": "opened and recovered without toppling"},
+    {"step": 5, "action": "move_to", "xyz": [0.148, -0.034, 1.06], "gripper": -1, "step_clip": 0.01, "max_steps": 180, "tol": 0.012},
+    {"step": 6, "action": "pi0_pick", "prompt": "pick up the akita black bowl", "max_chunks": 12, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06, "result": "secure target-bowl rim lift; peak_lift 0.0552, final opening 0.0050"},
+    {"step": 7, "action": "move_pose", "xyz": [-0.05, 0.03, 1.13], "target_pitch": 0.0, "target_yaw": 0.0, "gripper": 1, "step_clip": 0.008, "max_steps": 220, "tol": 0.012, "ori_tol": 0.06},
+    {"step": 8, "action": "move_pose", "xyz": [-0.18, -0.095, 1.015], "target_pitch": 0.0, "target_yaw": 0.0, "gripper": 1, "step_clip": 0.004, "max_steps": 280, "tol": 0.012, "ori_tol": 0.06},
+    {"step": 9, "action": "move_pose", "xyz": [-0.225, -0.13, 1.0], "target_pitch": 0.0, "target_yaw": 0.0, "gripper": 1, "step_clip": 0.0025, "max_steps": 220, "tol": 0.012, "ori_tol": 0.06},
+    {"step": 10, "action": "release", "max_steps": 80, "result": "nonterminal but bowl visibly on/near plate"},
+    {"step": 11, "action": "pi0_pick", "prompt": "pick up the bowl on the plate", "max_chunks": 6, "lift_thresh": 0.03, "gripper_closed_thresh": 0.06, "result": "short near-plate contact/regrasp nudged the bowl into the accepted plate region; terminated true"}
+  ],
+  "pick_result": {
+    "source_pi0_pick_step2": {"success": false, "peak_lift_m": 0.0252, "final_gripper_opening": 0.0016, "used_for_carry": false},
+    "source_pi0_pick_step6": {"success": true, "peak_lift_m": 0.0552, "final_gripper_opening": 0.0050, "used_for_carry": true},
+    "near_plate_pi0_pick_step11": {"success": true, "peak_lift_m": 0.0137, "final_gripper_opening": 0.0077, "terminated": true}
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.2381054199889936, -0.12100634023247009, 0.9768790391492317],
+    "robot0_gripper_qpos": [0.004202119317624359, -0.0034739461135384637]
+  },
+  "strategy_notes": "Identified the target bowl from agentview_high as the patterned bowl adjacent to the cookies box, not the duplicate left/front bowl, and localized the plate as the red-ring ceramic disc on the metal support via back_project. The first relation-prompt grasp made only a shallow rim catch and was released cleanly. The successful sequence moved to the historically reliable source prepose [0.148,-0.034,1.06], used pi0_pick 'pick up the akita black bowl' with max_chunks=12 to get a secure rim lift, carried high to [-0.05,0.03,1.13], descended closed over the visible plate/support to [-0.18,-0.095,1.015] and then [-0.225,-0.13,1.0], released, and finally used a short local pi0_pick prompt 'pick up the bowl on the plate' as a near-plate contact/regrasp that triggered termination."
+}

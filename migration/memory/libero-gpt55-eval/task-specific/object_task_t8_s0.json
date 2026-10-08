@@ -1,0 +1,45 @@
+{
+  "suite": "libero_object_task",
+  "task_id": 8,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "Pick the salad dressing and place it in the basket",
+  "libero_terminated": true,
+  "total_attempts": 1,
+  "memory_read": [
+    "logs/libero_pro_explore_60_fixed_20260902/memory/MEMORY.md",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/suite/suite_libero_object_task_t0.md",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/global/high-drop-over-cavity.md",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/global/basket-insertion-open-retreat.md",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/global/brand-label-over-segmentation.md",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "localization": {
+    "salad_dressing": {
+      "agentview_evidence": "dark green/white ranch dressing bottle at the front center, distinct from ketchup, BBQ sauce, orange juice, alphabet soup, and pudding",
+      "agentview_pixels_rc": [[735,541],[760,548],[700,520]],
+      "agentview_xyz_samples": [[0.1791,0.0223,0.0006],[0.2067,0.0271,0.0006],[0.1661,0.0062,0.0246]],
+      "wrist_refine": "accepted; close-over-target wrist view showed same bottle cap/body and samples stayed within about 3-5 cm of the agentview anchor",
+      "wrist_pixels_rc": [[760,511],[710,510],[665,510],[812,500]],
+      "wrist_xyz_samples": [[0.1486,0.0206,0.1450],[0.1586,0.0207,0.1461],[0.1661,0.0207,0.1404],[0.1390,0.0228,0.1465]],
+      "final_xy_used": [0.15,0.021]
+    },
+    "basket_cavity": {
+      "agentview_evidence": "white-lined woven basket on image right",
+      "agentview_region_rc": [[510,720],[720,920]],
+      "agentview_center_xyz": [0.0057,0.2529,0.0032],
+      "higher_rim_region_center_xyz": [0.0180,0.2655,0.0838],
+      "final_xy_used": [0.01,0.255]
+    }
+  },
+  "command_sequence": [
+    {"step": 1, "action": "move_to", "xyz": [0.18, 0.02, 0.18], "gripper": -1, "tol": 0.012, "step_clip": 0.012, "max_steps": 100, "result_final_eef_pos": [0.1464, 0.0201, 0.1791], "result_final_dist_m": 0.0336},
+    {"step": 2, "action": "pi0_pick", "prompt": "pick up the salad dressing", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06, "chunks_used": 18, "peak_lift_m": 0.2218, "final_gripper_opening": 0.0368, "terminated": true}
+  ],
+  "pick_result": {
+    "salad_dressing_pi0_pick_step2": "success true; gripper opening about 0.037 and images show the salad dressing upright in the basket after Pi0 continued into a trained placement trajectory"
+  },
+  "strategy_notes": "Localized the ranch salad dressing from agentview RGB, refined the same target with wrist back-projection after moving above it, and localized the white basket cavity from an agentview region. The successful trace was: move_to above the perceived salad dressing at [0.18, 0.02, 0.18] with open gripper; call pi0_pick with prompt 'pick up the salad dressing', max_chunks 20, lift_thresh 0.05, gripper_closed_thresh 0.06. Pi0 grasped the bottle and, within the same pick call, carried it to the basket; the benchmark reported terminated true at step 2. No scripted carry/release was issued in the successful trace."
+}

@@ -1,0 +1,11 @@
+{"action": "segment", "prompt": "the black bowl next to the plate", "camera": "agentview"}
+{"action": "segment", "prompt": "the white plate with red rings", "camera": "agentview"}
+{"action": "segment", "prompt": "the black bowl near the cookies box", "camera": "agentview"}
+{"action": "move_to", "xyz": [-0.0127, 0.3303, 1.08], "gripper": -1, "tol": 0.012, "step_clip": 0.02, "max_steps": 100}
+{"action": "segment", "prompt": "the black patterned bowl", "camera": "wrist"}
+{"action": "segment", "prompt": "the white plate with red rings", "camera": "wrist"}
+{"action": "pi0_pick", "prompt": "pick up the black bowl next to the plate", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_to", "xyz": [0.0681, 0.2537, 1.03], "gripper": 1, "tol": 0.012, "step_clip": 0.012, "max_steps": 120}
+{"action": "move_to", "xyz": [0.0681, 0.2537, 0.985], "gripper": 1, "tol": 0.012, "step_clip": 0.008, "max_steps": 100}
+{"action": "release", "max_steps": 30}

@@ -1,0 +1,106 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.169,
+          0.028,
+          0.22
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the dark green ranch dressing bottle in the front center",
+      "offset": [
+        0.0025,
+        -0.0006
+      ],
+      "anchor_distance": 0.0026
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the dark green salad dressing bottle",
+        "max_chunks": 20,
+        "lift_thresh": 0.08,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.163,
+          0.028,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the dark green ranch dressing bottle in the front center",
+      "offset": [
+        -0.0035,
+        -0.0006
+      ],
+      "anchor_distance": 0.0036
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.04,
+          0.285,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the woven basket on the right",
+      "offset": [
+        -0.0262,
+        0.0172
+      ],
+      "anchor_distance": 0.0313
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.026,
+          0.3,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.008,
+        "step_clip": 0.008,
+        "max_steps": 60
+      },
+      "anchor": "the woven basket on the right",
+      "offset": [
+        -0.0402,
+        0.0322
+      ],
+      "anchor_distance": 0.0515
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    }
+  ]
+}

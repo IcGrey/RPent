@@ -1,0 +1,119 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.132,
+          0.059,
+          0.16
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the blue and white cream cheese box",
+      "offset": [
+        0.0028,
+        0.0008
+      ],
+      "anchor_distance": 0.0029
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.007,
+          0.272,
+          0.22
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the woven basket",
+      "offset": [
+        0.0636,
+        -0.0027
+      ],
+      "anchor_distance": 0.0637
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.15,
+          0.059,
+          0.15
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the blue and white cream cheese box",
+      "offset": [
+        -0.0152,
+        0.0008
+      ],
+      "anchor_distance": 0.0152
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the cream cheese",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.171,
+          0.058,
+          0.22
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the blue and white cream cheese box",
+      "offset": [
+        -0.0362,
+        -0.0002
+      ],
+      "anchor_distance": 0.0362
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.002,
+          0.267,
+          0.22
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the inside of the woven basket",
+      "offset": [
+        0.0546,
+        -0.0077
+      ],
+      "anchor_distance": 0.0551
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 25
+      }
+    }
+  ]
+}

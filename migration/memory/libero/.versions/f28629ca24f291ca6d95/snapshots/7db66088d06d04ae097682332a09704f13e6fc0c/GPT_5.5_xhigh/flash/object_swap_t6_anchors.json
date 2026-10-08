@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the small red and yellow butter box",
+      "locator": "segment",
+      "median_xy": [
+        0.0611,
+        -0.0978
+      ]
+    },
+    {
+      "phrase": "the woven basket",
+      "locator": "segment",
+      "median_xy": [
+        0.0811,
+        0.2607
+      ]
+    }
+  ]
+}

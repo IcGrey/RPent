@@ -1,0 +1,14 @@
+{"action":"segment","prompt":"the basket","camera":"agentview"}
+{"action":"move_to","xyz":[-0.036,-0.172,0.6],"gripper":-1}
+{"action":"pi0_pick","prompt":"pick up the can","max_chunks":14,"lift_thresh":0.05}
+{"action":"set_gripper","gripper":1,"steps":5}
+{"action":"move_to","xyz":[0.02,0.23,0.72],"gripper":1}
+{"action":"move_to","xyz":[0.02,0.225,0.57],"gripper":1,"step_clip":0.02}
+{"action":"release"}
+{"action":"move_to","xyz":[0.02,0.227,0.74],"gripper":-1,"step_clip":0.02}
+{"action":"move_to","xyz":[0.06,0.024,0.6],"gripper":-1}
+{"action":"pi0_pick","prompt":"pick up the butter box","max_chunks":12,"lift_thresh":0.05}
+{"action":"set_gripper","gripper":1,"steps":8}
+{"action":"move_to","xyz":[0.027,0.038,0.72],"gripper":1}
+{"action":"move_to","xyz":[0.02,0.25,0.72],"gripper":1}
+{"action":"move_to","xyz":[0.02,0.245,0.56],"gripper":1,"step_clip":0.02}

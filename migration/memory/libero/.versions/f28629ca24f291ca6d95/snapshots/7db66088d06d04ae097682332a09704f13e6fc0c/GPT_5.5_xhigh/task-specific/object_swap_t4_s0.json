@@ -1,0 +1,85 @@
+{
+  "suite": "libero_object_swap",
+  "task_id": 4,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Pick the ketchup and place it in the basket",
+  "task_language": "Pick the ketchup and place it in the basket",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_read": {
+    "task_suite_draft": "not present",
+    "global_memory_index": "read_text_file denied access to resources/libero/memory/MEMORY.md in this runtime",
+    "guides": [
+      "robots/libero/guides/strict_hybrid_guide.md",
+      "robots/libero/guides/pro_hybrid_guide.md",
+      "robots/libero/guides/env_calibration.md"
+    ],
+    "seed0_reference": "resources/libero/results_object_pert/object_swap_t4_s0.json and recipe not present"
+  },
+  "localization": {
+    "frame": "object low-table frame; initial robot0_eef_pos z≈0.261",
+    "target_ketchup": {
+      "agentview_evidence": "red/orange tomato ketchup bottle with gray cap at front-center/right, distinct from darker BBQ sauce bottle and green salad dressing bottle",
+      "agentview_pixels_rc": [[650,548],[690,547],[615,548]],
+      "agentview_world_xyz_samples": [[0.1708,0.0268,0.077],[0.1705,0.0266,0.0382],[0.1685,0.0264,0.1075]],
+      "agentview_median_xy": [0.1705,0.0266],
+      "wrist_refine": {
+        "step": 1,
+        "pixels_rc": [[760,510],[710,515],[650,510]],
+        "world_xyz_samples": [[0.1674,0.0277,0.1464],[0.1687,0.0269,0.1151],[0.1713,0.0288,0.047]],
+        "accepted": true,
+        "reason": "wrist xy stayed within 1 cm of the agentview identity anchor"
+      },
+      "final_xyz_for_pick": [0.171,0.027,0.18]
+    },
+    "basket_cavity": {
+      "agentview_evidence": "woven basket with white cloth liner on image-right; open interior visible",
+      "agentview_region_rc": {"row_range":[520,650],"col_range":[745,895],"z_band":[-0.02,0.08]},
+      "region_center_xyz": [0.0664,0.2572,0.0385],
+      "median_xyz": [0.067,0.2554,0.0385],
+      "final_xyz_for_place": [0.066,0.256,0.18]
+    }
+  },
+  "strategy_notes": "Localized ketchup semantically in agentview_high as the red tomato ketchup bottle, confirmed by wrist geometry above the same candidate, and localized the basket as the woven open container with a region back_project over the cloth-lined cavity. Successful commands: move_to above ketchup at [0.171,0.027,0.18] open; pi0_pick with prompt 'pick up the ketchup' and max_chunks 20, which returned success false but visibly grasped the bottle with gripper opening about 0.034; move_to basket interior [0.066,0.256,0.18] holding gripper +1, which stalled high at z≈0.244 but placed the bottle inside the cavity; release max_steps 30 opened the gripper but did not immediately terminate; open-gripper straight retreat toward [0.073,0.254,0.31] let the bottle settle and fired terminated true.",
+  "pick_result": {
+    "ketchup_pi0_pick_step2": {
+      "name": "pick",
+      "instruction": "pick up the ketchup",
+      "success": false,
+      "chunks_used": 20,
+      "max_chunks": 20,
+      "peak_lift_m": 0.2339027002453804,
+      "min_gripper_opening": 0.03400116413831711,
+      "final_gripper_opening": 0.03439068794250488,
+      "terminated": false,
+      "truncated": false,
+      "diagnostics": {
+        "start_eef_z": 0.1789,
+        "peak_eef_z": 0.3477,
+        "min_eef_z": 0.1138,
+        "post_min_peak_z": 0.3477,
+        "descent_m": 0.0651,
+        "post_min_ascent_m": 0.2339,
+        "descent_done": false,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    }
+  },
+  "command_sequence": [
+    {"step":1,"action":"move_to","xyz":[0.171,0.027,0.18],"gripper":-1,"max_steps":100,"step_clip":0.02,"tol":0.01},
+    {"step":2,"action":"pi0_pick","prompt":"pick up the ketchup","max_chunks":20,"lift_thresh":0.05,"gripper_closed_thresh":0.06},
+    {"step":3,"action":"move_to","xyz":[0.066,0.256,0.18],"gripper":1,"max_steps":80,"step_clip":0.012,"tol":0.012},
+    {"step":4,"action":"release","max_steps":30},
+    {"step":5,"action":"move_to","xyz":[0.073,0.254,0.31],"gripper":-1,"max_steps":80,"step_clip":0.012,"tol":0.012}
+  ],
+  "final_state": {
+    "robot0_eef_pos": [0.0723942386193088,0.2538766433406247,0.2773434269426382],
+    "robot0_eef_quat": [0.9951412320257098,-0.06535451021387179,0.07230519750964774,0.01395258865396706],
+    "robot0_gripper_qpos": [0.039594326135212986,-0.039639340235183],
+    "object_names": ["alphabet_soup_1","basket_1","bbq_sauce_1","cream_cheese_1","ketchup_1","milk_1","salad_dressing_1"]
+  }
+}

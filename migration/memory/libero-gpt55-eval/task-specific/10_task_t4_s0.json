@@ -1,0 +1,31 @@
+{
+  "suite": "libero_10_task",
+  "task_id": 4,
+  "seed": 0,
+  "regime": "strict_perception",
+  "libero_terminated": true,
+  "attempts": 69,
+  "final_state": {
+    "step": 225,
+    "eef": [
+      -0.0441,
+      0.3118,
+      0.565
+    ],
+    "libero_terminated": true
+  },
+  "strategy_notes": "Localized the bicolor yellow-white mug, porcelain white mug, and both ceramic plate centers from agentview plus wrist back-projection. Winning recipe order: (1) pre-position at the yellow handle, pi0 grasp handle loop (step 2), firm and lift; (2) rotate +90deg to redirect the held offset, carry via move_pose to the viewer-left/world -y plate, descend supported, release (step 9); (3) retreat and unwind; (4) pre-position at porcelain, pi0 grasp handle (step 13), firm/lift; (5) rotate +90deg to redirect the -y hang, carry via move_pose to viewer-right/world +y plate, descend supported, release (step 20), which terminated after 3 release steps.",
+  "pick_result": {
+    "yellow_pi0_pick_step2": {
+      "peak_lift_m": 0.0887,
+      "final_gripper_opening_m": 0.0114,
+      "perception": "handle-loop grasp, airborne"
+    },
+    "porcelain_pi0_pick_step13": {
+      "success": true,
+      "peak_lift_m": 0.06,
+      "final_gripper_opening_m": 0.032,
+      "perception": "wide exterior/handle-root grasp, airborne"
+    }
+  }
+}

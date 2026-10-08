@@ -1,0 +1,14 @@
+{"action":"move_to","xyz":[-0.11,0.14,1.12],"gripper":-1,"step_clip":0.025}
+{"action":"move_to","xyz":[-0.046,0.186,1.08],"gripper":-1,"step_clip":0.025}
+{"action":"rotate_wrist","target_yaw":1.57,"gripper":-1}
+{"action":"move_to","xyz":[-0.046,0.2,1.05],"gripper":-1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.046,0.2,1],"gripper":-1,"step_clip":0.015}
+{"action":"set_gripper","gripper":1,"steps":12}
+{"action":"move_to","xyz":[-0.048,0.201,1.07],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.048,0.201,1.14],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.06,0.02,1.14],"gripper":1,"step_clip":0.022}
+{"action":"move_to","xyz":[-0.065,-0.19,1.14],"gripper":1,"step_clip":0.022}
+{"action":"move_to","xyz":[-0.064,-0.277,1.14],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.064,-0.266,1.05],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.064,-0.265,1.035],"gripper":1,"step_clip":0.015}
+{"action":"release","max_steps":20}

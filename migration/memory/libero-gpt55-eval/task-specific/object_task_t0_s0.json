@@ -1,0 +1,46 @@
+{
+  "suite": "libero_object_task",
+  "task_id": 0,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "object/task variant",
+  "perturbed_task_language": "Pick the cream cheese and place it in the basket",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 2,
+  "memory_files_read": [
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "memory_read_notes": "Task-specific suite memory did not exist yet. Published resources/libero/memory/MEMORY.md was blocked by runtime memory guard. Seed-0 object reference directory was absent in this checkout.",
+  "localization": {
+    "task_language": "Pick the cream cheese and place it in the basket",
+    "target": {
+      "agentview_evidence": "small blue/white Cream Cheese box; butter decoy is red/yellow to its right",
+      "agentview_pixels_rc": [[505,570],[515,585],[525,560]],
+      "agentview_xyz_samples": [[-0.1295,0.0565,0.0188],[-0.1146,0.0704,0.0167],[-0.1143,0.0466,0.0054]],
+      "final_xyz_used": [-0.115,0.057,0.17],
+      "wrist_refine": "accepted visually after move_to: wrist_high showed the blue/white cream-cheese box centered between the fingers and the red/yellow butter box to the right"
+    },
+    "destination": {
+      "agentview_evidence": "woven basket with white fabric liner on robot-left / image-right",
+      "basket_strategy": "Do not use rim-biased median as release target. Carry over visible liner and release high enough to drop into the cavity; winning eef release pose was around x=-0.03, y=0.272, z=0.200."
+    }
+  },
+  "strategy_notes": "Successful attempt 2: after reset, moved open gripper over the perception-identified cream-cheese box at [-0.115, 0.057, 0.17], verified target in wrist view, ran pi0_pick with prompt 'pick up the cream cheese' max_chunks=20 lift_thresh=0.05 gripper_closed_thresh=0.06. The pick succeeded in 8 chunks with peak_lift_m 0.0936 and final gripper opening 0.0425; wrist/agentview showed the blue cream-cheese box held. Firmed with set_gripper +1 for 8 steps. Carried closed to [-0.04, 0.265, 0.2], then nudged deeper to [-0.03, 0.285, 0.2] at step_clip 0.008 while holding. Final EEF was [-0.0306, 0.2719, 0.1997]. Released with max_steps=40; the box fell inside the basket and libero_terminated became true at step 22. The key difference from failed attempt 1 was releasing from a higher, deeper over-cavity pose rather than descending into the front rim at z~0.15.",
+  "pick_result": {
+    "cream_cheese_pi0_pick_step18": {
+      "success": true,
+      "chunks_used": 8,
+      "peak_lift_m": 0.09361603297293186,
+      "final_gripper_opening": 0.042541056871414185
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.02916122345545026, 0.27486736018370916, 0.20105891675379134],
+    "robot0_eef_quat": [0.9997961545203602, 0.010514607556842637, 0.005973556732971267, -0.016168149374061854],
+    "robot0_gripper_qpos": [0.037269772610412824, -0.037206991228322044],
+    "object_names": ["alphabet_soup_1", "basket_1", "butter_1", "cream_cheese_1", "milk_1", "salad_dressing_1", "tomato_sauce_1"]
+  }
+}

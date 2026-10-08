@@ -1,0 +1,63 @@
+{
+  "suite": "libero_spatial_swap",
+  "task_id": 2,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Pick the akita black bowl from table center and place it on the plate",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 2,
+  "memory_files_read": [
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "memory_read_errors": [
+    "resources/libero/memory/MEMORY.md denied by runtime",
+    "suite_spatial_swap_t2_s0_draft.md not present",
+    "seed-0 reference spatial_swap_t2_s0.json not present",
+    "seed-0 reference recipe_spatial_swap_t2_s0.jsonl not present"
+  ],
+  "localization": {
+    "target_center_bowl": {
+      "agentview_evidence": "The task names the bowl from table center. In agentview_high the correct patterned bowl is between the burner/cabinet region and the red-ringed plate; the matching patterned bowl on the right is a distractor.",
+      "rejected_segment_prompts": [
+        "text prompt 'the patterned black bowl at the table center' selected the right distractor bowl",
+        "text prompt 'the patterned black bowl in the center of the table' selected the stove burner"
+      ],
+      "accepted_method": "agentview point-prompt segment at pixel [588,526] on the visible center bowl, confirmed by overlay",
+      "world_xyz_surface": [-0.0957, -0.0034, 0.9297]
+    },
+    "plate": {
+      "agentview_evidence": "White ceramic disc with red rings below the target bowl; stove burner was rejected as a gray ringed look-alike surface.",
+      "accepted_method": "agentview text segment 'the white plate with red rings' and point prompt [759,548] agreed",
+      "world_xyz_surface": [0.0638, 0.0267, 0.9097]
+    }
+  },
+  "successful_commands": [
+    {"action": "segment", "step": 1, "camera": "agentview", "point": [588,526], "result_world_xyz": [-0.0957, -0.0034, 0.9297]},
+    {"action": "move_to", "step": 2, "xyz": [-0.0957, -0.0034, 1.08], "gripper": -1, "tol": 0.012, "step_clip": 0.02, "max_steps": 100},
+    {"action": "pi0_pick", "step": 3, "prompt": "pick up the black patterned bowl at the table center", "max_chunks": 12, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06},
+    {"action": "set_gripper", "step": 4, "gripper": 1, "steps": 8},
+    {"action": "move_to", "step": 5, "xyz": [0.0638, 0.0717, 1.02], "gripper": 1, "tol": 0.012, "step_clip": 0.018, "max_steps": 120},
+    {"action": "move_to", "step": 6, "xyz": [0.0638, 0.0717, 0.96], "gripper": 1, "tol": 0.012, "step_clip": 0.012, "max_steps": 100},
+    {"action": "release", "step": 7, "max_steps": 30}
+  ],
+  "pick_result": {
+    "center_bowl_pi0_pick_step3": {
+      "success": true,
+      "chunks_used": 7,
+      "peak_lift_m": 0.053512513637542725,
+      "final_gripper_opening": 0.004450258798897266,
+      "visual_confirmation": "agentview and wrist showed the center patterned bowl lifted and held at the rim"
+    }
+  },
+  "strategy_notes": "Localized the table-center bowl by RGB/relation in agentview_high, rejecting text segment masks that selected the right distractor bowl and the stove burner; accepted a point-prompt mask at [588,526] with world xyz [-0.0957,-0.0034,0.9297]. Localized the red-ringed white plate with text/point segmentation at [759,548], world xyz [0.0638,0.0267,0.9097]. Moved open gripper to [-0.0957,-0.0034,1.08], used grasp-only pi0_pick prompt 'pick up the black patterned bowl at the table center' for 12 chunks, confirmed lift visually, locked gripper for 8 steps, carried closed to [0.0638,0.0717,1.02] using the bowl +y offset, descended to [0.0638,0.0717,0.96], then released for termination.",
+  "final_state": {
+    "robot0_eef_pos": [0.06418690111672708, 0.07179803440923482, 0.9689951270432993],
+    "robot0_eef_quat": [0.9988609363951241, 0.019288771677212824, -0.005447754363153857, 0.04330236718053515],
+    "robot0_gripper_qpos": [0.006572727676719711, -0.006785277081239698],
+    "object_names": ["akita_black_bowl_1", "akita_black_bowl_2", "cookies_1", "glazed_rim_porcelain_ramekin_1", "plate_1"]
+  }
+}

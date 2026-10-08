@@ -1,0 +1,10 @@
+{"action": "segment", "prompt": "the patterned bowl", "camera": "agentview"}
+{"action": "segment", "prompt": "the black top of the drawer cabinet", "camera": "agentview"}
+{"action": "move_to", "xyz": [-0.085, 0.1331, 1.08], "gripper": -1, "max_steps": 100, "step_clip": 0.02, "tol": 0.012}
+{"action": "segment", "prompt": "the patterned bowl", "camera": "wrist"}
+{"action": "pi0_pick", "prompt": "pick up the patterned bowl", "max_chunks": 12, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_to", "xyz": [-0.08, 0.16, 1.18], "gripper": 1, "max_steps": 100, "step_clip": 0.018, "tol": 0.012}
+{"action": "move_to", "xyz": [-0.18, -0.05, 1.18], "gripper": 1, "max_steps": 120, "step_clip": 0.015, "tol": 0.012}
+{"action": "move_to", "xyz": [-0.2793, -0.212, 1.18], "gripper": 1, "max_steps": 140, "step_clip": 0.012, "tol": 0.014}
+{"action": "move_to", "xyz": [-0.2793, -0.198, 1.135], "gripper": 1, "max_steps": 100, "step_clip": 0.008, "tol": 0.01}

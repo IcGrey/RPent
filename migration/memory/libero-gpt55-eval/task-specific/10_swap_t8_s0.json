@@ -1,0 +1,37 @@
+{
+  "suite": "libero_10_swap",
+  "task_id": 8,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "put both moka pots on the stove",
+  "attempts": 2,
+  "memory_files_read": [
+    "resources/libero/memory/MEMORY.md",
+    "resources/libero/memory/suite/suite_libero10_task_t8.md",
+    "resources/libero/memory/global/moka-pot-grasp-the-handle-not-the-body.md",
+    "resources/libero/memory/global/rotate-wrist-90deg-drifts-eef-recenter-after.md",
+    "resources/libero/memory/global/libero-in-predicate-fires-while-grasped.md"
+  ],
+  "strategy_notes": "Agentview hi-res semantically identified both silver moka pots and the red-coil stove; multi-pixel agentview back-projection gave body/stove anchors, then wrist back-projection refined each black handle tube. Recipe steps 1-5 performed this geometry pass; steps 2-4 used pitched move_pose after plain move_to stalled at y=0.120. Steps 6-9 probed yawed reach: +1.57/pitch0 stalled 5.05cm short, -1.57 drove y=-0.404, then step9 recovered centrally. Steps 10-14 approached the right handle, recentered, descended to z=1.00, closed 12 steps to ~0.021m gap, and lifted with gripper +1. Steps 15-18 carried it toward the stove; yaw-held move_to stalled, so pitch=0.15 move_pose crossed the wall, descended to support, and released the first pot. Steps 19-25 retreated and approached the left handle with pitch=0.15/yaw=+1.57, which reached the formerly blocked pose; it recentered, descended, closed 12 steps to ~0.021m gap, and lifted. Steps 26-28 carried in two low hops to the open -y stove half and descended with step_clip=0.003; libero_terminated became true at step28 while the second pot remained grasped but supported on the stove.",
+  "pick_result": {
+    "right_handle_set_gripper_step13": {
+      "method": "manual handle grasp",
+      "gripper_gap_after_close_m": 0.0211,
+      "verified": "agentview showed right pot lifted and original spot cleared"
+    },
+    "left_handle_set_gripper_step24": {
+      "method": "manual handle grasp",
+      "gripper_gap_after_close_m": 0.0211,
+      "verified": "agentview and wrist showed left pot lifted"
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [0.13009001079121724, -0.04016532741352135, 1.0423367038732736],
+    "robot0_eef_quat": [0.7032546701359014, 0.7061669350335334, 0.028855237659355375, -0.07699677952362992],
+    "robot0_gripper_qpos": [0.007370454957293129, -0.007816282409907463],
+    "obj_of_interest": null,
+    "object_names": ["moka_pot_1", "moka_pot_2"]
+  },
+  "libero_terminated": true
+}

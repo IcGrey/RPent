@@ -1,0 +1,111 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the cookies box",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the black patterned bowl on top of the cabinet",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the black patterned bowl on the stove",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white ceramic plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.288,
+          -0.144,
+          1.15
+        ],
+        "gripper": -1,
+        "max_steps": 60,
+        "step_clip": 0.015,
+        "tol": 0.01
+      },
+      "anchor": "the akita black bowl on the stove",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the bowl",
+        "max_chunks": 15,
+        "lift_thresh": 0.04,
+        "gripper_closed_thresh": 0.05
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.257,
+          -0.127,
+          1.15
+        ],
+        "gripper": 1,
+        "max_steps": 60,
+        "step_clip": 0.012,
+        "tol": 0.01
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "Pick the akita black bowl on the stove and place it on the plate",
+        "max_chunks": 15,
+        "lift_thresh": 0.04,
+        "gripper_closed_thresh": 0.05
+      }
+    },
+    {
+      "action": "pi0_doubled",
+      "arguments": {
+        "prompt": "place the bowl on the plate",
+        "max_chunks": 25
+      }
+    }
+  ]
+}

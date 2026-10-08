@@ -1,0 +1,56 @@
+{
+  "suite": "libero_goal_task",
+  "task_id": 2,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "task (P1 Task perturbation)",
+  "task_language": "put the wine bottle in the bowl",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 2,
+  "strategy_notes": "Localized the dark green wine bottle and patterned black bowl from agentview_high, using back-projected bottle samples near the visible body/neck and a bowl interior region window to anchor the cavity; the absolutes were used only for this scene. Successful post-reset sequence: move_to above the bottle at [-0.17,-0.052,0.985] with gripper open, which stalled high but put the wrist directly over the upright bottle; set_gripper +1 for 12 steps, which fully closed and did not itself secure the bottle; then pi0_pick with the full task-language prompt 'put the wine bottle in the bowl' from that close aligned pose. Pi0 moved the gripper and bottle into the bowl and the benchmark terminated during the pick/contact skill before any scripted release was needed.",
+  "pick_result": {
+    "wine_bottle_task_language_pi0_pick_step19": {
+      "name": "pick",
+      "instruction": "put the wine bottle in the bowl",
+      "success": true,
+      "chunks_used": 15,
+      "max_chunks": 24,
+      "peak_lift_m": 0.09184098243713379,
+      "min_gripper_opening": 0.0017694756388664246,
+      "final_gripper_opening": 0.015165964141488075,
+      "terminated": true,
+      "truncated": false
+    }
+  },
+  "localization": {
+    "wine_bottle": {
+      "agentview_evidence": "upright dark green bottle with cork immediately beside the patterned bowl; no other bottle-like distractor",
+      "agentview_pixels_rc": [[560,472],[515,455],[482,450]],
+      "agentview_xyz_range": "x -0.1715 to -0.1320, y -0.0525 to -0.0339, z 0.9194 to 0.9727",
+      "wrist_refine": "accepted visually from the close pre-position; wrist showed the same upright bottle directly under the gripper"
+    },
+    "bowl_cavity": {
+      "agentview_evidence": "black-and-white patterned open bowl with yellow rim; the named destination",
+      "agentview_pixels_rc": [[520,470],[640,610]],
+      "agentview_xyz_range": "region center around x -0.129, y 0.026, z 0.907; median x -0.117, y 0.023, z 0.907",
+      "wrist_refine": "confirmed visually as the open cavity adjacent to the bottle during close approach"
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.09550784552623312, -0.011856698245092017, 1.0275345793876147],
+    "robot0_eef_quat": [0.9872611092482504, 0.0761202759122801, -0.13442032251728095, 0.03811013848441418],
+    "robot0_gripper_qpos": [0.007713186984840971, -0.007452776955393642],
+    "object_names": ["akita_black_bowl_1", "cream_cheese_1", "plate_1", "wine_bottle_1"]
+  },
+  "memory_files_read": [
+    "logs/libero_pro_explore_60_fixed_20260902/memory/MEMORY.md",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/suite/suite_libero_goal_task_t1.md",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/task/goal_task_t1_s0.json",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/global/near-target-repick.md",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/global/visual-over-pick-heuristic.md"
+  ]
+}

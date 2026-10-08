@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the dark wine bottle",
+      "locator": "segment",
+      "median_xy": [
+        -0.0903,
+        0.0115
+      ]
+    },
+    {
+      "phrase": "the black top surface of the wooden drawer",
+      "locator": "segment",
+      "median_xy": [
+        -0.281,
+        -0.2498
+      ]
+    }
+  ]
+}

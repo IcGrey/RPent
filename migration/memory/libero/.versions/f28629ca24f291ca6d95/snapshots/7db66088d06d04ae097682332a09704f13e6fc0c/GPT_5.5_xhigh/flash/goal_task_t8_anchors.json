@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the wine bottle",
+      "locator": "molmo",
+      "median_xy": [
+        -0.182,
+        -0.043
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        0.048,
+        -0.018
+      ]
+    }
+  ]
+}

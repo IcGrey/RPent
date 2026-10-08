@@ -1,0 +1,12 @@
+{
+  "anchors": [
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        -0.215,
+        -0.055
+      ]
+    }
+  ]
+}

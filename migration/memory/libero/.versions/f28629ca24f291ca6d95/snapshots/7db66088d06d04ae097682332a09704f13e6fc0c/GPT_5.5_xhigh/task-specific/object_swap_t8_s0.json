@@ -1,0 +1,71 @@
+{
+  "suite": "libero_object_swap",
+  "task_id": 8,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Pick the chocolate pudding and place it in the basket",
+  "perturbation_semantics": "Loose object and basket positions were treated as unknown and localized visually from agentview_high plus depth; no BDDL or object coordinates were read.",
+  "expected_baseline_behavior": "Pi0 may follow memorized object/basket positions under swap; the hybrid localized the visible chocolate pudding and basket in the current scene before acting.",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 2,
+  "memory_consulted": {
+    "suite_task_writeup": "not present before run",
+    "global_memory_index": "read attempt denied by runtime memory access guard",
+    "guides": ["robots/libero/guides/strict_hybrid_guide.md", "robots/libero/guides/pro_hybrid_guide.md", "robots/libero/guides/env_calibration.md"],
+    "seed0_reference": "not found at resources/libero/results_object_pert/object_swap_t8_s0.json or matching recipe"
+  },
+  "localization_table": [
+    {
+      "name_or_role": "target_chocolate_pudding",
+      "agentview_evidence": "flat brown rectangular box at image front-left with visible CHOCOLATE PUDDING label; distinct from orange juice carton and bottles",
+      "agentview_pixels_rc": [[684,231],[667,253],[700,268]],
+      "agentview_xyz_samples": [[0.1412,-0.2216,0.0197],[0.1307,-0.2051,0.0283],[0.1412,-0.1941,0.0032]],
+      "agentview_xyz_median": [0.1412,-0.2051,0.0197],
+      "wrist_refine": "accepted visually after move_to over anchor; wrist showed the same chocolate pudding label centered under gripper",
+      "final_xyz": [0.1377,-0.207,0.18],
+      "uncertainty": "box surface z varied by pixel because of edge/top face, but semantic identity was clear from label"
+    },
+    {
+      "name_or_role": "basket_cavity",
+      "agentview_evidence": "woven rectangular basket on image right with white liner and open cavity",
+      "agentview_pixels_rc": [[612,783],[568,841],[514,783]],
+      "agentview_xyz_samples": [[0.0649,0.2262,0.0336],[0.0664,0.2678,0.0791],[0.0743,0.2126,0.1359]],
+      "agentview_region_center_xyz": [0.0041,0.2471,0.0863],
+      "wrist_refine": "basket_confirmed visually during carry; attempt 2 used an interior/back shifted drop point",
+      "final_xyz": [0.035,0.225,0.105],
+      "uncertainty": "basket rim and liner produce biased z; success required visually interior placement rather than rim centroid"
+    }
+  ],
+  "strategy_notes": "Successful trajectory after reset: move_to over the perceived chocolate pudding at [0.1377,-0.207,0.18] with gripper open; pi0_pick with prompt 'pick up the chocolate pudding' and max_chunks=20 grasped it in 8 chunks; set_gripper +1 for 8 steps to firm the grip; move_to carry waypoint [0.11,0.02,0.2] with gripper +1; move_to basket-interior/back target [0.035,0.225,0.2] with gripper +1; descend with gripper +1 toward [0.035,0.225,0.105] using step_clip 0.006 and max_steps 180, which stalled at eef z about 0.141 but left the box inside the liner; release max_steps=40 triggered libero_terminated true after 25 steps. Localization used agentview_high pixel back-projection for both the pudding and basket, plus wrist visual confirmation of the same target and basket opening.",
+  "pick_result": {
+    "pudding_pi0_pick_step13": {
+      "name": "pick",
+      "instruction": "pick up the chocolate pudding",
+      "success": true,
+      "chunks_used": 8,
+      "max_chunks": 20,
+      "peak_lift_m": 0.08314972277730703,
+      "min_gripper_opening": 0.046568579971790314,
+      "final_gripper_opening": 0.046568579971790314,
+      "terminated": false,
+      "truncated": false
+    }
+  },
+  "successful_command_sequence": [
+    {"step": 12, "action": "move_to", "xyz": [0.1377, -0.207, 0.18], "gripper": -1, "tol": 0.012, "step_clip": 0.02, "max_steps": 100},
+    {"step": 13, "action": "pi0_pick", "prompt": "pick up the chocolate pudding", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06},
+    {"step": 14, "action": "set_gripper", "gripper": 1, "steps": 8},
+    {"step": 15, "action": "move_to", "xyz": [0.11, 0.02, 0.2], "gripper": 1, "tol": 0.012, "step_clip": 0.015, "max_steps": 120},
+    {"step": 16, "action": "move_to", "xyz": [0.035, 0.225, 0.2], "gripper": 1, "tol": 0.012, "step_clip": 0.012, "max_steps": 160},
+    {"step": 17, "action": "move_to", "xyz": [0.035, 0.225, 0.105], "gripper": 1, "tol": 0.012, "step_clip": 0.006, "max_steps": 180},
+    {"step": 18, "action": "release", "max_steps": 40}
+  ],
+  "final_state": {
+    "robot0_eef_pos": [0.03706280683408859, 0.23092780983311856, 0.1433590685488231],
+    "robot0_eef_quat": [0.9996565926686521, 0.01932401160456937, -0.012834948505068762, 0.012187838466187107],
+    "robot0_gripper_qpos": [0.03800063477526336, -0.0392578833820264],
+    "object_names": ["alphabet_soup_1", "basket_1", "bbq_sauce_1", "chocolate_pudding_1", "ketchup_1", "orange_juice_1", "salad_dressing_1"]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "suite": "libero_10_swap",
+  "task_id": 0,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "put both the alphabet soup and the tomato sauce in the basket",
+  "libero_terminated": true,
+  "attempts_total": 4,
+  "solved_on_attempt": 4,
+  "final_state": {
+    "eef_pos": [-0.0063, 0.3193, 0.6838],
+    "note": "predicate fired at step 73 while retreating straight up after releasing can #2 wedged between can #1 and the basket's far (+y) wall."
+  },
+  "localization_summary": "Two target CANS both go into one basket. tomato_sauce = left red/green-label can, agentview (0.006,-0.222) top z0.497 (SAM3 'tomato sauce can'/'soup can' both score ~0.85 on it). alphabet_soup = BLUE-label can with a silver 'Melissa & Doug' lid, PARTIALLY OCCLUDED behind the ketchup 'Fancy' bottle; found by cropping the hi-res agentview and back-projecting its lid pixels -> (-0.26,-0.16) top z0.51. Basket cavity floor is a SMALL single-can pocket; back_project probing established floor seat only at ~(-0.01,0.267) (OSC stall eef z~0.542); every other descend stalled high on a wall or on can #1.",
+  "winning_sequence": [
+    "move_to (0.006,-0.222,0.60) gripper -1  # pre-position over tomato can",
+    "pi0_pick 'pick up the tomato sauce can' max_chunks14 gripper_closed_thresh0.04  # lift 0.21m, opening 0.063 = holding",
+    "set_gripper +1 steps5  # firm grip",
+    "move_to (-0.035,0.245,0.63) gripper +1  # carry to basket over interior",
+    "move_to (-0.02,0.225,0.515) gripper +1 step_clip0.02  # PROBE descend -> stalled high z0.618 (over near -y wall), NOT floor",
+    "move_to (-0.025,0.275,0.62) gripper +1 step_clip0.02  # reposition to true interior (+y is partly off-frame)",
+    "move_to (-0.025,0.27,0.51) gripper +1 step_clip0.02  # descend -> OSC stall z0.542 = can seated on FLOOR",
+    "release max_steps15  # can #1 (tomato) seated inside",
+    "move_to (-0.009,0.268,0.64) gripper -1 step_clip0.02  # retreat straight up",
+    "move_to (-0.13,0.05,0.63) gripper -1  # traverse midpoint (split long xy)",
+    "move_to (-0.26,-0.16,0.60) gripper -1  # pre-position over blue alphabet-soup can",
+    "pi0_pick 'pick up the alphabet soup can' max_chunks14 gripper_closed_thresh0.04  # lift 0.21m, opening 0.055 = holding; ketchup untouched",
+    "set_gripper +1 steps5  # firm grip",
+    "move_to (0.045,0.30,0.66) gripper +1 step_clip0.02  # carry HIGH (z0.66) to clear seated can #1",
+    "move_to (0.04,0.30,0.51) gripper +1 step_clip0.02  # PROBE descend -> stalled z0.622 (over +x front wall)",
+    "move_to (0.02,0.29,0.66) gripper +1 step_clip0.02  # lift to re-target",
+    "move_to (-0.005,0.293,0.61) gripper +1 step_clip0.02  # reposition",
+    "move_to (-0.008,0.29,0.51) gripper +1 step_clip0.02  # PROBE descend -> stalled z0.616 (on top of can #1)",
+    "move_to (-0.012,0.315,0.63) gripper +1 step_clip0.02  # lift, shift to far +y edge",
+    "move_to (-0.01,0.31,0.51) gripper +1 step_clip0.02  # descend -> stall z0.616: pinched between can #1 (-y) and far +y wall",
+    "release max_steps20  # can #2 (alphabet) wedged in the V between can #1 and far wall, CONTAINED",
+    "move_to (-0.005,0.32,0.70) gripper -1 step_clip0.025  # retreat straight up -> libero_terminated TRUE"
+  ],
+  "pick_result": {
+    "tomato_pi0_pick_step2": "success (perception-judged): peak_lift 0.211m, min_gripper_opening 0.063 (can diameter, holding). eef drifted +y to 0.042 (Pi0 trained place drift).",
+    "alphabet_pi0_pick_step12": "success (perception-judged): peak_lift 0.211m, min_gripper_opening 0.055 (holding). ketchup 'Fancy' bottle left standing; wrist confirmed the silver 'Melissa & Doug' can lid centered under gripper before the pick."
+  },
+  "memory_consulted": [
+    "wip/notes.md (attempts 1-3 plan) — read",
+    "attempts/attempt_1_failed.json, attempt_2_failed.json — read",
+    "resources/libero/memory suite/ and global/ — EMPTY (created here)",
+    "no seed-0 results_*_pert reference directory exists for this cell"
+  ],
+  "key_lesson": "The basket interior floor is a single-can pocket walled on all four sides (near y0.234, far y~0.31, front x0.05, back x-0.04). Two upright cans cannot both sit flat. The 'In basket' predicate only needs each can's CENTER inside the rim bounding box, so can #2 must be WEDGED against a wall next to can #1 (contained), not placed on can #1's shoulder toward the OPEN front rim (attempt 2 rolled out to x0.100). Winning wedge = far +y wall corner, biased away from the +x front rim."
+}

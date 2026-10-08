@@ -1,0 +1,71 @@
+{
+  "suite": "libero_object_task",
+  "task_id": 1,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "object task cell",
+  "perturbed_task_language": "Pick the alphabet soup and place it in the basket",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_read": {
+    "suite_writeup": "none found; inbox directory absent before run",
+    "global_index": "read denied by runtime for resources/libero/memory/MEMORY.md",
+    "guides": [
+      "robots/libero/guides/strict_hybrid_guide.md",
+      "robots/libero/guides/pro_hybrid_guide.md",
+      "robots/libero/guides/env_calibration.md"
+    ],
+    "seed0_reference": "resources/libero/results_object_pert not present under runtime path"
+  },
+  "strategy_notes": "From agentview_high.png, semantically identified the blue/yellow alphabet soup can at image-left/front and rejected the red/green tomato sauce can that SAM3 incorrectly segmented for the phrase 'the alphabet soup can'. Back-projected target pixels (468,258), (500,259), (455,235), (445,268) at step 0, giving surface points around x=-0.09..-0.15, y=-0.26..-0.23, z=0.05..0.08; used final coarse pick anchor about [-0.12,-0.24]. Localized the basket visually as the right-side white-lined basket; a region back_project over the visible opening/rim gave usable interior near [-0.055,0.276]. Sequence: move_to above the can at [-0.12,-0.24,0.18] with open gripper; pi0_pick with prompt 'pick up the alphabet soup can' for grasp only; verify the blue alphabet soup can held by gripper gap and wrist/agentview images; set_gripper +1 for 8 steps; carry through [-0.11,0.02,0.20] then to basket opening [-0.055,0.276,0.20] while holding +1; descend inside toward [-0.055,0.276,0.13], which stalled acceptably at z=0.149 with the can visibly inside the cavity; release for 30 steps, predicate fired true after 7 steps.",
+  "localization_table": [
+    {
+      "name_or_role": "target_alphabet_soup_can",
+      "agentview_evidence": "Blue/yellow can labeled alphabet soup at image-left/front; distinct from red/green tomato sauce can lower-left.",
+      "agentview_pixels_rc": [[468,258],[500,259],[455,235],[445,268]],
+      "agentview_xyz_samples": [[-0.1086,-0.238,0.0724],[-0.0878,-0.236,0.0499],[-0.1326,-0.2642,0.0729],[-0.1471,-0.2349,0.0757]],
+      "wrist_refine": "accepted qualitatively from pre-position: same can top centered in wrist and within agentview anchor; no free semantic re-identification",
+      "final_xyz": [-0.12,-0.24,0.07],
+      "uncertainty": "SAM3 text prompt for alphabet soup selected tomato sauce, so manual RGB/label identity was used."
+    },
+    {
+      "name_or_role": "basket_cavity",
+      "agentview_evidence": "Right-side woven basket with white liner and open cavity.",
+      "agentview_pixels_rc": "region row 420-500 col 760-890 z 0.04-0.14",
+      "agentview_xyz": [-0.0528,0.2761,0.1106],
+      "wrist_refine": "basket confirmed from wrist at placement; visible liner and cavity directly around held can",
+      "final_xyz": [-0.055,0.276,0.13],
+      "uncertainty": "Segment mask selected liner/rim; use visually centered interior rather than rim-biased median."
+    }
+  ],
+  "pick_result": {
+    "alphabet_soup_pi0_pick_step2": {
+      "name": "pick",
+      "instruction": "pick up the alphabet soup can",
+      "success": true,
+      "chunks_used": 7,
+      "max_chunks": 20,
+      "peak_lift_m": 0.08762314170598984,
+      "min_gripper_opening": 0.05840526521205902,
+      "final_gripper_opening": 0.05840526521205902,
+      "terminated": false,
+      "truncated": false
+    }
+  },
+  "commands": [
+    {"step": 1, "action": "move_to", "xyz": [-0.12,-0.24,0.18], "gripper": -1, "tol": 0.012, "step_clip": 0.018, "max_steps": 100},
+    {"step": 2, "action": "pi0_pick", "prompt": "pick up the alphabet soup can", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06},
+    {"step": 3, "action": "set_gripper", "gripper": 1, "steps": 8},
+    {"step": 4, "action": "move_to", "xyz": [-0.11,0.02,0.2], "gripper": 1, "tol": 0.012, "step_clip": 0.015, "max_steps": 120},
+    {"step": 5, "action": "move_to", "xyz": [-0.055,0.276,0.2], "gripper": 1, "tol": 0.012, "step_clip": 0.015, "max_steps": 140},
+    {"step": 6, "action": "move_to", "xyz": [-0.055,0.276,0.13], "gripper": 1, "tol": 0.012, "step_clip": 0.01, "max_steps": 100},
+    {"step": 7, "action": "release", "max_steps": 30}
+  ],
+  "final_state": {
+    "robot0_eef_pos": [-0.05101770853326986,0.2802502957528066,0.15097005155998278],
+    "robot0_eef_quat": [0.9987721431696068,0.048488174838403675,-0.009742349855781821,0.0028617387227727865],
+    "robot0_gripper_qpos": [0.02746721753490718,-0.023872967354204928],
+    "object_names": ["alphabet_soup_1","basket_1","butter_1","cream_cheese_1","milk_1","orange_juice_1","tomato_sauce_1"]
+  }
+}

@@ -99,7 +99,7 @@ Generated logs and results are not included in Git.
 in `migration/memory-manifest.json`. This is unfinished exploration memory, not
 a validated or frozen evaluation release. Old unsuccessful observations remain
 historical evidence; 28-task runs timed out and did not complete normal automatic
-memory merging. Original evaluation memory is not included.
+memory merging. Original evaluation memory is now included as a separate corpus; see below.
 
 To continue exploration, copy the snapshot to a writable corpus:
 
@@ -113,3 +113,36 @@ checkout path, replace `/data/gc02/RPent` in the WORKING copy with the destinati
 checkout path before use. References to deleted historical logs are provenance,
 not available assets: do not follow them as executable recipes. Do not modify the
 snapshot in place while running experiments; point `--memory-dir` to the copy.
+
+## Complete old-server memory snapshot
+
+All three old-server memory corpora are included under `migration/memory/`:
+
+| Directory | Purpose |
+| --- | --- |
+| `libero` | Original local memory/cache corpus, preserved for provenance |
+| `libero-gpt55-eval` | Original frozen GPT-5.5 evaluation corpus (443 files) |
+| `libero-vla-place-guard-explore-20261007` | Separate experimental VLA-placement corpus (158 files) |
+
+`full-memory-manifest.json` records SHA-256 for every included file. The frozen
+evaluation corpus matches the original reproduction hash manifest. Runtime lock
+files are excluded and listed explicitly. Historical paths and internal metadata
+are preserved; copy and adapt only the working corpus when paths differ.
+
+After pulling, restore missing working corpora without overwriting existing
+new-server exploration notes:
+
+```bash
+mkdir -p memory
+for name in libero libero-gpt55-eval libero-vla-place-guard-explore-20261007; do
+  if [ ! -e "memory/$name" ]; then
+    cp -a "migration/memory/$name" "memory/$name"
+  else
+    echo "Preserving existing memory/$name; compare manually before replacing."
+  fi
+done
+```
+
+Use `memory/libero-gpt55-eval` only for the original frozen-memory reproduction;
+use the independent experimental corpus for VLA-placement exploration. Full
+historical experiment logs and videos are still not included in this repository.

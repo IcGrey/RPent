@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the tall orange bottle with silver cap and tomato ketchup label",
+      "locator": "segment",
+      "median_xy": [
+        -0.1326,
+        0.0587
+      ]
+    },
+    {
+      "phrase": "the woven basket with white fabric interior",
+      "locator": "segment",
+      "median_xy": [
+        0.0826,
+        0.2654
+      ]
+    }
+  ]
+}

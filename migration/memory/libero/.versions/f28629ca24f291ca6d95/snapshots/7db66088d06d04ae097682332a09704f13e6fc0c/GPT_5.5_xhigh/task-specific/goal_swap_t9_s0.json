@@ -1,0 +1,24 @@
+{
+  "suite": "libero_goal_swap",
+  "task_id": 9,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Put the wine bottle on the rack",
+  "libero_terminated": true,
+  "attempts": 2,
+  "final_state": {
+    "step": 9,
+    "robot0_eef_pos": [-0.07319664934709497, -0.22624404743091572, 1.1964869047134574],
+    "robot0_gripper_qpos": [0.009661330654658996, -0.014553792437277158],
+    "terminated": true,
+    "truncated": false
+  },
+  "localization_summary": "Agentview_high identified the target as the single black wine bottle near the bowl/plate and the destination as the slatted wooden rack on image-left. Back-projected bottle pixels around (515,476), (560,480), and (486,480) gave the bottle anchor near x=-0.20,y=-0.03; rack slat pixels around (422,308), (500,238), and (560,180) showed the rack surface at y about -0.17 to -0.19 with reachable slat x positions.",
+  "strategy_notes": "Successful attempt started from a reset clean scene. Step 8 ran pi0_pick with prompt 'pick up the wine bottle', max_chunks=20, lift_thresh=0.05, gripper_closed_thresh=0.06 from the home/default context; it contacted the bottle but failed to close or lift and left the bottle upright near the same area. Step 9 immediately ran pi0_pick with the spatial-qualified prompt 'grasp the wine bottle next to the bowl', max_chunks=24, lift_thresh=0.05, gripper_closed_thresh=0.06. This grasp closed with final opening about 0.024 m, lifted the bottle, carried it onto the visually localized rack, and the official predicate terminated true at step 9.",
+  "pick_result": {
+    "wine_bottle_pi0_pick_step8": "failed contact-only setup: gripper remained open, no lift, bottle still upright",
+    "wine_bottle_pi0_pick_step9": "successful grasp-and-delivery: gripper gap about 0.024 m, bottle visible held at rack, terminated true"
+  },
+  "notes": "Although the standing rule is to use Pi0 only for grasp and script the carry/release, the successful predicate fired during the second pi0_pick before a separate scripted carry was needed. The matched winning recipe after reset is the two pi0_pick commands from steps 8 and 9."
+}

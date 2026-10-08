@@ -1,0 +1,7 @@
+{"action": "move_to", "xyz": [0.02, -0.28, 1.25], "gripper": -1, "max_steps": 100, "step_clip": 0.02, "tol": 0.012}
+{"action": "pi0_pick", "prompt": "pick up the patterned bowl on the wooden cabinet", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "rotate_wrist", "delta_yaw": 1.57, "gripper": 1, "max_steps": 40, "step_clip": 0.06, "tol": 0.04}
+{"action": "move_to", "xyz": [-0.12, 0.02, 1.18], "gripper": 1, "max_steps": 100, "step_clip": 0.012, "tol": 0.015}
+{"action": "move_to", "xyz": [-0.24, 0.17, 1.12], "gripper": 1, "max_steps": 110, "step_clip": 0.012, "tol": 0.015}
+{"action": "move_to", "xyz": [-0.27, 0.195, 1.04], "gripper": 1, "max_steps": 90, "step_clip": 0.008, "tol": 0.018}
+{"action": "release", "max_steps": 50}

@@ -1,0 +1,3 @@
+{"action": "segment", "prompt": "the black stove knob", "camera": "agentview"}
+{"action": "segment", "prompt": "the stove cooktop", "camera": "agentview"}
+{"action": "pi0_pick", "prompt": "turn on the stove", "max_chunks": 20, "lift_thresh": 999, "gripper_closed_thresh": 0}

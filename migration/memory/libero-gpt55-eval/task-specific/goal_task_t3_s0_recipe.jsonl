@@ -1,0 +1,8 @@
+{"action": "segment", "prompt": "the cream cheese box", "camera": "agentview"}
+{"action": "segment", "prompt": "the top drawer handle", "camera": "agentview"}
+{"action": "segment", "prompt": "the open top drawer", "camera": "agentview"}
+{"action": "pi0_doubled", "prompt": "open the top drawer", "max_chunks": 20}
+{"action": "segment", "prompt": "the cream cheese box", "camera": "wrist"}
+{"action": "pi0_pick", "prompt": "pick up the cream cheese box", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_to", "xyz": [0.02, -0.09, 1.08], "gripper": 1, "step_clip": 0.012, "max_steps": 120, "tol": 0.015}

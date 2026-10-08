@@ -1,0 +1,52 @@
+{
+  "anchors": [
+    {
+      "phrase": "the dark green wine bottle on the table",
+      "locator": "segment",
+      "median_xy": [
+        -0.1161,
+        0.0258
+      ]
+    },
+    {
+      "phrase": "the open bottom drawer cavity",
+      "locator": "segment",
+      "median_xy": [
+        0.0101,
+        0.1527
+      ]
+    },
+    {
+      "phrase": "the dark green bottle lying on the table",
+      "locator": "segment",
+      "median_xy": [
+        -0.1671,
+        0.049
+      ]
+    },
+    {
+      "phrase": "the bottle",
+      "locator": "molmo",
+      "median_xy": [
+        -0.116,
+        0.026
+      ]
+    },
+    {
+      "phrase": "the inside of the bottom drawer of the cabinet",
+      "locator": "molmo",
+      "median_xy": [
+        -0.027,
+        0.17
+      ]
+    },
+    {
+      "phrase": "the bottom drawer of the cabinet",
+      "locator": "molmo",
+      "median_xy": [
+        -0.116,
+        0.026
+      ]
+    }
+  ]
+}

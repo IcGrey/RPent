@@ -1,0 +1,86 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.175,
+          -0.08,
+          0.2
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the short orange and green tomato can",
+      "offset": [
+        0.0002,
+        0.0004
+      ],
+      "anchor_distance": 0.0004
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the tomato sauce can",
+        "max_chunks": 18,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.049,
+          0.305,
+          0.21
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 50
+      },
+      "anchor": "the white-lined woven basket",
+      "offset": [
+        -0.1257,
+        0.0484
+      ],
+      "anchor_distance": 0.1347
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.04,
+          0.306,
+          0.16
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.008,
+        "max_steps": 60
+      },
+      "anchor": "the white-lined woven basket",
+      "offset": [
+        -0.1167,
+        0.0494
+      ],
+      "anchor_distance": 0.1267
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    }
+  ]
+}

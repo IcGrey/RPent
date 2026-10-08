@@ -1,0 +1,8 @@
+{"action": "move_to", "xyz": [-0.03, 0.3, 1.08], "gripper": -1, "step_clip": 0.015, "max_steps": 120, "tol": 0.015}
+{"action": "pi0_pick", "prompt": "pick up the akita black bowl", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 10}
+{"action": "move_to", "xyz": [0.02, 0.18, 1.08], "gripper": 1, "step_clip": 0.012, "max_steps": 120, "tol": 0.015}
+{"action": "move_to", "xyz": [0.07, 0.03, 1.04], "gripper": 1, "step_clip": 0.012, "max_steps": 140, "tol": 0.015}
+{"action": "move_to", "xyz": [0.09, -0.01, 1.0], "gripper": 1, "step_clip": 0.008, "max_steps": 120, "tol": 0.012}
+{"action": "release", "max_steps": 30}
+{"action": "pi0_pick", "prompt": "pick up the akita black bowl", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}

@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the tall red ketchup bottle with gray cap",
+      "locator": "segment",
+      "median_xy": [
+        0.1674,
+        0.0291
+      ]
+    },
+    {
+      "phrase": "the woven basket on the right",
+      "locator": "segment",
+      "median_xy": [
+        0.0865,
+        0.2537
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+{"action": "pi0_pick", "prompt": "pick up the wine bottle", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "pi0_pick", "prompt": "grasp the wine bottle next to the bowl", "max_chunks": 24, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}

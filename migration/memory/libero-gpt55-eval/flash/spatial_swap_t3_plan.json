@@ -1,0 +1,305 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned bowl on the red cookies box",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned bowl on top of the dark cabinet",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the red cookies box under the patterned bowl",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white ceramic plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.042,
+          0.02,
+          1.11
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.018,
+        "max_steps": 100
+      },
+      "anchor": "the akita black bowl on the cookies box",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the patterned bowl on the cookies box",
+        "max_chunks": 12,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.08,
+          0.04,
+          1.1
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the patterned bowl on the red cookies box",
+      "offset": [
+        -0.0361,
+        0.0212
+      ],
+      "anchor_distance": 0.0419
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "Pick the akita black bowl on the cookies box and place it on the plate",
+        "max_chunks": 14,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.08,
+          0.015,
+          1.045
+        ],
+        "gripper": -1,
+        "tol": 0.008,
+        "step_clip": 0.01,
+        "max_steps": 80
+      },
+      "anchor": "the patterned bowl on the red cookies box",
+      "offset": [
+        -0.0361,
+        -0.0038
+      ],
+      "anchor_distance": 0.0363
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the black bowl directly below the gripper on the red box",
+        "max_chunks": 18,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.046,
+          0.042,
+          1.13
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the akita black bowl on the cookies box",
+      "offset": [
+        0.004,
+        0.022
+      ],
+      "anchor_distance": 0.0224
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          0.036,
+          -0.247,
+          1.12
+        ],
+        "gripper": 1,
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "tol": 0.012,
+        "ori_tol": 0.08,
+        "step_clip": 0.015,
+        "pitch_step": 0.04,
+        "yaw_step": 0.04,
+        "max_steps": 180
+      },
+      "anchor": "the white ceramic plate with red rings",
+      "offset": [
+        -0.0053,
+        0.034
+      ],
+      "anchor_distance": 0.0344
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.012,
+          -0.252,
+          1.08
+        ],
+        "gripper": 1,
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "tol": 0.01,
+        "ori_tol": 0.08,
+        "step_clip": 0.01,
+        "pitch_step": 0.03,
+        "yaw_step": 0.03,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.006,
+        -0.002
+      ],
+      "anchor_distance": 0.0063
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.006,
+          -0.25,
+          0.955
+        ],
+        "gripper": 1,
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "tol": 0.01,
+        "ori_tol": 0.08,
+        "step_clip": 0.008,
+        "pitch_step": 0.025,
+        "yaw_step": 0.025,
+        "max_steps": 160
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.028,
+          -0.24,
+          0.96
+        ],
+        "gripper": -1,
+        "tol": 0.008,
+        "step_clip": 0.005,
+        "max_steps": 25
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.034,
+        0.01
+      ],
+      "anchor_distance": 0.0354
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.014,
+          -0.24,
+          1.08
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.02,
+        0.01
+      ],
+      "anchor_distance": 0.0224
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the patterned bowl directly below the gripper",
+        "max_chunks": 12,
+        "lift_thresh": 0.04,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.043,
+          -0.247,
+          1.025
+        ],
+        "gripper": -1,
+        "tol": 0.008,
+        "step_clip": 0.01,
+        "max_steps": 80
+      },
+      "anchor": "the white ceramic plate with red rings",
+      "offset": [
+        0.0017,
+        0.034
+      ],
+      "anchor_distance": 0.034
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the patterned bowl directly below the gripper on the red-ring plate",
+        "max_chunks": 18,
+        "lift_thresh": 0.04,
+        "gripper_closed_thresh": 0.06
+      }
+    }
+  ]
+}

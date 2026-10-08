@@ -1,0 +1,43 @@
+{
+  "suite": "libero_object_swap",
+  "task_id": 1,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "Pick the cream cheese and place it in the basket",
+  "libero_terminated": true,
+  "total_attempts": 7,
+  "final_state": {
+    "step": 7,
+    "robot0_eef_pos": [-0.014833201292932419, 0.25483963290704303, 0.1373728906282039],
+    "robot0_gripper_qpos": [0.020163902332895972, -0.02237393501299907],
+    "terminated": true,
+    "truncated": false
+  },
+  "memory_read": [
+    "attempt_1_failed.json",
+    "attempt_2_failed.json",
+    "attempt_3_failed.json",
+    "attempt_4_failed.json",
+    "attempt_5_failed.json",
+    "attempt_6_failed.json",
+    "memory/_inbox/object_swap_t1_s0/wip/notes.md",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md",
+    "memory/MEMORY.md",
+    "global/high-drop-over-cavity.md",
+    "global/basket-insertion-open-retreat.md",
+    "global/basket-release-retreat-settle.md"
+  ],
+  "perception_summary": "Agentview RGB identified the cream cheese as the blue-white rectangular Cream Cheese box and the basket as the white-lined woven container. Agentview back-project samples on the cream cheese gave median xy around [-0.079,-0.246]. Wrist view over the basket rejected the previous far outside-lip target and measured the liner/interior center around x≈-0.01,y≈0.258.",
+  "pick_result": {
+    "cream_cheese_pi0_pick_step3": {
+      "prompt": "pick up the cream cheese",
+      "chunks_used": 8,
+      "peak_lift_m": 0.062478095293045044,
+      "final_gripper_opening": 0.042544618248939514,
+      "visual_check": "wrist showed the blue-white cream cheese box held between the fingers"
+    }
+  },
+  "strategy_notes": "From step 0, localize the cream cheese by RGB label in agentview and localize the basket by wrist-confirming the true white liner center. Move over the basket center for wrist refinement, then move to the cream-cheese pre-position [-0.085,-0.238,0.16] with gripper open. Run pi0_pick with prompt 'pick up the cream cheese', max_chunks 20, lift_thresh 0.05, gripper_closed_thresh 0.06, and verify the held box from gripper gap and wrist image. Carry closed through [-0.10,-0.05,0.19], [-0.03,0.12,0.21], and [-0.015,0.255,0.19]. Descend slowly with gripper closed to [-0.015,0.255,0.125] using step_clip 0.006; termination fired during this descent before release."
+}

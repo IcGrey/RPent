@@ -1,0 +1,126 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.099,
+          -0.237,
+          0.21
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the short red and green cylindrical can behind the orange juice carton",
+      "offset": [
+        0.0001,
+        0.0004
+      ],
+      "anchor_distance": 0.0004
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the tomato sauce",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.04,
+          0.16,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.101,
+        -0.0827
+      ],
+      "anchor_distance": 0.1305
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.049,
+          0.272,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.11,
+        0.0293
+      ],
+      "anchor_distance": 0.1138
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.049,
+          0.272,
+          0.2
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.008,
+        "max_steps": 80
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.11,
+        0.0293
+      ],
+      "anchor_distance": 0.1138
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.047,
+          0.276,
+          0.32
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.008,
+        "max_steps": 80
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.108,
+        0.0333
+      ],
+      "anchor_distance": 0.113
+    }
+  ]
+}

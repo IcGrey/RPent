@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the flat brown chocolate pudding box",
+      "locator": "segment",
+      "median_xy": [
+        0.1173,
+        -0.1969
+      ]
+    },
+    {
+      "phrase": "the open woven basket",
+      "locator": "segment",
+      "median_xy": [
+        0.06,
+        0.251
+      ]
+    }
+  ]
+}

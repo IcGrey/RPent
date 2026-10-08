@@ -1,0 +1,77 @@
+{
+  "suite": "libero_goal_swap",
+  "task_id": 6,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "Put the cream cheese on the bowl",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_read": {
+    "task_suite_writeup": "none found for goal_swap_t6 before start",
+    "global_memory_index": "prompt path resources/libero/memory/MEMORY.md not present; inspected available log memory/global files after solve for dedupe",
+    "global_files_read": [
+      "visual-over-pick-heuristic.md",
+      "relation-anchored-wrist-refine.md",
+      "flat-box-basket-interior-drop.md"
+    ],
+    "guides": [
+      "robots/libero/guides/strict_hybrid_guide.md",
+      "robots/libero/guides/pro_hybrid_guide.md",
+      "robots/libero/guides/env_calibration.md"
+    ],
+    "seed0_reference": "resources/libero/results_*_pert directories not present at prompt paths"
+  },
+  "localization": {
+    "cream_cheese": {
+      "agentview_evidence": "small blue rectangular box with readable cream cheese label at upper-right table",
+      "agentview_pixels_rc": [[399, 742], [416, 758], [386, 770]],
+      "agentview_xyz_samples": [
+        [-0.4055, 0.2371, 0.9009],
+        [-0.3748, 0.2488, 0.9009],
+        [-0.4299, 0.2698, 0.9009]
+      ],
+      "wrist_pixels_rc_step1": [[584, 577], [620, 582], [654, 584], [614, 548]],
+      "wrist_xyz_samples_step1": [
+        [-0.3718, 0.2141, 0.918],
+        [-0.3879, 0.2117, 0.918],
+        [-0.4031, 0.2104, 0.918],
+        [-0.3855, 0.2268, 0.9175]
+      ],
+      "final_anchor_used": [-0.386, 0.214, 0.918]
+    },
+    "bowl": {
+      "agentview_evidence": "black/white patterned bowl near table center-left, behind plate and left of wine bottle",
+      "agentview_pixels_rc": [[525, 446], [548, 471], [503, 477]],
+      "agentview_xyz_samples": [
+        [-0.1501, -0.056, 0.9429],
+        [-0.1698, -0.0362, 0.9004],
+        [-0.2228, -0.0319, 0.9092]
+      ],
+      "wrist_pixels_rc_step3": [[330, 872], [380, 900], [450, 910], [390, 835]],
+      "wrist_xyz_samples_step3": [
+        [-0.1827, -0.0275, 0.9077],
+        [-0.2053, -0.0367, 0.9062],
+        [-0.2362, -0.0316, 0.9175],
+        [-0.2072, -0.0073, 0.9126]
+      ],
+      "final_center_estimate": [-0.206, -0.032, 0.91]
+    }
+  },
+  "strategy_notes": "Successful sequence localized the cream cheese from agentview identity and wrist geometry, then localized the patterned bowl interior from wrist once the held box was near the target. The manipulation sequence was: move_to above the cream cheese at [-0.38,0.25,1.12] with gripper open; pi0_pick with prompt 'pick up the cream cheese', max_chunks=12, lift_thresh=0.05, gripper_closed_thresh=0.06, which visibly grasped the box with final gripper opening about 0.043; move_to [-0.30,0.12,1.12] closed as a safe carry waypoint around the wine bottle; move_to [-0.22,-0.03,1.08] closed above the bowl; move_to [-0.205,-0.045,1.035] closed to center the box over the bowl; move_to [-0.205,-0.045,1.005] closed to seat it below the bowl rim; release max_steps=30. The release fired after 8 steps with the cream cheese visibly inside the bowl.",
+  "pick_result": {
+    "cream_cheese_pi0_pick_step2": {
+      "success": true,
+      "chunks_used": 10,
+      "peak_lift_m": 0.05931633710861206,
+      "final_gripper_opening": 0.04270216077566147,
+      "used_as": "confirmed grasp from gripper gap and wrist view"
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.20524557410928101, -0.045155626014794024, 1.0144428731826518],
+    "robot0_eef_quat": [0.9965550609684067, -0.06406766037560307, 0.020819419606920415, -0.04837248308162149],
+    "robot0_gripper_qpos": [0.026804793122196798, -0.026312581110635606],
+    "object_names": ["akita_black_bowl_1", "cream_cheese_1", "plate_1", "wine_bottle_1"]
+  }
+}

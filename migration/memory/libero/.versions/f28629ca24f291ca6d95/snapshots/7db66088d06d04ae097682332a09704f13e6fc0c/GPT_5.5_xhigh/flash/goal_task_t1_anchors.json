@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the dark gray round stove burner coil",
+      "locator": "segment",
+      "median_xy": [
+        -0.2607,
+        0.2013
+      ]
+    },
+    {
+      "phrase": "the white plate with red rings",
+      "locator": "segment",
+      "median_xy": [
+        0.0348,
+        -0.0264
+      ]
+    }
+  ]
+}

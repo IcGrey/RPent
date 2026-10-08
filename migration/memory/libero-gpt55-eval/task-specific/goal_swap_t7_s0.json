@@ -1,0 +1,72 @@
+{
+  "suite": "libero_goal_swap",
+  "task_id": 7,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Turn on the stove",
+  "perturbation_semantics": "The stove fixture/control location was identified visually in the swapped scene; no fixture or object coordinates were read.",
+  "expected_baseline_behavior": "A prompt-only policy may still use a learned stove-contact behavior, but the hybrid explicitly localized the swapped stove fixture and control in the camera before invoking contact.",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_read": [
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md",
+    "memory/MEMORY.md from run memory directory",
+    "memory/global/contact-skill-state-change.md",
+    "memory/suite/suite_libero_goal_task_t7.md",
+    "memory/suite/suite_libero_goal_swap_t2.md"
+  ],
+  "localization": {
+    "stove_knob": {
+      "agentview_evidence": "Black upright control knob on the white/metal stove fixture behind the gray concentric-ring burner.",
+      "segment_prompt": "the black stove knob",
+      "segment_score": 0.228,
+      "segment_world_xyz": [-0.0419, 0.1255, 0.9219],
+      "manual_pixels_rc": [[625, 655]],
+      "manual_world_xyz": [-0.0506, 0.1139, 0.9219]
+    },
+    "stove_cooktop": {
+      "agentview_evidence": "Rectangular stove base with gray concentric-ring cook surface, distinct from the nearby red-rimmed plate.",
+      "segment_prompt": "the stove cooktop",
+      "segment_score": 0.836,
+      "segment_world_xyz": [0.1232, 0.1315, 0.9253],
+      "manual_pixels_rc": [[715, 736], [695, 645]],
+      "manual_world_xyz_samples": [[0.0522, 0.1628, 0.9312], [0.0276, 0.0991, 0.9253]]
+    }
+  },
+  "strategy_notes": "From the initial agentview_high image, classified the destination as the stove fixture: gray concentric-ring burner on a rectangular metal base with a black upright control knob, not the nearby red-rimmed plate. Segmented the black stove knob with prompt 'the black stove knob' (score 0.228, world xyz approximately [-0.0419, 0.1255, 0.9219]) and the stove cooktop with prompt 'the stove cooktop' (score 0.836, world xyz approximately [0.1232, 0.1315, 0.9253]); manual back-projection on knob/cooktop pixels confirmed the same fixture. Then used pi0_pick as a contact primitive with prompt 'turn on the stove', max_chunks=20, lift_thresh=999, gripper_closed_thresh=0. The contact skill descended from home to the knob/control area and the benchmark predicate fired at step 1; no object transport or release was needed.",
+  "pick_result": {
+    "stove_contact_pi0_pick_step1": {
+      "name": "pick",
+      "instruction": "turn on the stove",
+      "success": true,
+      "chunks_used": 15,
+      "max_chunks": 20,
+      "peak_lift_m": 0.0,
+      "min_gripper_opening": 0.03206871449947357,
+      "final_gripper_opening": 0.03206871449947357,
+      "terminated": true,
+      "truncated": false,
+      "diagnostics": {
+        "start_eef_z": 1.1733,
+        "peak_eef_z": 1.1733,
+        "min_eef_z": 0.9287,
+        "post_min_peak_z": 0.9287,
+        "descent_m": 0.2446,
+        "post_min_ascent_m": 0.0,
+        "descent_done": true,
+        "lift_thresh": 999,
+        "gripper_closed_thresh": 0
+      }
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.05932753618002214, 0.11834541408873687, 0.9286681233563254],
+    "robot0_eef_quat": [0.9254959861297976, 0.3768336996992472, -0.03343036255093072, -0.01832902857008484],
+    "robot0_gripper_qpos": [0.0104652399224451, -0.021603474300027802],
+    "object_names": ["akita_black_bowl_1", "cream_cheese_1", "plate_1", "wine_bottle_1"]
+  }
+}

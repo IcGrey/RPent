@@ -1,0 +1,70 @@
+{
+  "suite": "libero_spatial_task",
+  "task_id": 7,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "task (P1 Task perturbation)",
+  "perturbed_task_language": "Pick the akita black bowl on the top of the cabinet and place it on the plate",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_consulted": {
+    "task_suite_writeup": "missing at memory/_inbox/spatial_task_t7_s0/suite_spatial_task_t7_s0_draft.md",
+    "global_index": "read denied by runtime policy for resources/libero/memory/MEMORY.md",
+    "guides": [
+      "robots/libero/guides/strict_hybrid_guide.md",
+      "robots/libero/guides/pro_hybrid_guide.md",
+      "robots/libero/guides/env_calibration.md"
+    ],
+    "seed0_reference": "missing at resources/libero/results_spatial_pert/spatial_task_t7_s0.json and recipe_spatial_task_t7_s0.jsonl"
+  },
+  "localization": {
+    "target": {
+      "role": "black bowl on top of the cabinet",
+      "agentview_evidence": "In agentview_high.png, two patterned black bowls were visible; the target was the bowl resting on the dark cabinet at image-left, not the bowl on the metal stove/cook region.",
+      "agentview_pixels_rc": [[414,95],[430,139],[463,90]],
+      "agentview_world_xyz_samples": [[-0.0048,-0.2703,1.1562],[0.0117,-0.2382,1.1553],[0.0204,-0.2715,1.1357]],
+      "agentview_xyz_median": [0.0117,-0.2703,1.1553],
+      "wrist_refine": "accepted qualitatively after move_to step1: wrist_high showed the same cabinet-top bowl filling the view, consistent with the agentview-selected candidate. Used the agentview xy adjusted slightly away from the cabinet edge for grasp pre-position."
+    },
+    "destination": {
+      "role": "plate surface",
+      "agentview_evidence": "White ceramic plate with red concentric rings at lower-right in agentview_high.png; visually distinct from the metal cook region under the other bowl.",
+      "agentview_pixels_rc": [[741,745],[768,777],[737,805]],
+      "agentview_world_xyz_samples": [[0.0562,0.1716,0.9072],[0.0823,0.1907,0.9082],[0.0537,0.2161,0.9087]],
+      "agentview_xyz_median": [0.0562,0.1907,0.9082]
+    }
+  },
+  "strategy_notes": "Localized the cabinet-top bowl and plate from agentview_high pixels via back_project, using RGB semantics to distinguish the plate from the stove cook region and the target bowl from the other bowl on the metal fixture. Successful trajectory: move_to step1 above the cabinet-top bowl at [0.01,-0.255,1.25] with open gripper; pi0_pick step2 with prompt 'pick up the black bowl on the cabinet' and max_chunks=20; set_gripper step3 to +1 for 8 steps; move_to step4 carrying closed to [0.07,0.235,1.18]; move_to step5 corrected/lowered to [0.025,0.205,1.06]; move_to step6 lowered to [0.025,0.205,0.99]; release step7 with max_steps=30, which produced libero_terminated true.",
+  "pick_result": {
+    "bowl_pi0_pick_step2": {
+      "name": "pick",
+      "instruction": "pick up the black bowl on the cabinet",
+      "success": true,
+      "chunks_used": 7,
+      "max_chunks": 20,
+      "peak_lift_m": 0.05786144733428955,
+      "min_gripper_opening": 0.004062714520841837,
+      "final_gripper_opening": 0.004062714520841837,
+      "terminated": false,
+      "truncated": false,
+      "diagnostics": {
+        "start_eef_z": 1.2506,
+        "peak_eef_z": 1.2506,
+        "min_eef_z": 1.1479,
+        "post_min_peak_z": 1.2058,
+        "descent_m": 0.1027,
+        "post_min_ascent_m": 0.0579,
+        "descent_done": true,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [0.02477133779542295,0.2047514495126656,1.0014474957584973],
+    "robot0_eef_quat": [0.996318222178251,0.0660081652389582,-0.018767637679302222,0.05138772278758227],
+    "robot0_gripper_qpos": [0.006484824990809175,-0.006706014943956669],
+    "object_names": ["akita_black_bowl_1","akita_black_bowl_2","cookies_1","glazed_rim_porcelain_ramekin_1","plate_1"]
+  }
+}

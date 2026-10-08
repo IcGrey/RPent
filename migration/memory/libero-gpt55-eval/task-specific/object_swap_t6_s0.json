@@ -1,0 +1,49 @@
+{
+  "suite": "libero_object_swap",
+  "task_id": 6,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Pick the butter and place it in the basket",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_read": {
+    "suite": "no existing suite draft found at memory/_inbox/object_swap_t6_s0/suite_object_swap_t6_s0_draft.md",
+    "global": "resources/libero/memory/MEMORY.md requested but RPent runtime denied access as another environment's memory",
+    "guides": [
+      "robots/libero/guides/strict_hybrid_guide.md",
+      "robots/libero/guides/pro_hybrid_guide.md",
+      "robots/libero/guides/env_calibration.md"
+    ]
+  },
+  "localization": {
+    "target": "butter box identified semantically in agentview_high by red/yellow/blue Farm Fresh Butter label; wrist confirmed the same candidate and rejected the nearby chocolate pudding box by label and position",
+    "butter_agentview_pixels_rc": [[610,405],[626,420],[590,420]],
+    "butter_agentview_world_samples": [[0.041,-0.0918,0.0179],[0.0608,-0.0778,0.0158],[-0.0126,-0.083,0.0007]],
+    "butter_wrist_pixels_rc": [[615,505],[580,520],[650,520]],
+    "butter_wrist_world_samples": [[0.0498,-0.0837,0.0173],[0.0634,-0.0895,0.0174],[0.0362,-0.0897,0.0173]],
+    "butter_final_xyz_used": [0.05,-0.089,0.017],
+    "basket": "basket identified semantically as white-lined woven basket; placement used interior cavity, avoiding rim-biased samples",
+    "basket_agentview_region_rc": {"row_range":[430,570],"col_range":[700,840],"z_band":[-0.02,0.12]},
+    "basket_region_result": {"center_xyz":[-0.1142,0.2288,0.0966],"median_xyz":[-0.0389,0.2222,0.0966]},
+    "basket_final_xyz_used": [-0.06,0.245,0.105]
+  },
+  "pick_result": {
+    "butter_pi0_pick_step2": {
+      "success": true,
+      "chunks_used": 8,
+      "peak_lift_m": 0.08249426912516356,
+      "min_gripper_opening": 0.039340682327747345,
+      "final_gripper_opening": 0.03937523812055588,
+      "grasp_verified_by": "wrist_high showed the butter raised between fingers; gripper gap remained about 0.039 m"
+    }
+  },
+  "strategy_notes": "Localized the butter from agentview_high label pixels, refined the same candidate in wrist_high at step 1, and localized the basket by its white-lined interior rather than rim pixels. Executed move_to above butter [0.05,-0.085,0.18], pi0_pick 'pick up the butter' for 8 chunks, set_gripper +1 for 8 steps, lifted to [0.04,-0.09,0.22], carried with gripper +1 to [-0.04,0.22,0.22], descended/nudged toward the basket interior at [-0.06,0.245,0.105] where OSC stalled at z≈0.150 but remained visually inside the cavity, then release(max_steps=30) fired the predicate.",
+  "final_state": {
+    "robot0_eef_pos": [-0.05632976452073233,0.2477482151608614,0.15042302082511544],
+    "robot0_eef_quat": [0.9997481035415174,0.02127882896216665,0.006966714726061753,0.001551060625266315],
+    "robot0_gripper_qpos": [0.03800353596118978,-0.037990194678791465],
+    "object_names": ["basket_1","bbq_sauce_1","butter_1","chocolate_pudding_1","ketchup_1","orange_juice_1","tomato_sauce_1"]
+  }
+}

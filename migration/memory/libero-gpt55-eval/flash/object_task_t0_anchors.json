@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the blue and white cream cheese box",
+      "locator": "segment",
+      "median_xy": [
+        -0.1348,
+        0.0582
+      ]
+    },
+    {
+      "phrase": "the inside of the woven basket",
+      "locator": "segment",
+      "median_xy": [
+        -0.0566,
+        0.2747
+      ]
+    }
+  ]
+}

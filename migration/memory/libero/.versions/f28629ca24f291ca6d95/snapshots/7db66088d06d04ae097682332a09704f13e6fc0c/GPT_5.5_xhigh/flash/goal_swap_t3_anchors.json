@@ -1,0 +1,52 @@
+{
+  "anchors": [
+    {
+      "phrase": "the patterned black bowl on the table",
+      "locator": "segment",
+      "median_xy": [
+        -0.0798,
+        0.1342
+      ]
+    },
+    {
+      "phrase": "the black wooden cabinet with three drawers",
+      "locator": "segment",
+      "median_xy": [
+        0.1321,
+        -0.2258
+      ]
+    },
+    {
+      "phrase": "the top drawer front panel and handle",
+      "locator": "segment",
+      "median_xy": [
+        0.0501,
+        -0.1317
+      ]
+    },
+    {
+      "phrase": "the open top drawer cavity",
+      "locator": "segment",
+      "median_xy": [
+        0.0298,
+        -0.0783
+      ]
+    },
+    {
+      "phrase": "the top layer of the drawer handle",
+      "locator": "molmo",
+      "median_xy": [
+        -0.009,
+        -0.086
+      ]
+    },
+    {
+      "phrase": "the bowl",
+      "locator": "molmo",
+      "median_xy": [
+        -0.094,
+        0.188
+      ]
+    }
+  ]
+}

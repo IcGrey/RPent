@@ -1,0 +1,244 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.232,
+          -0.075,
+          1.11
+        ],
+        "gripper": -1,
+        "step_clip": 0.015,
+        "max_steps": 100,
+        "tol": 0.012
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        -0.139,
+        0.128
+      ],
+      "anchor_distance": 0.189
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.109,
+          -0.252,
+          1.11
+        ],
+        "gripper": -1,
+        "step_clip": 0.015,
+        "max_steps": 100,
+        "tol": 0.012
+      },
+      "anchor": "the bowl",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the black bowl",
+        "max_chunks": 12,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.232,
+          -0.03,
+          1.08
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "max_steps": 80,
+        "tol": 0.012
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "Put the bowl on the stove",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.197,
+          -0.043,
+          1.14
+        ],
+        "gripper": 1,
+        "step_clip": 0.012,
+        "max_steps": 80,
+        "tol": 0.012
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        -0.104,
+        0.16
+      ],
+      "anchor_distance": 0.1908
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.089,
+          -0.217,
+          1.13
+        ],
+        "gripper": 1,
+        "step_clip": 0.012,
+        "max_steps": 150,
+        "tol": 0.012
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.004,
+        -0.014
+      ],
+      "anchor_distance": 0.0146
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.089,
+          -0.217,
+          1.13
+        ],
+        "target_pitch": -0.25,
+        "gripper": 1,
+        "step_clip": 0.01,
+        "pitch_step": 0.04,
+        "max_steps": 150,
+        "tol": 0.015,
+        "ori_tol": 0.08
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.004,
+        -0.014
+      ],
+      "anchor_distance": 0.0146
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.089,
+          -0.17,
+          1.06
+        ],
+        "target_pitch": -0.1,
+        "gripper": 1,
+        "step_clip": 0.008,
+        "pitch_step": 0.03,
+        "max_steps": 150,
+        "tol": 0.015,
+        "ori_tol": 0.08
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.004,
+        0.033
+      ],
+      "anchor_distance": 0.0332
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.115,
+          -0.084,
+          1.08
+        ],
+        "gripper": -1,
+        "step_clip": 0.01,
+        "max_steps": 100,
+        "tol": 0.012
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        -0.022,
+        0.119
+      ],
+      "anchor_distance": 0.121
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the black patterned bowl beside the stove",
+        "max_chunks": 12,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.063,
+          -0.205,
+          1
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "max_steps": 80,
+        "tol": 0.012
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.03,
+        -0.002
+      ],
+      "anchor_distance": 0.0301
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.093,
+          -0.203,
+          0.995
+        ],
+        "gripper": 1,
+        "step_clip": 0.005,
+        "max_steps": 60,
+        "tol": 0.01
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

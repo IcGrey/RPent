@@ -1,0 +1,27 @@
+{
+  "suite": "libero_10_task",
+  "task_id": 6,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "task (P1)",
+  "perturbed_task_language": "put the red mug on the plate and put the chocolate pudding to the right of the plate",
+  "libero_terminated": true,
+  "attempts_to_convergence": 3,
+  "frame": "LIVING_ROOM (eef home z ~0.681, table top ~0.445)",
+  "localization_summary": "Agentview hi-res + back_project. red_coffee_mug_1 = tall red-patterned mug (start ~(-0.21,-0.005)); porcelain_mug_1 = white dimpled mug distractor (~(-0.057,-0.167)); chocolate_pudding_1 = brown 'CHOCOLATE PUDDING' box (~(-0.028,0.096)); plate_1 = white-with-red-rings disc, center via region back_project (0.142,-0.018,0.445), radius ~0.10. 'right of the plate' resolved EMPIRICALLY to +y (image-RIGHT), NOT the memory's egocentric -y.",
+  "strategy_notes": "Winning sequence (recipe order, after the last reset). PUDDING FIRST, MUG LAST so nothing is carried over the placed mug. (1) move_to (-0.028,0.096,0.58) pre-position over the pudding box. (2) pi0_pick 'pick up the chocolate pudding box' max_chunks14 -> grasp+lift (~0.08, grip~0.047). (3) set_gripper +1 x6 to firm. (4) move_to (0.142,0.14,0.52) gripper+1 -> carry pudding to the +y (image-RIGHT) side of the plate, x-aligned with plate center. (5) release -> pudding rests right of the plate. (6) move_to (0.148,0.143,0.63) gripper-1 retreat straight up. (7) move_to (-0.02,0.06,0.63) waypoint toward the mug (keeps single-step xy < 0.30). (8) move_to (-0.19,0.045,0.62) pre-position above the mug. (9) pi0_pick 'grasp the red mug by the handle' max_chunks15 -> pi0 hooks the thin handle (grip~0.01, lift~0.20) and auto-drives the eef forward to ~x0.15. (10) set_gripper +1 x8 firm. (11) move_to (0.092,0.012,0.62) gripper+1 -> mug base over plate center (held-mug base offset ~(+0.05,-0.03) from eef). (12) move_to (0.092,0.012,0.56) gripper+1 -> descend until OSC stalls at z~0.57 (mug base contacts plate). (13) release -> mug stands upright on plate. (14) move_to (0.092,0.012,0.64) gripper-1 retreat up (predicate did NOT fire yet: gripper still hovering directly over the placed mug). (15) move_to (0.181,0.14,0.55) -> moving the eef AWAY from the mug/plate let the predicate settle and FIRE (libero_terminated=true).",
+  "critical_findings": [
+    "'to the right of the plate' = +y = image-RIGHT (viewer perspective) for this cell; the PROVEN-LEVERS egocentric rule (right=-y) is INVERTED here.",
+    "The predicate can fail to register while the open gripper hovers directly over the just-placed mug; retreating the eff fully AWAY (laterally) let it fire on the very next step.",
+    "TALL red mug: plain 'grasp the red mug' makes pi0 dive into the open cup top and grab air; 'grasp the red mug by the handle' reliably hooks the handle and lifts.",
+    "ORDER pudding-first/mug-last prevents the box-clips-mug tipping cascade seen in attempt 1."
+  ],
+  "mug_pick_result_step9": {"instruction": "grasp the red mug by the handle", "grip_opening": 0.010, "peak_lift_m": 0.198},
+  "pudding_pick_result_step2": {"instruction": "pick up the chocolate pudding box", "grip_opening": 0.047, "peak_lift_m": 0.085},
+  "final_state": {
+    "robot0_eef_pos": [0.1903, 0.1211, 0.566],
+    "robot0_gripper_qpos": [0.0399, -0.0396],
+    "object_names": ["chocolate_pudding_1", "plate_1", "porcelain_mug_1", "red_coffee_mug_1"],
+    "libero_terminated": true
+  }
+}

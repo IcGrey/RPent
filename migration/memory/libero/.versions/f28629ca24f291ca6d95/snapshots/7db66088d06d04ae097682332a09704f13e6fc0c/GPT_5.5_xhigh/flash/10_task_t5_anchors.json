@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the cup",
+      "locator": "molmo",
+      "median_xy": [
+        -0.112,
+        0.037
+      ]
+    },
+    {
+      "phrase": "the inside of the back compartment of the caddy",
+      "locator": "molmo",
+      "median_xy": [
+        -0.41,
+        -0.09
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{"action":"move_to","xyz":[-0.016,0.085,0.62],"gripper":-1,"step_clip":0.012,"max_steps":100,"tol":0.012}
+{"action":"pi0_pick","prompt":"grasp the yellow mug by the handle loop","max_chunks":8,"lift_thresh":0.05,"gripper_closed_thresh":0.06}
+{"action":"set_gripper","gripper":1,"steps":10}
+{"action":"move_to","xyz":[0.08,0.1,0.72],"gripper":1,"step_clip":0.008,"max_steps":100,"tol":0.01}
+{"action":"rotate_wrist","delta_yaw":1.5708,"gripper":1,"max_steps":50,"step_clip":0.07,"tol":0.02}
+{"action":"move_pose","xyz":[0.15,-0.1,0.72],"target_yaw":1.574,"target_pitch":0,"gripper":1,"step_clip":0.008,"max_steps":120,"tol":0.012,"ori_tol":0.05,"pitch_step":0.05,"yaw_step":0.05}
+{"action":"move_pose","xyz":[0.051,-0.298,0.66],"target_yaw":1.574,"target_pitch":0,"gripper":1,"step_clip":0.006,"max_steps":150,"tol":0.012,"ori_tol":0.05,"pitch_step":0.04,"yaw_step":0.04}
+{"action":"move_pose","xyz":[0.051,-0.298,0.57],"target_yaw":1.574,"target_pitch":0,"gripper":1,"step_clip":0.004,"max_steps":130,"tol":0.008,"ori_tol":0.05,"pitch_step":0.03,"yaw_step":0.03}
+{"action":"release","max_steps":20}
+{"action":"move_pose","xyz":[0.15,-0.1,0.7],"target_yaw":1.574,"target_pitch":0,"gripper":-1,"step_clip":0.008,"max_steps":120,"tol":0.012,"ori_tol":0.05}
+{"action":"rotate_wrist","target_yaw":0,"gripper":-1,"max_steps":50,"step_clip":0.08,"tol":0.02}
+{"action":"move_to","xyz":[-0.075,-0.1,0.62],"gripper":-1,"step_clip":0.012,"max_steps":110,"tol":0.012}
+{"action":"pi0_pick","prompt":"grasp the white mug by the handle","max_chunks":8,"lift_thresh":0.05,"gripper_closed_thresh":0.06}
+{"action":"set_gripper","gripper":1,"steps":8}
+{"action":"move_to","xyz":[-0.072,-0.105,0.72],"gripper":1,"step_clip":0.008,"max_steps":100,"tol":0.01}
+{"action":"rotate_wrist","delta_yaw":1.5708,"gripper":1,"max_steps":50,"step_clip":0.07,"tol":0.02}
+{"action":"move_pose","xyz":[0.12,0.15,0.7],"target_yaw":1.37,"target_pitch":0,"gripper":1,"step_clip":0.008,"max_steps":120,"tol":0.012,"ori_tol":0.05}
+{"action":"move_pose","xyz":[-0.044,0.312,0.66],"target_yaw":1.37,"target_pitch":0,"gripper":1,"step_clip":0.006,"max_steps":150,"tol":0.012,"ori_tol":0.05}
+{"action":"move_pose","xyz":[-0.044,0.312,0.55],"target_yaw":1.37,"target_pitch":0,"gripper":1,"step_clip":0.003,"max_steps":130,"tol":0.008,"ori_tol":0.05}
+{"action":"release","max_steps":20}

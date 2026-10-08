@@ -1,0 +1,65 @@
+{
+  "suite": "libero_spatial_swap",
+  "task_id": 3,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Pick the akita black bowl on the cookies box and place it on the plate",
+  "perturbation_semantics": "Loose object/support positions are swapped; the target is selected by the visible spatial relation, namely the patterned black bowl elevated on the oatmeal-raisin cookies box, not the identical bowl on the cabinet.",
+  "expected_baseline_behavior": "A prompt/memory-driven policy may choose the wrong identical bowl or a stale base-task position; this run selected the relation-satisfying bowl from agentview_high and localized by back_project only.",
+  "memory_consulted": {
+    "suite_writeup": "not present in inbox",
+    "global_index": "resources/libero/memory/MEMORY.md denied by environment memory access",
+    "guides": [
+      "robots/libero/guides/strict_hybrid_guide.md",
+      "robots/libero/guides/pro_hybrid_guide.md",
+      "robots/libero/guides/env_calibration.md"
+    ],
+    "seed0_reference": "not present under resources/libero/results_spatial_pert for this tag"
+  },
+  "localization": {
+    "target_bowl_agentview_pixels_rc": [[650,530],[690,545],[625,500]],
+    "target_bowl_agentview_world_xyz_samples": [[0.0117,0.0133,0.957],[0.0267,0.0245,0.9297],[-0.0727,-0.0098,0.9004]],
+    "target_bowl_notes": "The first two samples were on the elevated patterned bowl on the cookies box; the third was rejected as edge/table/background. Wrist view at step 1 confirmed the same bowl and refined visible bowl pixels near world xy 0.05-0.09, 0.02-0.04.",
+    "plate_agentview_pixels_rc": [[730,150],[760,180],[705,120]],
+    "plate_agentview_world_xyz_samples": [[0.0462,-0.2688,0.9077],[0.0839,-0.2368,0.9189],[0.0209,-0.2974,0.9072]],
+    "plate_notes": "Destination classified semantically as the white plate with red concentric rim on the left; stove burner was explicitly rejected as a look-alike flat disc. Planned plate center around x 0.05, y -0.27."
+  },
+  "strategy_notes": "Inspected agentview_high at step 0 and selected the bowl satisfying the relation 'on the cookies box'. Moved open gripper above the bowl at [0.02,0.02,1.08], accepted wrist refinement for the same visible bowl, then tried two Pi0 grasps that contacted but did not lift. Shifted to the open/table side at [0.055,-0.015,1.06] and used prompt 'pick up the patterned bowl' with max_chunks 16; this grasp lifted the correct bowl with final gripper opening 0.0145. Locked the grip for 10 steps, carried to [0.05,-0.225,1.08], descended to [0.05,-0.225,0.965], and released. The release left the bowl partly on the plate but did not terminate, so reissued 'pick up the patterned bowl' from the low-on-plate pose; Pi0 lifted/settled the bowl onto the red-rim plate and the official predicate became true at step 11.",
+  "pick_result": {
+    "initial_pi0_pick_step2": {
+      "success": false,
+      "chunks_used": 20,
+      "peak_lift_m": 0.030274510383605957,
+      "final_gripper_opening": 0.0727684497833252
+    },
+    "verbatim_pi0_pick_step4": {
+      "success": false,
+      "chunks_used": 20,
+      "peak_lift_m": 0.030167758464813232,
+      "final_gripper_opening": 0.07806506752967834
+    },
+    "patterned_bowl_pi0_pick_step6": {
+      "success": true,
+      "chunks_used": 7,
+      "peak_lift_m": 0.05779707431793213,
+      "final_gripper_opening": 0.014499833807349205
+    },
+    "plate_settle_pi0_pick_step11": {
+      "success": true,
+      "chunks_used": 14,
+      "peak_lift_m": 0.08739888668060303,
+      "final_gripper_opening": 0.008550742641091347,
+      "terminated": true
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [0.04468655038101878,-0.24887153714097207,0.9422927690330836],
+    "robot0_eef_quat": [0.9308865466475416,0.35583570007648396,-0.03612711319647827,0.07433722831651171],
+    "robot0_gripper_qpos": [0.003948137340361568,-0.00460260615951191],
+    "object_names": ["akita_black_bowl_1","akita_black_bowl_2","cookies_1","glazed_rim_porcelain_ramekin_1","plate_1"]
+  },
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1
+}

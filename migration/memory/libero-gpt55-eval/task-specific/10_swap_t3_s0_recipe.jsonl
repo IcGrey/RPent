@@ -1,0 +1,17 @@
+{"action":"segment","prompt":"the patterned bowl on the table","camera":"agentview"}
+{"action":"segment","prompt":"the open drawer of the cabinet","camera":"agentview"}
+{"action":"segment","prompt":"the green wine bottle","camera":"agentview"}
+{"action":"move_to","xyz":[-0.164,0.045,1.05],"gripper":-1,"max_steps":60}
+{"action":"pi0_pick","prompt":"pick up the black bowl","max_chunks":12,"lift_thresh":0.05}
+{"action":"set_gripper","gripper":1,"steps":10}
+{"action":"move_to","xyz":[-0.16,-0.09,1.05],"gripper":1,"max_steps":60}
+{"action":"move_to","xyz":[-0.17,-0.11,0.965],"gripper":1,"max_steps":60,"step_clip":0.015}
+{"action":"move_pose","xyz":[-0.17,-0.12,0.96],"target_pitch":0,"target_yaw":0,"gripper":1,"max_steps":120,"step_clip":0.015}
+{"action":"release","max_steps":20}
+{"action":"move_to","xyz":[-0.16,-0.09,1.05],"gripper":-1,"max_steps":50,"step_clip":0.025}
+{"action":"move_to","xyz":[-0.05,-0.01,0.99],"gripper":1,"max_steps":50}
+{"action":"move_to","xyz":[-0.05,-0.01,0.94],"gripper":1,"max_steps":40}
+{"action":"move_to","xyz":[-0.34,-0.24,0.94],"gripper":1,"max_steps":120,"step_clip":0.03}
+{"action":"move_to","xyz":[0,-0.02,1],"gripper":1,"max_steps":50}
+{"action":"move_to","xyz":[0,-0.02,0.925],"gripper":1,"max_steps":40}
+{"action":"move_to","xyz":[-0.34,-0.24,0.928],"gripper":1,"max_steps":130,"step_clip":0.03}

@@ -1,0 +1,226 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.089,
+          -0.236,
+          0.16
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.1542,
+        -0.4936
+      ],
+      "anchor_distance": 0.5171
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.059,
+          0.276,
+          0.2
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.1242,
+        0.0184
+      ],
+      "anchor_distance": 0.1256
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.102,
+          -0.242,
+          0.16
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.1672,
+        -0.4996
+      ],
+      "anchor_distance": 0.5268
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.103,
+          -0.12,
+          0.3
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.1682,
+        -0.3776
+      ],
+      "anchor_distance": 0.4134
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.102,
+          -0.242,
+          0.29
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.1672,
+        -0.4996
+      ],
+      "anchor_distance": 0.5268
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.102,
+          -0.242,
+          0.16
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.1672,
+        -0.4996
+      ],
+      "anchor_distance": 0.5268
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the alphabet soup can",
+        "max_chunks": 10,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.129,
+          -0.234,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.1942,
+        -0.4916
+      ],
+      "anchor_distance": 0.5286
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.08,
+          0.05,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.1452,
+        -0.2076
+      ],
+      "anchor_distance": 0.2533
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.015,
+          0.25,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.0802,
+        -0.0076
+      ],
+      "anchor_distance": 0.0806
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.015,
+          0.275,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.008,
+        "max_steps": 40
+      },
+      "anchor": "the large wicker basket with white lining at right",
+      "offset": [
+        -0.0802,
+        0.0174
+      ],
+      "anchor_distance": 0.0821
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

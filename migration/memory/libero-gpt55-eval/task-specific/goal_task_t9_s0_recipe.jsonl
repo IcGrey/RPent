@@ -1,0 +1,6 @@
+{"action": "move_to", "xyz": [-0.04, 0.12, 1.12], "gripper": -1, "tol": 0.012, "step_clip": 0.02, "max_steps": 100}
+{"action": "pi0_pick", "prompt": "pick up the cream cheese", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 10}
+{"action": "move_to", "xyz": [-0.22, -0.08, 1.28], "gripper": 1, "tol": 0.012, "step_clip": 0.015, "max_steps": 120}
+{"action": "pi0_doubled", "prompt": "put the cream cheese on the top of the wooden rack", "max_chunks": 12}
+{"action": "release", "max_steps": 100}

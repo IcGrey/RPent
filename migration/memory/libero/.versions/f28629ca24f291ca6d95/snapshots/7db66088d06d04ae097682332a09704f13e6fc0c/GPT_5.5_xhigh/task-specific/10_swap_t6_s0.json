@@ -1,0 +1,21 @@
+{
+  "suite": "libero_10_swap",
+  "task_id": 6,
+  "seed": 0,
+  "regime": "strict_perception",
+  "libero_terminated": true,
+  "attempts": 1,
+  "task_language": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+  "strategy_notes": "Two-part conjunction task. Localized entities from agentview hi-res + back_project (world frame): white mug=porcelain_mug_1 (gray/white textured, image-left) ~(-0.06,-0.15,0.52); chocolate pudding box (center) ~(-0.20,0.01,0.465); plate (front-center) center ~(0.156,-0.007), top z~0.444; red_coffee_mug_1 distractor (image-right, +y). Frame: image-right=+y, image-left=-y; table z~0.42, kitchen/living-room home eef z~0.68. PART 1 (mug->plate): pre-positioned over mug, ran grasp-only pi0_pick 'grasp the white mug'. First two attempts (max_chunks 8) descended but did not close/lift; shifting eef_y toward the near rim (eef_y = mug_y + ~0.045, i.e. to y~-0.112) made pi0_pick close and rim-hook the mug (peak_lift 0.168, gripper_qpos~0.003 = closed on thin rim wall). set_gripper +1 to firm. Measured held-mug offset from eef via back_project of the held mug body, then carried +1-hold over the plate; descended to eef z~0.52 (OSC stalled as mug bottom met plate top ~0.444) and released; retreated straight up. Mug landed dead-center on plate (~(0.155,0.00)). PART 2 (pudding 'to the right of the plate'): pi0_pick 'pick up the chocolate pudding box' from above (small box, held-offset ~= eef xy). KEY FINDING: 'right of the plate' fires on the +y / IMAGE-RIGHT side (camera/human-view convention), NOT the egocentric robot-right (-y) that libero_10 memory predicted. Placing the pudding at -y (robot-right) twice — far (0.134,-0.194) and close (0.15,-0.14) — did NOT fire the predicate, even though the mug was already correctly on the plate. Re-grasped and carried the pudding HIGH (z~0.64, above the mug rim ~0.544 and red mug ~0.53) to the +y side and descended toward (0.156,+0.13); libero_terminated flipped true during the descent (predicate satisfied by xy position; release not even required).",
+  "pick_result": {
+    "mug_pi0_pick_step6": {"success_flag": false, "peak_lift_m": 0.168, "min_gripper_opening": 0.0058, "note": "rim-hooked after shifting eef_y to mug_y+0.045; grasp real (mug lifted, verified in agentview)"},
+    "pudding_pi0_pick_step30": {"success_flag": false, "peak_lift_m": 0.103, "min_gripper_opening": 0.048, "note": "held (box lifted); flag false only due to lift_thresh timing"}
+  },
+  "final_state": {
+    "robot0_eef_pos": [0.15617759069807743, 0.13072150440581556, 0.5156804983146633],
+    "robot0_gripper_qpos": [0.022502387225583762, -0.02405250900182237],
+    "object_names": ["chocolate_pudding_1", "plate_1", "porcelain_mug_1", "red_coffee_mug_1"],
+    "libero_terminated": true
+  },
+  "memory_consulted": ["resources/libero/memory/MEMORY.md (empty index)", "robots/libero/guides/strict_hybrid_guide.md", "no suite/task memory existed for this cell (created here)", "results_10_pert seed-0 reference dir absent"]
+}

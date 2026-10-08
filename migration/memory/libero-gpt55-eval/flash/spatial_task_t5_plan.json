@@ -1,0 +1,126 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.045,
+          0.03,
+          1.11
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the akita black bowl on the cookie box",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the black bowl on the cookie box",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.05,
+          0.087,
+          1.15
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the akita black bowl on the cookie box",
+      "offset": [
+        0.005,
+        0.057
+      ],
+      "anchor_distance": 0.0572
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.03,
+          0.243,
+          1.15
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.018,
+        -0.005
+      ],
+      "anchor_distance": 0.0187
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.054,
+          0.249,
+          1.15
+        ],
+        "gripper": 1,
+        "tol": 0.008,
+        "step_clip": 0.01,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.006,
+        0.001
+      ],
+      "anchor_distance": 0.0061
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.048,
+          0.248,
+          1
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 25
+      }
+    }
+  ]
+}

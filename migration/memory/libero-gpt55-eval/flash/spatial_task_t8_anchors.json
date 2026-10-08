@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the akita black bowl next to the ramekin",
+      "locator": "molmo",
+      "median_xy": [
+        -0.228,
+        0.295
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        0.067,
+        0.237
+      ]
+    }
+  ]
+}

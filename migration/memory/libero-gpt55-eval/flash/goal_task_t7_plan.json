@@ -1,0 +1,18 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the upright black stove knob above the burner",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "pi0_doubled",
+      "arguments": {
+        "prompt": "turn off the stove",
+        "max_chunks": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "red rimmed white plate",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "stove burner",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "gray circular stove burner",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.215,
+          -0.055,
+          1.08
+        ],
+        "gripper": -1,
+        "tol": 0.015,
+        "step_clip": 0.025,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "red rimmed white plate",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.207,
+          -0.052,
+          0.91
+        ],
+        "gripper": -1,
+        "tol": 0.005,
+        "step_clip": 0.008,
+        "max_steps": 240
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.008,
+        0.003
+      ],
+      "anchor_distance": 0.0085
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.1,
+          0.18,
+          0.92
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.01,
+        "max_steps": 260
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "red rimmed white plate",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "red circular ring",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.145,
+          0.01,
+          1.1
+        ],
+        "gripper": -1,
+        "tol": 0.015,
+        "step_clip": 0.025,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.07,
+        0.065
+      ],
+      "anchor_distance": 0.0955
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.145,
+          0.01,
+          0.91
+        ],
+        "gripper": -1,
+        "tol": 0.005,
+        "step_clip": 0.008,
+        "max_steps": 240
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.07,
+        0.065
+      ],
+      "anchor_distance": 0.0955
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.05,
+          0.205,
+          0.92
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.01,
+        "max_steps": 280
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "red rimmed white plate",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "red circular ring",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "stove burner",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.093,
+          0.055,
+          1.1
+        ],
+        "gripper": -1,
+        "tol": 0.015,
+        "step_clip": 0.025,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.122,
+        0.11
+      ],
+      "anchor_distance": 0.1643
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.093,
+          0.055,
+          0.91
+        ],
+        "gripper": -1,
+        "tol": 0.005,
+        "step_clip": 0.008,
+        "max_steps": 240
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.122,
+        0.11
+      ],
+      "anchor_distance": 0.1643
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.08,
+          0.235,
+          0.92
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.01,
+        "max_steps": 260
+      }
+    }
+  ]
+}

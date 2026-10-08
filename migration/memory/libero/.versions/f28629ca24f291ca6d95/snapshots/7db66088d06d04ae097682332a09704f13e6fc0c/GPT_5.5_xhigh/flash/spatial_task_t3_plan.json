@@ -1,0 +1,176 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the akita black bowl on top of the cookies box",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the black bowl on the cookies box",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the red rimmed plate",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the plate",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the black bowl on top of the wooden cabinet",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the bowl on the cabinet",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the black bowl on the dark wooden cabinet",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.05,
+          -0.275,
+          1.25
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the akita black bowl on the top of the cabinet",
+      "offset": [
+        -0.0005,
+        -0.0017
+      ],
+      "anchor_distance": 0.0018
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.0505,
+          -0.2733,
+          1.23
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 60
+      },
+      "anchor": "the akita black bowl on the top of the cabinet",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "Pick the akita black bowl on the top of the cabinet and place it on the plate",
+        "max_chunks": 22,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the black bowl held by the gripper",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the lifted black bowl",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the large black bowl in the gripper",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.06,
+          0.1,
+          1.2
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.008,
+        -0.159
+      ],
+      "anchor_distance": 0.1592
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.052,
+          0.259,
+          1.03
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    }
+  ]
+}

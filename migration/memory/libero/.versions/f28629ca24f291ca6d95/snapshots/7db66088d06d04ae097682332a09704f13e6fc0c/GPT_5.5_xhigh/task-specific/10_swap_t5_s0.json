@@ -1,0 +1,26 @@
+{
+  "suite": "libero_10_swap",
+  "task_id": 5,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "pick up the book and place it in the back compartment of the caddy",
+  "libero_terminated": true,
+  "attempts": 1,
+  "final_state": {
+    "eef_pos": [-0.4419, -0.1567, 1.1921],
+    "gripper_qpos": [0.0393, -0.0394],
+    "note": "book seated in middle-back compartment of caddy; predicate fired on straight-up retreat after release"
+  },
+  "localization": "Identified all entities from image_cam_hi_00 + back_project (world frame: +x toward robot/bottom-of-image, +y toward image-right). Book = standing black binder at (-0.09,-0.006). Caddy back compartment = the middle-column REAR opening (its front counterpart is the small middle-front compartment); interior center via region back_project = (-0.454,-0.152), rim ~z1.01-1.05.",
+  "strategy_notes": "1) pi0_pick 'pick up the book' max_chunks=16 lift_thresh=0.05 -> grasp near top of the standing binder (peak_lift 0.07, gripper opening 0.03 = holding). 2) set_gripper +1 steps=8 to firm grip. 3) move_to straight up to z=1.22 to lift the hanging book base above the caddy rim. 4) move_to mid waypoint (-0.28,-0.085,1.21) then (-0.454,-0.152,1.21) over the back-compartment center (2 hops, |dx|<0.30 each). Book hung with wide face ~8cm along y, thin ~3cm along x, matching the compartment (~8cm y x 5cm x) so NO wrist rotation needed. 5) move_to down to z=1.08 step_clip=0.015 -> descent stalled at z=1.157 (book base contacting compartment floor). 6) release max_steps=20 (gripper opened to 0.078) -> predicate NOT yet fired. 7) move_to straight up to z=1.24 gripper=-1 step_clip=0.02 -> libero_terminated=true as the gripper cleared the settled book.",
+  "pick_result": {
+    "book_pi0_pick_step1": "success, peak_lift 0.07m, gripper opening 0.03, grasped near top of standing binder"
+  },
+  "memory_read": ["MEMORY.md (empty index)", "no suite_libero10_swap_t5 file existed", "no results_10_pert seed-0 reference dir present"],
+  "key_levers": [
+    "back compartment disambiguation: middle-column REAR opening, paired with the small middle-front 'front compartment'",
+    "lift book base above rim before lateral traverse",
+    "book orientation already matched compartment; no rotate_wrist",
+    "predicate fired only AFTER gripper retreated clear of the settled book"
+  ]
+}

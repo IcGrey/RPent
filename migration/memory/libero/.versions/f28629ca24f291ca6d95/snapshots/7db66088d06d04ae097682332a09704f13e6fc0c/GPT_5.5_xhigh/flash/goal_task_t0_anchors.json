@@ -1,0 +1,12 @@
+{
+  "anchors": [
+    {
+      "phrase": "the bottom drawer of the cabinet handle",
+      "locator": "molmo",
+      "median_xy": [
+        0.04,
+        0.12
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "anchors": [
+    {
+      "phrase": "the white mug",
+      "locator": "molmo",
+      "median_xy": [
+        -0.096,
+        -0.116
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        0.118,
+        0.046
+      ]
+    },
+    {
+      "phrase": "the chocolate pudding",
+      "locator": "molmo",
+      "median_xy": [
+        -0.096,
+        -0.116
+      ]
+    }
+  ]
+}

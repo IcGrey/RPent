@@ -1,0 +1,99 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.183,
+          -0.07,
+          0.25
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the dark green ranch dressing bottle",
+      "offset": [
+        0.0005,
+        0.0096
+      ],
+      "anchor_distance": 0.0096
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the salad dressing",
+        "max_chunks": 10,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.203,
+          -0.06,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.008,
+        "max_steps": 60
+      },
+      "anchor": "the dark green ranch dressing bottle",
+      "offset": [
+        -0.0195,
+        0.0196
+      ],
+      "anchor_distance": 0.0276
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.13,
+          0.1,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.008,
+        "max_steps": 80
+      },
+      "anchor": "the open interior of the woven basket",
+      "offset": [
+        -0.0651,
+        -0.1717
+      ],
+      "anchor_distance": 0.1836
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.006,
+          0.263,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.008,
+        "max_steps": 90
+      },
+      "anchor": "the open interior of the woven basket",
+      "offset": [
+        0.0589,
+        -0.0087
+      ],
+      "anchor_distance": 0.0595
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "anchors": [
+    {
+      "phrase": "the yellow and white mug",
+      "locator": "molmo",
+      "median_xy": [
+        -0.035,
+        0.09
+      ]
+    },
+    {
+      "phrase": "the left plate",
+      "locator": "molmo",
+      "median_xy": [
+        -0.068,
+        0.266
+      ]
+    },
+    {
+      "phrase": "the white mug",
+      "locator": "molmo",
+      "median_xy": [
+        -0.035,
+        0.09
+      ]
+    },
+    {
+      "phrase": "the right plate",
+      "locator": "molmo",
+      "median_xy": [
+        -0.068,
+        0.266
+      ]
+    }
+  ]
+}

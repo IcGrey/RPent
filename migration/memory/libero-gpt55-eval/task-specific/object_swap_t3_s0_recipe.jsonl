@@ -1,0 +1,5 @@
+{"action": "move_to", "xyz": [-0.15, -0.29, 0.18], "gripper": -1, "step_clip": 0.012, "max_steps": 120, "tol": 0.015}
+{"action": "pi0_pick", "prompt": "pick up the brown BBQ labeled bottle behind the green bottle", "max_chunks": 12, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_to", "xyz": [-0.08, 0.12, 0.22], "gripper": 1, "step_clip": 0.008, "max_steps": 160, "tol": 0.018}
+{"action": "pi0_doubled", "prompt": "put the bbq sauce into the basket", "max_chunks": 12}

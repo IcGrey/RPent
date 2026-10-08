@@ -1,0 +1,8 @@
+{"action": "move_to", "xyz": [-0.196, -0.05, 0.2], "gripper": -1, "step_clip": 0.012, "max_steps": 80, "tol": 0.01}
+{"action": "pi0_pick", "prompt": "pick up the tomato sauce can", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_to", "xyz": [-0.065, 0.322, 0.155], "gripper": 1, "step_clip": 0.006, "max_steps": 120, "tol": 0.01}
+{"action": "release", "max_steps": 40}
+{"action": "set_gripper", "gripper": 1, "steps": 5}
+{"action": "move_to", "xyz": [-0.055, 0.345, 0.17], "gripper": 1, "step_clip": 0.004, "max_steps": 100, "tol": 0.012}
+{"action": "pi0_doubled", "prompt": "push the tomato sauce can into the basket", "max_chunks": 12}

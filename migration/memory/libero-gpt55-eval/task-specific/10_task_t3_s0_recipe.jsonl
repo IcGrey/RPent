@@ -1,0 +1,20 @@
+{"action":"move_to","xyz":[-0.107,0.03,1.16],"gripper":-1,"step_clip":0.012,"max_steps":100,"tol":0.01}
+{"action":"move_pose","xyz":[0.08,-0.01,1.02],"target_pitch":0.3,"target_yaw":0,"gripper":1,"step_clip":0.006,"pitch_step":0.025,"yaw_step":0.03,"max_steps":180,"tol":0.01}
+{"action":"move_pose","xyz":[0.071,0.01,1.019],"target_pitch":0.3,"target_yaw":0,"gripper":1,"step_clip":0.003,"pitch_step":0.015,"yaw_step":0.02,"max_steps":80,"tol":0.005}
+{"action":"pi0_doubled","prompt":"close the bottom drawer of the cabinet","max_chunks":4}
+{"action":"move_pose","xyz":[-0.2,0,1.17],"target_pitch":0,"target_yaw":0,"gripper":-1,"step_clip":0.006,"pitch_step":0.04,"yaw_step":0.04,"max_steps":200,"tol":0.012}
+{"action":"pi0_pick","prompt":"put the bottle in the bottom drawer of the cabinet and close it","max_chunks":20,"lift_thresh":0.05,"gripper_closed_thresh":0.06}
+{"action":"set_gripper","gripper":1,"steps":8}
+{"action":"move_to","xyz":[-0.119,0.054,1.25],"gripper":1,"step_clip":0.008,"max_steps":140,"tol":0.01}
+{"action":"move_to","xyz":[0.02,0.12,1.24],"gripper":1,"step_clip":0.008,"max_steps":140,"tol":0.01}
+{"action":"move_to","xyz":[0.011,0.12,1.105],"gripper":1,"step_clip":0.005,"max_steps":160,"tol":0.01}
+{"action":"rotate_wrist","delta_yaw":1.57,"gripper":1,"step_clip":0.04,"max_steps":100,"tol":0.03}
+{"action":"rotate_pitch","delta_pitch":1.4,"gripper":1,"step_clip":0.035,"max_steps":120,"tol":0.03}
+{"action":"rotate_wrist","delta_yaw":1.57,"gripper":1,"step_clip":0.03,"max_steps":120,"tol":0.03}
+{"action":"move_to","xyz":[-0.016,0.155,1.046],"gripper":1,"step_clip":0.004,"max_steps":140,"tol":0.008}
+{"action":"move_pose","xyz":[-0.005,0.155,1.045],"target_pitch":1.05,"target_yaw":2.585,"gripper":1,"step_clip":0.0035,"pitch_step":0.015,"yaw_step":0.02,"max_steps":220,"tol":0.008}
+{"action":"move_pose","xyz":[-0.001,0.15,1],"target_pitch":1.05,"target_yaw":2.585,"gripper":1,"step_clip":0.003,"pitch_step":0.012,"yaw_step":0.015,"max_steps":180,"tol":0.008}
+{"action":"release"}
+{"action":"move_pose","xyz":[0.005,0.146,1.12],"target_pitch":1.05,"target_yaw":2.585,"gripper":-1,"step_clip":0.004,"pitch_step":0.012,"yaw_step":0.015,"max_steps":140,"tol":0.01}
+{"action":"pi0_doubled","prompt":"push the wine bottle deeper into the bottom drawer","max_chunks":20}
+{"action":"pi0_doubled","prompt":"close the bottom drawer of the cabinet","max_chunks":24}

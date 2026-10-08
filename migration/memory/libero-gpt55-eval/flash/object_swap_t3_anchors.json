@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the small orange BBQ sauce bottle on the left",
+      "locator": "segment",
+      "median_xy": [
+        -0.1133,
+        -0.2297
+      ]
+    },
+    {
+      "phrase": "the white-lined woven basket on the right",
+      "locator": "segment",
+      "median_xy": [
+        0.0658,
+        0.2462
+      ]
+    }
+  ]
+}

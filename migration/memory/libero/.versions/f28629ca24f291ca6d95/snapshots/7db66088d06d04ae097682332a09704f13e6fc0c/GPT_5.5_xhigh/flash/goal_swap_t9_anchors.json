@@ -1,0 +1,28 @@
+{
+  "anchors": [
+    {
+      "phrase": "the dark green upright wine bottle with a cork",
+      "locator": "segment",
+      "median_xy": [
+        -0.0728,
+        -0.007
+      ]
+    },
+    {
+      "phrase": "the large wooden slatted wine rack on the left",
+      "locator": "segment",
+      "median_xy": [
+        0.0652,
+        -0.2172
+      ]
+    },
+    {
+      "phrase": "the rack",
+      "locator": "molmo",
+      "median_xy": [
+        0.032,
+        -0.26
+      ]
+    }
+  ]
+}

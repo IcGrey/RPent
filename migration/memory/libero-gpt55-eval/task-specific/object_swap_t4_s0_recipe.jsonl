@@ -1,0 +1,5 @@
+{"action": "move_to", "xyz": [0.171, 0.027, 0.18], "gripper": -1, "max_steps": 100, "step_clip": 0.02, "tol": 0.01}
+{"action": "pi0_pick", "prompt": "pick up the ketchup", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "move_to", "xyz": [0.066, 0.256, 0.18], "gripper": 1, "max_steps": 80, "step_clip": 0.012, "tol": 0.012}
+{"action": "release", "max_steps": 30}
+{"action": "move_to", "xyz": [0.073, 0.254, 0.31], "gripper": -1, "max_steps": 80, "step_clip": 0.012, "tol": 0.012}

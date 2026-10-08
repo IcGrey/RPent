@@ -1,0 +1,10 @@
+{"action": "move_to", "xyz": [-0.05, 0.16, 1.12], "gripper": -1, "step_clip": 0.02, "tol": 0.012, "max_steps": 100}
+{"action": "pi0_pick", "prompt": "pick up the bowl", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_to", "xyz": [-0.09, 0.07, 1.12], "gripper": 1, "step_clip": 0.015, "tol": 0.012, "max_steps": 100}
+{"action": "move_to", "xyz": [-0.16, 0.009, 1.11], "gripper": 1, "step_clip": 0.012, "tol": 0.012, "max_steps": 120}
+{"action": "move_to", "xyz": [-0.16, 0.009, 1.02], "gripper": 1, "step_clip": 0.008, "tol": 0.012, "max_steps": 120}
+{"action": "release", "max_steps": 30}
+{"action": "move_to", "xyz": [-0.172, -0.02, 1.03], "gripper": 1, "step_clip": 0.006, "tol": 0.01, "max_steps": 80}
+{"action": "release", "max_steps": 40}
+{"action": "pi0_pick", "prompt": "pick up the bowl", "max_chunks": 12, "lift_thresh": 0.04, "gripper_closed_thresh": 0.06}

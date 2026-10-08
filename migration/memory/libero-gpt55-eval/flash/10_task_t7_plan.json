@@ -1,0 +1,304 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the tall red ketchup bottle",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the small blue and white cream cheese box",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.143,
+          0.079,
+          0.58
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the ketchup",
+      "offset": [
+        0.014,
+        -0.001
+      ],
+      "anchor_distance": 0.014
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the blue and white cream cheese box",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.045,
+          0.261,
+          0.72
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        -0.055,
+        0.041
+      ],
+      "anchor_distance": 0.0686
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.1,
+          0.06,
+          0.72
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the ketchup",
+      "offset": [
+        0.057,
+        -0.02
+      ],
+      "anchor_distance": 0.0604
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.157,
+          -0.13,
+          0.65
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the red ketchup bottle",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.157,
+          0.08,
+          0.58
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the ketchup",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the cream cheese box",
+        "max_chunks": 16,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.015,
+          0.255,
+          0.62
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        -0.025,
+        0.035
+      ],
+      "anchor_distance": 0.043
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.015,
+          0.255,
+          0.57
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        -0.025,
+        0.035
+      ],
+      "anchor_distance": 0.043
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.015,
+          0.255,
+          0.72
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        -0.025,
+        0.035
+      ],
+      "anchor_distance": 0.043
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.1,
+          0.06,
+          0.72
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the ketchup",
+      "offset": [
+        0.057,
+        -0.02
+      ],
+      "anchor_distance": 0.0604
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.164,
+          -0.133,
+          0.6
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the ketchup bottle",
+        "max_chunks": 18,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 6
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.01,
+          0.22,
+          0.66
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.01,
+          0.22,
+          0.6
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    }
+  ]
+}

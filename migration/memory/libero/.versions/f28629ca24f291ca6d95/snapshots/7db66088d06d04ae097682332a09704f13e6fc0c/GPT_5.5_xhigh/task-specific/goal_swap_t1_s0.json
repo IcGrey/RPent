@@ -1,0 +1,39 @@
+{
+  "suite": "libero_goal_swap",
+  "task_id": 1,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "Put the bowl on the stove",
+  "libero_terminated": true,
+  "attempts": 4,
+  "final_state": {
+    "step": 25,
+    "terminated": true,
+    "truncated": false,
+    "robot0_eef_pos": [-0.05596447922435491, -0.16719048648511153, 1.047571266083687],
+    "robot0_gripper_qpos": [0.0006254767031557217, -0.0021508921244988593]
+  },
+  "memory_files_read": [
+    "memory/MEMORY.md",
+    "memory/suite/suite_libero_goal_task_t1.md",
+    "memory/global/pi0-prepositioned-simple-basket.md",
+    "memory/global/basket-release-retreat-settle.md",
+    "memory/global/learned-contact-after-near-placement.md",
+    "memory/global/visual-over-pick-heuristic.md",
+    "memory/global/open-side-bowl-grasp.md",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "localization": "Agentview RGB identified the patterned gray bowl as the target and the gray ringed cook region on the metal stove base as the destination; multi-pixel back-projection localized the bowl near the wine bottle and the stove cook region at the front-left fixture, but no absolute coordinate should be reused.",
+  "pick_result": {
+    "bowl_pi0_pick_step20": {
+      "prompt": "pick up the bowl",
+      "max_chunks": 20,
+      "result_success_hint": true,
+      "visual_judgment": "accepted; bowl visibly lifted in agentview and wrist after home-start Pi0 grasp",
+      "final_gripper_opening": 0.013475114479660988
+    }
+  },
+  "strategy_notes": "Winning trajectory after the final reset: Pi0 picked the bowl from the default home pose with prompt 'pick up the bowl' using max_chunks=20, lift_thresh=0.05, gripper_closed_thresh=0.06. The grasp was confirmed visually, then set_gripper +1 for 10 steps firmed the hold. Carry with gripper held closed to a compensated stove-side pose at [-0.245,-0.055,0.97], then descend held to [-0.245,-0.045,0.94], reaching about z=0.953. Release at that pose left the bowl upright very near the cook region but non-terminal. A final pi0_doubled contact skill with prompt 'put the bowl on the stove' and max_chunks=30 moved/seated the bowl onto the cook region and terminated at chunk 17."
+}

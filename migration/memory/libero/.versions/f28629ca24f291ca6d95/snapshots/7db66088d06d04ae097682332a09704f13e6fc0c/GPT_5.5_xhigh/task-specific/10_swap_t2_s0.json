@@ -1,0 +1,26 @@
+{
+  "suite": "libero_10_swap",
+  "task_id": 2,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "turn on the stove and put the moka pot on it",
+  "perturbation_semantics": "The manipulated object to place on the burner is the MOKA POT (moka_pot_1); a chefmate_8_frypan_1 sits on the table center with its handle resting over the burner and is a distractor (do not move it). Frame: KITCHEN (eef home z 1.17, table z ~0.90, stove cook-region surface z ~0.93).",
+  "expected_baseline_behavior": "Pi0 fullshot tends to place at base-task location / mishandle the moka pot grasp (the wide octagon), and would not reliably do BOTH turn-on and correct place.",
+  "strategy_notes": "Localized by agentview hi-res + back_project: moka pot center ~(-0.016,-0.231) top z~1.03; stove cook-region coil center ~(-0.036,0.17) surface z~0.93; knob ~(-0.19,0.19). WINNING SEQUENCE (attempt 2, after 1 reset): (1) move_to above moka pot (-0.018,-0.217,1.10) then re-center (-0.016,-0.231,1.10) with a CLEAN VERTICAL wrist (quat ~identity); (2) pi0_pick 'pick up the moka pot' max_chunks=24 lift_thresh=0.05 -> grasped (gripper closed to ~0.047, peak_lift 0.124m) and Pi0 even carried it toward +y over the stove; (3) set_gripper +1 steps=6 to firm; (4) move_to (-0.045,0.17,1.06) to reposition over the cook-region center, then move_to (-0.044,0.175,1.02) to descend until the pot base seated on the burner (OSC stalled ~z1.076, pot resting); (5) release; (6) move_to up (-0.039,0.184,1.13) to clear; (7) move_to (-0.17,0.19,1.05) near the knob; (8) pi0_doubled 'turn on the stove' max_chunks=20 -> libero_terminated=TRUE. KEY LESSON: the moka-pot grasp only works from a CLEAN VERTICAL wrist. In attempt 1 I turned the stove FIRST, which left the wrist with a persistent ~30deg tilt; from that tilted pose pi0_pick NEVER closed the gripper (3 tries) and manual closes slipped off the smooth octagon. Reordering to grasp-pot-first (fresh vertical orientation) fixed it in one pi0_pick.",
+  "pick_result": {
+    "name": "pick",
+    "instruction": "pick up the moka pot",
+    "success": false,
+    "peak_lift_m": 0.12381601333618164,
+    "min_gripper_opening": 0.04693067446351051,
+    "note": "pi0_pick.success=false is a heuristic; the grasp actually succeeded (gripper closed 0.047, 12cm lift) and Pi0 carried the pot over the stove. Confirmed by wrist+agentview."
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.1938226019820584, 0.2046949766141191, 0.9431591900799194],
+    "robot0_gripper_qpos": [0.02385664724164341, -0.011836603363024582],
+    "object_names": ["chefmate_8_frypan_1", "moka_pot_1"]
+  },
+  "libero_terminated": true,
+  "attempts": 2
+}

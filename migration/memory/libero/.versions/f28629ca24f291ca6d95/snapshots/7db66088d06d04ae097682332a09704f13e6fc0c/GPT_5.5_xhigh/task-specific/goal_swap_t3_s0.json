@@ -1,0 +1,222 @@
+{
+  "suite": "libero_goal_swap",
+  "task_id": 3,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task": "Open the top layer of the drawer and put the bowl inside",
+  "libero_terminated": true,
+  "total_attempts": 16,
+  "memory_read": {
+    "suite_wip_notes": "logs/libero_pro_explore_60_fixed_20260902/memory/_inbox/goal_swap_t3_s0/wip/notes.md",
+    "prior_audit": "logs/libero_pro_explore_60_fixed_20260902/cells/goal_swap_t3_s0/goal_swap_t3_s0.json",
+    "attempt_archives": "attempt_1_failed.json through attempt_15_failed.json were present; attempt 11-15 notes were read in detail before acting",
+    "guides": [
+      "robots/libero/guides/strict_hybrid_guide.md",
+      "robots/libero/guides/pro_hybrid_guide.md",
+      "robots/libero/guides/env_calibration.md"
+    ],
+    "global_memory_index": "resources/libero/memory/MEMORY.md was requested but not present/readable in this checkout"
+  },
+  "localization": {
+    "method": "Identified the patterned black/white bowl and the top drawer handle/cavity in agentview_high, then sampled multiple hi-res pixels with back_project; wrist view was used only to confirm the chosen bowl under the gripper.",
+    "bowl_agentview_pixels_rc": [
+      [
+        579,
+        682
+      ],
+      [
+        616,
+        694
+      ],
+      [
+        633,
+        642
+      ],
+      [
+        602,
+        649
+      ]
+    ],
+    "bowl_agentview_xyz_samples": [
+      [
+        -0.1031,
+        0.1409,
+        0.9238
+      ],
+      [
+        -0.0745,
+        0.1489,
+        0.9092
+      ],
+      [
+        -0.0197,
+        0.0995,
+        0.9434
+      ],
+      [
+        -0.0891,
+        0.1132,
+        0.9111
+      ]
+    ],
+    "drawer_handle_agentview_pixels_rc": [
+      [
+        542,
+        208
+      ],
+      [
+        588,
+        236
+      ],
+      [
+        631,
+        238
+      ],
+      [
+        680,
+        235
+      ]
+    ],
+    "drawer_handle_xyz_samples": [
+      [
+        0.0884,
+        -0.1838,
+        1.127
+      ],
+      [
+        0.1187,
+        -0.1631,
+        1.1162
+      ],
+      [
+        0.1307,
+        -0.1631,
+        1.0928
+      ],
+      [
+        0.1512,
+        -0.1642,
+        1.0723
+      ]
+    ]
+  },
+  "successful_commands": [
+    {
+      "step": 1,
+      "action": "pi0_pick",
+      "prompt": "Open the top layer of the drawer and put the bowl inside",
+      "max_chunks": 10,
+      "lift_thresh": 0.04,
+      "gripper_closed_thresh": 0.06,
+      "result": "No grasp; moved the arm and opened the top drawer partway, leaving gripper open."
+    },
+    {
+      "step": 2,
+      "action": "move_pose",
+      "xyz": [
+        -0.075,
+        0.135,
+        1.06
+      ],
+      "gripper": -1,
+      "target_pitch": 0.45,
+      "target_yaw": 0.2,
+      "step_clip": 0.008,
+      "max_steps": 150,
+      "tol": 0.012,
+      "result": "Reached pitched side pre-position over the agentview-identified bowl."
+    },
+    {
+      "step": 3,
+      "action": "pi0_pick",
+      "prompt": "pick up the bowl from the side",
+      "max_chunks": 16,
+      "lift_thresh": 0.04,
+      "gripper_closed_thresh": 0.06,
+      "result": "Successful side/rim grasp; gripper opening about 0.0166 m and bowl visible in wrist."
+    },
+    {
+      "step": 4,
+      "action": "move_to",
+      "xyz": [
+        -0.066,
+        0.147,
+        1.18
+      ],
+      "gripper": 1,
+      "step_clip": 0.008,
+      "max_steps": 80,
+      "tol": 0.012,
+      "result": "Lifted while holding closed; bowl remained in gripper."
+    },
+    {
+      "step": 5,
+      "action": "move_pose",
+      "xyz": [
+        0.095,
+        -0.105,
+        1.205
+      ],
+      "gripper": 1,
+      "target_pitch": 0.45,
+      "target_yaw": 0.2,
+      "step_clip": 0.005,
+      "max_steps": 220,
+      "tol": 0.014,
+      "result": "Carried bowl to high pose over open top drawer side."
+    },
+    {
+      "step": 6,
+      "action": "move_pose",
+      "xyz": [
+        0.112,
+        -0.125,
+        1.15
+      ],
+      "gripper": 1,
+      "target_pitch": 0.55,
+      "target_yaw": 0.2,
+      "step_clip": 0.0035,
+      "max_steps": 220,
+      "tol": 0.012,
+      "result": "Collision-limited inward/down move; final eef about [0.1124,-0.1092,1.1840], bowl partly over drawer edge."
+    },
+    {
+      "step": 7,
+      "action": "release",
+      "max_steps": 25,
+      "result": "Released bowl into the open top drawer; environment terminated true after 9 release steps."
+    }
+  ],
+  "pick_result": {
+    "task_language_pi0_pick_step1": "failed as a pick but opened the top drawer partway, which became useful setup",
+    "side_bowl_pi0_pick_step3": "held target bowl; verified by gripper gap and wrist image"
+  },
+  "final_state": {
+    "step": 7,
+    "terminated": true,
+    "truncated": false,
+    "robot0_eef_pos": [
+      0.11243929056727059,
+      -0.10882734541017688,
+      1.1846233853205432
+    ],
+    "robot0_eef_quat": [
+      0.951887551917947,
+      0.12858116528974053,
+      0.10313601024367018,
+      -0.2583407359039751
+    ],
+    "robot0_gripper_qpos": [
+      0.029417719741185223,
+      -0.028483121376864668
+    ],
+    "object_names": [
+      "akita_black_bowl_1",
+      "cream_cheese_1",
+      "plate_1",
+      "wine_bottle_1"
+    ]
+  },
+  "strategy_notes": "Winning run used the task-language Pi0 attempt as a short contact/open step, then re-localized and used a pitched side pre-position over the bowl. A short side-grasp prompt produced a visibly held bowl with ~0.0166 m gripper opening. Keeping gripper +1, the arm lifted, carried high over the partly open top drawer, then used a very small step_clip move_pose inward/down until collision-limited with the bowl partly over the tray. Releasing from that over-edge state fired the predicate."
+}

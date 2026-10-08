@@ -1,0 +1,197 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl on the table",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the black wooden cabinet with three drawers",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the top drawer front panel and handle",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "Open the top layer of the drawer and put the bowl inside",
+        "max_chunks": 25,
+        "lift_thresh": 0.08,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the patterned black bowl",
+        "max_chunks": 10,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.094,
+          0.188,
+          1.1
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the bowl",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the bowl",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.065,
+          0.17,
+          1.2
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the bowl",
+      "offset": [
+        0.029,
+        -0.018
+      ],
+      "anchor_distance": 0.0341
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the open top drawer cavity",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0,
+          -0.09,
+          1.2
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the top layer of the drawer handle",
+      "offset": [
+        0.009,
+        -0.004
+      ],
+      "anchor_distance": 0.0098
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0,
+          -0.09,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the top layer of the drawer handle",
+      "offset": [
+        0.009,
+        -0.004
+      ],
+      "anchor_distance": 0.0098
+    },
+    {
+      "action": "release",
+      "arguments": {}
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.015,
+          -0.09,
+          1.105
+        ],
+        "gripper": 1,
+        "tol": 0,
+        "step_clip": 0.008,
+        "max_steps": 40
+      },
+      "anchor": "the top layer of the drawer handle",
+      "offset": [
+        -0.006,
+        -0.004
+      ],
+      "anchor_distance": 0.0072
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.009,
+          -0.086,
+          1.22
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the top layer of the drawer handle",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    }
+  ]
+}

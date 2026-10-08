@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the brown barbecue sauce bottle with red and yellow label",
+      "locator": "segment",
+      "median_xy": [
+        -0.1927,
+        -0.0859
+      ]
+    },
+    {
+      "phrase": "the woven basket",
+      "locator": "segment",
+      "median_xy": [
+        0.0737,
+        0.2352
+      ]
+    }
+  ]
+}

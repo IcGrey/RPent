@@ -1,0 +1,30 @@
+{
+  "suite": "libero_pro_goal_task",
+  "task_id": 0,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "open the bottom drawer of the cabinet",
+  "libero_terminated": true,
+  "total_attempts": 62,
+  "final_state": {
+    "step": 5,
+    "terminated": true,
+    "truncated": false,
+    "state": {
+      "robot0_eef_pos": [0.0066048386470764775, 0.021477850980207172, 0.9807200886974183],
+      "robot0_gripper_qpos": [0.03922008454594211, -0.025884953542936195],
+      "object_names": ["akita_black_bowl_1", "cream_cheese_1", "plate_1", "wine_bottle_1"]
+    }
+  },
+  "localization_summary": "Agentview RGB identified the cabinet front and the three gray handles; the destination/action target was the lowest visible gray handle. Wrist geometry at the low pre-contact pose confirmed the lower handle remained in view, while the upper/middle handles were treated as wrong-joint distractors.",
+  "pick_result": {
+    "lowest_handle_pi0_doubled_step5": {
+      "primitive": "pi0_doubled",
+      "prompt": "pull the lowest gray drawer handle outward",
+      "max_chunks": 35,
+      "chunks_used": 11,
+      "terminated": true
+    }
+  },
+  "strategy_notes": "From the reset preceding attempt 62, first inspect the initial RGB and identify the bottom drawer as the lowest gray handle on the cabinet front, not the upper/middle handles. Move with `move_pose` to [0.06,-0.13,1.025] using target_pitch=-1.15, target_yaw=0.95, gripper=-1, max_steps=180, step_clip=0.005, tol=0.018, ori_tol=0.12; the actual reached pose was [0.0064,-0.1300,1.0246], with wrist view showing the low handle region. Then run `pi0_doubled` with prompt `pull the lowest gray drawer handle outward`, max_chunks=35. It terminated in 11 chunks with the bottom drawer visibly open. The key change from prior failed families was not more post-opener pushing; it was a low pre-contact pose plus a spatially specific lowest-handle contact prompt that avoided Pi0 grounding to the upper drawer and let the learned contact motion complete the bottom drawer opening."
+}

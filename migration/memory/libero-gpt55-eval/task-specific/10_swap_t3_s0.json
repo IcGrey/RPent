@@ -1,0 +1,25 @@
+{
+  "suite": "libero_10_swap",
+  "task_id": 3,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "put the black bowl in the bottom drawer of the cabinet and close it",
+  "libero_terminated": true,
+  "attempts_total": 8,
+  "attempts_by_this_agent": "6,7,8 (agent 2); attempts 1-5 by agent 1 all failed the drawer-close",
+  "solved_on_attempt": 8,
+  "final_state": {
+    "eef_pos": [-0.1977, -0.1194, 0.9326],
+    "drawer": "fully closed, flush with cabinet",
+    "bowl": "inside the closed bottom drawer",
+    "libero_terminated": true
+  },
+  "localization": "Bowl localized from agentview hi-res back_project ~[-0.164,0.042,0.909]; drawer handle (open) ~[-0.099,-0.046,0.954]; interior floor ~[-0.209,-0.162,0.935]; rail/close axis diagonal toward (-x,-y).",
+  "strategy_notes": "Winning sequence (post-reset attempt 8, in recipe order): (1) move_to (-0.164,0.045,1.05) gripper -1 to pre-position above the bowl. (2) pi0_pick 'pick up the black bowl' max_chunks 12 lift_thresh 0.05 -> clean grasp (peak_lift 0.062, opening 0.018). (3) set_gripper +1 steps 10 to firm the grip. (4) move_to (-0.16,-0.09,1.05) gripper 1 to carry above the drawer interior. (5) move_to (-0.17,-0.11,0.965) gripper 1 step_clip 0.015 to descend into the interior (OSC stalls ~z0.994 as the wrist tilts near the cabinet). (6) move_pose (-0.17,-0.12,0.96) target_pitch 0 target_yaw 0 gripper 1 step_clip 0.015 to LEVEL the wrist and seat the bowl LOW on the drawer floor (bowl bottom ~0.92; grasp offset ~0.066). (7) release -> bowl seated low and flat in the interior. (8) move_to (-0.16,-0.09,1.05) gripper -1 to retreat straight up. (9) move_to (-0.05,-0.01,0.99) gripper 1 (gripper CLOSED = solid stub) to pre-position in front of the handle. (10) move_to (-0.05,-0.01,0.94) gripper 1 -> descent stalls high at z~0.953 ON TOP of the handle bar. (11) move_to (-0.34,-0.24,0.94) gripper 1 step_clip 0.03 -> FAILED push: fingertip rode over the handle top and slid -y without advancing -x; drawer barely moved (no jam, recoverable). (12) move_to (0,-0.02,1.0) gripper 1 to reposition further FORWARD (+x) of the handle. (13) move_to (0,-0.02,0.925) gripper 1 -> descends LOWER to z~0.933 in front of the handle (nothing blocks below). (14) move_to (-0.34,-0.24,0.928) gripper 1 step_clip 0.03 max_steps 130 -> the fingertip catches the handle FRONT FACE at bar mid-height, the arm reaches eef x=-0.197 and slides the drawer FULLY CLOSED -> libero_terminated TRUE.",
+  "key_insight": "The prior 5 attempts' verdict ('OSC force-saturated, drawer un-closable') was WRONG. The drawer slides freely when pushed with the fingertip engaging the handle's FRONT FACE at bar MID-height (eef z~0.925-0.933), which also gives the arm full reach (eef x reaches -0.197). Pushing at handle-TOP height (z~0.945-0.955) either rides over the bar (no engagement) or jams early. Second requirement: the bowl must be SEATED LOW on the drawer floor (release ~2cm high lets it perch and jam the close at ~75%). With both fixes the drawer fully closes with the bowl inside.",
+  "memory_read": [
+    "attempts/attempt_1..5_failed.json (agent 1)",
+    "wip/notes.md",
+    "no suite_ file existed for this task yet (created now)"
+  ]
+}

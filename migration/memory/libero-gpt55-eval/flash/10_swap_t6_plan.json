@@ -1,0 +1,393 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white dimpled ceramic mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the red ringed white plate",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the small chocolate pudding box",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white dimpled ceramic mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the red ringed white plate",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the small chocolate pudding box",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.093,
+          -0.106,
+          0.62
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the white mug",
+      "offset": [
+        0.003,
+        0.01
+      ],
+      "anchor_distance": 0.0104
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white dimpled ceramic mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.096,
+          -0.116,
+          0.585
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the white mug",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the white mug",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the held white dimpled ceramic mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white dimpled ceramic mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.08,
+          0.0,
+          0.64
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.038,
+        -0.046
+      ],
+      "anchor_distance": 0.0597
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.12,
+          0.056,
+          0.62
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.002,
+        0.01
+      ],
+      "anchor_distance": 0.0102
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the held white dimpled ceramic mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white dimpled ceramic mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the red ringed white plate",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.118,
+          0.046,
+          0.5
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.126,
+          0.048,
+          0.64
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.008,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.008,
+        0.002
+      ],
+      "anchor_distance": 0.0082
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.0,
+          0.048,
+          0.66
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.118,
+        0.002
+      ],
+      "anchor_distance": 0.118
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.18,
+          0.004,
+          0.62
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the white mug",
+      "offset": [
+        -0.084,
+        0.12
+      ],
+      "anchor_distance": 0.1465
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the small chocolate pudding box",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.212,
+          0.005,
+          0.6
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 80
+      },
+      "anchor": "the white mug",
+      "offset": [
+        -0.116,
+        0.121
+      ],
+      "anchor_distance": 0.1676
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the chocolate pudding box",
+        "max_chunks": 12,
+        "lift_thresh": 0.04,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.15,
+          0.04,
+          0.64
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the white mug",
+      "offset": [
+        -0.054,
+        0.156
+      ],
+      "anchor_distance": 0.1651
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.05,
+          0.13,
+          0.64
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.068,
+        0.084
+      ],
+      "anchor_distance": 0.1081
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.156,
+          0.13,
+          0.64
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.038,
+        0.084
+      ],
+      "anchor_distance": 0.0922
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.156,
+          0.13,
+          0.47
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.038,
+        0.084
+      ],
+      "anchor_distance": 0.0922
+    }
+  ]
+}

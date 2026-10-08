@@ -1,0 +1,7 @@
+{"action": "move_to", "xyz": [-0.23, 0.29, 1.08], "gripper": -1, "tol": 0.015, "step_clip": 0.015, "max_steps": 120}
+{"action": "pi0_pick", "prompt": "pick up the black bowl next to the ramekin", "max_chunks": 16, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "move_to", "xyz": [-0.05, 0.27, 1.11], "gripper": 1, "tol": 0.018, "step_clip": 0.01, "max_steps": 120}
+{"action": "move_to", "xyz": [0.025, 0.225, 1.015], "gripper": 1, "tol": 0.018, "step_clip": 0.004, "max_steps": 140}
+{"action": "move_to", "xyz": [-0.005, 0.225, 1.015], "gripper": 1, "tol": 0.018, "step_clip": 0.004, "max_steps": 80}
+{"action": "release", "max_steps": 50}
+{"action": "pi0_doubled", "prompt": "put the black bowl on the plate", "max_chunks": 20}

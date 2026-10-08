@@ -1,0 +1,106 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.117,
+          -0.195,
+          0.15
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the flat brown chocolate pudding box",
+      "offset": [
+        -0.0003,
+        0.0019
+      ],
+      "anchor_distance": 0.0019
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the chocolate pudding",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 6
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.112,
+          -0.197,
+          0.22
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the flat brown chocolate pudding box",
+      "offset": [
+        -0.0053,
+        -0.0001
+      ],
+      "anchor_distance": 0.0053
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.04,
+          0.02,
+          0.22
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 120
+      },
+      "anchor": "the flat brown chocolate pudding box",
+      "offset": [
+        -0.0773,
+        0.2169
+      ],
+      "anchor_distance": 0.2303
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.044,
+          0.269,
+          0.22
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 120
+      },
+      "anchor": "the open woven basket",
+      "offset": [
+        -0.104,
+        0.018
+      ],
+      "anchor_distance": 0.1055
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 25
+      }
+    }
+  ]
+}

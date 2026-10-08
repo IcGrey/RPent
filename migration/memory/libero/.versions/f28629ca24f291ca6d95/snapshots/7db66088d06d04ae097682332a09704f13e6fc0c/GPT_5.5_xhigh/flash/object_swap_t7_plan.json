@@ -1,0 +1,106 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.078,
+          -0.103,
+          0.22
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the tall red milk carton",
+      "offset": [
+        0.0008,
+        -0.0009
+      ],
+      "anchor_distance": 0.0012
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the milk",
+        "max_chunks": 20,
+        "lift_thresh": 0.08,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.061,
+          -0.094,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the tall red milk carton",
+      "offset": [
+        -0.0162,
+        0.0081
+      ],
+      "anchor_distance": 0.0181
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.055,
+          0.1,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.0316,
+        -0.1642
+      ],
+      "anchor_distance": 0.1672
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.018,
+          0.313,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.0686,
+        0.0488
+      ],
+      "anchor_distance": 0.0842
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

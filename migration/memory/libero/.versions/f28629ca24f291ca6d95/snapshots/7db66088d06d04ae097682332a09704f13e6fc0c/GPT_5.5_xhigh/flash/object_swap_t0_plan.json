@@ -1,0 +1,155 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.086,
+          0.248,
+          0.24
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        0.0004,
+        0.0002
+      ],
+      "anchor_distance": 0.0004
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.193,
+          -0.084,
+          0.18
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the blue and yellow label can",
+      "offset": [
+        -0.0186,
+        -0.0029
+      ],
+      "anchor_distance": 0.0188
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the alphabet soup",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.193,
+          -0.084,
+          0.18
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the blue and yellow label can",
+      "offset": [
+        -0.0186,
+        -0.0029
+      ],
+      "anchor_distance": 0.0188
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "Pick the alphabet soup and place it in the basket",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.08,
+          0.15,
+          0.25
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.1656,
+        -0.0978
+      ],
+      "anchor_distance": 0.1923
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.005,
+          0.25,
+          0.25
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.0806,
+        0.0022
+      ],
+      "anchor_distance": 0.0806
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.005,
+          0.25,
+          0.18
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.0806,
+        0.0022
+      ],
+      "anchor_distance": 0.0806
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

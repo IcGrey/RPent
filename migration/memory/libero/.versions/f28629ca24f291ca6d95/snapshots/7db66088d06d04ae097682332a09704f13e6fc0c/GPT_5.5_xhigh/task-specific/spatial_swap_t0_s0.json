@@ -1,0 +1,46 @@
+{
+  "suite": "libero_spatial_swap",
+  "task_id": 0,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "Pick the akita black bowl between the plate and the ramekin and place it on the plate",
+  "libero_terminated": true,
+  "attempts": 1,
+  "final_state": {
+    "step": 19,
+    "terminated": true,
+    "truncated": false,
+    "robot0_eef_pos": [0.062497174259499425, 0.019823779125217225, 0.9950581543303181],
+    "robot0_gripper_qpos": [0.006628437894196316, -0.006896611767165017]
+  },
+  "memory_read": [
+    "memory/MEMORY.md",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md",
+    "memory/suite/suite_libero_spatial_task_t0.md",
+    "memory/global/basket-release-retreat-settle.md",
+    "memory/global/rim-perch-contact-seat.md",
+    "memory/global/visual-over-pick-heuristic.md"
+  ],
+  "localization": {
+    "method": "agentview_high semantic identity, multi-pixel back_project medians, wrist close-view confirmation",
+    "target_bowl_relation": "lower/front patterned black bowl visually between the red-rim plate and silver ramekin; rejected the upper/right duplicate bowl",
+    "agentview_samples": {
+      "target_bowl_pixels_rc": [[610,736],[625,760],[590,780]],
+      "target_bowl_xyz_median_approx": [-0.0748, 0.2017, 0.9155],
+      "plate_pixels_rc": [[792,544],[755,555]],
+      "plate_xyz_median_approx": [0.0871, 0.0270, 0.9082],
+      "ramekin_pixels_rc": [[520,700],[515,725]],
+      "ramekin_xyz_median_approx": [-0.1688, 0.1731, 0.9363],
+      "other_bowl_pixel_rc": [600,865],
+      "other_bowl_xyz_approx": [-0.1027, 0.2964, 0.9004]
+    }
+  },
+  "pick_result": {
+    "bowl_pi0_pick_step2": "reported success but firming the gripper over-tightened and the bowl did not transport to the plate",
+    "bowl_pi0_pick_step10": "successful visual hold of target bowl with gripper opening about 0.021 before scripted carry",
+    "raised_bowl_pi0_pick_step17": "regrasped staged near-plate bowl and enabled final low contact seating"
+  },
+  "strategy_notes": "From step 0, classified the lower/front patterned black bowl as the one between the red-rim plate and silver ramekin using agentview RGB and back_project medians. Moved above it at [-0.075,0.20,1.06], used pi0_pick 'pick up the black patterned bowl', then discovered after release/retreat that the first grasp did not seat the bowl. Recovered in the same episode by returning to the target, using pi0_pick 'pick up the black bowl between the plate and the ramekin', carrying toward the plate with gripper held closed, and observing a large held-bowl offset. After a low release still left the bowl beside the plate, moved near the staged bowl and used pi0_pick 'pick up the raised black bowl'. The final successful manipulation was a slow low closed-gripper move_to to [0.05,0.02,0.995] with step_clip 0.004, which visibly put the bowl footprint over the plate, followed by release max_steps 35; termination fired after 3 release steps."
+}

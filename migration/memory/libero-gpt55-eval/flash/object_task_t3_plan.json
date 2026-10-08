@@ -1,0 +1,66 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.1294,
+          0.058,
+          0.2
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the tall orange bottle with silver cap and tomato ketchup label",
+      "offset": [
+        0.0032,
+        -0.0007
+      ],
+      "anchor_distance": 0.0033
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the ketchup",
+        "max_chunks": 15,
+        "lift_thresh": 0.08,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.019,
+          0.274,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the woven basket with white fabric interior",
+      "offset": [
+        -0.0636,
+        0.0086
+      ],
+      "anchor_distance": 0.0642
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    }
+  ]
+}

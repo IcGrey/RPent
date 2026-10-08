@@ -1,0 +1,10 @@
+{"action": "rotate_wrist", "delta_yaw": 1.57, "gripper": -1, "max_steps": 60, "step_clip": 0.1, "tol": 0.02}
+{"action": "move_to", "xyz": [-0.185, -0.105, 1.12], "gripper": -1, "step_clip": 0.012, "max_steps": 100, "tol": 0.012, "target_yaw": 1.57}
+{"action": "pi0_pick", "prompt": "pick up the bowl on the stove", "max_chunks": 16, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_pose", "xyz": [-0.275, -0.095, 1.1], "target_pitch": 0.0, "target_yaw": 1.57, "gripper": 1, "step_clip": 0.008, "pitch_step": 0.04, "yaw_step": 0.04, "max_steps": 120, "tol": 0.012, "ori_tol": 0.08}
+{"action": "move_pose", "xyz": [-0.08, 0.08, 1.1], "target_pitch": 0.0, "target_yaw": 1.57, "gripper": 1, "step_clip": 0.008, "pitch_step": 0.04, "yaw_step": 0.04, "max_steps": 160, "tol": 0.012, "ori_tol": 0.08}
+{"action": "move_pose", "xyz": [0.08, 0.235, 1.095], "target_pitch": 0.0, "target_yaw": 1.57, "gripper": 1, "step_clip": 0.008, "pitch_step": 0.04, "yaw_step": 0.04, "max_steps": 180, "tol": 0.012, "ori_tol": 0.08}
+{"action": "move_pose", "xyz": [0.065, 0.235, 1.015], "target_pitch": 0.0, "target_yaw": 1.57, "gripper": 1, "step_clip": 0.004, "pitch_step": 0.03, "yaw_step": 0.03, "max_steps": 160, "tol": 0.012, "ori_tol": 0.08}
+{"action": "move_pose", "xyz": [0.045, 0.205, 1.015], "target_pitch": 0.0, "target_yaw": 1.57, "gripper": 1, "step_clip": 0.003, "pitch_step": 0.03, "yaw_step": 0.03, "max_steps": 100, "tol": 0.01, "ori_tol": 0.08}
+{"action": "release", "max_steps": 80}

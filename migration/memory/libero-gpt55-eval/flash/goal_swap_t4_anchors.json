@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the black patterned bowl",
+      "locator": "segment",
+      "median_xy": [
+        -0.0781,
+        0.1464
+      ]
+    },
+    {
+      "phrase": "the top surface of the drawer",
+      "locator": "molmo",
+      "median_xy": [
+        -0.315,
+        -0.185
+      ]
+    }
+  ]
+}

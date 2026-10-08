@@ -1,0 +1,8 @@
+{"action":"pi0_pick","prompt":"pick up the book","max_chunks":16,"lift_thresh":0.05}
+{"action":"set_gripper","gripper":1,"steps":8}
+{"action":"move_to","xyz":[-0.1,-0.017,1.22],"gripper":1}
+{"action":"move_to","xyz":[-0.28,-0.085,1.21],"gripper":1}
+{"action":"move_to","xyz":[-0.454,-0.152,1.21],"gripper":1}
+{"action":"move_to","xyz":[-0.454,-0.152,1.08],"gripper":1,"step_clip":0.015}
+{"action":"release","max_steps":20}
+{"action":"move_to","xyz":[-0.441,-0.157,1.24],"gripper":-1,"step_clip":0.02}

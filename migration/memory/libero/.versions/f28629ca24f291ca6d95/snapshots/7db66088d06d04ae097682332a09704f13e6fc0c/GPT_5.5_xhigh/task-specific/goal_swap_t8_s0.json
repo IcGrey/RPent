@@ -1,0 +1,66 @@
+{
+  "suite": "libero_goal_swap",
+  "task_id": 8,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Put the bowl on the plate",
+  "perturbation_semantics": "Objects and fixtures are visually relocated; the target bowl and red-ring plate were localized from agentview_high/wrist_high and back_project, not from object coordinates.",
+  "expected_baseline_behavior": "Pi0 may use memorized base-scene target/place habits; the hybrid localizes the visible bowl and the relocated plate surface before grasping and placing.",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_read": [
+    "memory/MEMORY.md",
+    "global/contact-skill-state-change.md",
+    "global/visual-over-pick-heuristic.md",
+    "global/point-prompt-after-text-misground.md",
+    "global/low-pose-settle-regrasp.md",
+    "global/near-target-repick.md",
+    "global/low-contact-seat-after-release.md",
+    "suite/suite_libero_goal_task_t8.md",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "localization": {
+    "bowl": {
+      "agentview_evidence": "patterned black/white bowl with yellow rim, lower-right of stove and right of the wine bottle in agentview_high",
+      "agentview_pixels_rc": [[615,700],[650,720],[610,745]],
+      "agentview_xyz_samples": [[-0.0724,0.1532,0.9121],[0.0056,0.1553,0.9507],[-0.0489,0.1831,0.9399]],
+      "wrist_pixels_rc": [[575,520],[610,535],[545,575]],
+      "wrist_xyz_samples": [[-0.039,0.1559,0.9077],[-0.0552,0.1489,0.9067],[-0.025,0.1306,0.9077]],
+      "final_xyz_used": [-0.039,0.149,0.907]
+    },
+    "plate": {
+      "agentview_evidence": "white ceramic plate with red concentric rings near the cabinet, not the gray stove burner",
+      "agentview_pixels_rc": [[545,480],[575,500],[570,455],[538,470],[555,490],[560,445]],
+      "agentview_xyz_samples": [[-0.1528,-0.0276,0.9185],[-0.1143,-0.0101,0.9185],[-0.1405,-0.0492,0.9004],[-0.1724,-0.0369,0.9097],[-0.1603,-0.0193,0.9004],[-0.1537,-0.0584,0.9004]],
+      "final_xyz_used": [-0.160,-0.036,0.905]
+    }
+  },
+  "strategy_notes": "Step 1 moved open over the visually identified bowl at [-0.05, 0.16, 1.12] and accepted wrist refinement near [-0.039, 0.149]. Step 2 ran pi0_pick('pick up the bowl', max_chunks=20, lift_thresh=0.05, gripper_closed_thresh=0.06); the bowl was visibly held. Step 3 locked the gripper for 8 steps. Step 4 carried slowly to [-0.09, 0.07, 1.12]. Step 5 carried to the plate-offset target [-0.16, 0.009, 1.11]. Step 6 descended to [-0.16, 0.009, 1.02] while holding gripper:+1. Step 7 released for 30 steps; the bowl was partly on the plate but termination was false. Step 8 made a short low closed-gripper centering nudge to [-0.172, -0.02, 1.03]. Step 9 released for 40 steps; the bowl was more centered but still false. Step 10 used a short local pi0_pick('pick up the bowl', max_chunks=12, lift_thresh=0.04) from the low on-plate pose; this acted as a local settle/regrasp and immediately produced terminated:true.",
+  "pick_result": {
+    "initial_bowl_pi0_pick_step2": {
+      "success": true,
+      "chunks_used": 8,
+      "peak_lift_m": 0.05451244115829468,
+      "final_gripper_opening": 0.0049540577456355095,
+      "visual_judgment": "target bowl visibly raised and held in wrist/agentview"
+    },
+    "low_local_settle_pi0_pick_step10": {
+      "success": true,
+      "chunks_used": 10,
+      "peak_lift_m": 0.10781949758529663,
+      "final_gripper_opening": 0.013787107542157173,
+      "terminated": true,
+      "visual_judgment": "started from bowl already on plate; local Pi0 contact/regrasp seated the bowl enough for predicate"
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.2259945403595007, -0.025086289534489912, 0.9470654003855951],
+    "robot0_eef_quat": [0.997386215202019, 0.009451515279574496, -0.05564691496395045, 0.0451090616052409],
+    "robot0_gripper_qpos": [0.006660940306829162, -0.007126167679935316],
+    "object_names": ["akita_black_bowl_1", "cream_cheese_1", "plate_1", "wine_bottle_1"]
+  }
+}

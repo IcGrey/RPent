@@ -1,0 +1,28 @@
+{
+  "anchors": [
+    {
+      "phrase": "the white ceramic plate with red rings",
+      "locator": "segment",
+      "median_xy": [
+        0.0342,
+        -0.0133
+      ]
+    },
+    {
+      "phrase": "the flat top surface of the dark wooden drawer cabinet on the left",
+      "locator": "segment",
+      "median_xy": [
+        0.0312,
+        -0.2422
+      ]
+    },
+    {
+      "phrase": "the top surface of the drawer",
+      "locator": "molmo",
+      "median_xy": [
+        0,
+        -0.15
+      ]
+    }
+  ]
+}

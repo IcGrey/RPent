@@ -1,0 +1,74 @@
+{
+  "suite": "libero_goal_swap",
+  "task_id": 2,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Put the wine bottle on the top of the drawer",
+  "perturbation_semantics": "The destination drawer/wine-rack fixture was localized visually in the swapped scene rather than from benchmark coordinates.",
+  "expected_baseline_behavior": "A prompt-driven policy may use the memorized unswapped fixture location; this run instead used the observed drawer top surface.",
+  "attempts": 1,
+  "libero_terminated": true,
+  "terminated": true,
+  "memory_consulted": {
+    "suite_writeup": "none found before run",
+    "global_memory_index": "read blocked by runtime permissions for resources/libero/memory/MEMORY.md",
+    "guides": [
+      "robots/libero/guides/strict_hybrid_guide.md",
+      "robots/libero/guides/pro_hybrid_guide.md",
+      "robots/libero/guides/env_calibration.md"
+    ],
+    "seed0_reference": "not present at resources/libero/results_goal_pert/goal_swap_t2_s0.json or recipe_goal_swap_t2_s0.jsonl"
+  },
+  "localization_table": [
+    {
+      "name_or_role": "wine_bottle_target",
+      "agentview_evidence": "dark green vertical bottle centered between the bowl and plate; it is the only bottle in the scene",
+      "agentview_pixels_rc": [[430,505],[450,505],[470,505]],
+      "agentview_xyz_samples": [[-0.3501,-0.007,0.9009],[-0.3164,-0.0068,0.9009],[-0.075,-0.0052,1.0576]],
+      "agentview_xyz_used": [-0.075,-0.0052,1.0576],
+      "wrist_refine": "visual confirmation after move_to step1; wrist showed cap/body under gripper and within the agentview identity anchor",
+      "final_xyz": [-0.075,-0.005,1.0576],
+      "uncertainty": "top/cap samples were edge-biased to table depth; the visible bottle body sample was used for xy pre-position"
+    },
+    {
+      "name_or_role": "drawer_top_destination",
+      "agentview_evidence": "dark horizontal top surface of the drawer/cabinet fixture on image-left, directly above the visible drawer handles and next to the slatted wine rack",
+      "agentview_pixels_rc": [[210,135],[240,155],[270,180]],
+      "agentview_xyz_samples": [[-0.3684,-0.3364,1.127],[-0.3103,-0.3054,1.127],[-0.2566,-0.2729,1.127]],
+      "agentview_xyz_used": [-0.3103,-0.3054,1.127],
+      "wrist_refine": "visual confirmation at step5; wrist saw the dark top surface directly under the held bottle",
+      "final_xyz": [-0.31,-0.305,1.127],
+      "uncertainty": "large flat top surface; avoid confusing it with the slatted wine rack by choosing dark planar pixels above the drawer handles"
+    }
+  ],
+  "strategy_notes": "Localized the target bottle and swapped drawer-top destination from agentview_high pixels, using back_project samples to distinguish the bottle body from table-depth edge pixels and to find the dark drawer top surface at z about 1.127. Command sequence: move_to [-0.075,-0.005,1.2] with gripper open; pi0_pick 'pick up the wine bottle' with max_chunks 20, lift_thresh 0.08, gripper_closed_thresh 0.06; set_gripper +1 for 10 steps; carry closed to [-0.2,-0.16,1.22]; carry closed to [-0.31,-0.305,1.22]; descend closed toward [-0.31,-0.305,1.145] with step_clip 0.01. The predicate fired during the descent before release, with the held bottle positioned over the drawer top.",
+  "pick_result": {
+    "wine_bottle_pi0_pick_step2": {
+      "name": "pick",
+      "instruction": "pick up the wine bottle",
+      "success": true,
+      "chunks_used": 15,
+      "max_chunks": 20,
+      "peak_lift_m": 0.09970098733901978,
+      "min_gripper_opening": 0.033545561134815216,
+      "final_gripper_opening": 0.033545561134815216,
+      "terminated": false,
+      "truncated": false
+    }
+  },
+  "command_sequence": [
+    {"step": 1, "action": "move_to", "xyz": [-0.075,-0.005,1.2], "gripper": -1, "max_steps": 100, "step_clip": 0.02, "tol": 0.012},
+    {"step": 2, "action": "pi0_pick", "prompt": "pick up the wine bottle", "max_chunks": 20, "lift_thresh": 0.08, "gripper_closed_thresh": 0.06},
+    {"step": 3, "action": "set_gripper", "gripper": 1, "steps": 10},
+    {"step": 4, "action": "move_to", "xyz": [-0.2,-0.16,1.22], "gripper": 1, "max_steps": 100, "step_clip": 0.018, "tol": 0.012},
+    {"step": 5, "action": "move_to", "xyz": [-0.31,-0.305,1.22], "gripper": 1, "max_steps": 100, "step_clip": 0.015, "tol": 0.012},
+    {"step": 6, "action": "move_to", "xyz": [-0.31,-0.305,1.145], "gripper": 1, "max_steps": 100, "step_clip": 0.01, "tol": 0.012}
+  ],
+  "final_state": {
+    "robot0_eef_pos": [-0.3094285416665333,-0.30532384847899463,1.1845921780278876],
+    "robot0_eef_quat": [0.9893613561888424,0.06462118487294788,-0.12467882705397124,0.037992096944432126],
+    "robot0_gripper_qpos": [0.015359203264513845,-0.015357696429166198],
+    "object_names": ["akita_black_bowl_1","cream_cheese_1","plate_1","wine_bottle_1"]
+  }
+}

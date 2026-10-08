@@ -1,0 +1,6 @@
+{"action": "segment", "prompt": "the tomato sauce can", "camera": "agentview"}
+{"action": "segment", "prompt": "the basket interior", "camera": "agentview"}
+{"action": "move_to", "xyz": [-0.099, -0.2374, 0.18], "gripper": -1, "step_clip": 0.02, "max_steps": 100, "tol": 0.012}
+{"action": "pi0_pick", "prompt": "pick up the tomato sauce can", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 5}
+{"action": "move_to", "xyz": [-0.003, 0.253, 0.125], "gripper": 1, "step_clip": 0.012, "max_steps": 100, "tol": 0.01}

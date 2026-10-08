@@ -1,0 +1,120 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the dark green wine bottle standing on the table",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned ceramic bowl in front of the bottle",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.17,
+          -0.053,
+          1.13
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the dark green wine bottle standing on the table",
+      "offset": [
+        0.0071,
+        -0.0022
+      ],
+      "anchor_distance": 0.0074
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "put the wine bottle in the bowl",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.137,
+          -0.043,
+          1.25
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the dark green wine bottle standing on the table",
+      "offset": [
+        0.0401,
+        0.0078
+      ],
+      "anchor_distance": 0.0409
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.094,
+          0.004,
+          1.25
+        ],
+        "gripper": 1,
+        "tol": 0.008,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the patterned ceramic bowl in front of the bottle",
+      "offset": [
+        0.0207,
+        -0.0001
+      ],
+      "anchor_distance": 0.0207
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.094,
+          0.004,
+          1.05
+        ],
+        "gripper": 1,
+        "tol": 0.008,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the patterned ceramic bowl in front of the bottle",
+      "offset": [
+        0.0207,
+        -0.0001
+      ],
+      "anchor_distance": 0.0207
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    }
+  ]
+}

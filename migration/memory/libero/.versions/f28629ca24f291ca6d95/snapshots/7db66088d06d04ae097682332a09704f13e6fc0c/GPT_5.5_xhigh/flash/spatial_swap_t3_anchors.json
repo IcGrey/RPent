@@ -1,0 +1,44 @@
+{
+  "anchors": [
+    {
+      "phrase": "the patterned bowl on the red cookies box",
+      "locator": "segment",
+      "median_xy": [
+        0.1161,
+        0.0188
+      ]
+    },
+    {
+      "phrase": "the patterned bowl on top of the dark cabinet",
+      "locator": "segment",
+      "median_xy": [
+        0.1868,
+        0.1931
+      ]
+    },
+    {
+      "phrase": "the white ceramic plate with red rings",
+      "locator": "segment",
+      "median_xy": [
+        0.0413,
+        -0.281
+      ]
+    },
+    {
+      "phrase": "the akita black bowl on the cookies box",
+      "locator": "molmo",
+      "median_xy": [
+        0.042,
+        0.02
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        -0.006,
+        -0.25
+      ]
+    }
+  ]
+}

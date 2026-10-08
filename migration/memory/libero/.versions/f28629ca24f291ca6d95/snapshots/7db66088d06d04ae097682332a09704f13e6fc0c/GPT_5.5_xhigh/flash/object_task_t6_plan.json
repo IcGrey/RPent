@@ -1,0 +1,106 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.124,
+          0.059,
+          0.25
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the yellow and orange juice carton",
+      "offset": [
+        -0.0003,
+        -0.0002
+      ],
+      "anchor_distance": 0.0004
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the orange juice",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.139,
+          0.074,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the yellow and orange juice carton",
+      "offset": [
+        -0.0153,
+        0.0148
+      ],
+      "anchor_distance": 0.0213
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0,
+          0.25,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.015,
+        "max_steps": 120
+      },
+      "anchor": "the woven basket",
+      "offset": [
+        -0.0701,
+        -0.0071
+      ],
+      "anchor_distance": 0.0705
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.01,
+          0.28,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 60
+      },
+      "anchor": "the woven basket",
+      "offset": [
+        -0.0601,
+        0.0229
+      ],
+      "anchor_distance": 0.0643
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl on the stove",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white plate with red rim",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.295,
+          -0.15,
+          1.1
+        ],
+        "gripper": -1,
+        "step_clip": 0.015,
+        "tol": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the patterned black bowl on the stove",
+      "offset": [
+        -0.0001,
+        0.0003
+      ],
+      "anchor_distance": 0.0003
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.045,
+          0.196,
+          1.1
+        ],
+        "gripper": -1,
+        "step_clip": 0.015,
+        "tol": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the white plate with red rim",
+      "offset": [
+        -0.0001,
+        -0.0004
+      ],
+      "anchor_distance": 0.0004
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white plate with red rings",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.295,
+          -0.15,
+          1.1
+        ],
+        "gripper": -1,
+        "step_clip": 0.015,
+        "tol": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the patterned black bowl on the stove",
+      "offset": [
+        -0.0001,
+        0.0003
+      ],
+      "anchor_distance": 0.0003
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the black bowl on the stove",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.215,
+          -0.061,
+          1.2
+        ],
+        "gripper": 1,
+        "step_clip": 0.015,
+        "tol": 0.01,
+        "max_steps": 80
+      },
+      "anchor": "the patterned black bowl on the stove",
+      "offset": [
+        0.0799,
+        0.0893
+      ],
+      "anchor_distance": 0.1198
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned bowl held by the gripper",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.05,
+          0.07,
+          1.2
+        ],
+        "gripper": 1,
+        "step_clip": 0.012,
+        "tol": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the white plate with red rim",
+      "offset": [
+        -0.0951,
+        -0.1264
+      ],
+      "anchor_distance": 0.1582
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0,
+          0.23,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.012,
+        "tol": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.041,
+        -0.011
+      ],
+      "anchor_distance": 0.0424
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.044,
+          0.255,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.01,
+        "tol": 0.008,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.003,
+        0.014
+      ],
+      "anchor_distance": 0.0143
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.037,
+          0.239,
+          1.1
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "tol": 0.006,
+        "max_steps": 60
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.004,
+        -0.002
+      ],
+      "anchor_distance": 0.0045
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.041,
+          0.241,
+          0.97
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "tol": 0.008,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

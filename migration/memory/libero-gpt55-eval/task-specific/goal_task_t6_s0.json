@@ -1,0 +1,55 @@
+{
+  "suite": "libero_goal_task",
+  "task_id": 6,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "put the wine bottle in the bowl",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 3,
+  "memory_read": {
+    "task_suite_writeup": "none found/readable before start",
+    "global_memory_index": "blocked by runtime access policy",
+    "guides": ["robots/libero/guides/strict_hybrid_guide.md", "robots/libero/guides/pro_hybrid_guide.md", "robots/libero/guides/env_calibration.md"],
+    "seed0_reference": "resources/libero/results_goal_pert directory not present/readable through runtime list_dir"
+  },
+  "localization": {
+    "bottle": {
+      "agentview_pixels_rc": [[525,458], [548,455], [506,457]],
+      "agentview_xyz_samples": [[-0.1663,-0.0467,0.9297], [-0.1273,-0.0477,0.937], [-0.1663,-0.047,0.9507]],
+      "wrist_pixels_rc_step1": [[755,523], [720,512], [663,506]],
+      "wrist_xyz_samples_step1": [[-0.179,-0.0501,1.0205], [-0.1777,-0.0474,1.0], [-0.1688,-0.0455,0.9731]],
+      "final_anchor_used": [-0.166, -0.047, 1.08]
+    },
+    "bowl_interior": {
+      "agentview_pixels_rc": [[603,486], [595,524], [634,512]],
+      "agentview_xyz_samples": [[-0.0923,-0.0216,0.9067], [-0.0993,0.01,0.9092], [-0.0622,0.0,0.9004]],
+      "wrist_pixels_rc_step1": [[430,490], [448,536], [470,508]],
+      "wrist_xyz_samples_step1": [[-0.0898,-0.0386,0.9082], [-0.0981,-0.0569,0.9268], [-0.1063,-0.046,0.9131]],
+      "final_center_estimate": [-0.098, -0.047, 0.91]
+    }
+  },
+  "strategy_notes": "Successful attempt after the last reset localized the dark green wine bottle below the patterned black/white bowl from agentview_high and wrist back-projection. The successful manipulation sequence was: move_to the bottle pre-grasp at [-0.166,-0.047,1.08] with gripper open; pi0_pick with grasp-only prompt 'pick up the wine bottle' and max_chunks=8, which did not grasp but left the scene clean; retry pi0_pick with the same grasp-only prompt and max_chunks=14 from that pose, which grasped and lifted the bottle but carried it high toward the cabinet; set_gripper +1 for 8 steps; move_to [-0.085,-0.035,1.18] closed as a high recovery waypoint; move_to [-0.06,-0.055,1.12] closed to place the held bottle body over the bowl cavity; release max_steps=60. The release fired after 5 steps with the bottle visibly in the bowl. The key was not using the full task prompt after a miss; the full prompt caused Pi0 to execute a rogue place in a failed attempt.",
+  "pick_result": {
+    "bottle_pi0_pick_step16": {
+      "success": false,
+      "chunks_used": 8,
+      "peak_lift_m": 0.0013452768325805664,
+      "final_gripper_opening": 0.07841351628303528,
+      "used_as": "missed clean setup before retry"
+    },
+    "bottle_pi0_pick_step17": {
+      "success": false,
+      "chunks_used": 14,
+      "peak_lift_m": 0.2661937475204468,
+      "final_gripper_opening": 0.014919636771082878,
+      "used_as": "visual/proprioceptive successful grasp despite heuristic success=false"
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.04006108603163207, -0.035994284270330655, 1.1153888219375536],
+    "robot0_eef_quat": [0.9094889049668963, 0.07131437532056228, -0.3678053821153099, -0.1801760042340943],
+    "robot0_gripper_qpos": [0.014469621082852439, -0.013627662764530583],
+    "object_names": ["akita_black_bowl_1", "cream_cheese_1", "plate_1", "wine_bottle_1"]
+  }
+}

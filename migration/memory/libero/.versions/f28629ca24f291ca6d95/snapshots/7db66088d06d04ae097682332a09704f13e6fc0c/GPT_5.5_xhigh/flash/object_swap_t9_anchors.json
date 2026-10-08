@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the tall rectangular orange juice carton",
+      "locator": "segment",
+      "median_xy": [
+        -0.1237,
+        0.0592
+      ]
+    },
+    {
+      "phrase": "the open white woven basket",
+      "locator": "segment",
+      "median_xy": [
+        0.0812,
+        0.2705
+      ]
+    }
+  ]
+}

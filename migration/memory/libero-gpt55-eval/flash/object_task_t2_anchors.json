@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the short orange and green tomato can",
+      "locator": "segment",
+      "median_xy": [
+        -0.1752,
+        -0.0804
+      ]
+    },
+    {
+      "phrase": "the white-lined woven basket",
+      "locator": "segment",
+      "median_xy": [
+        0.0767,
+        0.2566
+      ]
+    }
+  ]
+}

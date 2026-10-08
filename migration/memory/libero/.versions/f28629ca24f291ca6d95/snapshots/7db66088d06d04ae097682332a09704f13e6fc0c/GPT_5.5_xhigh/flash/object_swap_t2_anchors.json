@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the dark green ranch dressing bottle",
+      "locator": "segment",
+      "median_xy": [
+        -0.1835,
+        -0.0796
+      ]
+    },
+    {
+      "phrase": "the open interior of the woven basket",
+      "locator": "segment",
+      "median_xy": [
+        -0.0649,
+        0.2717
+      ]
+    }
+  ]
+}

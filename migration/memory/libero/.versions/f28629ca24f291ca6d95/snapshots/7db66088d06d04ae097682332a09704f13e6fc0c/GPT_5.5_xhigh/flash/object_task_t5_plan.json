@@ -1,0 +1,106 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.191,
+          -0.086,
+          0.2
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the brown barbecue sauce bottle with red and yellow label",
+      "offset": [
+        0.0017,
+        -0.0001
+      ],
+      "anchor_distance": 0.0017
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the bbq sauce bottle",
+        "max_chunks": 20,
+        "lift_thresh": 0.08,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.18,
+          -0.081,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the brown barbecue sauce bottle with red and yellow label",
+      "offset": [
+        0.0127,
+        0.0049
+      ],
+      "anchor_distance": 0.0136
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.1,
+          0.1,
+          0.29
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the brown barbecue sauce bottle with red and yellow label",
+      "offset": [
+        0.0927,
+        0.1859
+      ],
+      "anchor_distance": 0.2077
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.044,
+          0.247,
+          0.29
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the woven basket",
+      "offset": [
+        -0.1177,
+        0.0118
+      ],
+      "anchor_distance": 0.1183
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

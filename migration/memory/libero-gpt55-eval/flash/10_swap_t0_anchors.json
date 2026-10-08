@@ -1,0 +1,28 @@
+{
+  "anchors": [
+    {
+      "phrase": "the alphabet soup",
+      "locator": "molmo",
+      "median_xy": [
+        0.014,
+        -0.231
+      ]
+    },
+    {
+      "phrase": "the inside of the basket",
+      "locator": "molmo",
+      "median_xy": [
+        -0.048,
+        0.268
+      ]
+    },
+    {
+      "phrase": "the tomato sauce",
+      "locator": "molmo",
+      "median_xy": [
+        0.014,
+        -0.231
+      ]
+    }
+  ]
+}

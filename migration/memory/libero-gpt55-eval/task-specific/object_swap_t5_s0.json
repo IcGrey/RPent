@@ -1,0 +1,53 @@
+{
+  "suite": "libero_object_swap",
+  "task_id": 5,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Pick the tomato sauce and place it in the basket",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_files_read": [
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "memory_access_notes": "Task inbox did not exist and published MEMORY.md was denied by the runtime memory guard; proceeded with required guides and live perception.",
+  "localization": {
+    "tomato_sauce": {
+      "agentview_evidence": "green/red cylindrical can at image-left behind the orange juice carton; SAM3 'the tomato sauce can' mask highlighted the can, not the nearby orange juice or milk cartons.",
+      "agentview_pixels_rc": [[455,244],[475,248],[495,250]],
+      "manual_back_project_xyz_samples": [[-0.1329,-0.2556,0.0727],[-0.0873,-0.243,0.0772],[-0.0875,-0.2437,0.0556]],
+      "segment_world_xyz": [-0.099,-0.2374,0.0639],
+      "final_xyz_used": [-0.099,-0.2374,0.18]
+    },
+    "basket_cavity": {
+      "agentview_evidence": "white-lined woven basket at image-right; SAM3 'the basket interior' highlighted the open liner/cavity.",
+      "agentview_region_rc": {"row_range":[420,575],"col_range":[735,900],"z_band":[-0.02,0.08]},
+      "region_center_xyz": [-0.1364,0.3092,0.074],
+      "segment_world_xyz": [-0.0623,0.2539,0.1109],
+      "final_xyz_used": [-0.003,0.253,0.125]
+    }
+  },
+  "pick_result": {
+    "tomato_pi0_pick_step2": {
+      "name": "pick",
+      "instruction": "pick up the tomato sauce can",
+      "success": false,
+      "chunks_used": 20,
+      "max_chunks": 20,
+      "peak_lift_m": 0.29438313841819763,
+      "min_gripper_opening": 0.061634860932826996,
+      "final_gripper_opening": 0.061634860932826996,
+      "interpretation": "Heuristic success was false only because gripper opening was slightly above threshold; image evidence showed the tomato sauce can held by the gripper over the basket."
+    }
+  },
+  "strategy_notes": "From the initial agentview_high image, identified the target as the tomato sauce can at image-left and localized it with manual back_project samples plus a SAM3 mask, using the mask xyz [-0.099,-0.2374,0.0639] as the anchor. Identified the destination as the basket cavity at image-right using region back_project and a basket-interior SAM3 mask. Command sequence: move_to above the tomato sauce can at [-0.099,-0.2374,0.18] with open gripper; pi0_pick with prompt 'pick up the tomato sauce can' for 20 chunks; judged the grasp successful from image evidence and nonzero gripper gap despite the heuristic false flag; set_gripper +1 for 5 steps; moved down inside the basket at [-0.003,0.253,0.125] with gripper held closed and step_clip 0.012. The official predicate fired during that descent before release.",
+  "final_state": {
+    "robot0_eef_pos": [-0.002835714468435023,0.2528165972951567,0.14412907471766415],
+    "robot0_eef_quat": [0.999245045229642,-0.007019397332948207,0.02280231436758442,-0.030661410674881436],
+    "robot0_gripper_qpos": [0.03201141662190852,-0.02962110065887677],
+    "object_names": ["basket_1","bbq_sauce_1","butter_1","chocolate_pudding_1","milk_1","orange_juice_1","tomato_sauce_1"]
+  }
+}

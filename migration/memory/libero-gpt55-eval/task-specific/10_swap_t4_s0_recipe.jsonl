@@ -1,0 +1,33 @@
+{"action":"move_to","xyz":[0,0.15,0.62],"gripper":-1,"step_clip":0.012,"max_steps":90,"tol":0.01}
+{"action":"move_to","xyz":[0,0.3,0.62],"gripper":-1,"step_clip":0.01,"max_steps":90,"tol":0.01}
+{"action":"move_to","xyz":[0,0,0.62],"gripper":-1,"step_clip":0.012,"max_steps":120,"tol":0.01}
+{"action":"move_to","xyz":[0,-0.3,0.62],"gripper":-1,"step_clip":0.01,"max_steps":120,"tol":0.01}
+{"action":"move_to","xyz":[-0.173,-0.1,0.62],"gripper":-1,"step_clip":0.01,"max_steps":100,"tol":0.01}
+{"action":"move_to","xyz":[-0.173,0.031,0.62],"gripper":-1,"step_clip":0.01,"max_steps":90,"tol":0.01}
+{"action":"pi0_pick","prompt":"grasp the yellow and white mug","max_chunks":8,"lift_thresh":0.05,"gripper_closed_thresh":0.06}
+{"action":"set_gripper","gripper":1,"steps":8}
+{"action":"move_to","xyz":[-0.25,0.07,0.71],"gripper":1,"step_clip":0.008,"max_steps":110,"tol":0.01}
+{"action":"move_pose","xyz":[-0.25,0.07,0.7],"target_pitch":0,"target_yaw":1.57,"gripper":1,"step_clip":0.006,"yaw_step":0.04,"pitch_step":0.03,"max_steps":140,"tol":0.01,"ori_tol":0.04}
+{"action":"move_pose","xyz":[-0.25,0.24,0.7],"target_pitch":0,"target_yaw":1.57,"gripper":1,"step_clip":0.006,"yaw_step":0.04,"pitch_step":0.03,"max_steps":120,"tol":0.01,"ori_tol":0.04}
+{"action":"move_pose","xyz":[-0.022,0.284,0.68],"target_pitch":0,"target_yaw":1.57,"gripper":1,"step_clip":0.006,"yaw_step":0.04,"pitch_step":0.03,"max_steps":150,"tol":0.01,"ori_tol":0.04}
+{"action":"move_pose","xyz":[-0.008,0.29,0.68],"target_pitch":0,"target_yaw":1.57,"gripper":1,"step_clip":0.004,"yaw_step":0.03,"pitch_step":0.03,"max_steps":80,"tol":0.008,"ori_tol":0.04}
+{"action":"move_pose","xyz":[-0.016,0.29,0.5],"target_pitch":0,"target_yaw":1.57,"gripper":1,"step_clip":0.003,"yaw_step":0.03,"pitch_step":0.03,"max_steps":180,"tol":0.008,"ori_tol":0.04}
+{"action":"set_gripper","gripper":-1,"steps":1}
+{"action":"set_gripper","gripper":-1,"steps":2}
+{"action":"set_gripper","gripper":-1,"steps":3}
+{"action":"set_gripper","gripper":-1,"steps":5}
+{"action":"release","max_steps":20}
+{"action":"move_pose","xyz":[-0.016,0.291,0.68],"target_pitch":0,"target_yaw":1.57,"gripper":-1,"step_clip":0.006,"yaw_step":0.04,"pitch_step":0.03,"max_steps":120,"tol":0.01,"ori_tol":0.04}
+{"action":"move_pose","xyz":[-0.25,-0.2,0.72],"target_pitch":0,"target_yaw":1.57,"gripper":-1,"step_clip":0.008,"yaw_step":0.04,"pitch_step":0.03,"max_steps":150,"tol":0.01,"ori_tol":0.04}
+{"action":"move_pose","xyz":[-0.25,-0.2,0.72],"target_pitch":0,"target_yaw":1.57,"gripper":-1,"step_clip":0.008,"yaw_step":0.04,"pitch_step":0.03,"max_steps":110,"tol":0.01,"ori_tol":0.04}
+{"action":"move_pose","xyz":[-0.25,-0.192,0.72],"target_pitch":0,"target_yaw":0,"gripper":-1,"step_clip":0.006,"yaw_step":0.04,"pitch_step":0.03,"max_steps":100,"tol":0.01,"ori_tol":0.04}
+{"action":"move_to","xyz":[-0.043,-0.105,0.63],"gripper":-1,"step_clip":0.008,"max_steps":120,"tol":0.01}
+{"action":"pi0_pick","prompt":"grasp the white mug by the handle","max_chunks":8,"lift_thresh":0.05,"gripper_closed_thresh":0.06}
+{"action":"set_gripper","gripper":1,"steps":8}
+{"action":"move_to","xyz":[-0.25,-0.14,0.72],"gripper":1,"step_clip":0.008,"max_steps":120,"tol":0.01}
+{"action":"move_pose","xyz":[-0.24,-0.14,0.72],"target_pitch":0,"target_yaw":1.57,"gripper":1,"step_clip":0.006,"yaw_step":0.04,"pitch_step":0.03,"max_steps":140,"tol":0.01,"ori_tol":0.04}
+{"action":"move_to","xyz":[-0.049,-0.327,0.72],"gripper":1,"step_clip":0.012,"max_steps":120,"tol":0.008}
+{"action":"move_to","xyz":[-0.0552,-0.3269,0.5],"gripper":1,"step_clip":0.003,"max_steps":120,"tol":0.008}
+{"action":"set_gripper","gripper":-1,"steps":1}
+{"action":"set_gripper","gripper":-1,"steps":2}
+{"action":"set_gripper","gripper":-1,"steps":3}

@@ -1,0 +1,10 @@
+{"action":"move_to","xyz":[-0.018,-0.217,1.1],"gripper":-1}
+{"action":"move_to","xyz":[-0.016,-0.231,1.1],"gripper":-1}
+{"action":"pi0_pick","prompt":"pick up the moka pot","max_chunks":24,"lift_thresh":0.05}
+{"action":"set_gripper","gripper":1,"steps":6}
+{"action":"move_to","xyz":[-0.045,0.17,1.06],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.044,0.175,1.02],"gripper":1,"step_clip":0.015}
+{"action":"release","max_steps":20}
+{"action":"move_to","xyz":[-0.039,0.184,1.13],"gripper":-1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.17,0.19,1.05],"gripper":-1,"step_clip":0.025}
+{"action":"pi0_doubled","prompt":"turn on the stove","max_chunks":20}

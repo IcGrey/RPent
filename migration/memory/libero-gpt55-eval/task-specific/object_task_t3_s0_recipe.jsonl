@@ -1,0 +1,8 @@
+{"action": "segment", "prompt": "the tomato ketchup bottle", "camera": "agentview"}
+{"action": "segment", "prompt": "the basket interior", "camera": "agentview"}
+{"action": "move_to", "xyz": [-0.1326, 0.0587, 0.18], "gripper": -1, "tol": 0.012, "step_clip": 0.02, "max_steps": 80}
+{"action": "pi0_pick", "prompt": "pick up the ketchup", "max_chunks": 20, "lift_thresh": 0.08, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_to", "xyz": [-0.045, 0.246, 0.25], "gripper": 1, "tol": 0.012, "step_clip": 0.015, "max_steps": 120}
+{"action": "move_to", "xyz": [-0.045, 0.246, 0.205], "gripper": 1, "tol": 0.012, "step_clip": 0.01, "max_steps": 80}
+{"action": "release", "max_steps": 30}

@@ -1,0 +1,13 @@
+{"action":"move_to","xyz":[0.094,-0.2,0.6],"gripper":-1}
+{"action":"pi0_pick","prompt":"pick up the cream cheese box","max_chunks":16,"lift_thresh":0.05}
+{"action":"set_gripper","gripper":1,"steps":8}
+{"action":"move_to","xyz":[0.09,-0.02,0.62],"gripper":1}
+{"action":"move_to","xyz":[0.04,0.21,0.62],"gripper":1}
+{"action":"move_to","xyz":[0.04,0.2,0.52],"gripper":1,"step_clip":0.02}
+{"action":"release","max_steps":20}
+{"action":"move_to","xyz":[0.05,0.2,0.63],"gripper":-1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.05,0,0.63],"gripper":-1}
+{"action":"move_to","xyz":[-0.154,-0.142,0.6],"gripper":-1}
+{"action":"pi0_pick","prompt":"pick up the alphabet soup can","max_chunks":16,"lift_thresh":0.05}
+{"action":"set_gripper","gripper":1,"steps":5}
+{"action":"move_to","xyz":[0.05,0.18,0.58],"gripper":1,"step_clip":0.02}

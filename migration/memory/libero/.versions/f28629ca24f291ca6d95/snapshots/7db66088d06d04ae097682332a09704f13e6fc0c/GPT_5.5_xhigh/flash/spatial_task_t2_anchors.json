@@ -1,0 +1,36 @@
+{
+  "anchors": [
+    {
+      "phrase": "the patterned black bowl next to the red-rimmed plate",
+      "locator": "segment",
+      "median_xy": [
+        -0.0093,
+        0.3118
+      ]
+    },
+    {
+      "phrase": "the white ceramic plate with red rings",
+      "locator": "segment",
+      "median_xy": [
+        0.072,
+        0.2023
+      ]
+    },
+    {
+      "phrase": "the patterned black bowl overlapping the red-rimmed plate",
+      "locator": "segment",
+      "median_xy": [
+        -0.0959,
+        -0.0008
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        0.06,
+        0.271
+      ]
+    }
+  ]
+}

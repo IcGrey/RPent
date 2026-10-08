@@ -1,0 +1,105 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the small blue rectangular box",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the silver stove with a dark circular burner",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.028,
+          0.109,
+          1.07
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the small blue rectangular box",
+      "offset": [
+        0.0045,
+        -0.0004
+      ],
+      "anchor_distance": 0.0045
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.04,
+          0.04,
+          1.05
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the small blue rectangular box",
+      "offset": [
+        -0.0075,
+        -0.0694
+      ],
+      "anchor_distance": 0.0698
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.04,
+          0.04,
+          0.91
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.008,
+        "max_steps": 120
+      },
+      "anchor": "the small blue rectangular box",
+      "offset": [
+        -0.0075,
+        -0.0694
+      ],
+      "anchor_distance": 0.0698
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.04,
+          0.2,
+          0.91
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.008,
+        "max_steps": 140
+      },
+      "anchor": "the small blue rectangular box",
+      "offset": [
+        -0.0075,
+        0.0906
+      ],
+      "anchor_distance": 0.0909
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "white and yellow mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "brown desk caddy organizer",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.112,
+          0.037,
+          1.06
+        ],
+        "gripper": -1,
+        "step_clip": 0.02,
+        "tol": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the cup",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "white and yellow mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the white and yellow mug",
+        "max_chunks": 10,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.114,
+          0.085,
+          1.08
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the cup",
+      "offset": [
+        -0.002,
+        0.048
+      ],
+      "anchor_distance": 0.048
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the white and yellow mug rim",
+        "max_chunks": 10,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "white and yellow mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.092,
+          0.082,
+          1.2
+        ],
+        "gripper": 1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the cup",
+      "offset": [
+        0.02,
+        0.045
+      ],
+      "anchor_distance": 0.0492
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "white and yellow mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.25,
+          0.0,
+          1.2
+        ],
+        "gripper": 1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the cup",
+      "offset": [
+        -0.138,
+        -0.037
+      ],
+      "anchor_distance": 0.1429
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.42,
+          -0.09,
+          1.2
+        ],
+        "gripper": 1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the back compartment of the caddy",
+      "offset": [
+        -0.01,
+        0.0
+      ],
+      "anchor_distance": 0.01
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.41,
+          -0.09,
+          1.06
+        ],
+        "gripper": 1,
+        "step_clip": 0.02,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the back compartment of the caddy",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    }
+  ]
+}

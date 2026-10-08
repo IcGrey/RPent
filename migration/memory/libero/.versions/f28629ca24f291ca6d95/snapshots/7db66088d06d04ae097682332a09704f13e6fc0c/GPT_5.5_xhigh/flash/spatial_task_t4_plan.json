@@ -1,0 +1,364 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned bowl inside the open drawer",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white ceramic plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the wooden cabinet",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.017,
+          -0.29,
+          1.29
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the akita black bowl on the top of the wooden cabinet",
+      "offset": [
+        -0.026,
+        -0.009
+      ],
+      "anchor_distance": 0.0275
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.009,
+          -0.281,
+          1.27
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the akita black bowl on the top of the wooden cabinet",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the patterned bowl on top of the wooden cabinet",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.009,
+          -0.281,
+          1.27
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the akita black bowl on the top of the wooden cabinet",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "Pick the akita black bowl on the top of the wooden cabinet and place it on the plate",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.004,
+          -0.237,
+          1.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the akita black bowl on the top of the wooden cabinet",
+      "offset": [
+        -0.005,
+        0.044
+      ],
+      "anchor_distance": 0.0443
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.02,
+          0.02,
+          1.29
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the patterned bowl inside the open drawer",
+      "offset": [
+        -0.0416,
+        0.1656
+      ],
+      "anchor_distance": 0.1707
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.038,
+          0.279,
+          1.29
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.033,
+        0.014
+      ],
+      "anchor_distance": 0.0358
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.048,
+          0.281,
+          1.2
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.023,
+        0.016
+      ],
+      "anchor_distance": 0.028
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.044,
+          0.281,
+          1.03
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.027,
+        0.016
+      ],
+      "anchor_distance": 0.0314
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          0.044,
+          0.281,
+          0.98
+        ],
+        "target_pitch": 0.5,
+        "gripper": 1,
+        "tol": 0.012,
+        "ori_tol": 0.06,
+        "step_clip": 0.01,
+        "pitch_step": 0.04,
+        "max_steps": 150
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.027,
+        0.016
+      ],
+      "anchor_distance": 0.0314
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          0.043,
+          0.281,
+          1.15
+        ],
+        "target_pitch": 0,
+        "gripper": -1,
+        "tol": 0.012,
+        "ori_tol": 0.06,
+        "step_clip": 0.01,
+        "pitch_step": 0.04,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.028,
+        0.016
+      ],
+      "anchor_distance": 0.0322
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.007,
+          0.3,
+          1.1
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.064,
+        0.035
+      ],
+      "anchor_distance": 0.0729
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the patterned bowl",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.002,
+          0.304,
+          1.02
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.008,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.073,
+        0.039
+      ],
+      "anchor_distance": 0.0828
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.08,
+          0.265,
+          1.02
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.008,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.009,
+        0.0
+      ],
+      "anchor_distance": 0.009
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.071,
+          0.265,
+          0.96
+        ],
+        "gripper": 1,
+        "tol": 0.008,
+        "step_clip": 0.006,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

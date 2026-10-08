@@ -1,0 +1,37 @@
+{
+  "suite": "libero_object_swap",
+  "task_id": 3,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "Pick the bbq sauce and place it in the basket",
+  "libero_terminated": true,
+  "attempts": 12,
+  "final_state": {
+    "step": 27,
+    "terminated": true,
+    "truncated": false,
+    "robot0_eef_pos": [-0.05308964081589133, 0.26930520155900967, 0.1683986258689215],
+    "robot0_gripper_qpos": [0.0201530907768262, -0.020187168396290502]
+  },
+  "memory_files_read": [
+    "memory/_inbox/object_swap_t3_s0/wip/notes.md",
+    "memory/global/basket-insertion-open-retreat.md",
+    "memory/global/basket-release-retreat-settle.md",
+    "memory/global/rim-perch-contact-seat.md",
+    "memory/MEMORY.md",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "perception": "Agentview_high identified the target as the short brown BBQ-labeled bottle behind the green salad dressing bottle, distinct from the center-right ketchup bottle. Basket was the white-lined woven container on image-right; back-projected initial cavity/rim samples put the usable opening near the visually centered white liner, with rim bias in agentview depth.",
+  "pick_result": {
+    "bbq_pi0_pick_step24": {
+      "prompt": "pick up the brown BBQ labeled bottle behind the green bottle",
+      "chunks_used": 8,
+      "peak_lift_m": 0.066851906478405,
+      "final_gripper_opening": 0.03659602627158165,
+      "verified_by": "agentview and wrist showed the BBQ bottle lifted; ketchup and salad dressing remained in place"
+    }
+  },
+  "strategy_notes": "Successful trajectory after the last reset: move_to [-0.15,-0.29,0.18] with gripper open to pre-position over the agentview-identified BBQ bottle; pi0_pick with prompt 'pick up the brown BBQ labeled bottle behind the green bottle' for 12 chunks to grasp only; set_gripper +1 for 8 steps to firm the grip; move_to [-0.08,0.12,0.22] with gripper +1 toward a clean basket-side pre-release pose, which undershot to y≈0.076 but kept the bottle held and near the basket; call pi0_doubled with prompt 'put the bbq sauce into the basket' for 12 chunks while still holding the bottle. The contact skill moved the held bottle into the white-lined basket and the official predicate terminated at step 27 before a separate release was needed."
+}

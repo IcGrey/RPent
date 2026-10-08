@@ -1,0 +1,166 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.182,
+          -0.043,
+          1.18
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the wine bottle",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "Put the wine bottle on the plate",
+        "max_chunks": 20,
+        "lift_thresh": 0.07,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.16,
+          -0.037,
+          1.2
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the wine bottle",
+      "offset": [
+        0.022,
+        0.006
+      ],
+      "anchor_distance": 0.0228
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.046,
+          -0.02,
+          1.19
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 220
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.002,
+        -0.002
+      ],
+      "anchor_distance": 0.0028
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.056,
+          -0.018,
+          1.18
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.008,
+        "max_steps": 150
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.008,
+        0.0
+      ],
+      "anchor_distance": 0.008
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.048,
+          -0.018,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.006,
+        "max_steps": 300
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.048,
+          -0.018,
+          1.04
+        ],
+        "gripper": 1,
+        "tol": 0.009,
+        "step_clip": 0.005,
+        "max_steps": 300
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.048,
+          -0.018,
+          1.005
+        ],
+        "gripper": 1,
+        "tol": 0.008,
+        "step_clip": 0.004,
+        "max_steps": 240
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 25
+      }
+    }
+  ]
+}

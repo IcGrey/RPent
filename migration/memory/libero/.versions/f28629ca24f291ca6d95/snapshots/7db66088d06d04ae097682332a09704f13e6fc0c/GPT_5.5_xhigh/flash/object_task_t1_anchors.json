@@ -1,0 +1,12 @@
+{
+  "anchors": [
+    {
+      "phrase": "the large wicker basket with white lining at right",
+      "locator": "segment",
+      "median_xy": [
+        0.0652,
+        0.2576
+      ]
+    }
+  ]
+}

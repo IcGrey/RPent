@@ -1,0 +1,28 @@
+{
+  "suite": "libero_10_task",
+  "task_id": 1,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "put both the alphabet soup and the butter in the basket",
+  "libero_terminated": true,
+  "attempts": 2,
+  "localization": "All from agentview hi-res back_project (step 0/14). Alphabet-soup can (blue body, silver lid, 'AL'+sunflower, behind orange juice): top ~(-0.036,-0.172,0.50). Butter box ('FARM FRESH BUTTER', standing, center): top ~(0.06,0.024,0.45). Basket (right, partly off right frame edge): interior center ~(0.02,0.23), woven rim top z~0.52-0.54 with a tall soft white cloth liner that stands above the rim.",
+  "strategy_notes": "Winning sequence (attempt 2, after a reset): (1) move_to (-0.036,-0.172,0.60) to pre-position over the alphabet-soup can; verified via wrist that the can sat between the fingers. (2) pi0_pick 'pick up the can' max_chunks 14 -> grasped the can (peak_lift 0.257, final gripper opening 0.0625; pi0 flagged success:false purely on the opening heuristic, but agentview confirmed the can lifted into the gripper and its table spot empty). (3) set_gripper +1 steps 5 to firm the can grip (cans are laterally weak). (4) move_to (0.02,0.23,0.72) carry at HIGH z over the basket interior. (5) move_to (0.02,0.225,0.57) descend into the basket (OSC stalls ~0.58 on floor contact). (6) release -> can in basket (term still false, needs both). (7) move_to (0.02,0.227,0.74) retreat STRAIGHT UP with NO lateral motion (critical). (8) move_to (0.06,0.024,0.60) pre-position over the butter box. (9) pi0_pick 'pick up the butter box' max_chunks 12 -> grasped (lift 0.063, gripper 0.039). (10) set_gripper +1 steps 8. (11) move_to (0.027,0.038,0.72) lift straight up. (12) move_to (0.02,0.25,0.72) carry high over the basket, offset +y from the can. (13) move_to (0.02,0.245,0.56) descend beside the can -> predicate In(butter,basket) & In(soup,basket) fired, libero_terminated=true (fired on descent, before an explicit release). KEY LEVER: pick the far-from-basket can FIRST and place the butter LAST so the final action is a place with no post-basket lateral traverse; and after every basket release, retreat STRAIGHT UP to eef z>=0.72 before any lateral move, because the open finger tips hang ~8-10cm below eef and will snag the tall basket liner at eef z<=0.62.",
+  "pick_result_soup_pi0_pick_step15": {
+    "success": false,
+    "peak_lift_m": 0.2567802369594574,
+    "final_gripper_opening": 0.0625334084033966,
+    "note": "success flag false on opening heuristic; visually confirmed grasped"
+  },
+  "pick_result_butter_pi0_pick_step22": {
+    "success": true,
+    "peak_lift_m": 0.06266450881958008,
+    "final_gripper_opening": 0.03932958096265793
+  },
+  "final_state": {
+    "robot0_eef_pos": [0.0197, 0.2447, 0.575],
+    "robot0_gripper_qpos": [0.0196, -0.0197],
+    "object_names": ["alphabet_soup_1","basket_1","butter_1","cream_cheese_1","ketchup_1","milk_1","orange_juice_1","tomato_sauce_1"],
+    "libero_terminated": true
+  }
+}

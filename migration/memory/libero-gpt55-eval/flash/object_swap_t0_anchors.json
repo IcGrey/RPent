@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the blue and yellow label can",
+      "locator": "segment",
+      "median_xy": [
+        -0.1744,
+        -0.0811
+      ]
+    },
+    {
+      "phrase": "the white lined woven basket",
+      "locator": "segment",
+      "median_xy": [
+        0.0856,
+        0.2478
+      ]
+    }
+  ]
+}

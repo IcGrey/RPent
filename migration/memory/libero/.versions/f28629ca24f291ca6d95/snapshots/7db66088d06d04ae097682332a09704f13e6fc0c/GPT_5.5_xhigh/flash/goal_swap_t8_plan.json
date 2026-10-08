@@ -1,0 +1,154 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.055,
+          0.145,
+          1.08
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the patterned black bowl",
+      "offset": [
+        0.0004,
+        0.0003
+      ],
+      "anchor_distance": 0.0005
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.037,
+          0.141,
+          1.03
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 70
+      },
+      "anchor": "the patterned black bowl",
+      "offset": [
+        0.0184,
+        -0.0037
+      ],
+      "anchor_distance": 0.0188
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the patterned black bowl",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.052,
+          0.169,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 90
+      },
+      "anchor": "the patterned black bowl",
+      "offset": [
+        0.0034,
+        0.0243
+      ],
+      "anchor_distance": 0.0245
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.21,
+          -0.009,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        -0.011
+      ],
+      "anchor_distance": 0.011
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.21,
+          0.002,
+          1
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 90
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

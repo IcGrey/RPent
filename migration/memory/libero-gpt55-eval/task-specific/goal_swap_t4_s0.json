@@ -1,0 +1,62 @@
+{
+  "suite": "libero_goal_swap",
+  "task_id": 4,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Put the bowl on the top of the drawer",
+  "perturbation_semantics": "The destination fixture is localized visually in the swapped scene; no BDDL or object-pose coordinates were read.",
+  "expected_baseline_behavior": "A prompt-conditioned end-to-end policy may use memorized fixture positions rather than the visually relocated drawer top.",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_read": [
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/MEMORY.md",
+    "logs/libero_pro_explore_60_fixed_20260902/memory/global/drawer-top-contact-before-release.md"
+  ],
+  "memory_unavailable": [
+    "resources/libero/memory/MEMORY.md denied by runtime access control",
+    "resources/libero/results_goal_pert not visible through runtime list_dir"
+  ],
+  "localization": {
+    "bowl_agentview": {
+      "method": "SAM3 prompt 'the patterned bowl' on agentview_high.png plus manual pixel check",
+      "segment_score": 0.957,
+      "segment_world_xyz": [-0.085, 0.1331, 0.9302],
+      "manual_pixel_rc": [575, 692],
+      "manual_world_xyz": [-0.1034, 0.1488, 0.9282]
+    },
+    "bowl_wrist_refine": {
+      "method": "after moving above the agentview anchor, SAM3 prompt 'the patterned bowl' on wrist_high.png",
+      "segment_score": 0.961,
+      "segment_world_xyz": [-0.0669, 0.1307, 0.9277],
+      "accepted": true
+    },
+    "drawer_top_agentview": {
+      "method": "SAM3 prompt 'the black top of the drawer cabinet' on agentview_high.png plus manual top pixel",
+      "segment_score": 0.887,
+      "segment_world_xyz": [-0.2793, -0.2571, 1.127],
+      "manual_pixel_rc": [250, 134],
+      "manual_world_xyz": [-0.292, -0.3191, 1.127]
+    }
+  },
+  "strategy_notes": "Identified the patterned bowl in agentview_high.png and accepted wrist refinement after it remained within the same candidate neighborhood. Identified the destination as the black top surface of the drawer cabinet in RGB, not the stove burner or plate. Successful command sequence: move_to over the bowl at [-0.085, 0.1331, 1.08] with gripper open; pi0_pick prompt 'pick up the patterned bowl' with max_chunks 12, lift_thresh 0.05, gripper_closed_thresh 0.06; set_gripper +1 for 8 steps; raise to [-0.08, 0.16, 1.18]; stage to [-0.18, -0.05, 1.18]; move over drawer top to [-0.2793, -0.212, 1.18] with gripper held closed; descend toward [-0.2793, -0.198, 1.135] with step_clip 0.008 and gripper +1. The official predicate fired during the controlled closed-gripper descent before release.",
+  "pick_result": {
+    "bowl_pi0_pick_step2": {
+      "success": true,
+      "chunks_used": 8,
+      "peak_lift_m": 0.090984046459198,
+      "final_gripper_opening": 0.004824562929570675,
+      "visual_confirmation": "agentview and wrist images showed the patterned bowl lifted in the gripper after step 2"
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.27862517494591643, -0.19861966425301902, 1.1659415937334536],
+    "robot0_eef_quat": [0.9964744428903957, -0.03639291941666495, -0.05044561468616718, 0.0562981353291705],
+    "robot0_gripper_qpos": [0.002206830733097762, -0.0025874265902620297],
+    "object_names": ["akita_black_bowl_1", "cream_cheese_1", "plate_1", "wine_bottle_1"]
+  }
+}

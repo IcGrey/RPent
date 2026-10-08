@@ -1,0 +1,7 @@
+{"action": "pi0_pick", "prompt": "Open the top layer of the drawer and put the bowl inside", "max_chunks": 10, "lift_thresh": 0.04, "gripper_closed_thresh": 0.06}
+{"action": "move_pose", "xyz": [-0.075, 0.135, 1.06], "gripper": -1, "target_pitch": 0.45, "target_yaw": 0.2, "step_clip": 0.008, "max_steps": 150, "tol": 0.012}
+{"action": "pi0_pick", "prompt": "pick up the bowl from the side", "max_chunks": 16, "lift_thresh": 0.04, "gripper_closed_thresh": 0.06}
+{"action": "move_to", "xyz": [-0.066, 0.147, 1.18], "gripper": 1, "step_clip": 0.008, "max_steps": 80, "tol": 0.012}
+{"action": "move_pose", "xyz": [0.095, -0.105, 1.205], "gripper": 1, "target_pitch": 0.45, "target_yaw": 0.2, "step_clip": 0.005, "max_steps": 220, "tol": 0.014}
+{"action": "move_pose", "xyz": [0.112, -0.125, 1.15], "gripper": 1, "target_pitch": 0.55, "target_yaw": 0.2, "step_clip": 0.0035, "max_steps": 220, "tol": 0.012}
+{"action": "release", "max_steps": 25}

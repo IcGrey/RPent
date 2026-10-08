@@ -1,0 +1,78 @@
+{
+  "suite": "libero_object_swap",
+  "task_id": 7,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Pick the milk and place it in the basket",
+  "perturbation_semantics": "Loose object and basket positions must be localized visually; no coordinates were read from hidden task files.",
+  "expected_baseline_behavior": "Pi0 may follow its learned end-to-end pick/place behavior; this run succeeded after pre-positioning over the visually identified milk.",
+  "libero_terminated": true,
+  "attempts": 1,
+  "memory_read": {
+    "task_suite_writeup": "none found; inbox directory did not exist before solve",
+    "global_memory": "resources/libero/memory/MEMORY.md was requested but runtime denied access to this environment's published memory",
+    "guides": [
+      "robots/libero/guides/strict_hybrid_guide.md",
+      "robots/libero/guides/pro_hybrid_guide.md",
+      "robots/libero/guides/env_calibration.md"
+    ],
+    "seed0_reference": "resources/libero/results_object_pert was not present at the probed path"
+  },
+  "perception": {
+    "task_language": "Pick the milk and place it in the basket",
+    "frame": "object low table; initial eef z approximately 0.261",
+    "localization_table": [
+      {
+        "name_or_role": "target_milk",
+        "agentview_evidence": "Red Dairy Fresh Milk carton left of center; distinct from orange juice carton, butter, cream cheese, chocolate pudding, and tomato sauce can.",
+        "agentview_pixels_rc": [[520,400],[560,395],[610,390]],
+        "agentview_xyz_samples": [[0.0622,-0.0894,0.1227],[0.0776,-0.0936,0.0945],[0.0779,-0.1002,0.0452]],
+        "agentview_xyz_median": [0.0776,-0.0936,0.0945],
+        "wrist_refine": "accepted visually after move_to over anchor; wrist showed the same red milk carton directly under the gripper",
+        "final_xyz": [0.078,-0.094,0.18],
+        "uncertainty": "Agentview depth samples mix side/top/carton height; xy was stable enough for pre-positioning."
+      },
+      {
+        "name_or_role": "basket_cavity",
+        "agentview_evidence": "Open white-lined woven basket on image right; destination named by task.",
+        "agentview_pixels_rc": [[720,735],[650,770]],
+        "agentview_xyz_samples": [[0.1619,0.1744,0.0006],[0.087,0.214,0.0108]],
+        "region_rc": {"row_range":[505,735],"col_range":[695,895],"z_band":[0.0,0.12]},
+        "region_center_xyz": [0.0096,0.2394,0.0007],
+        "region_median_xyz": [0.088,0.2262,0.0007],
+        "wrist_refine": "basket not manually used for scripted placement because pi0_pick reached the basket and triggered termination",
+        "final_xyz": [0.088,0.226,0.001],
+        "uncertainty": "Basket estimates are rim/interior mixed; for scripted placement use wrist to refine true cavity center."
+      }
+    ]
+  },
+  "commands": [
+    {
+      "step": 1,
+      "action": "move_to",
+      "params": {"xyz":[0.078,-0.094,0.18],"gripper":-1,"tol":0.012,"step_clip":0.015,"max_steps":100},
+      "result": {"final_eef_pos":[0.0674,-0.094,0.1793],"final_dist_m":0.0106,"terminated":false}
+    },
+    {
+      "step": 2,
+      "action": "pi0_pick",
+      "params": {"prompt":"pick up the milk","max_chunks":20,"lift_thresh":0.05,"gripper_closed_thresh":0.06},
+      "result": {"success":true,"chunks_used":18,"peak_lift_m":0.2036,"final_gripper_opening":0.0725,"terminated":true}
+    }
+  ],
+  "pick_result": {
+    "milk_pi0_pick_step2": {
+      "grasp_confirmed_by": "agentview and wrist showed the milk in the basket at termination; gripper gap did not indicate a held object after release, consistent with completion",
+      "terminated": true
+    }
+  },
+  "final_state": {
+    "step": 2,
+    "terminated": true,
+    "truncated": false,
+    "robot0_eef_pos": [0.017248391653450584,0.2714894480828551,0.17454644556121623],
+    "robot0_gripper_qpos": [0.03655226405838826,-0.03592327116849151]
+  },
+  "strategy_notes": "Localized the red milk carton in agentview_high with three back-projected pixels, localized the basket visually as the open white-lined woven container, then pre-positioned above the milk at [0.078,-0.094,0.18] with gripper open. From that pose, pi0_pick with prompt 'pick up the milk' and max_chunks 20 grasped and carried the milk into the basket, and the official predicate terminated at step 2. No separate scripted carry/release was issued because the task was already complete."
+}

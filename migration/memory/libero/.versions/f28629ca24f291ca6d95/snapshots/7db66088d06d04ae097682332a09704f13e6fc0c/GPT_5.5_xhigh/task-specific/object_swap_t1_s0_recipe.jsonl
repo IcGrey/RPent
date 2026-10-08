@@ -1,0 +1,7 @@
+{"action": "move_to", "xyz": [-0.05, 0.26, 0.19], "gripper": -1, "step_clip": 0.012, "max_steps": 120, "tol": 0.012}
+{"action": "move_to", "xyz": [-0.085, -0.238, 0.16], "gripper": -1, "step_clip": 0.015, "max_steps": 120, "tol": 0.012}
+{"action": "pi0_pick", "prompt": "pick up the cream cheese", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "move_to", "xyz": [-0.1, -0.05, 0.19], "gripper": 1, "step_clip": 0.012, "max_steps": 120, "tol": 0.012}
+{"action": "move_to", "xyz": [-0.03, 0.12, 0.21], "gripper": 1, "step_clip": 0.01, "max_steps": 140, "tol": 0.012}
+{"action": "move_to", "xyz": [-0.015, 0.255, 0.19], "gripper": 1, "step_clip": 0.008, "max_steps": 160, "tol": 0.012}
+{"action": "move_to", "xyz": [-0.015, 0.255, 0.125], "gripper": 1, "step_clip": 0.006, "max_steps": 160, "tol": 0.012}

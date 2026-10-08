@@ -1,0 +1,36 @@
+{
+  "anchors": [
+    {
+      "phrase": "the cookies box",
+      "locator": "segment",
+      "median_xy": [
+        0.0678,
+        0.2043
+      ]
+    },
+    {
+      "phrase": "the white ceramic plate with red rings",
+      "locator": "segment",
+      "median_xy": [
+        0.0525,
+        0.0244
+      ]
+    },
+    {
+      "phrase": "the akita black bowl next to the plate",
+      "locator": "molmo",
+      "median_xy": [
+        0.012,
+        0.325
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        0.064,
+        0.068
+      ]
+    }
+  ]
+}

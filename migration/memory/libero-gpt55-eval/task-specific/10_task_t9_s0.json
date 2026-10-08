@@ -1,0 +1,41 @@
+{
+  "suite": "libero_10_task",
+  "task_id": 9,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "put the white mug in the microwave and close it",
+  "libero_terminated": true,
+  "total_attempts": 90,
+  "final_state": {
+    "robot0_eef_pos": [
+      0.12915413653567642,
+      0.18000562665130848,
+      1.0384266926286028
+    ],
+    "robot0_gripper_qpos": [
+      0.0005125009227697018,
+      -0.0004872797754235105
+    ],
+    "object_names": [
+      "porcelain_mug_1",
+      "white_yellow_mug_1"
+    ]
+  },
+  "pick_result": {
+    "white_mug_pi0_pick_step2": {
+      "success": true,
+      "chunks_used": 10,
+      "peak_lift_m": 0.08952933549880981,
+      "final_gripper_opening": 0.010280890390276909
+    }
+  },
+  "memory_files_read": [
+    "resources/libero/memory/_inbox/10_task_t9_s0/wip/notes.md",
+    "resources/libero/memory/MEMORY.md",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md",
+    "attempts/attempt_4_failed.json through attempt_86_failed.json"
+  ],
+  "strategy_notes": "Localized the textured all-white mug, its handle, the microwave cavity, and door edges from agentview hi-res plus back_project; wrist refinement accepted the target and rejected a distractor cavity view. Recipe steps 1-3: yaw0.8/pitch0.15 prepose, concise Pi0 grasp, and +1 firming. Steps 4-8: lower near table support, shift to the positive-x lane, and slide upright toward/across the door plane. Steps 9-12: co-vary modest lift and pitch (0.3→0.5→0.8→1.3) while advancing to the cavity. Step 13 releases. Steps 14-17 pivot open to pitch1.55 then neutralize 1.2→0.8→0.4. Step 18 attempted retreat; step 19 trained close-door contact did not rotate the door. Steps 20-21 reverse through the same positive-x corridor to clear the wrist. Steps 22-25 compact/yaw the empty wrist and approach the low exterior free edge. Steps 26-28 establish contact. Steps 29-30 sweep +x/+y along the hinge arc; step30 closed the door and fired libero_terminated."
+}

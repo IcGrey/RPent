@@ -1,0 +1,226 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the black handle of the right moka pot",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "point": [
+          540,
+          745
+        ],
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.059,
+          0.178,
+          1.13
+        ],
+        "gripper": -1,
+        "step_clip": 0.02,
+        "tol": 0.012,
+        "max_steps": 100
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "point": [
+          665,
+          500
+        ],
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "rotate_wrist",
+      "arguments": {
+        "target_yaw": 1.57,
+        "gripper": -1,
+        "max_steps": 50,
+        "step_clip": 0.1,
+        "tol": 0.02
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.061,
+          0.179,
+          1.06
+        ],
+        "gripper": -1,
+        "step_clip": 0.015,
+        "tol": 0.01,
+        "max_steps": 120
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.061,
+          0.179,
+          1.018
+        ],
+        "gripper": -1,
+        "step_clip": 0.006,
+        "tol": 0.008,
+        "max_steps": 120
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 12
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.061,
+          0.179,
+          1.075
+        ],
+        "gripper": 1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 100
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.061,
+          0.179,
+          1.14
+        ],
+        "gripper": 1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 120
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "point": [
+          520,
+          835
+        ],
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.065,
+          0.02,
+          1.13
+        ],
+        "gripper": 1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 120
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.075,
+          -0.145,
+          1.13
+        ],
+        "gripper": 1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 140
+      },
+      "anchor": "the left moka pot",
+      "offset": [
+        0.007,
+        0.109
+      ],
+      "anchor_distance": 0.1092
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the red stove burner",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "point": [
+          500,
+          350
+        ],
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.082,
+          -0.254,
+          1.13
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "tol": 0.012,
+        "max_steps": 160
+      },
+      "anchor": "the left moka pot",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.082,
+          -0.254,
+          1.055
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "tol": 0.012,
+        "max_steps": 160
+      },
+      "anchor": "the left moka pot",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    }
+  ]
+}

@@ -1,0 +1,604 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white textured mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the yellow and white mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the red patterned mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.027,
+          -0.287,
+          0.62
+        ],
+        "gripper": -1,
+        "step_clip": 0.01,
+        "max_steps": 120,
+        "tol": 0.01
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.021,
+          0.288,
+          0.62
+        ],
+        "gripper": -1,
+        "step_clip": 0.01,
+        "max_steps": 120,
+        "tol": 0.01
+      },
+      "anchor": "the left plate",
+      "offset": [
+        0.018,
+        -0.007
+      ],
+      "anchor_distance": 0.0193
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.021,
+          0.18,
+          0.62
+        ],
+        "gripper": -1,
+        "step_clip": 0.01,
+        "max_steps": 100,
+        "tol": 0.01
+      },
+      "anchor": "the left plate",
+      "offset": [
+        0.018,
+        -0.115
+      ],
+      "anchor_distance": 0.1164
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.188,
+          0.016,
+          0.63
+        ],
+        "gripper": -1,
+        "step_clip": 0.008,
+        "max_steps": 120,
+        "tol": 0.01
+      },
+      "anchor": "the white mug",
+      "offset": [
+        0.014,
+        -0.024
+      ],
+      "anchor_distance": 0.0278
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the yellow and white mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.051,
+          -0.144,
+          0.63
+        ],
+        "gripper": -1,
+        "step_clip": 0.008,
+        "max_steps": 120,
+        "tol": 0.01
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white textured mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.202,
+          0.04,
+          0.63
+        ],
+        "gripper": -1,
+        "step_clip": 0.008,
+        "max_steps": 120,
+        "tol": 0.01
+      },
+      "anchor": "the white mug",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the yellow and white mug",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.205,
+          0.063,
+          0.71
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "max_steps": 110,
+        "tol": 0.01
+      },
+      "anchor": "the white mug",
+      "offset": [
+        -0.003,
+        0.023
+      ],
+      "anchor_distance": 0.0232
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.205,
+          0.063,
+          0.7
+        ],
+        "target_pitch": 0,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.006,
+        "yaw_step": 0.04,
+        "pitch_step": 0.03,
+        "max_steps": 140,
+        "tol": 0.01,
+        "ori_tol": 0.04
+      },
+      "anchor": "the white mug",
+      "offset": [
+        -0.003,
+        0.023
+      ],
+      "anchor_distance": 0.0232
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the yellow and white mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.25,
+          0.07,
+          0.71
+        ],
+        "target_pitch": 0,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.006,
+        "yaw_step": 0.04,
+        "pitch_step": 0.03,
+        "max_steps": 120,
+        "tol": 0.01,
+        "ori_tol": 0.04
+      },
+      "anchor": "the white mug",
+      "offset": [
+        -0.048,
+        0.03
+      ],
+      "anchor_distance": 0.0566
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.25,
+          0.24,
+          0.7
+        ],
+        "target_pitch": 0,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.006,
+        "yaw_step": 0.04,
+        "pitch_step": 0.03,
+        "max_steps": 120,
+        "tol": 0.01,
+        "ori_tol": 0.04
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the yellow and white mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.032,
+          0.295,
+          0.68
+        ],
+        "target_pitch": 0,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.006,
+        "yaw_step": 0.04,
+        "pitch_step": 0.03,
+        "max_steps": 150,
+        "tol": 0.008,
+        "ori_tol": 0.04
+      },
+      "anchor": "the left plate",
+      "offset": [
+        0.007,
+        0.0
+      ],
+      "anchor_distance": 0.007
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the yellow and white mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.039,
+          0.295,
+          0.5
+        ],
+        "target_pitch": 0,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.003,
+        "yaw_step": 0.03,
+        "pitch_step": 0.03,
+        "max_steps": 180,
+        "tol": 0.008,
+        "ori_tol": 0.04
+      },
+      "anchor": "the left plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 1
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 2
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 3
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.039,
+          0.296,
+          0.68
+        ],
+        "target_pitch": 0,
+        "target_yaw": 1.57,
+        "gripper": -1,
+        "step_clip": 0.006,
+        "yaw_step": 0.04,
+        "pitch_step": 0.03,
+        "max_steps": 120,
+        "tol": 0.01,
+        "ori_tol": 0.04
+      },
+      "anchor": "the left plate",
+      "offset": [
+        0.0,
+        0.001
+      ],
+      "anchor_distance": 0.001
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.25,
+          0.25,
+          0.72
+        ],
+        "target_pitch": 0,
+        "target_yaw": 1.57,
+        "gripper": -1,
+        "step_clip": 0.008,
+        "yaw_step": 0.04,
+        "pitch_step": 0.03,
+        "max_steps": 130,
+        "tol": 0.01,
+        "ori_tol": 0.04
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.25,
+          0.02,
+          0.72
+        ],
+        "target_pitch": 0,
+        "target_yaw": 1.57,
+        "gripper": -1,
+        "step_clip": 0.008,
+        "yaw_step": 0.04,
+        "pitch_step": 0.03,
+        "max_steps": 130,
+        "tol": 0.01,
+        "ori_tol": 0.04
+      },
+      "anchor": "the white mug",
+      "offset": [
+        -0.048,
+        -0.02
+      ],
+      "anchor_distance": 0.052
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.25,
+          -0.2,
+          0.72
+        ],
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "gripper": -1,
+        "step_clip": 0.008,
+        "yaw_step": 0.04,
+        "pitch_step": 0.03,
+        "max_steps": 150,
+        "tol": 0.01,
+        "ori_tol": 0.04
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.043,
+          -0.105,
+          0.63
+        ],
+        "gripper": -1,
+        "step_clip": 0.008,
+        "max_steps": 120,
+        "tol": 0.01
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the white mug by the handle",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.089,
+          -0.112,
+          0.72
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "max_steps": 120,
+        "tol": 0.01
+      },
+      "anchor": "the white mug",
+      "offset": [
+        0.113,
+        -0.152
+      ],
+      "anchor_distance": 0.1894
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.089,
+          -0.112,
+          0.72
+        ],
+        "target_pitch": 0,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.006,
+        "yaw_step": 0.04,
+        "pitch_step": 0.03,
+        "max_steps": 140,
+        "tol": 0.01,
+        "ori_tol": 0.04
+      },
+      "anchor": "the white mug",
+      "offset": [
+        0.113,
+        -0.152
+      ],
+      "anchor_distance": 0.1894
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white textured mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white textured mug",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.059,
+          -0.304,
+          0.72
+        ],
+        "gripper": 1,
+        "step_clip": 0.012,
+        "max_steps": 120,
+        "tol": 0.008
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white textured mug",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.059,
+          -0.315,
+          0.72
+        ],
+        "gripper": 1,
+        "step_clip": 0.004,
+        "max_steps": 80,
+        "tol": 0.008
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.059,
+          -0.308,
+          0.5
+        ],
+        "gripper": 1,
+        "step_clip": 0.003,
+        "max_steps": 140,
+        "tol": 0.008
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 1
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 2
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": -1,
+        "steps": 3
+      }
+    }
+  ]
+}

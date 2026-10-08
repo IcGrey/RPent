@@ -1,0 +1,116 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white ceramic plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the flat top surface of the dark wooden drawer cabinet on the left",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.026,
+          -0.009,
+          1.06
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the white ceramic plate with red rings",
+      "offset": [
+        -0.0082,
+        0.0043
+      ],
+      "anchor_distance": 0.0093
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white plate with red rings",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the plate",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the plate",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.046,
+          0.046,
+          1.25
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the white ceramic plate with red rings",
+      "offset": [
+        0.0118,
+        0.0593
+      ],
+      "anchor_distance": 0.0605
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0,
+          -0.15,
+          1.25
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the top surface of the drawer",
+      "offset": [
+        0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

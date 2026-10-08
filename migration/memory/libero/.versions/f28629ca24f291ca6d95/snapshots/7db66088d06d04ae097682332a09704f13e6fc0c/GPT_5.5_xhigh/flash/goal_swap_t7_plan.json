@@ -1,0 +1,11 @@
+{
+  "plan": [
+    {
+      "action": "pi0_doubled",
+      "arguments": {
+        "prompt": "Turn on the stove",
+        "max_chunks": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "anchors": [
+    {
+      "phrase": "the black bowl",
+      "locator": "molmo",
+      "median_xy": [
+        -0.171,
+        0.073
+      ]
+    },
+    {
+      "phrase": "the inside of the bottom drawer of the cabinet",
+      "locator": "molmo",
+      "median_xy": [
+        -0.085,
+        -0.097
+      ]
+    },
+    {
+      "phrase": "the bottom drawer of the cabinet",
+      "locator": "molmo",
+      "median_xy": [
+        -0.171,
+        0.073
+      ]
+    }
+  ]
+}

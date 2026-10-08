@@ -1,0 +1,51 @@
+{
+  "suite": "libero_spatial_task",
+  "task_id": 1,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "task (P1 Task perturbation)",
+  "perturbed_task_language": "Pick the akita black bowl next to the cookie box and place it on the plate",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 1,
+  "memory_read": [
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "memory_unavailable": [
+    "resources/libero/memory/MEMORY.md: runtime denied access to another environment memory"
+  ],
+  "localization": {
+    "task_semantics": "Target is the black bowl adjacent to the cookie box in agentview_high.png; the visually identical bowl farther back near the ramekin is a distractor. Destination is the white plate with red rim rings, not the stove burner disc.",
+    "target_bowl_agentview_pixels_rc": [[746,390],[770,430],[700,445]],
+    "target_bowl_agentview_world_xyz_samples": [[0.0953,-0.0844,0.9473],[0.0997,-0.0573,0.9272],[0.0098,-0.0515,0.9004]],
+    "target_bowl_wrist_pixels_rc_step1": [[548,300],[505,360],[610,380]],
+    "target_bowl_wrist_world_xyz_samples_step1": [[0.1315,-0.0349,0.9097],[0.1298,-0.0660,0.9067],[0.0897,-0.0433,0.8999]],
+    "plate_agentview_pixels_rc": [[615,738],[650,790],[685,735]],
+    "plate_agentview_world_xyz_samples": [[-0.0845,0.1873,0.9004],[-0.0440,0.2233,0.9004],[0.0048,0.1709,0.9121]],
+    "final_place_strategy": "Used plate semantic center from red-rim plate and bowl y-offset; after first release was just short, a second short pi0_pick from the low near-plate pose seated the bowl on the plate and triggered termination."
+  },
+  "command_sequence": [
+    {"step": 1, "action": "move_to", "xyz": [0.098, -0.071, 1.08], "gripper": -1, "result": "stalled in x but produced useful wrist view of target bowl"},
+    {"step": 2, "action": "pi0_pick", "prompt": "pick up the black bowl next to the cookie box", "max_chunks": 12, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06, "result": "rim grasp on target bowl"},
+    {"step": 3, "action": "set_gripper", "gripper": 1, "steps": 10, "result": "firmed grip"},
+    {"step": 4, "action": "move_to", "xyz": [0.05, 0.06, 1.08], "gripper": 1, "step_clip": 0.015, "result": "staged carry"},
+    {"step": 5, "action": "move_to", "xyz": [-0.044, 0.268, 1.08], "gripper": 1, "step_clip": 0.015, "result": "carried over plate region"},
+    {"step": 6, "action": "move_to", "xyz": [-0.044, 0.268, 0.965], "gripper": 1, "step_clip": 0.01, "result": "descended near plate"},
+    {"step": 7, "action": "move_to", "xyz": [-0.02, 0.285, 0.965], "gripper": 1, "step_clip": 0.008, "result": "nudged closer to plate center"},
+    {"step": 8, "action": "release", "max_steps": 25, "result": "bowl upright but just short of predicate"},
+    {"step": 9, "action": "pi0_pick", "prompt": "pick up the black bowl", "max_chunks": 12, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06, "result": "from near-plate pose, Pi0 lifted/seated bowl onto plate; terminated true"}
+  ],
+  "pick_result": {
+    "bowl_pi0_pick_step2": {"success": true, "chunks_used": 9, "peak_lift_m": 0.0547, "final_gripper_opening": 0.0072, "terminated": false},
+    "bowl_repick_step9": {"success": true, "chunks_used": 12, "peak_lift_m": 0.1652, "final_gripper_opening": 0.0095, "terminated": true}
+  },
+  "strategy_notes": "Localized the target by relation in agentview_high.png: the lower patterned black bowl adjacent to the cookie box, rejecting the identical upper bowl by the ramekin. Back-projected multiple high-res target-bowl and plate pixels, then moved near the target and accepted wrist samples within the same local neighborhood. The successful trajectory was: pre-position near the target bowl, pi0_pick with a short spatial prompt, set_gripper +1, carry closed in staged moves toward the red-rim plate using the bowl y-offset, descend low, nudge toward plate center, release, then recover the upright near-plate bowl with one short pi0_pick that seated it on the plate and fired the predicate.",
+  "final_state": {
+    "robot0_eef_pos": [0.02632381467560866, 0.17357272835174656, 0.9478258759578287],
+    "robot0_eef_quat": [0.8466569396858733, -0.5302498453382147, 0.03647304885018915, -0.026016239315503696],
+    "robot0_gripper_qpos": [0.004860308097303289, -0.004655197197106646],
+    "object_names": ["akita_black_bowl_1", "akita_black_bowl_2", "cookies_1", "glazed_rim_porcelain_ramekin_1", "plate_1"]
+  }
+}

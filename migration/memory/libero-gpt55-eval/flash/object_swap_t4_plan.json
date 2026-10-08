@@ -1,0 +1,126 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.169,
+          0.027,
+          0.22
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the tall red ketchup bottle with gray cap",
+      "offset": [
+        0.0016,
+        -0.0021
+      ],
+      "anchor_distance": 0.0026
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.04,
+          0.277,
+          0.25
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.018,
+        "max_steps": 90
+      },
+      "anchor": "the woven basket on the right",
+      "offset": [
+        -0.1265,
+        0.0233
+      ],
+      "anchor_distance": 0.1286
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.155,
+          0.03,
+          0.2
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.018,
+        "max_steps": 90
+      },
+      "anchor": "the tall red ketchup bottle with gray cap",
+      "offset": [
+        -0.0124,
+        0.0009
+      ],
+      "anchor_distance": 0.0124
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the ketchup bottle",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.146,
+          0.035,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 90
+      },
+      "anchor": "the tall red ketchup bottle with gray cap",
+      "offset": [
+        -0.0214,
+        0.0059
+      ],
+      "anchor_distance": 0.0222
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.009,
+          0.258,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the woven basket on the right",
+      "offset": [
+        -0.0775,
+        0.0043
+      ],
+      "anchor_distance": 0.0776
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

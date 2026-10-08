@@ -1,0 +1,350 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the short red and green tomato sauce can",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the blue and yellow soup can behind the orange ketchup bottle",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white lined woven basket",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.207,
+          -0.154,
+          0.62
+        ],
+        "gripper": -1,
+        "step_clip": 0.02,
+        "tol": 0.012,
+        "max_steps": 80
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.035,
+          -0.224,
+          0.62
+        ],
+        "gripper": -1,
+        "step_clip": 0.02,
+        "tol": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the alphabet soup",
+      "offset": [
+        0.021,
+        0.007
+      ],
+      "anchor_distance": 0.0221
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.014,
+          -0.231,
+          0.6
+        ],
+        "gripper": -1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 60
+      },
+      "anchor": "the alphabet soup",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the tomato sauce can",
+        "max_chunks": 14,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.04
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.048,
+          0.268,
+          0.63
+        ],
+        "gripper": 1,
+        "step_clip": 0.02,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.048,
+          0.268,
+          0.51
+        ],
+        "gripper": 1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 15
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.04,
+          0.271,
+          0.66
+        ],
+        "gripper": -1,
+        "step_clip": 0.02,
+        "tol": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.008,
+        0.003
+      ],
+      "anchor_distance": 0.0085
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.14,
+          0.06,
+          0.64
+        ],
+        "gripper": -1,
+        "step_clip": 0.02,
+        "tol": 0.012,
+        "max_steps": 80
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.235,
+          -0.147,
+          0.61
+        ],
+        "gripper": -1,
+        "step_clip": 0.018,
+        "tol": 0.012,
+        "max_steps": 100
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the alphabet soup can",
+        "max_chunks": 14,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.04
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.258,
+          -0.132,
+          0.66
+        ],
+        "gripper": 1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 80
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.16,
+          0.075,
+          0.66
+        ],
+        "gripper": 1,
+        "step_clip": 0.018,
+        "tol": 0.012,
+        "max_steps": 100
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.045,
+          0.31,
+          0.66
+        ],
+        "gripper": 1,
+        "step_clip": 0.018,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.003,
+        0.042
+      ],
+      "anchor_distance": 0.0421
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the blue and yellow soup can near the basket",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.037,
+          0.117,
+          0.61
+        ],
+        "gripper": -1,
+        "step_clip": 0.018,
+        "tol": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.011,
+        -0.151
+      ],
+      "anchor_distance": 0.1514
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the alphabet soup can",
+        "max_chunks": 14,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.04
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the blue and yellow can next to the basket",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.033,
+          0.118,
+          0.62
+        ],
+        "target_pitch": 0.0,
+        "target_yaw": 0.0,
+        "gripper": -1,
+        "step_clip": 0.015,
+        "pitch_step": 0.06,
+        "yaw_step": 0.06,
+        "tol": 0.012,
+        "ori_tol": 0.05,
+        "max_steps": 150
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.015,
+        -0.15
+      ],
+      "anchor_distance": 0.1507
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.033,
+          0.118,
+          0.585
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.015,
+        -0.15
+      ],
+      "anchor_distance": 0.1507
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the blue and yellow soup can next to the basket",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.04
+      }
+    }
+  ]
+}

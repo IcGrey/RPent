@@ -1,0 +1,37 @@
+{
+  "suite": "libero_10_task",
+  "task_id": 8,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "put the left moka pot on the stove",
+  "libero_terminated": true,
+  "attempts": 3,
+  "final_state": {
+    "eef_pos": [-0.066, -0.265, 1.042],
+    "gripper_opening": 0.0184,
+    "placed_object": "left moka pot (image-right, +y)",
+    "placed_on": "stove burner cook region"
+  },
+  "localization": {
+    "target_left_moka_pot_body": {"x": -0.013, "y": 0.265, "base_z": 0.90, "note": "'left'=robot-left=+y=image-RIGHT pot"},
+    "target_pot_handle_grasp_point": {"x": -0.046, "y": 0.20, "z": 1.00, "note": "thin black side handle tube, runs along world-Y; graspable top-down"},
+    "other_moka_pot": {"x": 0.06, "y": 0.07},
+    "stove_burner_center": {"x": -0.026, "y": -0.21, "surface_z": 0.931}
+  },
+  "strategy_notes": "Localized both moka pots in agentview hi-res: 'left'=robot-left=+y=the image-RIGHT pot (body ~(-0.013,0.265)); stove burner cook region (red-coil disc) at ~(-0.026,-0.21), surface z~0.931. Pi0 (pi0_pick) FAILED to grasp the moka pots in 3 tries across attempts 1-2 (it descended but NEVER closed the gripper, min_opening ~0.078, and corrupted wrist orientation). Top-down BODY grasp also fails: the upper chamber shoulder is ~7.8cm (~gripper max span) so open fingers stall on descent, and a cap-knob grasp is too thin (gap 0.012) and slips. WINNING method (attempt 3, pure manual, NO Pi0): grasp the thin side HANDLE. Sequence exactly as recipe: (1) move_to [-0.11,0.14,1.12] pre-position hop; (2) move_to [-0.046,0.186,1.08] above the handle top; (3) rotate_wrist target_yaw 1.57 so the fingers close ACROSS the Y-running handle tube (this drifts eef, so re-center next); (4) move_to [-0.046,0.20,1.05] re-center over handle; (5) move_to [-0.046,0.20,1.00] descend to tube level (no stall—handle is offset from the wide body); (6) set_gripper +1 x12 -> gap ~0.020 (gripped the ~1.5-2cm tube); (7) move_to [-0.048,0.201,1.07] then [..,1.14] gripper 1 -> pot lifted by handle, hangs upright; (8) carry with gripper 1 in hops: [-0.06,0.02,1.14] then [-0.065,-0.19,1.14]; (9) position body over burner: body hangs at eef+(~0.038,+0.067), so move_to [-0.064,-0.277,1.14]; (10) descend [-0.064,-0.266,1.05] then [-0.064,-0.265,1.035] (stalls ~z1.046 = base resting on burner); (11) release -> libero_terminated true.",
+  "pick_result": {
+    "handle_set_gripper_step24": "closed to ~0.020 gap on the handle tube (not cap/air)",
+    "lift_confirm_step26": "pot clearly off table, hanging upright by handle, gap held ~0.016",
+    "place_release_step32": "predicate fired on release, gap 0.0184"
+  },
+  "memory_read": [
+    "MEMORY.md (empty index)",
+    "no seed-0 reference dir found (results_10_pert absent)",
+    "no prior suite/task memory for this cell (created here)"
+  ],
+  "failure_history": {
+    "attempt_1": "pre-position + Pi0/manual top-down BODY grasp: Pi0 never closed; open-finger descent stalled on ~7.8cm shoulder; cap grasp slipped.",
+    "attempt_2": "Pi0 from home: never closed again (3/3), went to wrong pot, corrupted wrist orientation.",
+    "attempt_3": "pure manual HANDLE grasp: SUCCESS."
+  }
+}

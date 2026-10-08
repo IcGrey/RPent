@@ -1,0 +1,55 @@
+{
+  "plan": [
+    {
+      "action": "pi0_doubled",
+      "arguments": {
+        "prompt": "open the bottom drawer of the cabinet",
+        "max_chunks": 80
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.04,
+          0.12,
+          0.93
+        ],
+        "gripper": -1,
+        "tol": 0.018,
+        "step_clip": 0.018,
+        "max_steps": 180
+      },
+      "anchor": "the bottom drawer of the cabinet handle",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          0.055,
+          -0.105,
+          0.97
+        ],
+        "target_pitch": -0.9,
+        "target_yaw": null,
+        "gripper": -1,
+        "step_clip": 0.012,
+        "pitch_step": 0.05,
+        "tol": 0.012,
+        "max_steps": 180
+      }
+    },
+    {
+      "action": "pi0_doubled",
+      "arguments": {
+        "prompt": "grasp the lowest silver drawer handle on the cabinet and pull it toward the robot to open the bottom drawer",
+        "max_chunks": 120
+      }
+    }
+  ]
+}

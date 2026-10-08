@@ -1,0 +1,308 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the dark green wine bottle on the table",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the open bottom drawer cavity",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the bottom drawer front panel with handle",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.116,
+          0.026,
+          1.18
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 90
+      },
+      "anchor": "the bottle",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the dark bottle",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the wine bottle",
+        "max_chunks": 18,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the wine bottle",
+        "max_chunks": 10,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the dark green wine bottle on the table",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.145,
+          0.04,
+          1.16
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 90
+      },
+      "anchor": "the dark green bottle lying on the table",
+      "offset": [
+        0.0221,
+        -0.009
+      ],
+      "anchor_distance": 0.0239
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the dark green bottle lying on the table",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the bottle lying on the table",
+        "max_chunks": 10,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.217,
+          0.048,
+          1.24
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the dark green bottle lying on the table",
+      "offset": [
+        -0.0499,
+        -0.001
+      ],
+      "anchor_distance": 0.0499
+    },
+    {
+      "action": "rotate_wrist",
+      "arguments": {
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "max_steps": 60,
+        "step_clip": 0.08,
+        "tol": 0.03
+      }
+    },
+    {
+      "action": "rotate_pitch",
+      "arguments": {
+        "target_pitch": 1.4,
+        "gripper": 1,
+        "max_steps": 60,
+        "step_clip": 0.08,
+        "tol": 0.03
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.027,
+          0.166,
+          1.12
+        ],
+        "target_pitch": 1.4,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.012,
+        "pitch_step": 0.05,
+        "yaw_step": 0.05,
+        "tol": 0.015,
+        "ori_tol": 0.05,
+        "max_steps": 140
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.0,
+        -0.004
+      ],
+      "anchor_distance": 0.004
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.027,
+          0.17,
+          1
+        ],
+        "target_pitch": 1.4,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.012,
+        "pitch_step": 0.04,
+        "yaw_step": 0.04,
+        "tol": 0.012,
+        "ori_tol": 0.05,
+        "max_steps": 180
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "rotate_pitch",
+      "arguments": {
+        "target_pitch": 0,
+        "gripper": 1,
+        "max_steps": 50,
+        "step_clip": 0.06,
+        "tol": 0.04
+      }
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 25
+      }
+    },
+    {
+      "action": "pi0_doubled",
+      "arguments": {
+        "prompt": "close the bottom drawer of the cabinet",
+        "max_chunks": 25
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.15,
+          -0.05,
+          1.18
+        ],
+        "target_pitch": 0.6,
+        "target_yaw": 1.57,
+        "gripper": -1,
+        "step_clip": 0.015,
+        "pitch_step": 0.05,
+        "yaw_step": 0.05,
+        "tol": 0.02,
+        "ori_tol": 0.08,
+        "max_steps": 120
+      },
+      "anchor": "the dark green wine bottle on the table",
+      "offset": [
+        -0.0339,
+        -0.0758
+      ],
+      "anchor_distance": 0.083
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          0,
+          0.04,
+          0.96
+        ],
+        "target_pitch": 0.6,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.012,
+        "pitch_step": 0.04,
+        "yaw_step": 0.04,
+        "tol": 0.015,
+        "ori_tol": 0.06,
+        "max_steps": 140
+      },
+      "anchor": "the open bottom drawer cavity",
+      "offset": [
+        -0.0101,
+        -0.1127
+      ],
+      "anchor_distance": 0.1132
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          0,
+          0.23,
+          0.96
+        ],
+        "target_pitch": 0.6,
+        "target_yaw": 1.57,
+        "gripper": 1,
+        "step_clip": 0.012,
+        "pitch_step": 0.04,
+        "yaw_step": 0.04,
+        "tol": 0,
+        "ori_tol": 0.06,
+        "max_steps": 120
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.027,
+        0.06
+      ],
+      "anchor_distance": 0.0658
+    }
+  ]
+}

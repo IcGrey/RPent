@@ -1,0 +1,12 @@
+{
+  "anchors": [
+    {
+      "phrase": "the upright black stove knob above the burner",
+      "locator": "segment",
+      "median_xy": [
+        -0.3879,
+        0.1998
+      ]
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "point": [
+          500,
+          890
+        ],
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "point": [
+          660,
+          943
+        ],
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the cookies box",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white ceramic plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.021,
+          0.336,
+          1.1
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the akita black bowl next to the plate",
+      "offset": [
+        -0.033,
+        0.011
+      ],
+      "anchor_distance": 0.0348
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "point": [
+          520,
+          530
+        ],
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.012,
+          0.325,
+          1.05
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the akita black bowl next to the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the black patterned bowl next to the plate",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.001,
+          0.343,
+          1.12
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the akita black bowl next to the plate",
+      "offset": [
+        -0.013,
+        0.018
+      ],
+      "anchor_distance": 0.0222
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.02,
+          0.18,
+          1.12
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the cookies box",
+      "offset": [
+        -0.0478,
+        -0.0243
+      ],
+      "anchor_distance": 0.0536
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.003,
+          0.033,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the white ceramic plate with red rings",
+      "offset": [
+        -0.0495,
+        0.0086
+      ],
+      "anchor_distance": 0.0502
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.043,
+          0.068,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.021,
+        0.0
+      ],
+      "anchor_distance": 0.021
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.073,
+          0.068,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.008,
+        "step_clip": 0.008,
+        "max_steps": 60
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.009,
+        0.0
+      ],
+      "anchor_distance": 0.009
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.065,
+          0.068,
+          1.04
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.001,
+        0.0
+      ],
+      "anchor_distance": 0.001
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.064,
+          0.068,
+          1
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.008,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

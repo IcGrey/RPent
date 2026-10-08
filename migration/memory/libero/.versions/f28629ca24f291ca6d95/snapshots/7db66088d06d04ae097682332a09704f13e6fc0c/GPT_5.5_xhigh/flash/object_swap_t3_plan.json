@@ -1,0 +1,126 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.1115,
+          -0.2303,
+          0.22
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the small orange BBQ sauce bottle on the left",
+      "offset": [
+        0.0018,
+        -0.0006
+      ],
+      "anchor_distance": 0.0019
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.056,
+          0.26,
+          0.3
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.018,
+        "max_steps": 120
+      },
+      "anchor": "the white-lined woven basket on the right",
+      "offset": [
+        -0.1218,
+        0.0138
+      ],
+      "anchor_distance": 0.1226
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.125,
+          -0.234,
+          0.16
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 120
+      },
+      "anchor": "the small orange BBQ sauce bottle on the left",
+      "offset": [
+        -0.0117,
+        -0.0043
+      ],
+      "anchor_distance": 0.0125
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the BBQ sauce bottle",
+        "max_chunks": 12,
+        "lift_thresh": 0.08,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.03,
+          0.08,
+          0.31
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the white-lined woven basket on the right",
+      "offset": [
+        -0.0958,
+        -0.1662
+      ],
+      "anchor_distance": 0.1918
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.009,
+          0.249,
+          0.3
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the white-lined woven basket on the right",
+      "offset": [
+        -0.0748,
+        0.0028
+      ],
+      "anchor_distance": 0.0749
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 25
+      }
+    }
+  ]
+}

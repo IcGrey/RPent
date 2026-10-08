@@ -1,0 +1,28 @@
+{
+  "anchors": [
+    {
+      "phrase": "the patterned black bowl",
+      "locator": "segment",
+      "median_xy": [
+        -0.0554,
+        0.1447
+      ]
+    },
+    {
+      "phrase": "the white plate with red rings",
+      "locator": "segment",
+      "median_xy": [
+        -0.2104,
+        -0.0539
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        -0.21,
+        0.002
+      ]
+    }
+  ]
+}

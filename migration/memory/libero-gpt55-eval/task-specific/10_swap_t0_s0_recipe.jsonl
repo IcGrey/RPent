@@ -1,0 +1,27 @@
+{"action":"segment","prompt":"soup can","camera":"agentview"}
+{"action":"segment","prompt":"basket","camera":"agentview"}
+{"action":"segment","prompt":"tomato sauce can","camera":"agentview"}
+{"action":"segment","point":[440,305],"camera":"agentview"}
+{"action":"segment","prompt":"alphabet soup can","camera":"agentview"}
+{"action":"move_to","xyz":[0.006,-0.222,0.6],"gripper":-1}
+{"action":"pi0_pick","prompt":"pick up the tomato sauce can","max_chunks":14,"gripper_closed_thresh":0.04}
+{"action":"set_gripper","gripper":1,"steps":5}
+{"action":"move_to","xyz":[-0.035,0.245,0.63],"gripper":1}
+{"action":"move_to","xyz":[-0.02,0.225,0.515],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.025,0.275,0.62],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.025,0.27,0.51],"gripper":1,"step_clip":0.02}
+{"action":"release","max_steps":15}
+{"action":"move_to","xyz":[-0.009,0.268,0.64],"gripper":-1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.13,0.05,0.63],"gripper":-1}
+{"action":"move_to","xyz":[-0.26,-0.16,0.6],"gripper":-1}
+{"action":"pi0_pick","prompt":"pick up the alphabet soup can","max_chunks":14,"gripper_closed_thresh":0.04}
+{"action":"set_gripper","gripper":1,"steps":5}
+{"action":"move_to","xyz":[0.045,0.3,0.66],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[0.04,0.3,0.51],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[0.02,0.29,0.66],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.005,0.293,0.61],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.008,0.29,0.51],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.012,0.315,0.63],"gripper":1,"step_clip":0.02}
+{"action":"move_to","xyz":[-0.01,0.31,0.51],"gripper":1,"step_clip":0.02}
+{"action":"release","max_steps":20}
+{"action":"move_to","xyz":[-0.005,0.32,0.7],"gripper":-1,"step_clip":0.025}

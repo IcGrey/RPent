@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the left moka pot",
+      "locator": "molmo",
+      "median_xy": [
+        -0.082,
+        -0.254
+      ]
+    },
+    {
+      "phrase": "the stove burner",
+      "locator": "molmo",
+      "median_xy": [
+        -0.082,
+        -0.254
+      ]
+    }
+  ]
+}

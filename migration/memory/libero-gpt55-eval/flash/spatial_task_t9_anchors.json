@@ -1,0 +1,44 @@
+{
+  "anchors": [
+    {
+      "phrase": "the patterned black bowl on the stove burner",
+      "locator": "segment",
+      "median_xy": [
+        -0.29,
+        -0.1375
+      ]
+    },
+    {
+      "phrase": "the white ceramic plate with red rings",
+      "locator": "segment",
+      "median_xy": [
+        0.0591,
+        0.1993
+      ]
+    },
+    {
+      "phrase": "the patterned bowl held in the gripper",
+      "locator": "segment",
+      "median_xy": [
+        -0.1996,
+        -0.1356
+      ]
+    },
+    {
+      "phrase": "the akita black bowl on the stove",
+      "locator": "molmo",
+      "median_xy": [
+        -0.261,
+        -0.127
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        0.058,
+        0.254
+      ]
+    }
+  ]
+}

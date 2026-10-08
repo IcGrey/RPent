@@ -1,0 +1,20 @@
+{
+  "anchors": [
+    {
+      "phrase": "the tall red milk carton",
+      "locator": "segment",
+      "median_xy": [
+        0.0772,
+        -0.1021
+      ]
+    },
+    {
+      "phrase": "the white lined woven basket",
+      "locator": "segment",
+      "median_xy": [
+        0.0866,
+        0.2642
+      ]
+    }
+  ]
+}

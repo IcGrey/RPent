@@ -1,0 +1,35 @@
+{
+  "suite": "libero_goal_swap",
+  "task_id": 5,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "task_language": "Push the plate to the front of the stove",
+  "perturbed_task_language": "Push the plate to the front of the stove",
+  "perturbation_semantics": "The task was solved by visually localizing the swapped stove fixture and red-rim plate from agentview/wrist images; no BDDL/init/object pose coordinates were read. The accepted front-of-stove zone in this scene was the knob-side/+y area near the stove, not the lower visible cooktop edge where prior attempts stalled.",
+  "expected_baseline_behavior": "A prompt-only policy may push toward the visible stove/cooktop edge or under the platform and miss the hidden front predicate region.",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts": 74,
+  "final_state": {
+    "robot0_eef_pos": [-0.07038348604436524,0.1919875026249872,1.0196887192675494],
+    "robot0_eef_quat": [0.9997447846630336,0.000037267876412450116,-0.022590778329894038,-0.00014451511273695476],
+    "robot0_gripper_qpos": [0.003368633891878175,-0.003211550201202212],
+    "object_names": ["akita_black_bowl_1","cream_cheese_1","plate_1","wine_bottle_1"]
+  },
+  "localization": {
+    "plate_agentview_anchor": {"pixels_rc": [[520,505],[494,504],[552,503]], "median_xyz_approx": [-0.199,-0.006,0.908], "evidence": "white plate with red rings, visually distinct from gray burner and bowl"},
+    "destination_semantics": {"evidence": "stove identified as gray burner on metal square base with black knob/handle. Many prior placements on/under the burner/front edge failed; winning move aimed to the knob-side/+y front area from the current scene image."}
+  },
+  "pick_result": {
+    "plate_pi0_pick_step13": {
+      "success": true,
+      "chunks_used": 9,
+      "peak_lift_m": 0.0471036434173584,
+      "min_gripper_opening": 0.01718187890946865,
+      "final_gripper_opening": 0.01718187890946865,
+      "judgement": "valid rim/contact hold by gripper gap and wrist image showing the red-rim plate captured at the fingers"
+    }
+  },
+  "strategy_notes": "Successful trajectory after the final reset: visually identified the target as the red-rim white plate and the destination as the stove with a black knob/handle. Back-projected the plate from agentview_high around pixel [520,505] to x≈-0.199,y≈-0.006,z≈0.908, moved above it at [-0.199,-0.008,1.04], then used `pi0_pick(\"pick up the red plate\", max_chunks=14,lift_thresh=0.025,gripper_closed_thresh=0.06)`, which produced a valid rim/contact hold. Instead of releasing on the visible burner/front edge, held gripper closed and used one high `move_pose` to [-0.07,0.23,1.02] with pitch=0,yaw=0, step_clip=0.01. The controller reached about [-0.070,0.192,1.020] and the benchmark terminated during this carry before release, indicating the plate crossed the accepted knob-side/front-of-stove region."
+}

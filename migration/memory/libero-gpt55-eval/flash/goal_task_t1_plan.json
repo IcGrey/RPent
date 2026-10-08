@@ -1,0 +1,230 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the dark gray round stove burner coil",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.021,
+          -0.026,
+          1.06
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the white plate with red rings",
+      "offset": [
+        -0.0138,
+        0.0004
+      ],
+      "anchor_distance": 0.0138
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "Put the plate on the stove",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.271,
+          0.202,
+          1.05
+        ],
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "gripper": 1,
+        "step_clip": 0.008,
+        "pitch_step": 0.04,
+        "yaw_step": 0.04,
+        "tol": 0.02,
+        "ori_tol": 0.1,
+        "max_steps": 300
+      },
+      "anchor": "the dark gray round stove burner coil",
+      "offset": [
+        -0.0103,
+        0.0007
+      ],
+      "anchor_distance": 0.0103
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.253,
+          0.202,
+          1
+        ],
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "gripper": 1,
+        "step_clip": 0.006,
+        "pitch_step": 0.03,
+        "yaw_step": 0.03,
+        "tol": 0.012,
+        "ori_tol": 0.1,
+        "max_steps": 100
+      },
+      "anchor": "the dark gray round stove burner coil",
+      "offset": [
+        0.0077,
+        0.0007
+      ],
+      "anchor_distance": 0.0077
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          0.042,
+          -0.025,
+          1.05
+        ],
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "gripper": -1,
+        "step_clip": 0.01,
+        "pitch_step": 0.04,
+        "yaw_step": 0.04,
+        "tol": 0.015,
+        "ori_tol": 0.1,
+        "max_steps": 250
+      },
+      "anchor": "the white plate with red rings",
+      "offset": [
+        0.0072,
+        0.0014
+      ],
+      "anchor_distance": 0.0073
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the white plate with red rings",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.033,
+          0.07,
+          1.05
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.008,
+        "max_steps": 100
+      },
+      "anchor": "the white plate with red rings",
+      "offset": [
+        -0.0018,
+        0.0964
+      ],
+      "anchor_distance": 0.0964
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          0.042,
+          0.025,
+          1.02
+        ],
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "gripper": -1,
+        "step_clip": 0.008,
+        "pitch_step": 0.03,
+        "yaw_step": 0.03,
+        "tol": 0.012,
+        "ori_tol": 0.1,
+        "max_steps": 100
+      },
+      "anchor": "the white plate with red rings",
+      "offset": [
+        0.0072,
+        0.0514
+      ],
+      "anchor_distance": 0.0519
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the near rim of the white plate with red rings, then lift it",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.271,
+          0.202,
+          1.05
+        ],
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "gripper": 1,
+        "step_clip": 0.008,
+        "pitch_step": 0.03,
+        "yaw_step": 0.03,
+        "tol": 0.02,
+        "ori_tol": 0.1,
+        "max_steps": 300
+      },
+      "anchor": "the dark gray round stove burner coil",
+      "offset": [
+        -0.0103,
+        0.0007
+      ],
+      "anchor_distance": 0.0103
+    }
+  ]
+}

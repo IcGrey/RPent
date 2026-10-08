@@ -1,0 +1,28 @@
+{
+  "anchors": [
+    {
+      "phrase": "the cream cheese box",
+      "locator": "molmo",
+      "median_xy": [
+        -0.089,
+        0.074
+      ]
+    },
+    {
+      "phrase": "the inside of the basket",
+      "locator": "molmo",
+      "median_xy": [
+        0.018,
+        0.245
+      ]
+    },
+    {
+      "phrase": "the butter",
+      "locator": "molmo",
+      "median_xy": [
+        -0.089,
+        0.074
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{"action": "segment", "prompt": "the blue and yellow alphabet soup can", "camera": "agentview"}
+{"action": "segment", "prompt": "the inside of the basket", "camera": "agentview"}
+{"action": "move_to", "xyz": [-0.174, -0.081, 0.18], "gripper": -1, "step_clip": 0.015, "max_steps": 100, "tol": 0.01}
+{"action": "segment", "prompt": "the blue and yellow can", "camera": "wrist"}
+{"action": "pi0_pick", "prompt": "pick up the alphabet soup can", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 5}
+{"action": "move_to", "xyz": [-0.02, 0.285, 0.15], "gripper": 1, "step_clip": 0.01, "max_steps": 100, "tol": 0.012}
+{"action": "release", "max_steps": 30}
+{"action": "move_to", "xyz": [-0.016, 0.287, 0.245], "gripper": -1, "step_clip": 0.01, "max_steps": 80, "tol": 0.012}

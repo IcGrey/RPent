@@ -1,0 +1,106 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.137,
+          0.062,
+          0.18
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the small brown chocolate pudding box",
+      "offset": [
+        -0.012,
+        0.003
+      ],
+      "anchor_distance": 0.0124
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.146,
+          0.059,
+          0.15
+        ],
+        "gripper": -1,
+        "tol": 0.01,
+        "step_clip": 0.015,
+        "max_steps": 60
+      },
+      "anchor": "the small brown chocolate pudding box",
+      "offset": [
+        -0.021,
+        0.0
+      ],
+      "anchor_distance": 0.021
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the chocolate pudding",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.155,
+          0.06,
+          0.22
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the small brown chocolate pudding box",
+      "offset": [
+        -0.03,
+        0.001
+      ],
+      "anchor_distance": 0.03
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.04,
+          0.277,
+          0.22
+        ],
+        "gripper": 1,
+        "tol": 0.015,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the white lined woven basket",
+      "offset": [
+        -0.1225,
+        0.0172
+      ],
+      "anchor_distance": 0.1237
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+{"action": "move_to", "xyz": [-0.17, -0.052, 0.985], "gripper": -1, "max_steps": 120, "step_clip": 0.008, "tol": 0.012}
+{"action": "set_gripper", "gripper": 1, "steps": 12}
+{"action": "pi0_pick", "prompt": "put the wine bottle in the bowl", "max_chunks": 24, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}

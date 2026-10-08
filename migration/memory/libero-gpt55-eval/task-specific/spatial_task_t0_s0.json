@@ -1,0 +1,38 @@
+{
+  "suite": "libero_spatial_task",
+  "task_id": 0,
+  "seed": 0,
+  "cell": "spatial_task_t0_s0",
+  "regime": "strict_perception",
+  "task_language": "Pick the akita black bowl not between the plate and the ramekin and place it on the plate",
+  "libero_terminated": true,
+  "attempts": 8,
+  "memory_files_read": [
+    "memory/_inbox/spatial_task_t0_s0/wip/notes.md",
+    "cells/spatial_task_t0_s0/attempts/attempt_1_failed.json",
+    "cells/spatial_task_t0_s0/attempts/attempt_2_failed.json",
+    "cells/spatial_task_t0_s0/attempts/attempt_3_failed.json",
+    "cells/spatial_task_t0_s0/attempts/attempt_4_failed.json",
+    "cells/spatial_task_t0_s0/attempts/attempt_5_failed.json",
+    "cells/spatial_task_t0_s0/attempts/attempt_6_failed.json",
+    "cells/spatial_task_t0_s0/attempts/attempt_7_failed.json",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md",
+    "memory/global/rim-perch-contact-seat.md"
+  ],
+  "localization_summary": "Agentview high-resolution RGB identified the target as the upper/right patterned black bowl because the lower/front duplicate lies between the red-rim plate and gray ramekin. Plate pixels were back-projected around x=0.052, y=0.18-0.21, z=0.907; wrist view near the y workspace edge confirmed the target duplicate before manipulation.",
+  "command_sequence": [
+    {"step": 1, "action": "move_to", "xyz": [-0.405, 0.345, 1.06], "gripper": -1, "step_clip": 0.01, "max_steps": 100, "tol": 0.012, "result": "stalled at y about 0.253 but wrist saw the target bowl"},
+    {"step": 2, "action": "pi0_pick", "prompt": "grasp the upper right black bowl by the rim", "max_chunks": 10, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06, "pick_result": {"success": false, "final_gripper_opening": 0.0741, "note": "moved correct bowl but did not secure it"}},
+    {"step": 3, "action": "pi0_pick", "prompt": "pick up the black bowl", "max_chunks": 14, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06, "pick_result": {"success": false, "peak_lift_m": 0.1596, "final_gripper_opening": 0.0680, "note": "lifted/disturbed correct target near the plate/ramekin but ended open"}},
+    {"step": 4, "action": "set_gripper", "gripper": 1, "steps": 10, "result": "closed around the staged bowl area; gripper opening nearly shut, not a stable carry"},
+    {"step": 5, "action": "pi0_pick", "prompt": "pick up the raised black bowl", "max_chunks": 18, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06, "pick_result": {"success": true, "chunks_used": 15, "peak_lift_m": 0.1249, "final_gripper_opening": 0.0038, "terminated": true, "note": "closed-loop recovery picked/seated the already raised target onto the red-rim plate and fired the predicate"}}
+  ],
+  "final_state": {
+    "robot0_eef_pos": [0.07782403243494208, 0.22486832241401725, 0.9728105828232481],
+    "robot0_eef_quat": [0.9468507845536654, -0.3079195199019831, -0.04086806915196886, -0.08360001182553672],
+    "robot0_gripper_qpos": [0.0018392953505928854, -0.001926095849287809]
+  },
+  "strategy_notes": "Winning sequence localized the not-between target from agentview and wrist, then used Pi0 recovery rather than scripted placement. First, move near the target even though y may stall at the workspace edge. Call pi0_pick with 'grasp the upper right black bowl by the rim' for up to 10 chunks; in this run it disturbed but did not hold the correct bowl. Re-issue pi0_pick with 'pick up the black bowl' for up to 14 chunks; it lifted the correct target but ended open, staging it near the plate. Firm with set_gripper +1 for 10 steps, then call pi0_pick with 'pick up the raised black bowl' for up to 18 chunks. The third Pi0 call moved the staged raised bowl onto the red-rim plate and returned libero_terminated true. This trajectory intentionally let Pi0 perform the final recovery/contact seating after seven scripted placement classes failed."
+}

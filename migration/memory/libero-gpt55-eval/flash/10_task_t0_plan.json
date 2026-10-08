@@ -1,0 +1,335 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the cream cheese box",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the upright can with red and green tomato label",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the open white lined basket",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.115,
+          -0.202,
+          0.6
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the cream cheese",
+      "offset": [
+        0.015,
+        0.011
+      ],
+      "anchor_distance": 0.0186
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the cream cheese box",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.059,
+          0.026,
+          0.62
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the upright can with red and green label",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "point": [
+          710,
+          500
+        ],
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.1,
+          -0.213,
+          0.6
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the cream cheese",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the cream cheese",
+        "max_chunks": 18,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.108,
+          -0.221,
+          0.63
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the cream cheese",
+      "offset": [
+        0.008,
+        -0.008
+      ],
+      "anchor_distance": 0.0113
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.09,
+          -0.02,
+          0.62
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the cream cheese",
+      "offset": [
+        -0.01,
+        0.193
+      ],
+      "anchor_distance": 0.1933
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.04,
+          0.18,
+          0.62
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.04,
+        -0.065
+      ],
+      "anchor_distance": 0.0763
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.02,
+          0.245,
+          0.585
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.008,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.02,
+        0.0
+      ],
+      "anchor_distance": 0.02
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.015,
+          0.245,
+          0.56
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.006,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.015,
+        0.0
+      ],
+      "anchor_distance": 0.015
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.02,
+          0.242,
+          0.64
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.01,
+        "max_steps": 80
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.02,
+        -0.003
+      ],
+      "anchor_distance": 0.0202
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.083,
+          0.028,
+          0.62
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the tomato sauce can",
+        "max_chunks": 16,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 5
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.078,
+          0.05,
+          0.64
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 80
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.0,
+          0.235,
+          0.64
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.0,
+        -0.01
+      ],
+      "anchor_distance": 0.01
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.0,
+          0.245,
+          0.58
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.006,
+        "max_steps": 100
+      },
+      "anchor": "the inside of the basket",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 30
+      }
+    }
+  ]
+}

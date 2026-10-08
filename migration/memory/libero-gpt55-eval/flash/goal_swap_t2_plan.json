@@ -1,0 +1,147 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the dark wine bottle",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the black top surface of the wooden drawer",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.089,
+          0.012,
+          1.18
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 80
+      },
+      "anchor": "the dark wine bottle",
+      "offset": [
+        0.0013,
+        0.0005
+      ],
+      "anchor_distance": 0.0014
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the wine bottle",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 12
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.101,
+          0.015,
+          1.25
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the dark wine bottle",
+      "offset": [
+        -0.0107,
+        0.0035
+      ],
+      "anchor_distance": 0.0113
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.1,
+          -0.16,
+          1.29
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 100
+      },
+      "anchor": "the dark wine bottle",
+      "offset": [
+        -0.0097,
+        -0.1715
+      ],
+      "anchor_distance": 0.1718
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.274,
+          -0.255,
+          1.29
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the black top surface of the wooden drawer",
+      "offset": [
+        0.007,
+        -0.0052
+      ],
+      "anchor_distance": 0.0087
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.262,
+          -0.255,
+          1.27
+        ],
+        "gripper": 1,
+        "tol": 0.008,
+        "step_clip": 0.006,
+        "max_steps": 40
+      },
+      "anchor": "the black top surface of the wooden drawer",
+      "offset": [
+        0.019,
+        -0.0052
+      ],
+      "anchor_distance": 0.0197
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

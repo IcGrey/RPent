@@ -1,0 +1,8 @@
+{"action": "move_to", "xyz": [0.0, -0.27, 1.27], "gripper": -1, "max_steps": 100, "step_clip": 0.015, "tol": 0.012}
+{"action": "pi0_pick", "prompt": "Pick the akita black bowl on the top of the wooden cabinet and place it on the plate", "max_chunks": 30, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "move_to", "xyz": [0.1, -0.1, 1.27], "gripper": 1, "max_steps": 90, "step_clip": 0.012, "tol": 0.012}
+{"action": "move_to", "xyz": [0.11, 0.16, 1.23], "gripper": 1, "max_steps": 100, "step_clip": 0.012, "tol": 0.012}
+{"action": "move_to", "xyz": [0.135, 0.23, 1.08], "gripper": 1, "max_steps": 120, "step_clip": 0.008, "tol": 0.012}
+{"action": "move_to", "xyz": [0.115, 0.215, 1.015], "gripper": 1, "max_steps": 100, "step_clip": 0.006, "tol": 0.012}
+{"action": "release", "max_steps": 50}
+{"action": "pi0_pick", "prompt": "pick up the black bowl", "max_chunks": 12, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}

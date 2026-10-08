@@ -1,0 +1,14 @@
+{"action": "segment", "prompt": "the black patterned bowl on top of the dark cabinet", "camera": "agentview"}
+{"action": "segment", "prompt": "the dark cabinet top", "camera": "agentview"}
+{"action": "segment", "prompt": "the white plate with red rings", "camera": "agentview"}
+{"action": "segment", "prompt": "the black patterned bowl on the cookie box", "camera": "agentview"}
+{"action": "move_to", "xyz": [0.02, -0.265, 1.18], "gripper": -1, "step_clip": 0.012, "max_steps": 120, "tol": 0.015}
+{"action": "segment", "prompt": "the patterned bowl", "camera": "wrist"}
+{"action": "pi0_pick", "prompt": "pick up the black patterned bowl on top of the cabinet", "max_chunks": 14, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "move_to", "xyz": [0.075, -0.305, 1.17], "gripper": -1, "step_clip": 0.01, "max_steps": 100, "tol": 0.015}
+{"action": "pi0_pick", "prompt": "Pick the akita black bowl on the top of the cabinet and place it on the plate", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "release", "max_steps": 30}
+{"action": "pi0_pick", "prompt": "pick up the black bowl", "max_chunks": 12, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "move_to", "xyz": [0.09, 0.255, 1.1], "gripper": -1, "step_clip": 0.01, "max_steps": 80, "tol": 0.015}
+{"action": "pi0_pick", "prompt": "place the black bowl on the red ring plate", "max_chunks": 14, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "move_to", "xyz": [0.064, 0.255, 0.965], "gripper": -1, "step_clip": 0.008, "max_steps": 80, "tol": 0.012}

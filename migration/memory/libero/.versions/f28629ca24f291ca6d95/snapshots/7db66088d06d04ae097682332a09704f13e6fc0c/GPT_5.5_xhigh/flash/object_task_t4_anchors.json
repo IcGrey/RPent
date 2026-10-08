@@ -1,0 +1,12 @@
+{
+  "anchors": [
+    {
+      "phrase": "red rectangular milk carton",
+      "locator": "segment",
+      "median_xy": [
+        -0.1761,
+        -0.0797
+      ]
+    }
+  ]
+}

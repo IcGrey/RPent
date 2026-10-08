@@ -1,0 +1,36 @@
+{
+  "anchors": [
+    {
+      "phrase": "the patterned black bowl on the stove",
+      "locator": "segment",
+      "median_xy": [
+        -0.2949,
+        -0.1503
+      ]
+    },
+    {
+      "phrase": "the white plate with red rim",
+      "locator": "segment",
+      "median_xy": [
+        0.0451,
+        0.1964
+      ]
+    },
+    {
+      "phrase": "the patterned bowl held by the gripper",
+      "locator": "segment",
+      "median_xy": [
+        0.1167,
+        -0.0725
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        0.041,
+        0.241
+      ]
+    }
+  ]
+}

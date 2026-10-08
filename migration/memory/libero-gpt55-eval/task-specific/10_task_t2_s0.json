@@ -1,0 +1,51 @@
+{
+  "suite": "libero_10_task",
+  "task_id": 2,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "turn on the stove and put the pan on it",
+  "libero_terminated": true,
+  "total_attempts": 107,
+  "memory_files_read": [
+    "resources/libero/memory/MEMORY.md",
+    "resources/libero/memory/global/held-offset-rotation-reach.md",
+    "resources/libero/memory/global/rotate-wrist-90deg-drifts-eef-recenter-after.md",
+    "resources/libero/memory/global/predicate-fires-after-gripper-retreat.md",
+    "resources/libero/memory/global/co-vary-pitch-clears-yawed-reach-wall.md",
+    "resources/libero/memory/_inbox/10_task_t2_s0/wip/notes.md",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "strategy_notes": "Localized pan/handle, burner, knob, and moka distractor from reset-step agentview hi-res and accepted wrist refinements only when consistent. Winning post-reset sequence: move above handle; move above burner (stalled but yielded valid wrist burner geometry); return home; pi0_pick contact driver 'turn on the stove' for 12 chunks then three 1-chunk continuations until the coil was visibly red; return home; move to the refined handle-root prepose; pi0_pick 'grasp the pan handle' for 8 chunks; confirm the retained ~0.030 m finger gap and handle in wrist image; set_gripper +1 for 10 steps; vertical lift with +1; rotate_wrist +1.5708 twice; attempt direct measured-offset correction (stalled); rotate_wrist -1.5708 to the reachable yaw branch; remeasure the held body offset; move to the recomputed center target; apply two perception-measured airborne residual corrections; descend vertically in two capped support probes; release for 12 steps. The predicate fired on release.",
+  "pick_result": {
+    "pan_pi0_pick_step765": {
+      "prompt": "grasp the pan handle",
+      "max_chunks": 8,
+      "success_heuristic": false,
+      "peak_lift_m": 0.0255,
+      "final_gripper_opening_m": 0.03035,
+      "perception_verified": true
+    },
+    "stove_contact_steps759_762": {
+      "prompt": "turn on the stove",
+      "chunks": "12+1+1+1",
+      "lift_thresh": 999,
+      "gripper_closed_thresh": 0,
+      "rgb_verified_red": true
+    }
+  },
+  "final_state": {
+    "step_idx": 777,
+    "robot0_eef_pos": [
+      -0.13564131934852125,
+      0.2157157323037059,
+      1.0539279532867754
+    ],
+    "robot0_gripper_qpos": [
+      0.03352414667912461,
+      -0.03354926171383489
+    ],
+    "libero_terminated": true
+  }
+}

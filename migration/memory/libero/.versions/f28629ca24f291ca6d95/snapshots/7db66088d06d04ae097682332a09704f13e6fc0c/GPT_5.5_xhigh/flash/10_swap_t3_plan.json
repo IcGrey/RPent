@@ -1,0 +1,267 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl with yellow rim",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the open bottom drawer of the white cabinet",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl with yellow rim",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.171,
+          0.073,
+          1.05
+        ],
+        "gripper": -1,
+        "max_steps": 70,
+        "step_clip": 0.025,
+        "tol": 0.012
+      },
+      "anchor": "the black bowl",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the black bowl",
+        "max_chunks": 12,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl in the gripper",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.085,
+          -0.097,
+          1.05
+        ],
+        "gripper": 1,
+        "max_steps": 80,
+        "step_clip": 0.02,
+        "tol": 0.015
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.085,
+          -0.097,
+          0.965
+        ],
+        "target_pitch": 0,
+        "target_yaw": 0,
+        "gripper": 1,
+        "max_steps": 140,
+        "step_clip": 0.015,
+        "pitch_step": 0.08,
+        "yaw_step": 0.08,
+        "tol": 0.015,
+        "ori_tol": 0.05
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.085,
+          -0.09,
+          1.05
+        ],
+        "gripper": -1,
+        "max_steps": 60,
+        "step_clip": 0.02,
+        "tol": 0.015
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.0,
+        0.007
+      ],
+      "anchor_distance": 0.007
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.035,
+          -0.035,
+          0.99
+        ],
+        "gripper": 1,
+        "max_steps": 70,
+        "step_clip": 0.02,
+        "tol": 0.015
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.05,
+        0.062
+      ],
+      "anchor_distance": 0.0796
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.045,
+          -0.035,
+          0.925
+        ],
+        "gripper": 1,
+        "max_steps": 50,
+        "step_clip": 0.015,
+        "tol": 0.012
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.04,
+        0.062
+      ],
+      "anchor_distance": 0.0738
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.24,
+          -0.23,
+          0.952
+        ],
+        "gripper": 1,
+        "max_steps": 150,
+        "step_clip": 0.025,
+        "tol": 0.015
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.045,
+          -0.245,
+          0.955
+        ],
+        "gripper": 1,
+        "max_steps": 150,
+        "step_clip": 0.02,
+        "tol": 0.015
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.04,
+        -0.148
+      ],
+      "anchor_distance": 0.1533
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.0,
+          -0.02,
+          1.0
+        ],
+        "gripper": 1,
+        "max_steps": 70,
+        "step_clip": 0.02,
+        "tol": 0.015
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.085,
+        0.077
+      ],
+      "anchor_distance": 0.1147
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.0,
+          -0.02,
+          0.925
+        ],
+        "gripper": 1,
+        "max_steps": 60,
+        "step_clip": 0.012,
+        "tol": 0.012
+      },
+      "anchor": "the inside of the bottom drawer of the cabinet",
+      "offset": [
+        0.085,
+        0.077
+      ],
+      "anchor_distance": 0.1147
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.3,
+          -0.24,
+          0.928
+        ],
+        "gripper": 1,
+        "max_steps": 150,
+        "step_clip": 0.025,
+        "tol": 0.015
+      }
+    }
+  ]
+}

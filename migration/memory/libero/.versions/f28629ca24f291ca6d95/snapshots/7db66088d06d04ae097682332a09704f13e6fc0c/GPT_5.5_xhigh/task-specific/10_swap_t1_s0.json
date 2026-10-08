@@ -1,0 +1,30 @@
+{
+  "suite": "libero_10_swap",
+  "task_id": 1,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "put both the cream cheese box and the butter in the basket",
+  "perturbation_semantics": "Loose grocery objects re-randomized on the table. No fixture swap; basket present at table-right. Targets (cream_cheese_1, butter_1) sit among 6 distractors (alphabet_soup, ketchup, milk, orange_juice, tomato_sauce, + basket).",
+  "expected_baseline_behavior": "Pi0 fullshot picks a base-location or look-alike grocery; brand-noun grounding is unreliable so it grabs milk/OJ/soup instead of the two named boxes.",
+  "strategy_notes": "LIVING_ROOM frame (eef home z=0.681, table top ~0.43). Localized by agentview hi-res identity + wrist geometry: butter = 'FARM FRESH BUTTER' box standing behind the tomato-sauce can, footprint (x=-0.06,y=0.069) after wrist refine (agentview region had captured the reflective can lid at z~0.51, corrected via wrist to z~0.455 flat box); cream cheese = blue 'Cream Cheese Fresh Taste' box tucked behind the OJ carton, footprint (x=-0.03,y=-0.238) confirmed in wrist. Basket cavity ~(x=-0.04,y=0.235) with a fabric liner whose surface sits high (z~0.51-0.55), so the basket is shallow. WINNING SEQUENCE (matches recipe order): pre-position over butter (move_to -0.06,0.069,0.56), pi0_pick 'pick up the butter box' max_chunks=12 (lift 0.056, gripper opening 0.039=holding), set_gripper +1 8 steps, lift to 0.63, carry to basket via waypoint (0,0.21,0.64) then center over cavity (-0.05,0.235,0.62), descend to 0.54, release. Then traverse to cream cheese via waypoint (-0.05,0,0.64)->(-0.05,-0.18,0.6), wrist-confirm the Cream Cheese box, pre-position (-0.03,-0.238,0.56), pi0_pick 'pick up the cream cheese box' max_chunks=12 (lift 0.097), set_gripper +1, lift 0.65, carry via (-0.04,0.05,0.65)->(-0.03,0.22,0.63), descend into open basket area (-0.025,0.205,0.56, stalled at 0.578 resting on butter), release -> libero_terminated=true. Both boxes grasped from a pre-positioned eef directly over the wrist-verified target; no reset needed.",
+  "pick_result": {
+    "butter_pi0_pick_step4": {
+      "success": true,
+      "peak_lift_m": 0.056,
+      "final_gripper_opening": 0.0393
+    },
+    "cream_cheese_pi0_pick_step15": {
+      "success": true,
+      "peak_lift_m": 0.097,
+      "final_gripper_opening": 0.0427
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.0197, 0.2133, 0.5800],
+    "robot0_gripper_qpos": [0.0235, -0.0206],
+    "object_names": ["alphabet_soup_1","basket_1","butter_1","cream_cheese_1","ketchup_1","milk_1","orange_juice_1","tomato_sauce_1"]
+  },
+  "libero_terminated": true,
+  "attempts": 1
+}

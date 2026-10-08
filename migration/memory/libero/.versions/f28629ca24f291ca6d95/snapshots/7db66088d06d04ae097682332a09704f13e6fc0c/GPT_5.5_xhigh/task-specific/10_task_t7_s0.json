@@ -1,0 +1,24 @@
+{
+  "suite": "libero_10_task",
+  "task_id": 7,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "task (P1) variant of libero_10 t7 (two-items-into-basket)",
+  "perturbed_task_language": "put both the ketchup and the cream cheese box in the basket",
+  "perturbation_semantics": "Two named targets (ketchup tall bottle + cream cheese flat box) must both go into the basket; distractors present (alphabet_soup can, tomato_sauce can) that must NOT be moved.",
+  "expected_baseline_behavior": "Pi0 end-to-end tends to complete only one item or drop items at its trained place; here Pi0's pick-and-carry habit was harnessed for delivery but the LLM scripted the final seat+release.",
+  "frame": "LIVING_ROOM (eef home z=0.681, table top z~0.43)",
+  "strategy_notes": "Localized from agentview hi-res image_cam_hi_00: ketchup 'Tomato Ketchup' red bottle at pixel(500,330)->world(-0.157,-0.132,0.495); cream cheese blue/white box at pixel(600,615)->world(-0.092,0.072,0.452); basket interior via region back_project (rows500-600,cols820-940) center ~ (0.02,0.21), rim z~0.577. ORDER: box first, then bottle. (1) move_to above box [-0.092,0.072,0.58]; (2) pi0_pick 'pick up the cream cheese box' max_chunks16 -> lift 0.087, opening 0.043; (3) set_gripper +1 steps8 (opening 0.024); (4) carry move_to [0.03,0.21,0.62]; (5) descend move_to [0.035,0.215,0.57] step_clip0.02 (stalled ~0.58 inside basket); (6) release -> box in basket; (7) retreat up [0.039,0.218,0.63]; (8) waypoint [-0.05,0.04,0.62] (split the >0.30 y traversal); (9) pre-pos above ketchup [-0.157,-0.132,0.6]; (10) pi0_pick 'pick up the ketchup bottle' max_chunks18 -> reported success:false but Pi0 grasped AND carried the bottle to the basket (eef ended at (0.036,0.230,0.711), gripper opening 0.034 holding); (11) set_gripper +1 steps6; (12) center over interior move_to [0.01,0.19,0.66]; (13) descend move_to [0.01,0.185,0.6] step_clip0.02 (stalled ~0.625, bottle seated); (14) release -> libero_terminated TRUE.",
+  "pick_result": {
+    "cream_cheese_box_pi0_pick_step2": {"success": true, "peak_lift_m": 0.087, "min_gripper_opening": 0.043},
+    "ketchup_pi0_pick_step10": {"success_flag": false, "note": "flag false but Pi0 carried bottle to basket; gripper opening 0.034 confirms hold; peak_lift 0.231"}
+  },
+  "final_state": {
+    "robot0_eef_pos": [0.0189, 0.1950, 0.6268],
+    "robot0_gripper_qpos": [0.0297, -0.0304],
+    "object_names": ["alphabet_soup_1", "basket_1", "cream_cheese_1", "ketchup_1", "tomato_sauce_1"]
+  },
+  "libero_terminated": true,
+  "attempts": 1,
+  "memory_consulted": ["resources/libero/memory/MEMORY.md (empty)", "robots/libero/guides/pro_hybrid_guide.md", "robots/libero/guides/env_calibration.md"]
+}

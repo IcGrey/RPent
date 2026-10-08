@@ -1,0 +1,58 @@
+{
+  "suite": "libero_10_swap",
+  "task_id": 4,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+  "libero_terminated": true,
+  "total_attempts": 24,
+  "final_state": {
+    "step_idx": 203,
+    "robot0_eef_pos": [
+      -0.0549863674,
+      -0.3269496382,
+      0.6375985742
+    ],
+    "robot0_gripper_qpos": [
+      0.0151728153,
+      -0.0152211109
+    ],
+    "yellow_white_mug": "upright on image-right/+y plate",
+    "white_mug": "upright on image-left/-y plate",
+    "red_distractor": "upright and untouched"
+  },
+  "localization": "Agentview RGB established mug identities and plate semantics; multi-pixel back_projection localized all entities, wrist back_projection refined each plate and each held-mug offset. Absolute coordinates below are seed-specific and must not be cached.",
+  "pick_result": {
+    "yellow_pi0_pick_step177": {
+      "prompt": "grasp the yellow and white mug",
+      "max_chunks": 8,
+      "reported_success": false,
+      "peak_lift_m": 0.035698,
+      "final_gripper_opening_m": 0.011118,
+      "perception_judgment": "target visibly airborne and loaded despite lift heuristic false"
+    },
+    "white_pi0_pick_step195": {
+      "prompt": "grasp the white mug by the handle",
+      "max_chunks": 8,
+      "reported_success": true,
+      "peak_lift_m": 0.061898,
+      "final_gripper_opening_m": 0.036125,
+      "perception_judgment": "target visibly airborne in exterior handle grasp"
+    }
+  },
+  "strategy_notes": [
+    "Steps171-174: open-gripper semantic scan moved over image-right/+y and image-left/-y plates and returned through center; wrist-refined plate centers.",
+    "Steps175-177: pre-positioned over the agentview-identified yellow/white mug and ran grasp-only pi0_pick max_chunks=8.",
+    "Steps178-180: firmed +1 for 8 steps, lifted to z~0.70, and used move_pose pitch=0/yaw=1.57 to rotate the held offset into x.",
+    "Steps181-183: carried through a far-negative-x corridor to the image-right/+y plate; used held-surface wrist correction plus an empirical +0.04 m world-x footprint bias.",
+    "Step184: descended vertically with gripper +1 until support stall z~0.548.",
+    "Steps185-189: opened in 1/2/3/5-step stages, then release(max_steps=20). Step190 retreated straight up.",
+    "Steps191-194: routed the empty gripper through far-negative-x, restored yaw=0, and pre-positioned at the white mug handle side.",
+    "Step195: pi0_pick('grasp the white mug by the handle', max_chunks=8); step196 firmed +1 for 8 steps.",
+    "Steps197-198: lifted high and leveled/yawed to 1.57; agentview held-body median measured offset about (+0.100,+0.012) from EEF.",
+    "Step199: carried directly to the image-left/-y plate with the +0.04 m x footprint calibration; wrist surface median (0.0106,-0.3132) matched plate center (0.0104,-0.3142).",
+    "Step200: descended vertically at step_clip=0.003 until support stall z~0.638.",
+    "Steps201-203: opened for 1, then 2, then 3 steps; libero_terminated became true at step203."
+  ],
+  "decisive_lever": "Reversed/viewer plate binding (yellow/white mug -> image-right/+y; white mug -> image-left/-y) combined with post-yaw held-offset measurement and +0.04 m world-x footprint calibration."
+}

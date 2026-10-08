@@ -1,0 +1,217 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl next to the red-rimmed plate",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white ceramic plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.025,
+          0.319,
+          1.1
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.02,
+        "max_steps": 100
+      },
+      "anchor": "the patterned black bowl next to the red-rimmed plate",
+      "offset": [
+        -0.0157,
+        0.0072
+      ],
+      "anchor_distance": 0.0173
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl directly below the gripper",
+        "camera": "wrist"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.011,
+          0.305,
+          1.02
+        ],
+        "gripper": -1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the patterned black bowl next to the red-rimmed plate",
+      "offset": [
+        0.0203,
+        -0.0068
+      ],
+      "anchor_distance": 0.0214
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the black patterned bowl directly below the gripper next to the plate",
+        "max_chunks": 20,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.013,
+          0.33,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the patterned black bowl next to the red-rimmed plate",
+      "offset": [
+        0.0223,
+        0.0182
+      ],
+      "anchor_distance": 0.0288
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white ceramic plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.06,
+          0.271,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.012,
+        "step_clip": 0.015,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.075,
+          0.245,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 60
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.015,
+        -0.026
+      ],
+      "anchor_distance": 0.03
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.06,
+          0.271,
+          1.1
+        ],
+        "gripper": 1,
+        "tol": 0.006,
+        "step_clip": 0.008,
+        "max_steps": 80
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.06,
+          0.271,
+          0.99
+        ],
+        "gripper": 1,
+        "tol": 0.01,
+        "step_clip": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the patterned black bowl overlapping the red-rimmed plate",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white ceramic plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the patterned black bowl directly between the open gripper fingers",
+        "max_chunks": 12,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    }
+  ]
+}

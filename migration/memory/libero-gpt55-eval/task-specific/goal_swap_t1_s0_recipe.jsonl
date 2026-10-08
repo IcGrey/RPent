@@ -1,0 +1,6 @@
+{"action": "pi0_pick", "prompt": "pick up the bowl", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 10}
+{"action": "move_to", "xyz": [-0.245, -0.055, 0.97], "gripper": 1, "tol": 0.014, "step_clip": 0.008, "max_steps": 160}
+{"action": "move_to", "xyz": [-0.245, -0.045, 0.94], "gripper": 1, "tol": 0.014, "step_clip": 0.006, "max_steps": 140}
+{"action": "release", "max_steps": 25}
+{"action": "pi0_doubled", "prompt": "put the bowl on the stove", "max_chunks": 30}

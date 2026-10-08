@@ -1,0 +1,202 @@
+{
+  "plan": [
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.012,
+          -0.281,
+          1.1
+        ],
+        "gripper": -1,
+        "step_clip": 0.02,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the moka pot",
+      "offset": [
+        0.022,
+        -0.007
+      ],
+      "anchor_distance": 0.0231
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.034,
+          -0.274,
+          1.1
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "tol": 0.008,
+        "max_steps": 60
+      },
+      "anchor": "the moka pot",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "pick up the moka pot",
+        "max_chunks": 24,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.136,
+          -0.26,
+          1.105
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "tol": 0.008,
+        "max_steps": 60
+      },
+      "anchor": "the moka pot",
+      "offset": [
+        -0.102,
+        0.014
+      ],
+      "anchor_distance": 0.103
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the moka pot",
+        "max_chunks": 12,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 6
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.1,
+          0.02,
+          1.14
+        ],
+        "gripper": 1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        -0.027,
+        -0.19
+      ],
+      "anchor_distance": 0.1919
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.073,
+          0.21,
+          1.09
+        ],
+        "gripper": 1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 120
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.073,
+          0.21,
+          1.02
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "tol": 0.012,
+        "max_steps": 140
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.069,
+          0.213,
+          1.13
+        ],
+        "gripper": -1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 80
+      },
+      "anchor": "the stove burner",
+      "offset": [
+        0.004,
+        0.003
+      ],
+      "anchor_distance": 0.005
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.18,
+          0.2,
+          1.05
+        ],
+        "gripper": -1,
+        "step_clip": 0.015,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the stove knob",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_doubled",
+      "arguments": {
+        "prompt": "turn on the stove",
+        "max_chunks": 20
+      }
+    }
+  ]
+}

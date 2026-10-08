@@ -1,0 +1,44 @@
+{
+  "anchors": [
+    {
+      "phrase": "the patterned bowl inside the open drawer",
+      "locator": "segment",
+      "median_xy": [
+        0.0616,
+        -0.1456
+      ]
+    },
+    {
+      "phrase": "the white ceramic plate with red rings",
+      "locator": "segment",
+      "median_xy": [
+        0.0674,
+        0.2146
+      ]
+    },
+    {
+      "phrase": "the wooden cabinet",
+      "locator": "segment",
+      "median_xy": [
+        0.1176,
+        -0.2114
+      ]
+    },
+    {
+      "phrase": "the akita black bowl on the top of the wooden cabinet",
+      "locator": "molmo",
+      "median_xy": [
+        0.009,
+        -0.281
+      ]
+    },
+    {
+      "phrase": "the plate",
+      "locator": "molmo",
+      "median_xy": [
+        0.071,
+        0.265
+      ]
+    }
+  ]
+}

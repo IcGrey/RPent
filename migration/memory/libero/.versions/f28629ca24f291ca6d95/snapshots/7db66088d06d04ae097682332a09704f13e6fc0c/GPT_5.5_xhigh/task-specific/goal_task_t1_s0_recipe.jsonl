@@ -1,0 +1,5 @@
+{"action": "move_to", "xyz": [0.048, -0.014, 1.08], "gripper": -1, "tol": 0.012, "step_clip": 0.02, "max_steps": 100}
+{"action": "pi0_pick", "prompt": "pick up the plate", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_to", "xyz": [-0.18, 0.31, 1.04], "gripper": 1, "tol": 0.012, "step_clip": 0.012, "max_steps": 140}
+{"action": "move_to", "xyz": [-0.205, 0.34, 1.035], "gripper": 1, "tol": 0.012, "step_clip": 0.008, "max_steps": 100}

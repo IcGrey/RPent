@@ -1,0 +1,145 @@
+# Layered memory index
+
+Generated from memory leaf frontmatter.
+
+## Global
+
+- [Keep Pi0 recovery prompts grasp-only after a missed pick.](global/avoid-full-task-prompt-after-miss.md) — A Pi0 pick misses or only partially engages and the task still needs the LLM to script placement.
+- [Retreat open after seating objects inside baskets.](global/basket-insertion-open-retreat.md) — placing a held object into a rimmed or fabric-lined basket and release does not immediately terminate
+- [Retreat upward with the gripper open after low basket release.](global/basket-release-retreat-settle.md) — An object is released low inside a basket but the In predicate has not fired immediately.
+- [For a second object into a nearly-full container, wedge it against a closed wall, not onto the first object toward the open rim](global/basket-two-cans-wedge-not-stack.md) — task requires putting TWO (or more) objects into one small container/basket whose floor only fits one, and a place onto/next-to the first object keeps rolling or sliding back out
+- [Wrist-confirm box identity when an agentview z-scan puts a target box at the same height as a nearby shiny can lid](global/box-vs-can-lid-wrist-disambiguation.md) — localizing a standing box that sits next to or behind a metal can, and an agentview region/pixel back_project returns a flat surface at can-lid height (~z 0.51 in LIVING_ROOM)
+- [For two-BOXES-into-basket, a second box resting on the first still fires In(); do not require separated deep-floor placements like cans](global/boxes-tolerate-stacking-in-basket.md) — placing a second flat/box-shaped object into a small basket that already holds the first item, and the descent stalls high (object resting on the first item rather than reaching the floor)
+- [Let readable RGB labels overrule low-confidence category masks.](global/brand-label-over-segmentation.md) — Grocery or packaged-object tasks name a brand/flavor/label and similar packages share shape or color.
+- [A container's named front/back compartment is in the CONTAINER's local frame, not the robot's — "back" can be the near-robot pocket](global/caddy-back-is-near-robot-pocket.md) — task says put X in the "back"/"front"/"left"/"right" compartment/region of a multi-pocket caddy/organizer/tray/shelf
+- [Trust visual grasp evidence over Pi0's pick boolean for cylindrical groceries.](global/can-pick-visual-confirmation.md) — A Pi0 can or bottle pick reports failure but the target may be visibly held.
+- [Descend into open containers before releasing.](global/closed-gripper-container-insertion.md) — Object is already held above a basket or open container and the In predicate may require volume entry before settling
+- [Add a small pitch while using move_pose to cross a yawed Cartesian reach wall](global/co-vary-pitch-clears-yawed-reach-wall.md) — a yawed gripper stalls several centimeters short in move_to or move_pose at pitch zero, while the target is visually reachable
+- [Use Pi0 pick as a contact skill for fixture state changes.](global/contact-skill-state-change.md) — A task asks to change a fixture state such as turning a stove on or off rather than transporting an object.
+- [Close a drawer along the axis toward the cabinet body, and treat zero-motion-under-push as a wrong-axis signal](global/container-slide-axis-toward-fixture-body.md) — closing (or opening) a drawer/sliding fixture whose position was swapped/relocated, and a push that "should" close it moves the drawer by nothing
+- [Let contact predicates fire during a controlled closed-gripper descent.](global/drawer-top-contact-before-release.md) — Tall or awkward object is being placed on a fixture top and the predicate may check object contact rather than gripper release
+- [Drop flat boxes into basket interiors before opening.](global/flat-box-basket-interior-drop.md) — placing a long flat grocery box into a woven basket or cloth-lined container
+- [Seat flat boxes below a rigid bowl rim before release.](global/flat-box-rigid-bowl-seat.md) — placing a flat rectangular object into or on a rigid bowl whose rim can catch the lower edge
+- [Use trained contact insertion before opening a held object.](global/held-contact-container-insertion.md) — A held object is near a rimmed container but scripted gripper-center placement leaves the object projected outside the cavity.
+- [Rotate a held payload to redirect an unreachable hang offset into a reachable axis](global/held-offset-rotation-reach.md) — a correctly grasped object hangs several centimeters beyond the EEF along a workspace-edge axis, so centering the object would require an unreachable EEF target
+- [Release box-like objects high over a container cavity instead of descending into the rim.](global/high-drop-over-cavity.md) — Placing a rectangular or box-like object into a soft/rimmed open container where low descent catches the front rim.
+- [Treat fixture front as the control/handle side when edge placements fail.](global/knob-side-front-zone.md) — A task asks for an object at the front of a stove or appliance and visible edge or surface placements look correct but remain nonterminal.
+- [Turn unreachable held placement into a leaned contact setup before invoking policy push](global/leaned-contact-before-policy-push.md) — A held object cannot be released onto a raised surface because the gripper center cannot move far enough over the surface, but the object can be leaned against the target boundary
+- [Use learned contact to finish near placements.](global/learned-contact-after-near-placement.md) — A scripted release leaves the correct object visibly near or partly on the target surface but the predicate remains false.
+- [Test placement targets by holding the object over them and watching libero_terminated, before releasing](global/libero-in-predicate-fires-while-grasped.md) — an In()/On() place task where the correct destination among several look-alikes is uncertain, or where releasing risks tipping/losing the object
+- [Do not trust a fixed left/right sign for "right/left of X" predicates; verify empirically](global/libero10-left-right-sign-verify-empirically.md) — a task says put an object to the left/right of a reference and you must choose +y vs -y for the placement
+- [Use short low contact to seat an upright object after an off-center release](global/low-contact-seat-after-release.md) — An object is already upright on the intended surface but the On predicate did not fire after release
+- [Use a low regrasp to settle an object that is already on the target.](global/low-pose-settle-regrasp.md) — An object has been released partly on the correct target surface but the official predicate has not fired.
+- [Grasp a moka pot by its thin side handle, not its wide body or cap](global/moka-pot-grasp-the-handle-not-the-body.md) — picking a moka pot (or any wide low-poly pot/kettle with a slim handle) when top-down body grasps stall and Pi0 will not close
+- [Disambiguate a "back/front compartment" by finding the divided front/back PAIR, not by absolute depth](global/named-compartment-via-front-back-pair.md) — task names a "back" or "front" compartment of a multi-cell container (caddy/organizer/tray)
+- [Use short local regrasp contact after visible near-goal placement stalls.](global/near-goal-contact-regrasp.md) — A movable object is visibly on or partly on the target surface after release, but the task predicate is still false and open-gripper pushes risk losing control.
+- [Use a short pick as corrective contact after a near-miss placement.](global/near-miss-corrective-pick.md) — An object has been released partly on or against the destination surface, visual overlap is close, and scripted pushes have poor seating authority.
+- [Use a short local repick when an upright object lands just short of a placement predicate](global/near-target-repick.md) — A placed object remains upright adjacent to the correct target surface after release, and Pi0 can start from a close low pose
+- [Place flat grocery boxes into baskets by targeting the liner interior.](global/object-frame-box-to-basket.md) — Object-frame task asks for a flat box or carton to be placed in a basket
+- [Retreat open after container release when the object is visibly inside.](global/open-retreat-settles-container.md) — Container placement release opens the gripper but the predicate does not fire immediately while the object appears inside or wedged near the gripper
+- [Shift bowl grasps away from nearby fixture clutter.](global/open-side-bowl-grasp.md) — A bowl target is crowded by a cabinet handle, rim, wall, or other fixture on one side and Pi0 contacts without lifting.
+- [Grasp a tall wide-mouth mug by its handle, not from above](global/pi0-grasp-tall-mug-by-handle.md) — picking a tall mug/cup whose open top is wider than the gripper, where pi0_pick keeps descending into the cup and grabbing air
+- [Judge a pi0_pick by grip + wrist, not the success flag — it can grasp then carry past the lift check](global/pi0-pick-carries-past-lift-judge-by-grip.md) — pi0_pick returns success:false (descent_done:false) but the eef has moved far from the object and the gripper is not fully closed
+- [pi0_pick often carries the grasped object toward its trained place pose; exploit or cap it](global/pi0-pick-may-place-at-trained-left.md) — using pi0_pick for a grasp and it lifts then drifts in +y (robot-left) instead of stopping at lift
+- [Pre-position Pi0 over the visually identified object for simple basket drops.](global/pi0-prepositioned-simple-basket.md) — A single grocery object must go into an open basket and Pi0's learned place behavior may already match the goal.
+- [In multi-part tasks, do the pi0_pick grasp BEFORE any pi0_doubled contact skill, to keep a clean vertical wrist](global/pick-before-contact-skill-keeps-wrist-clean.md) — A task needs both a grasp/place AND a contact skill (knob/button/drawer via pi0_doubled), and the grasp target is awkward (wide/smooth/round). Order the subtasks so the grasp comes first.
+- [Release wide held objects once they overlap the container edge.](global/pitched-side-grasp-overedge-release.md) — A wide bowl or cup collides before reaching a deep drawer or cavity target, but the predicate can accept an over-edge drop into the container.
+- [Order multi-place tasks so nothing is carried or re-grasped over an already-placed fragile object](global/place-order-never-carry-over-placed-object.md) — a task requires placing two or more objects and one placement (e.g. an upright mug on a plate) is easily tipped by a later carry
+- [Switch to point prompts when text masks ignore the intended relation.](global/point-prompt-after-text-misground.md) — A scene has duplicate objects or look-alike circular surfaces and SAM text segmentation selects the wrong instance
+- [Rotate a held bowl after a reliable grasp to move its offset into reach](global/post-grasp-yaw-offset.md) — A reliable Pi0 bowl grasp carries the object with a large offset that makes direct placement miss or hit the workspace edge
+- [After releasing an object into a container, retreat the gripper straight up before judging the predicate](global/predicate-fires-after-gripper-retreat.md) — you released a held object into/onto a target and libero_terminated is still false
+- [Retreat the eef fully clear of a placement before concluding the predicate failed](global/predicate-gated-by-eef-proximity-retreat-clear.md) — after a geometrically-correct place, libero_terminated stays false for many steps while the gripper hovers over the just-placed object
+- [Recenter after pre-grasp yaw before trusting Pi0.](global/pregrasp-yaw-recenter.md) — A pre-grasp wrist yaw is used to change a bowl or cup rim-hook geometry, and the rotation shifts the wrist or EEF away from the visually selected target
+- [Find a container's true floor by descend-until-OSC-stall and read the stall height](global/probe-container-floor-by-stall-height.md) — you must place a held object on the floor of a container (basket/drawer/box) whose interior floor you cannot see from above (occluded by rim/liner/other objects) and depth/segment centroids are rim-biased
+- [Anchor duplicate-object wrist refinement to a visible relation landmark.](global/relation-anchored-wrist-refine.md) — A task chooses one of multiple identical objects by a spatial relation, and wrist views can contain the wrong duplicate.
+- [Select identical targets by the named spatial relation before wrist refinement](global/relation-selected-identical-object.md) — A task contains duplicate or visually identical objects and names a relation such as on, left of, right of, between, or next to
+- [Remeasure a held payload after every loaded servo before descending](global/remeasure-loaded-offset-before-descent.md) — a large asymmetric object is carried by a handle and precise support placement depends on body-to-EEF offset
+- [After releasing into a lined basket, retreat straight up before moving laterally](global/retreat-high-before-lateral-near-lined-basket.md) — placing items into a woven/cloth-lined basket or any container with a soft rim/liner that stands above the rigid rim; especially multi-item drop-ins where you must traverse away between placements
+- [Clear a released wrist by reversing the corridor that successfully entered.](global/reverse-entry-corridor-clearance.md) — A released object is cavity-side but axial or vertical wrist retreat re-hooks or extracts it.
+- [Test perimeter contact zones before rejecting a fixture-relative placement.](global/right-front-perimeter-contact.md) — A fixture-relative goal says front or side and central visual bands fail despite clean object placement
+- [Use a capped contact skill to seat rim-perched objects into containers.](global/rim-perch-contact-seat.md) — An object has been released at a rimmed container and is visibly perched on the lip or liner while the In predicate is still false.
+- [A large rotate_wrist yaw drifts the eef ~0.1-0.15m; re-center before descending](global/rotate-wrist-90deg-drifts-eef-recenter-after.md) — you rotate_wrist by a large yaw (e.g. 90deg) to align fingers, then need a precise xy over a target
+- [Disambiguate look-alike cans by RGB label, never by SAM3 brand-noun prompt](global/sam3-brand-noun-can-collision.md) — two or more similar cans/cylinders are present and the task names one by brand ("tomato sauce", "alphabet soup", a soup can)
+- [Re-issue a pick with a nearby landmark when generic picking makes only contact.](global/spatial-qualified-repick.md) — A generic Pi0 pick contacts the target object but leaves it upright or ungrasped, and a distinctive nearby landmark is visible in the scene.
+- [Support an elongated held object on the destination floor before chaining yaw and pitch rotations](global/support-assisted-axis-reorientation.md) — an elongated held object must be reoriented inside a shallow container and airborne wrist rotations slip, drift, or exceed the reachable workspace
+- [Translate a weak hooked grasp with surface support before lifting over thresholds.](global/support-guided-weak-hook-translation.md) — A narrow rim or handle hook survives gentle motion but slips under airborne rotation or long carry.
+- [Re-check duplicate identity before tuning a non-firing placement.](global/verify-duplicate-semantics.md) — A task has duplicate objects and repeated visually plausible placements do not trigger the predicate
+- [Trust visual grasp evidence over the Pi0 pick success flag.](global/visual-over-pick-heuristic.md) — A pi0_pick reports success false but the object is visibly moved or held and gripper/image evidence contradicts the heuristic
+
+## Task-family
+
+- [task-family_libero10_swap_t0](task-family/task-family_libero10_swap_t0.md)
+- [task-family_libero10_swap_t1](task-family/task-family_libero10_swap_t1.md)
+- [task-family_libero10_swap_t2](task-family/task-family_libero10_swap_t2.md)
+- [task-family_libero10_swap_t3](task-family/task-family_libero10_swap_t3.md)
+- [task-family_libero10_swap_t4](task-family/task-family_libero10_swap_t4.md)
+- [task-family_libero10_swap_t5](task-family/task-family_libero10_swap_t5.md)
+- [task-family_libero10_swap_t6](task-family/task-family_libero10_swap_t6.md)
+- [task-family_libero10_swap_t7](task-family/task-family_libero10_swap_t7.md)
+- [task-family_libero10_swap_t8](task-family/task-family_libero10_swap_t8.md)
+- [task-family_libero10_task_t0](task-family/task-family_libero10_task_t0.md)
+- [task-family_libero10_task_t1](task-family/task-family_libero10_task_t1.md)
+- [task-family_libero10_task_t2](task-family/task-family_libero10_task_t2.md)
+- [task-family_libero10_task_t3](task-family/task-family_libero10_task_t3.md)
+- [task-family_libero10_task_t4](task-family/task-family_libero10_task_t4.md)
+- [task-family_libero10_task_t5](task-family/task-family_libero10_task_t5.md)
+- [task-family_libero10_task_t6](task-family/task-family_libero10_task_t6.md)
+- [task-family_libero10_task_t7](task-family/task-family_libero10_task_t7.md)
+- [task-family_libero10_task_t8](task-family/task-family_libero10_task_t8.md)
+- [task-family_libero10_task_t9](task-family/task-family_libero10_task_t9.md)
+- [task-family_libero_goal_swap_t1](task-family/task-family_libero_goal_swap_t1.md)
+- [task-family_libero_goal_swap_t2](task-family/task-family_libero_goal_swap_t2.md)
+- [task-family_libero_goal_swap_t3](task-family/task-family_libero_goal_swap_t3.md)
+- [task-family_libero_goal_swap_t4](task-family/task-family_libero_goal_swap_t4.md)
+- [task-family_libero_goal_swap_t5](task-family/task-family_libero_goal_swap_t5.md)
+- [task-family_libero_goal_swap_t6](task-family/task-family_libero_goal_swap_t6.md)
+- [task-family_libero_goal_swap_t7](task-family/task-family_libero_goal_swap_t7.md)
+- [task-family_libero_goal_swap_t8](task-family/task-family_libero_goal_swap_t8.md)
+- [task-family_libero_goal_swap_t9](task-family/task-family_libero_goal_swap_t9.md)
+- [task-family_libero_goal_task_t0](task-family/task-family_libero_goal_task_t0.md)
+- [task-family_libero_goal_task_t1](task-family/task-family_libero_goal_task_t1.md)
+- [task-family_libero_goal_task_t2](task-family/task-family_libero_goal_task_t2.md)
+- [task-family_libero_goal_task_t3](task-family/task-family_libero_goal_task_t3.md)
+- [task-family_libero_goal_task_t4](task-family/task-family_libero_goal_task_t4.md)
+- [task-family_libero_goal_task_t5](task-family/task-family_libero_goal_task_t5.md)
+- [task-family_libero_goal_task_t6](task-family/task-family_libero_goal_task_t6.md)
+- [task-family_libero_goal_task_t7](task-family/task-family_libero_goal_task_t7.md)
+- [task-family_libero_goal_task_t8](task-family/task-family_libero_goal_task_t8.md)
+- [task-family_libero_goal_task_t9](task-family/task-family_libero_goal_task_t9.md)
+- [task-family_libero_object_swap_t0](task-family/task-family_libero_object_swap_t0.md)
+- [task-family_libero_object_swap_t1](task-family/task-family_libero_object_swap_t1.md)
+- [task-family_libero_object_swap_t3](task-family/task-family_libero_object_swap_t3.md)
+- [task-family_libero_object_swap_t4](task-family/task-family_libero_object_swap_t4.md)
+- [task-family_libero_object_swap_t5](task-family/task-family_libero_object_swap_t5.md)
+- [task-family_libero_object_swap_t6](task-family/task-family_libero_object_swap_t6.md)
+- [task-family_libero_object_swap_t7](task-family/task-family_libero_object_swap_t7.md)
+- [task-family_libero_object_swap_t8](task-family/task-family_libero_object_swap_t8.md)
+- [task-family_libero_object_task_t0](task-family/task-family_libero_object_task_t0.md)
+- [task-family_libero_object_task_t1](task-family/task-family_libero_object_task_t1.md)
+- [task-family_libero_object_task_t2](task-family/task-family_libero_object_task_t2.md)
+- [task-family_libero_object_task_t3](task-family/task-family_libero_object_task_t3.md)
+- [task-family_libero_object_task_t4](task-family/task-family_libero_object_task_t4.md)
+- [task-family_libero_object_task_t5](task-family/task-family_libero_object_task_t5.md)
+- [task-family_libero_object_task_t7](task-family/task-family_libero_object_task_t7.md)
+- [task-family_libero_object_task_t8](task-family/task-family_libero_object_task_t8.md)
+- [task-family_libero_object_task_t9](task-family/task-family_libero_object_task_t9.md)
+- [task-family_libero_spatial_swap_t0](task-family/task-family_libero_spatial_swap_t0.md)
+- [task-family_libero_spatial_swap_t1](task-family/task-family_libero_spatial_swap_t1.md)
+- [task-family_libero_spatial_swap_t2](task-family/task-family_libero_spatial_swap_t2.md)
+- [task-family_libero_spatial_swap_t3](task-family/task-family_libero_spatial_swap_t3.md)
+- [task-family_libero_spatial_swap_t4](task-family/task-family_libero_spatial_swap_t4.md)
+- [task-family_libero_spatial_swap_t5](task-family/task-family_libero_spatial_swap_t5.md)
+- [task-family_libero_spatial_swap_t6](task-family/task-family_libero_spatial_swap_t6.md)
+- [task-family_libero_spatial_swap_t7](task-family/task-family_libero_spatial_swap_t7.md)
+- [task-family_libero_spatial_swap_t8](task-family/task-family_libero_spatial_swap_t8.md)
+- [task-family_libero_spatial_swap_t9](task-family/task-family_libero_spatial_swap_t9.md)
+- [task-family_libero_spatial_task_t0](task-family/task-family_libero_spatial_task_t0.md)
+- [task-family_libero_spatial_task_t1](task-family/task-family_libero_spatial_task_t1.md)
+- [task-family_libero_spatial_task_t2](task-family/task-family_libero_spatial_task_t2.md)
+- [task-family_libero_spatial_task_t3](task-family/task-family_libero_spatial_task_t3.md)
+- [task-family_libero_spatial_task_t4](task-family/task-family_libero_spatial_task_t4.md)
+- [task-family_libero_spatial_task_t5](task-family/task-family_libero_spatial_task_t5.md)
+- [task-family_libero_spatial_task_t6](task-family/task-family_libero_spatial_task_t6.md)
+- [task-family_libero_spatial_task_t7](task-family/task-family_libero_spatial_task_t7.md)
+- [task-family_libero_spatial_task_t8](task-family/task-family_libero_spatial_task_t8.md)
+- [task-family_libero_spatial_task_t9](task-family/task-family_libero_spatial_task_t9.md)

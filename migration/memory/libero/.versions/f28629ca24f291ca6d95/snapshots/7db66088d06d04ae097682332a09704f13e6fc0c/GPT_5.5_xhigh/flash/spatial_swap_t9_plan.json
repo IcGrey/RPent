@@ -1,0 +1,324 @@
+{
+  "plan": [
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the large black patterned bowl on top of the wooden cabinet",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "segment",
+      "arguments": {
+        "prompt": "the white ceramic plate with red rings",
+        "camera": "agentview"
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.007,
+          -0.274,
+          1.33
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 100
+      },
+      "anchor": "the akita black bowl on the wooden cabinet",
+      "offset": [
+        -0.032,
+        -0.003
+      ],
+      "anchor_distance": 0.0321
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.222,
+          0.201,
+          1.2
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 110
+      },
+      "anchor": "the white ceramic plate with red rings",
+      "offset": [
+        -0.0157,
+        0.0029
+      ],
+      "anchor_distance": 0.016
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.1,
+          0.08,
+          1.3
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 90
+      },
+      "anchor": "the white ceramic plate with red rings",
+      "offset": [
+        0.1063,
+        -0.1181
+      ],
+      "anchor_distance": 0.1589
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.222,
+          0.201,
+          1.3
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 90
+      },
+      "anchor": "the white ceramic plate with red rings",
+      "offset": [
+        -0.0157,
+        0.0029
+      ],
+      "anchor_distance": 0.016
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.08,
+          -0.08,
+          1.33
+        ],
+        "gripper": -1,
+        "step_clip": 0.012,
+        "tol": 0.012,
+        "max_steps": 100
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.039,
+          -0.271,
+          1.3
+        ],
+        "gripper": -1,
+        "step_clip": 0.01,
+        "tol": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the akita black bowl on the wooden cabinet",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the large black bowl on the cabinet",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "pi0_pick",
+      "arguments": {
+        "prompt": "grasp the large black bowl on the cabinet",
+        "max_chunks": 8,
+        "lift_thresh": 0.05,
+        "gripper_closed_thresh": 0.06
+      }
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 10
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.048,
+          -0.222,
+          1.255
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "tol": 0.01,
+        "max_steps": 80
+      },
+      "anchor": "the akita black bowl on the wooden cabinet",
+      "offset": [
+        0.009,
+        0.049
+      ],
+      "anchor_distance": 0.0498
+    },
+    {
+      "action": "set_gripper",
+      "arguments": {
+        "gripper": 1,
+        "steps": 8
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.08,
+          0.02,
+          1.3
+        ],
+        "gripper": 1,
+        "step_clip": 0.01,
+        "tol": 0.012,
+        "max_steps": 110
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          0.012,
+          0.245,
+          1.3
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "tol": 0.012,
+        "max_steps": 110
+      }
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.2,
+          0.245,
+          1.3
+        ],
+        "gripper": 1,
+        "step_clip": 0.008,
+        "tol": 0.012,
+        "max_steps": 110
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.005,
+        0.001
+      ],
+      "anchor_distance": 0.0051
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.213,
+          0.244,
+          1.3
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "tol": 0.008,
+        "max_steps": 70
+      },
+      "anchor": "the plate",
+      "offset": [
+        -0.008,
+        0.0
+      ],
+      "anchor_distance": 0.008
+    },
+    {
+      "action": "move_to",
+      "arguments": {
+        "xyz": [
+          -0.205,
+          0.244,
+          1.08
+        ],
+        "gripper": 1,
+        "step_clip": 0.006,
+        "tol": 0.01,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.205,
+          0.244,
+          1
+        ],
+        "target_pitch": -0.55,
+        "gripper": 1,
+        "step_clip": 0.008,
+        "pitch_step": 0.04,
+        "tol": 0.012,
+        "ori_tol": 0.05,
+        "max_steps": 160
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "move_pose",
+      "arguments": {
+        "xyz": [
+          -0.205,
+          0.244,
+          0.955
+        ],
+        "target_pitch": -0.4,
+        "gripper": 1,
+        "step_clip": 0.004,
+        "pitch_step": 0.025,
+        "tol": 0.01,
+        "ori_tol": 0.04,
+        "max_steps": 100
+      },
+      "anchor": "the plate",
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "anchor_distance": 0.0
+    },
+    {
+      "action": "release",
+      "arguments": {
+        "max_steps": 20
+      }
+    }
+  ]
+}

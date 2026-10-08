@@ -1,0 +1,33 @@
+{
+  "suite": "libero_goal_task",
+  "task_id": 9,
+  "seed": 0,
+  "regime": "strict_perception",
+  "task_language": "Put the cream cheese on the rack",
+  "libero_terminated": true,
+  "attempts_to_success": 15,
+  "strategy_notes": "Localized the blue cream-cheese box from agentview_high and wrist view near xy around [-0.04, 0.13]; localized the wooden rack by RGB as the tan slatted fixture beside the cabinet, then sampled the upper red/top ridge in agentview_high at pixels near [189,116], [214,132], [246,180], whose valid support lay around x -0.20 to -0.24, y -0.25 to -0.30, z about 1.18 to 1.21. Winning sequence after the final reset: move open over the box at [-0.04,0.12,1.12]; run pi0_pick `pick up the cream cheese` with max_chunks 20, lift_thresh 0.05, gripper_closed_thresh 0.06; firm with set_gripper +1 for 10 steps; carry held to high rack-ridge staging [-0.22,-0.08,1.28]; call pi0_doubled `put the cream cheese on the top of the wooden rack` for 12 chunks while still holding, which moved the held box directly over the wooden slats/top rack surface; release with max_steps 100, which fired termination after 8 steps.",
+  "pick_result": {
+    "cream_cheese_pi0_pick_step35": {
+      "success": true,
+      "chunks_used": 9,
+      "max_chunks": 20,
+      "peak_lift_m": 0.09207528829574585,
+      "final_gripper_opening": 0.042540598660707474
+    },
+    "top_rack_contact_step38": {
+      "success": false,
+      "task_success": false,
+      "contact_skill_executed": true,
+      "chunks_used": 12,
+      "note": "The contact step did not itself terminate but visually moved the held box onto the rack surface; the subsequent release step terminated."
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [-0.18943361216196902, -0.24933986299975666, 1.2089278220537052],
+    "robot0_eef_quat": [0.9943812490173826, 0.006397397384477477, 0.03642742703600595, -0.0991869319460509],
+    "robot0_gripper_qpos": [0.014882442155580277, -0.03050930049011515],
+    "object_names": ["akita_black_bowl_1", "cream_cheese_1", "plate_1", "wine_bottle_1"]
+  },
+  "terminated": true
+}

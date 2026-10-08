@@ -1,0 +1,4 @@
+{"action": "pi0_pick", "prompt": "Put the plate on the top of the drawer", "max_chunks": 20, "lift_thresh": 0.05, "gripper_closed_thresh": 0.06}
+{"action": "set_gripper", "gripper": 1, "steps": 8}
+{"action": "move_to", "xyz": [0.055, -0.07, 1.04], "gripper": 1, "step_clip": 0.004, "max_steps": 150, "tol": 0.018, "target_yaw": 0.6, "yaw_step_clip": 0.025}
+{"action": "pi0_doubled", "prompt": "push the plate onto the top of the drawer", "max_chunks": 24}

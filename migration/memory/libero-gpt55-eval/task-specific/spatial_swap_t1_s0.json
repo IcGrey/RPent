@@ -1,0 +1,71 @@
+{
+  "suite": "libero_spatial_swap",
+  "task_id": 1,
+  "seed": 0,
+  "regime": "strict_perception",
+  "perturbation_type": "swap (P2 Position perturbation)",
+  "perturbed_task_language": "Pick the akita black bowl next to the ramekin and place it on the plate",
+  "perturbation_semantics": "Loose objects are swapped; target bowl was selected by the visual relation next to the ramekin, not by object name or cached coordinates.",
+  "expected_baseline_behavior": "Pi0 may pick a memorized or wrong duplicate bowl; hybrid solved by relation-grounded perception and scripted placement.",
+  "libero_terminated": true,
+  "terminated": true,
+  "attempts_total": 6,
+  "memory_consulted": [
+    "wip/notes.md",
+    "attempt_1_failed.json",
+    "attempt_2_failed.json",
+    "attempt_3_failed.json",
+    "attempt_4_failed.json",
+    "attempt_5_failed.json",
+    "robots/libero/guides/strict_hybrid_guide.md",
+    "robots/libero/guides/pro_hybrid_guide.md",
+    "robots/libero/guides/env_calibration.md"
+  ],
+  "localization_table": [
+    {
+      "name_or_role": "target_bowl_next_to_ramekin",
+      "agentview_evidence": "upper/right patterned black bowl immediately adjacent to the gray ramekin; lower patterned bowl by cookies is distractor",
+      "agentview_pixels_rc": [[503,794],[522,823],[548,802]],
+      "agentview_xyz_observation": "manual samples hit table/rim around y 0.26-0.28 and were treated as coarse identity only",
+      "wrist_refine": "accepted",
+      "wrist_pixels_rc": [[607,285],[648,321],[574,357],[673,249]],
+      "wrist_xyz_median_approx": [-0.203,0.335,0.908],
+      "final_xyz_for_pick": [-0.203,0.335,1.12],
+      "uncertainty": "duplicate bowl; wrist target accepted only after ramekin was visible as separate neighbor"
+    },
+    {
+      "name_or_role": "ramekin_relation_landmark",
+      "agentview_evidence": "small gray ramekin directly beside the target bowl",
+      "agentview_pixels_rc": [[493,705],[521,708]],
+      "agentview_xyz_samples": [[-0.2174,0.1737,0.9248],[-0.1687,0.1697,0.9321]],
+      "wrist_pixels_rc": [[618,626],[635,652]],
+      "wrist_xyz_median_approx": [-0.201,0.179,0.906],
+      "uncertainty": "used only as relation landmark, not grasp target"
+    },
+    {
+      "name_or_role": "plate_surface",
+      "agentview_evidence": "white ceramic plate with red concentric rings, not stove burner",
+      "agentview_pixels_rc": [[828,421],[862,459],[795,476]],
+      "agentview_xyz_median_approx": [0.135,-0.035,0.912],
+      "wrist_refine": "visual overlap during carry, no free semantic re-identification",
+      "final_xyz_for_release_eef": [0.125,-0.005,1.005],
+      "uncertainty": "held bowl offset makes eef xy different from plate center"
+    }
+  ],
+  "strategy_notes": "Successful attempt 6 localized the target by first reading the initial image: the task bowl was the patterned black bowl next to the gray ramekin, not the lower bowl near the cookies box. Agentview identified the duplicate relation and the red-ring plate; manual back-project samples put the plate near [0.135,-0.035,0.912] and the ramekin near y≈0.17. Because agentview bowl depth samples were rim/table-biased, the eef was moved above the bowl/ramekin pair at [-0.19,0.245,1.12], then wrist pixels on the same relation target refined the target bowl to about [-0.203,0.335]. The winning command sequence was: move_to [-0.19,0.245,1.12] open; move_to [-0.203,0.335,1.12] open; pi0_pick prompt 'pick up the akita black bowl' with max_chunks 20, lift_thresh 0.05, gripper_closed_thresh 0.06; set_gripper +1 for 8 steps; carry with +1 to [-0.05,0.16,1.10]; carry with +1 to [0.10,0.02,1.08]; descend with +1 to [0.125,-0.005,1.03] then [0.125,-0.005,1.005]; release max_steps 30. The final low release fired termination.",
+  "pick_result": {
+    "target_bowl_pi0_pick_step3": {
+      "success": true,
+      "chunks_used": 8,
+      "peak_lift_m": 0.06460857391357422,
+      "final_gripper_opening": 0.003688924014568329,
+      "perception_confirmed": "wrist and agentview showed the ramekin-adjacent bowl in the gripper; lower duplicate remained on table"
+    }
+  },
+  "final_state": {
+    "robot0_eef_pos": [0.12793297374307486,-0.004907281458405441,1.014421631251709],
+    "robot0_eef_quat": [0.9992651449577545,-0.03091952005447912,-0.020154712186779486,0.010341224725588821],
+    "robot0_gripper_qpos": [0.009804672882811262,-0.009853083534486296],
+    "object_names": ["akita_black_bowl_1","akita_black_bowl_2","cookies_1","glazed_rim_porcelain_ramekin_1","plate_1"]
+  }
+}
