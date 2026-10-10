@@ -638,9 +638,13 @@ def test_full_cli_exploration_finalizes_memory_without_starting_gpu_runtime(
     ]
 
 
+@pytest.mark.parametrize(
+    "planner_error", [None, "planner timed out after 1800s", "HTTPStatusError: 503"]
+)
 def test_full_cli_calls_robot_result_finalizer_without_robot_special_case(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
+    planner_error: str | None,
 ) -> None:
     cli = _cli_module()
     from rpent.evaluation import RunFinalizationContext, write_json_atomic
@@ -672,6 +676,7 @@ def test_full_cli_calls_robot_result_finalizer_without_robot_special_case(
                 finish_result={"status": "success", "summary": "planner claim"},
                 messages=[],
                 stats={"tool_calls": 0},
+                error=planner_error,
             )
 
     def add_cli_args(parser: Any, use_dashboard: bool) -> None:
@@ -746,13 +751,15 @@ def test_full_cli_calls_robot_result_finalizer_without_robot_special_case(
         ],
     )
 
-    assert cli.main() == 0
+    assert cli.main() == (1 if planner_error else 0)
 
     assert len(captured) == 1
     context = captured[0]
     assert context.robot_name == "testrobot"
     assert context.environment_success is False
-    assert context.agent_error is None
+    assert context.agent_error == planner_error
+    transcript = json.loads((tmp_path / "transcript_OpenDrawer_s1.json").read_text())
+    assert transcript["agent_error"] == planner_error
     assert context.planner == "codex"
     assert context.model == "gpt-5.5"
     assert context.reasoning_effort == "xhigh"

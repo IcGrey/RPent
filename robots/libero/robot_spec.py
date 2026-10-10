@@ -189,6 +189,11 @@ def _add_cli_args(parser: argparse.ArgumentParser, use_dashboard: bool) -> None:
     )
     parser.add_argument("--max-episode-steps", type=int, default=10000)
     parser.add_argument(
+        "--no-memory-vla-place",
+        action="store_true",
+        help="Use the empty-memory baseline with pi0_place available to the LLM.",
+    )
+    parser.add_argument(
         "--require-vla-place",
         action="store_true",
         help="Experimental: require VLA placement before an audited scripted release fallback.",
@@ -343,6 +348,7 @@ def _parse_config(args: argparse.Namespace) -> RunConfig:
                 "run exploration first or use --memory-profile hf"
             )
     prompt_vars = {
+        "no_memory_vla_place": getattr(args, "no_memory_vla_place", False),
         "require_vla_place": getattr(args, "require_vla_place", False),
         "suite": args.suite,
         "task": args.task,

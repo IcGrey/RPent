@@ -39,6 +39,40 @@ DEFAULT_REPO = "RLinf/RPent-memory"
 
 def validate_options(args: argparse.Namespace) -> None:
     """Check memory options without starting services or downloading files."""
+    if getattr(args, "no_memory_vla_place", False):
+        if (
+            getattr(args, "memory_profile", None) != "local"
+            or not getattr(args, "memory_dir", None)
+            or getattr(args, "explore", False)
+            or getattr(args, "planner", None) == "flash"
+            or getattr(args, "require_vla_place", False)
+        ):
+            raise ValueError(
+                "--no-memory-vla-place requires local evaluation with --memory-dir; "
+                "Flash, exploration and --require-vla-place are not supported"
+            )
+        root = Path(args.memory_dir).expanduser().resolve()
+        marker = "# Memory\n\nNo exploration experience is available.\n"
+        if (
+            not (root / "MEMORY.md").is_file()
+            or (root / "MEMORY.md").read_text() != marker
+        ):
+            raise ValueError(
+                "no-memory corpus requires the original empty-memory index"
+            )
+        allowed = {
+            root / "MEMORY.md",
+            *(root / scope for scope in ("global", "task-family", "task-specific")),
+        }
+        for path in root.rglob("*"):
+            if (
+                path.is_symlink()
+                or path not in allowed
+                or (path != root / "MEMORY.md" and not path.is_dir())
+            ):
+                raise ValueError(
+                    "no-memory corpus must contain only an empty index and empty scope directories"
+                )
     if getattr(args, "memory_version", "auto") != "auto" and (
         getattr(args, "explore", False)
         or getattr(args, "memory_profile", None) == "local"

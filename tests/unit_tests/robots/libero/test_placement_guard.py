@@ -118,3 +118,23 @@ def test_experiment_prompt_removes_legacy_vla_prohibition(mode):
     assert "Pi0 never places" not in guarded
     assert "PER-TASK RECIPES THAT WORKED" not in guarded
     assert "placement_recovery" in guarded
+
+
+def test_no_memory_place_preserves_baseline_except_conflicting_placement_levers():
+    baseline = system_prompt({"mode": "eval", "memory_profile": "local"})
+    changed = system_prompt(
+        {"mode": "eval", "memory_profile": "local", "no_memory_vla_place": True}
+    )
+    assert baseline.keys() == changed.keys()
+    for key in baseline:
+        if not key.startswith("PROVEN LEVERS"):
+            assert baseline[key] == changed[key]
+    variables = dict.fromkeys(re.findall(r"\{\{(\w+)\}\}", str(changed)), "offline")
+    rendered = format_prompt(changed, variables=variables)
+    assert "PROVEN LEVERS" in rendered
+    assert "PER-TASK RECIPES THAT WORKED" in rendered
+    assert "Pi0 never places" not in rendered
+    assert "pi0_place" in rendered
+    assert "pi0_doubled is disabled" not in rendered
+    assert "plan the carry and use pi0_place near the target" in rendered
+    assert "call pi0_place for final alignment, descent" in rendered

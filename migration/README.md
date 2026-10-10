@@ -1,5 +1,9 @@
 # RPent server migration
 
+For a fresh eight-GPU, 160-episode Qwen no-memory + Pi place run, follow
+[QWEN_NO_MEMORY.md](QWEN_NO_MEMORY.md). It includes a portable preparation
+command and the corrected timeout handling; preparation does not start a run.
+
 This branch preserves the local LIBERO VLA-placement experiment on base
 ca48092f41ac3191f5d0514c881978ed1ff11095. It does not include the fork's newer
 unrelated commits. Experiment outputs, model weights and credentials are transferred separately

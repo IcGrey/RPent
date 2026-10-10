@@ -508,3 +508,69 @@ def test_legacy_cache_cannot_bypass_versioned_source_requirement(hub, tmp_path):
     hub.fail = False
     assert sync_version(version=GPT5, cache_dir=cache) == root
     assert len(hub.calls) == 2
+
+
+@pytest.mark.parametrize("scope", ["global", "task-family", "task-specific"])
+def test_no_memory_place_rejects_experience_in_any_layer(tmp_path, scope):
+    root = tmp_path / "memory"
+    root.mkdir()
+    (root / "MEMORY.md").write_text(
+        "# Memory\n\nNo exploration experience is available.\n"
+    )
+    for name in ("global", "task-family", "task-specific"):
+        (root / name).mkdir()
+    args = Namespace(
+        no_memory_vla_place=True,
+        memory_profile="local",
+        memory_dir=str(root),
+        explore=False,
+        planner="codex",
+        require_vla_place=False,
+        memory_version="auto",
+    )
+    memory_cli.validate_options(args)
+    (root / scope / "experience.md").write_text("old experience")
+    with pytest.raises(ValueError, match="empty scope directories"):
+        memory_cli.validate_options(args)
+
+
+def test_no_memory_place_rejects_modified_index_and_symlinks(tmp_path):
+    root = tmp_path / "memory"
+    root.mkdir()
+    args = Namespace(
+        no_memory_vla_place=True, memory_profile="local", memory_dir=str(root)
+    )
+    (root / "MEMORY.md").write_text("# global experience")
+    with pytest.raises(ValueError, match="original empty-memory index"):
+        memory_cli.validate_options(args)
+    (root / "MEMORY.md").write_text(
+        "# Memory\n\nNo exploration experience is available.\n"
+    )
+    (root / "global").symlink_to(tmp_path / "outside")
+    with pytest.raises(ValueError, match="empty scope directories"):
+        memory_cli.validate_options(args)
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"memory_profile": "hf"},
+        {"explore": True},
+        {"planner": "flash"},
+        {"require_vla_place": True},
+    ],
+)
+def test_no_memory_place_rejects_incompatible_modes(change):
+    args = Namespace(
+        no_memory_vla_place=True,
+        memory_profile="local",
+        memory_dir="unused",
+        explore=False,
+        planner="codex",
+        require_vla_place=False,
+        memory_version="auto",
+    )
+    for key, value in change.items():
+        setattr(args, key, value)
+    with pytest.raises(ValueError, match="requires local evaluation"):
+        memory_cli.validate_options(args)

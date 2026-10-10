@@ -229,7 +229,7 @@ class LiberoPrimitives:
         prompt: str,
         *,
         holding_confirmed: bool,
-        max_chunks: int = 4,
+        max_chunks: int = 20,
         max_steps: int = 100,
         gripper_open_thresh: float = 0.07,
         open_hold_steps: int = 3,
@@ -1455,7 +1455,7 @@ TOOLS_SPEC = [
                     "type": "boolean",
                     "description": "Current visual confirmation of a retained object; gap alone is insufficient.",
                 },
-                "max_chunks": {"type": "integer", "minimum": 1, "default": 4},
+                "max_chunks": {"type": "integer", "minimum": 1, "default": 20},
                 "max_steps": {"type": "integer", "minimum": 1, "default": 100},
                 "gripper_open_thresh": {
                     "type": "number",

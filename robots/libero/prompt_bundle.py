@@ -32,6 +32,21 @@ def system_prompt(
         prompt = explore_parts.system_prompt()
     else:
         prompt = evaluate_parts.system_prompt(variables)
+    if (variables or {}).get("no_memory_vla_place"):
+        prompt = dict(prompt)
+        for key, value in prompt.items():
+            if key.startswith("PROVEN LEVERS"):
+                prompt[key] = value.replace(
+                    "grip, then YOU script the entire carry + place (Rule 1 — Pi0 never places).",
+                    "grip, then plan the carry and use pi0_place near the target (Rule 1).",
+                ).replace(
+                    "measure each, never reuse). Place eef = plate_center − offset; descend to\n"
+                    "       z~0.46 until the mug RESTS on the plate (OSC stalls ~0.51), then release\n"
+                    "       and retreat STRAIGHT UP (step_clip 0.012).",
+                    "measure each, never reuse). Use plate_center − offset to plan a visible\n"
+                    "       pre-contact handoff; call pi0_place for final alignment, descent and\n"
+                    "       release, inspect support, then retreat STRAIGHT UP (step_clip 0.012).",
+                )
     if (variables or {}).get("require_vla_place"):
         prompt = dict(prompt)
         # The legacy task-specific levers explicitly prohibit VLA placement.

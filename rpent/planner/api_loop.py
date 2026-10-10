@@ -152,8 +152,8 @@ class ApiAgentLoop(Planner):
             toolsets=[adapter],
             # Accepted finish skips sibling tool calls in the same response.
             end_strategy="early",
-            # Finish refusals may span attempts; the request budget still applies.
-            retries={"output": max_turns},
+            # Argument corrections and finish refusals share the request budget.
+            retries={"tools": max_turns, "output": max_turns},
             model_settings=_build_model_settings(self.model, self.max_tokens),
             capabilities=[
                 SlidingWindowCompaction(
@@ -184,6 +184,13 @@ class ApiAgentLoop(Planner):
         except _RequestBudgetExhausted as exc:
             session.error = None
             logger.info("%s", exc)
+        except UsageLimitExceeded as exc:
+            if session.usage.requests >= max_turns and "request_limit" in str(exc):
+                session.error = None
+                logger.info("Request budget of %s reached.", max_turns)
+            else:
+                session.error = f"{type(exc).__name__}: {exc}"
+                logger.exception("Harness planner failed")
         except Exception as exc:
             session.error = f"{type(exc).__name__}: {exc}"
             logger.exception("Harness planner failed")

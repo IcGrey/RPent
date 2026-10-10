@@ -681,6 +681,7 @@ def main() -> int:
         "elapsed_s": round(elapsed, 1),
         "finish": finish_result,
         "environment_success": environment_success,
+        "agent_error": agent_error,
         "stats": stats,
         "messages": _serialize_messages(messages),
     }

@@ -907,3 +907,37 @@ def test_factory_passes_interactive_mode(tmp_path, monkeypatch):
     assert isinstance(planner, ApiAgentLoop)
     assert isinstance(planner, Planner)
     assert planner.interactive is True
+
+
+@pytest.mark.parametrize("persistent", [False, True])
+def test_argument_corrections_share_request_budget(tmp_path, persistent):
+    events = Events()
+    toolkit = RobotToolkit(events)
+    toolkit.register(
+        "back_project",
+        lambda row: {"row": row},
+        {"type": "object", "properties": {"row": {"type": "integer"}}, "required": ["row"]},
+    )
+    requests = 0
+
+    async def stream(messages, info):
+        nonlocal requests
+        requests += 1
+        if persistent or requests <= 2:
+            yield tool("back_project", {"row": "400"})
+        elif requests == 3:
+            yield tool("back_project", {"row": 400})
+        else:
+            yield finish()
+
+    result, _, _ = solve(
+        tmp_path, FunctionModel(stream_function=stream), toolkit, events, max_turns=4
+    )
+    assert result.error is None
+    assert requests == 4
+    if persistent:
+        assert toolkit.calls == []
+        assert result.finish_result is None
+    else:
+        assert toolkit.calls == [("back_project", {"row": 400}), ("finish", FINISH_ARGS)]
+        assert result.finish_result == {"_finish": True, **FINISH_ARGS}

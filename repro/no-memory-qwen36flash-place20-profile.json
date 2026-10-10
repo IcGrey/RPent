@@ -1,0 +1,39 @@
+{
+  "profile": "no-memory-qwen36flash-place20",
+  "planner": "api",
+  "model": "openai-chat:qwen3.6-flash",
+  "base_url": "https://kjapi.botsmart.net/v1",
+  "reasoning_effort": "none",
+  "credential_env": "OPENAI_API_KEY",
+  "gpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "episodes": 160,
+  "pi0_place_defaults": {
+    "max_chunks": 20,
+    "max_steps": 100,
+    "gripper_open_thresh": 0.07,
+    "open_hold_steps": 3
+  },
+  "place_required": false,
+  "allow_llm_parameter_overrides": true,
+  "external_memory_leaves": 0,
+  "max_turns": 100,
+  "max_episode_steps": 10000,
+  "max_tokens": 8192,
+  "isolation": "private mount namespace; hide other memory/logs/archives/repro; empty memory read-only",
+  "comparison_limit": "Planner backend and LLM differ from the original GPT-5.5 Codex run.",
+  "api_tool_argument_retry_limit": 100,
+  "request_limit": 100,
+  "planner_timeout_seconds": {
+    "libero_10": 5000,
+    "other_suites": 1200
+  }
+}

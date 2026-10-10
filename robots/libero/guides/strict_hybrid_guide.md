@@ -607,7 +607,7 @@ target, before contact jams develop. Pass a single-object placement instruction
 and `holding_confirmed: true` only after a fresh image check. These tool rules
 supersede older memory requiring all placement to be scripted.
 
-Defaults are 4 chunks, 100 environment steps, and measured gripper opening at
+Defaults are 20 chunks, 100 environment steps, and measured gripper opening at
 least 0.07 m for 3 consecutive steps. These are initial parameters requiring
 empirical validation. The tool checks every executed step and discards remaining
 chunk actions on exit. An already-open or almost fully closed gripper rejects

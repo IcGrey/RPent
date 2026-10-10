@@ -118,10 +118,10 @@ def test_rejects_uncertain_empty_or_open_handoff(initial, confirmed):
 
 
 @pytest.mark.parametrize(
-    "limits,steps", [({"max_steps": 3}, 3), ({"max_chunks": 1}, 8)]
+    "limits,steps", [({}, 100), ({"max_steps": 3}, 3), ({"max_chunks": 1}, 8)]
 )
 def test_budget_does_not_force_open_or_retreat(limits, steps):
-    p, env, model = make([0.03] * 8)
+    p, env, model = make([0.03] * max(8, steps))
     result = place(p, **limits)
     assert result["stop_reason"] == "budget_exhausted"
     assert result["budget_exhausted"] and not result["release_detected"]
