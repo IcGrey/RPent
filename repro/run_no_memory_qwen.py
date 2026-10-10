@@ -146,6 +146,9 @@ def worker(gpu):
             OMP_NUM_THREADS="4",
             MKL_NUM_THREADS="4",
             MPLCONFIGDIR=str(out / "matplotlib"),
+            RPENT_PROXY_WRITE_TIMEOUT_S=str(
+                manifest.get("upload_write_timeout_s", 600)
+            ),
         )
         invocation = {
             "command": command,
@@ -177,7 +180,12 @@ def worker(gpu):
                 *command,
             ]
             proc = subprocess.Popen(
-                isolated,
+                [
+                    str(ROOT / ".venv/bin/python"),
+                    str(ROOT / "repro/relay_no_memory_episode.py"),
+                    str(out),
+                    *isolated,
+                ],
                 cwd=ROOT,
                 env=env,
                 stdout=log,

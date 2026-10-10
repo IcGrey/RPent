@@ -32,6 +32,7 @@
   "comparison_limit": "Planner backend and LLM differ from the original GPT-5.5 Codex run.",
   "api_tool_argument_retry_limit": 100,
   "request_limit": 100,
+  "upload_write_timeout_s": 600,
   "planner_timeout_seconds": {
     "libero_10": 5000,
     "other_suites": 1200

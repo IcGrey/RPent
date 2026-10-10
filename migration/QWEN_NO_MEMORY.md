@@ -94,3 +94,25 @@ Planner errors are saved as `agent_error` in transcripts. Explicit planner
 budget timeouts count as unsuccessful episodes without stopping the queue;
 unexpected exit errors, quota errors, missing states and memory changes stop
 admission of new work for inspection. Elapsed time alone is not timeout evidence.
+
+## Request upload diagnostics
+
+Each episode owns a loopback proxy that forwards Chat Completions requests to
+the relay. It preserves the JSON payload and writes the same HTTP request body
+in 64 KiB pieces, with explicit `Content-Length`. This is one request, not
+separate uploads requiring a merge API. The proxy uses a 600-second write
+timeout by default; change `upload_write_timeout_s` in the prepared manifest
+before launching if needed. The overall episode planner budget still applies.
+The API SDK also retains its own request timeout and retry policy.
+
+`upload-diagnostics.jsonl` records request size, bytes handed to the transport,
+transport phases, response-header timing and exception type. It does not record
+request/response bodies, authorization headers or raw exception messages.
+Bytes handed to the transport are not proof the remote application received
+them. Proxy transport failures return an HTTP 502 with a redacted diagnostic;
+the diagnostic exception type distinguishes `WriteTimeout` from other failures.
+
+The proxy and episode share an owned process group. The normal exit closes the
+proxy; the supervisor's outer timeout terminates both. Chunking enables progress
+measurement but has no demonstrated throughput benefit. Increasing the timeout
+may help a slow upload, but does not fix sustained blocking or reduce request size.
