@@ -1,20 +1,1384 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8fafc"><title>Robot Harness RSI · Research Evolution</title><style>
 :root{font-family:Inter,"Segoe UI",Arial,"Noto Sans SC",sans-serif;color:#122238;background:#f5f7fb}*{box-sizing:border-box}body{margin:0}.shell{max-width:1600px;margin:auto;padding:28px 30px 90px}.top{display:flex;align-items:start;justify-content:space-between;gap:20px;flex-wrap:wrap}.eyebrow{font-size:12px;letter-spacing:.16em;font-weight:800;color:#527189;text-transform:uppercase}h1{font-size:clamp(30px,3.5vw,53px);letter-spacing:-.05em;margin:7px 0 10px}h2{font-size:23px;margin:0}p{line-height:1.65;color:#637389;margin:0}.top p{max-width:700px}.tag{background:#e7edf7;padding:9px 13px;border-radius:100px;font-size:12px;color:#495a73;font-weight:700}.tabs{display:flex;gap:9px;flex-wrap:wrap;margin:30px 0 20px}.tab{border:1px solid #d8e0ec;background:white;color:#4b5d75;padding:12px 18px;border-radius:11px;cursor:pointer;font-size:14px;font-weight:700}.tab.active{background:#152f48;border-color:#152f48;color:white}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:24px}.stat{background:white;border:1px solid #e2e8f1;border-radius:15px;padding:19px 20px;min-height:110px}.stat small{display:block;color:#697c93;font-size:12px;margin-bottom:12px}.stat strong{font-size:24px;letter-spacing:-.03em}.panel{background:white;border:1px solid #dfe7f0;border-radius:18px;margin-top:22px;box-shadow:0 8px 28px #152f4809;overflow:hidden}.panelhead{padding:21px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid #ebeff5}.panelhead p{font-size:13px;margin-top:5px}.controls{display:flex;align-items:center;gap:7px}.controls button{border:1px solid #dce4ed;background:#f8fafc;border-radius:9px;cursor:pointer;padding:8px 12px;font-size:13px;color:#344862}.canvas{overflow:auto;background-image:radial-gradient(#d9e2ee 0.7px,transparent 0.7px);background-size:18px 18px;max-height:850px;min-height:400px;padding:28px}.canvas svg{display:block;margin:0 auto;max-width:none;transition:width .15s}.description{padding:17px 23px;border-top:1px solid #e8edf5;color:#586a81;font-size:13px;line-height:1.7}.legend{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 12px;font-size:12px;color:#5d6d81}.dot{width:10px;height:10px;display:inline-block;border-radius:4px;margin-right:6px}.summary{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.summary article{background:white;border:1px solid #e0e7f0;border-radius:14px;padding:20px}.summary h3{margin:0 0 11px;font-size:15px}.summary b{font-size:22px}.summary p{margin-top:8px;font-size:13px}footer{margin-top:35px;font-size:12px;color:#8b9aab}.hidden{display:none}@media(max-width:850px){.shell{padding:18px 13px 55px}.stats,.summary{grid-template-columns:repeat(2,1fr)}.panelhead{padding:16px}.canvas{padding:12px;max-height:680px}.stat{padding:13px}.stat strong{font-size:19px}}@media(max-width:520px){.stats,.summary{grid-template-columns:1fr}.tab{width:100%}.top{gap:10px}}
-</style></head><body><main class="shell"><header class="top"><div><div class="eyebrow">Embodied recursive self-improvement / experiment study</div><h1>Robot Harness RSI</h1><p>三个实验 setting 的研究演变与候选评测。以图片为主，左侧研究过程、中间开发集完整评测、右侧独立验证，按候选交付版本严格横向对齐。</p></div><div class="tag">Fixed snapshot · 06 Nov 2026</div></header>
-<nav class="tabs" id="tabs"></nav><section class="stats" id="stats"></section><section class="panel"><div class="panelhead"><div><h2 id="flow-title">研究与评测的三条并行线</h2><p>研究与评测并行；横向连线表示同一交付版本，非先后依赖</p></div><div class="controls"><button id="minus" aria-label="缩小">−</button><button id="reset">适合宽度</button><button id="plus" aria-label="放大">＋</button></div></div><div class="canvas" id="flow"></div><div class="description"><div class="legend"><span><i class="dot" style="background:#dcecf5"></i>Exploration</span><span><i class="dot" style="background:#dff3e7"></i>开发集</span><span><i class="dot" style="background:#eee6fb"></i>验证集</span><span>→ 横向交付或晋升触发</span></div><span id="note"></span></div></section>
-<section class="panel"><div class="panelhead"><div><h2>Global Problems · 按完整评测反馈轮次演变</h2><p id="rev"></p></div><div class="controls"><button id="problem-minus">−</button><button id="problem-reset">适合宽度</button><button id="problem-plus">＋</button></div></div><div class="canvas" id="problems" style="max-height:740px"></div><div class="description">每列对应一次实际的全局 Problem 维护；同一行始终是同一问题。维护时有些判断会保持不变。C2 为提前淘汰后的反馈，不是完整 24 条评测。</div></section>
+</style></head><body><main class="shell"><header class="top"><div><div class="eyebrow">Embodied recursive self-improvement / experiment study</div><h1>Robot Harness RSI</h1><p>三个实验 setting 的研究演变与候选评测。以图片为主，左侧研究过程、中间开发集完整评测、右侧独立验证，按候选交付版本严格横向对齐。</p></div><div class="tag"><span id="snapshot-tag">Fixed snapshot · 06 Nov 2026</span></div></header>
+<nav class="tabs" id="tabs"></nav><section class="stats" id="stats"></section><section class="panel"><div class="panelhead"><div><h2 id="flow-title">研究与评测的三条并行线</h2><p>三条纵向轨道；同一候选横向对齐。虚线表示交付或独立验证触发。</p></div><div class="controls"><button id="minus" aria-label="缩小">−</button><button id="reset">适合宽度</button><button id="plus" aria-label="放大">＋</button></div></div><div class="canvas" id="flow"></div><div class="description"><div class="legend"><span><i class="dot" style="background:#dcecf5"></i>Exploration</span><span><i class="dot" style="background:#dff3e7"></i>开发集</span><span><i class="dot" style="background:#eee6fb"></i>验证集</span><span>→ 横向交付或晋升触发</span></div><span id="note"></span></div></section>
+<section class="panel"><div class="panelhead"><div><h2>Global Problems · 按实际全局维护演变</h2><p id="rev"></p></div><div class="controls"><button id="problem-minus">−</button><button id="problem-reset">适合宽度</button><button id="problem-plus">＋</button></div></div><div class="canvas" id="problems" style="max-height:740px"></div><div class="description" id="problem-note"></div></section>
 <section class="summary" id="summary"></section><footer>Public research snapshot. Calls refer to top-level Robot Harness model requests, not research-agent calls. Partial episode totals are not comparable to full 24-episode totals. Validation is included as recorded at each snapshot, not live updated.</footer></main>
 <script>
-const DATA={"h0":{"name":"H0 · DeepSeek Flash Thinking High","subtitle":"Development seed0 24 · Validation seed1 24 · 2026-11-06 14:32 UTC","accent":"#0e7490","baseline":"15/24","best":"18/24","calls":"625 → 439","validation":"C1 验证 1/24，已测 1/1 成功 · 51 calls","events":[["H0","基准 · 15/24，625 calls","H0 全开发集\n15/24 · 625 calls","—"],["R1","当前有效引用列表\n0/2 → 1/2 · 83 → 43 calls","C1 · 已晋升 Best\n18/24 · 439 calls\n5 改善 · 2 回归","C1 · 验证进行中\n1/24 · 已测 1/1\n51 calls"],["R2","定位来源核验\n1/2 → 1/2 · 43 → 59 calls","",""],["R3","动作前后证据\n1/2 → 2/2 · 59 → 23 calls","C2 · 开发集进行中\n4/24 · 已测 0/4\n170 calls","—"],["R4","图像来源紧邻标记\n2/2 · 44 calls；交付 C3","C3 · 已交付\n等待完整评测","—"],["NEXT","父版本篮子倾倒原因\n放置检查研究","",""]],"problems":[["P1 · 目标绑定","目标身份与空间关系摇摆","收益与双罐／奶酪回归并存；聚焦新旧图像来源","仍存在"],["P2 · 放置完成","抓取／搬运未保证稳定放置","3 条改善，2 条回归；验证动作后果与支撑","仍存在"],["P3 · 抽屉状态","错层与位移不足难区分","两条仍失败；验证层级、位移、可达性","仍存在"],["P4 · 调用可靠性","过期引用、图像步号、格式错误","11 条审查：6 达成、2 部分、3 未触发","部分改善，仍存在"]],"note":"仅 C1 晋升 Best。C2 与 C3 尚无完整开发集结论，未触发独立验证。候选级收益不能归因于单一机制。"},"luna":{"name":"B1 · GPT-5.6 Luna Low","subtitle":"Development seed0 24 · Validation seed1 24 · 2026-11-06 14:39 UTC","accent":"#6d28d9","baseline":"14/24","best":"15/24","calls":"390 → 412","validation":"r3 验证 15/24 · 413 calls（B1 为 15/24 · 349 calls）","events":[["B1","初始基线\n14/24 · 390 calls","B1 · 开发集\n14/24 · 390 calls","B1 · 验证集\n15/24 · 349 calls"],["r1","可选身份记录\n1/3 · 69 calls；未使用工具","",""],["r2","抓取时内嵌比较\n1/3 · 96 calls","r2 · 晋升 Best\n14/24 · 344 calls","r2 · 验证未完成\n21/24，成功 14 条\n283 calls"],["r3","原始目标措辞直接抓取\n2/3 · 45 calls","r3 · 晋升 Best\n15/24 · 412 calls","r3 · 完整验证\n15/24 · 413 calls"],["r4","抓取后场景裁剪\n2/3 · 47 calls","",""],["r5","独立读图\n1 条有效失败；另 1 条无效","",""],["r6","视觉描述传入抓取\n1/3 · 115 calls","",""],["r7","可选持有探测\n2/3 · 45 calls；未激活","",""],["r8","grounding 直接探测\n2/3 · 54 calls；未激活","",""],["r9","自动提供抓取阶段图像\n2/3 · 72 calls","",""],["r10","原句＋阶段图像\n1/3 · 122 calls；回退","",""],["r11","选中表面的几何抓取绑定\n2/3 · 52 calls","r11 · 完整评测未完成\n1 条有效失败；另 1 条无效","未触发"],["r12","分阶段表面抓取\n1/3 · 102 calls","",""],["r13","抬升后段被动观察\n2/3 · 55 calls","",""],["r14","减少历史信息与重复提示\n2/3 · 71 calls","",""],["D","转向抽屉：层级、接触与位移\n25 步测试 0/2，候选无净收益","",""]],"problems":[["目标身份混淆","tomato sauce / ketchup 等目标混淆","比较也会支持错误目标","原句正确仍可能拿错；分离文本与物理选择"],["获取、持有、搬运与放置","抓取或张爪不证明完成","真实抓取不保证拿对或送达","分别核验身份、持有、运输与放置"],["碗实例及支撑关系","相似碗与叠放歧义","初始实例不等于当前位置","原始措辞不足，核对直接支撑"],["抽屉接触与层级","中层抽屉打不开","底层也回退；区分层级与接触","两例仍失败；观察把手和位移"],["过期 grounding","失败中出现旧引用拒绝","没有独立生命周期修复","新拒绝证据；保留保护并单独修复"],["无进展恢复与完成误判","重复恢复与被拒完成判断","调用减少不等于修复","成功多一条，但仍有长恢复"]],"note":"当前 Best 为 r3。开发集较 B1 +1/24，验证集同为 15/24；验证调用增加。r11 完整评测未完成。"},"ds":{"name":"B1 · DeepSeek Flash no-thinking","subtitle":"Development seed0 24 · Validation seed1 24 · 2026-11-06 15:08 UTC","accent":"#be5b23","baseline":"11/24","best":"14/24","calls":"1341 → 922","validation":"C1 验证 6/24，已测 0/6（非最终结果）","events":[["B1","HF 历史基准\n11/24 · 1341 calls","B1 · 历史基准\n11/24 · 1341 calls","无对应 seed1 基准"],["F1","引用恢复 r1\n0/2 · 198 calls；交付 C1","C1 · 晋升 Best\n14/24 · 922 calls\n5 改善 · 2 回归","C1 · 独立验证进行中\n6/24 · 已测 0/6"],["F2","引用恢复 r2\n0/2 · 87 calls；被替代","",""],["P1","动作核验 r1\n1/2 · 84 calls","",""],["BR","有限任务恢复 r1\n1/2 · 66 calls；交付 C2","C2 · 提前淘汰\n22/24，成功 11/22\n最多 13/24 · 883 calls","未触发"],["M","移动交接 r1 → r2\n1/2 → 2/2 · 69 → 56 calls","",""],["F4","引用恢复 r3 → r4\n1/2 → 2/2 · 181 → 43 calls","",""],["S","静止状态序列化修复\n未新增机器人实验","",""],["A1","任务语言获取 r1\n0/2 · 125 calls","",""],["A2","任务语言获取 r2\n2/2 · 26 calls；交付 C3","C3 · 开发集进行中\n1/24 · 已测 1/1\n33 calls","尚未触发"],["P2","动作核验 r2 → r3\n1/2 · 94 → 120 calls","",""],["P4","动作核验 r4 排队\n尚无机器人结果","",""]],"problems":[["target-identity","任务指代与实际操作对象不一致","spatial_swap 改善，仍有错物","动作语言丢失关系限定；研究原指代及物体"],["nonprogress-recovery","静态查询、重复抓取、拒绝重试","篮子 88 次读图；抽屉 97 次定位","延长窗口未破循环；分类三种无进展"],["physical-goal-geometry","抓取／运输／释放／支撑不可靠","动作完成≠瓶子进入碗","引用与控制时长不能保证放稳"],["stale-grounding","旧 epoch 反复拒绝","出现刷新后继续动作","96 次定位、0 动作步反例"],["completion-reconciliation","完成被拒仍坚持原解释","部分拒绝后恢复成功","82 次拒绝完成；77 次连续无运动"]],"note":"B1 是 Hugging Face 导入的历史对照，本机未同期重跑。C2 22 条后按成功率上界提前淘汰，未测 2 条不应记为失败；C3 未完成。"}};
+const DATA={
+  "h0": {
+    "name": "H0 · DeepSeek Flash Thinking High",
+    "subtitle": "Development seed0 24 · Validation seed1 24 · 2026-11-06 14:32 UTC",
+    "accent": "#0e7490",
+    "baseline": "15/24",
+    "best": "18/24",
+    "calls": "625 → 439",
+    "validation": "C1 验证 1/24，已测 1/1 成功 · 51 calls",
+    "events": [
+      [
+        "H0",
+        "基准 · 15/24，625 calls",
+        "H0 全开发集\n15/24 · 625 calls",
+        "—"
+      ],
+      [
+        "R1",
+        "当前有效引用列表\n0/2 → 1/2 · 83 → 43 calls",
+        "C1 · 已晋升 Best\n18/24 · 439 calls\n5 改善 · 2 回归",
+        "C1 · 验证进行中\n1/24 · 已测 1/1\n51 calls"
+      ],
+      [
+        "R2",
+        "定位来源核验\n1/2 → 1/2 · 43 → 59 calls",
+        "",
+        ""
+      ],
+      [
+        "R3",
+        "动作前后证据\n1/2 → 2/2 · 59 → 23 calls",
+        "C2 · 开发集进行中\n4/24 · 已测 0/4\n170 calls",
+        "—"
+      ],
+      [
+        "R4",
+        "图像来源紧邻标记\n2/2 · 44 calls；交付 C3",
+        "C3 · 已交付\n等待完整评测",
+        "—"
+      ],
+      [
+        "NEXT",
+        "父版本篮子倾倒原因\n放置检查研究",
+        "",
+        ""
+      ]
+    ],
+    "problems": [
+      [
+        "P1 · 目标绑定",
+        "目标身份与空间关系摇摆",
+        "收益与双罐／奶酪回归并存；聚焦新旧图像来源",
+        "仍存在"
+      ],
+      [
+        "P2 · 放置完成",
+        "抓取／搬运未保证稳定放置",
+        "3 条改善，2 条回归；验证动作后果与支撑",
+        "仍存在"
+      ],
+      [
+        "P3 · 抽屉状态",
+        "错层与位移不足难区分",
+        "两条仍失败；验证层级、位移、可达性",
+        "仍存在"
+      ],
+      [
+        "P4 · 调用可靠性",
+        "过期引用、图像步号、格式错误",
+        "11 条审查：6 达成、2 部分、3 未触发",
+        "部分改善，仍存在"
+      ]
+    ],
+    "note": "仅 C1 晋升 Best。C2 与 C3 尚无完整开发集结论，未触发独立验证。候选级收益不能归因于单一机制。"
+  },
+  "luna": {
+    "name": "B1 · GPT-5.6 Luna Low",
+    "subtitle": "Dev seed0 × 24 · Val seed1 × 24 · 2026-11-06 16:08:53 UTC",
+    "snapshot": "2026-11-06 16:08:53 UTC",
+    "accent": "#6d28d9",
+    "baseline": "14/24 · 58.33%",
+    "best": "r3 · 15/24 · 62.50%",
+    "calls": "390 → 344 → 412",
+    "validation": "B1 15/24 · 349 calls；r2 15/24 · 351 calls；r3 15/24 · 413 calls",
+    "note": "Calls 只计有效完成的 Robot 任务；灰字为未触发。局部实验不等于完整开发集；验证不反馈给研究 Agent。",
+    "problemNote": "三次实际全局维护；6 项仍存在，无新增、拆分或合并。r11 未完成，无对应维护列。OOM／检查点差异另作环境证据保留。",
+    "rows": [
+      {
+        "key": "B1",
+        "candidate": "candidate:3ae497f760cad9f4d87a769c9b455907641867dc17a586c710ffe530f448cb49",
+        "harness": 1,
+        "title": "初始基线与失败审阅",
+        "note": "10 个失败审阅 → 建立 6 项 Problem",
+        "study": {
+          "completed": 24,
+          "success": 14,
+          "calls": 390,
+          "invalid": 0,
+          "running": 0,
+          "total": 24,
+          "state": "completed",
+          "sources": [
+            "baseline20:rsi-20261106-luna-resident"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:seed",
+          "baseline20:rsi-20261106-luna-resident"
+        ],
+        "dev": {
+          "completed": 24,
+          "success": 14,
+          "calls": 390,
+          "invalid": 0,
+          "running": 0,
+          "total": 24,
+          "state": "completed",
+          "sources": [
+            "baseline20:rsi-20261106-luna-resident"
+          ],
+          "candidate": "candidate:3ae497f760cad9f4d87a769c9b455907641867dc17a586c710ffe530f448cb49",
+          "decision": "initial-best:feedback:luna-resident:baseline",
+          "bestGeneration": 1,
+          "comparison": "初始 Best；无收益声明",
+          "infraNote": null
+        },
+        "validation": {
+          "completed": 24,
+          "success": 15,
+          "calls": 349,
+          "invalid": 0,
+          "running": 0,
+          "total": 24,
+          "state": "completed",
+          "candidate": "candidate:3ae497f760cad9f4d87a769c9b455907641867dc17a586c710ffe530f448cb49",
+          "decision": "initial-b1:baseline20:rsi-20261106-luna-resident",
+          "sources": [
+            "initial-b1:baseline20:rsi-20261106-luna-resident"
+          ]
+        }
+      },
+      {
+        "key": "r1",
+        "candidate": "candidate:57ac9f3d8ec1299f039422cd5c64f358d6a7f578730ee9959101550259a2d441",
+        "harness": 2,
+        "title": "可选身份记录",
+        "note": "工具未被使用 → 改为抓取必经参数",
+        "study": {
+          "completed": 3,
+          "success": 1,
+          "calls": 69,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:1"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:1",
+          "experiment:luna-resident:target-identity:1"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r2",
+        "candidate": "candidate:437ce653006aa31b963cea1b32e69442f64d23ce6284544f647172264baa4c02",
+        "harness": 3,
+        "title": "抓取时内嵌身份比较",
+        "note": "比较激活仍可认错；交付 r2",
+        "study": {
+          "completed": 3,
+          "success": 1,
+          "calls": 96,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:2"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:2",
+          "experiment:luna-resident:target-identity:2"
+        ],
+        "dev": {
+          "completed": 24,
+          "success": 14,
+          "calls": 344,
+          "invalid": 0,
+          "running": 0,
+          "total": 24,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:2:full-set"
+          ],
+          "candidate": "candidate:437ce653006aa31b963cea1b32e69442f64d23ce6284544f647172264baa4c02",
+          "decision": "promotion:luna-resident:target-identity:2",
+          "bestGeneration": 2,
+          "comparison": "对 B1：2 改善 / 2 回归；calls −46",
+          "infraNote": null
+        },
+        "validation": {
+          "completed": 24,
+          "success": 15,
+          "calls": 351,
+          "invalid": 0,
+          "running": 0,
+          "total": 24,
+          "state": "completed",
+          "candidate": "candidate:437ce653006aa31b963cea1b32e69442f64d23ce6284544f647172264baa4c02",
+          "decision": "promotion:luna-resident:target-identity:2",
+          "sources": [
+            "promotion:luna-resident:target-identity:2"
+          ]
+        }
+      },
+      {
+        "key": "r3",
+        "candidate": "candidate:f27efd419c11fd6346068d503196378704ee5dcd40d0e73fd564bbf09cbed745",
+        "harness": 4,
+        "title": "原始目标措辞直接抓取",
+        "note": "两目标任务改善；交付 r3",
+        "study": {
+          "completed": 3,
+          "success": 2,
+          "calls": 45,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:3"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:3",
+          "experiment:luna-resident:target-identity:3"
+        ],
+        "dev": {
+          "completed": 24,
+          "success": 15,
+          "calls": 412,
+          "invalid": 0,
+          "running": 0,
+          "total": 24,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:3:full-set"
+          ],
+          "candidate": "candidate:f27efd419c11fd6346068d503196378704ee5dcd40d0e73fd564bbf09cbed745",
+          "decision": "promotion:luna-resident:target-identity:3",
+          "bestGeneration": 3,
+          "comparison": "对 r2：1 改善 / 0 回归；calls +68",
+          "infraNote": null
+        },
+        "validation": {
+          "completed": 24,
+          "success": 15,
+          "calls": 413,
+          "invalid": 0,
+          "running": 0,
+          "total": 24,
+          "state": "completed",
+          "candidate": "candidate:f27efd419c11fd6346068d503196378704ee5dcd40d0e73fd564bbf09cbed745",
+          "decision": "promotion:luna-resident:target-identity:3",
+          "sources": [
+            "promotion:luna-resident:target-identity:3"
+          ]
+        }
+      },
+      {
+        "key": "r4",
+        "candidate": "candidate:2f1b256237b475ef3bd9c03e22dce8bcc6a80f64f753fcc85f6327758c215e59",
+        "harness": 5,
+        "title": "抓取后中性场景裁剪",
+        "note": "未证明新增收益 → 独立观察",
+        "study": {
+          "completed": 3,
+          "success": 2,
+          "calls": 47,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:4"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:4",
+          "experiment:luna-resident:target-identity:4"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r5",
+        "candidate": "candidate:a2f3614f32cb1aa6410203c97b58995503890f272393fe2bf09470b919d5da47",
+        "harness": 6,
+        "title": "与任务隔离的独立读图",
+        "note": "含 1 次 schema 无效；撤去自动读图",
+        "study": {
+          "completed": 1,
+          "success": 0,
+          "calls": 43,
+          "invalid": 1,
+          "running": 0,
+          "total": 3,
+          "state": "needs_diagnosis",
+          "sources": [
+            "experiment:luna-resident:target-identity:5"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:5",
+          "experiment:luna-resident:target-identity:5"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r6",
+        "candidate": "candidate:aae5a73f678a155dcf310cc11bb19b02592568714e2ff318197da8aeb90f6f1f",
+        "harness": 7,
+        "title": "视觉描述传入抓取",
+        "note": "描述传递激活，获取未改善",
+        "study": {
+          "completed": 3,
+          "success": 1,
+          "calls": 115,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:6"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:6",
+          "experiment:luna-resident:target-identity:6"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r7",
+        "candidate": "candidate:43ec24a9ae3434e1cacf1ed9c47d7d8d2a45965987e0af565b2b2ef5492017cf",
+        "harness": 8,
+        "title": "可选持有／共运动探测",
+        "note": "探测未使用 → 降低入口门槛",
+        "study": {
+          "completed": 3,
+          "success": 2,
+          "calls": 45,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:7"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:7",
+          "experiment:luna-resident:target-identity:7"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r8",
+        "candidate": "candidate:28a3ea283298f5f984448b4c9eb1c5efff54ca86fb17df10280902b16afcf236",
+        "harness": 9,
+        "title": "grounding 直接进入探测",
+        "note": "仍未激活 → 改为被动观察",
+        "study": {
+          "completed": 3,
+          "success": 2,
+          "calls": 54,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:8"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:8",
+          "experiment:luna-resident:target-identity:8"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r9",
+        "candidate": "candidate:e861edac8afee8f22e0395f505837e1e146ebf39bd07132ee42f0b1ef279ae2a",
+        "harness": 10,
+        "title": "自动提供抓取阶段图像",
+        "note": "图像激活，未证明净增益",
+        "study": {
+          "completed": 3,
+          "success": 2,
+          "calls": 72,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:9"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:9",
+          "experiment:luna-resident:target-identity:9"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r10",
+        "candidate": "candidate:0d3f120f54f713454f5a7377e47bfe35f43865007cfcd15ca07a4eb52e51d104",
+        "harness": 11,
+        "title": "原句＋阶段图像简化",
+        "note": "局部回退 → 尝试物理目标绑定",
+        "study": {
+          "completed": 3,
+          "success": 1,
+          "calls": 122,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:10"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:10",
+          "experiment:luna-resident:target-identity:10"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r11",
+        "candidate": "candidate:87e7a76780d82274d405bc6140595e6304916c2e40a1e24fabb092040b599e67",
+        "harness": 12,
+        "title": "选中表面的几何抓取绑定",
+        "note": "恢复局部表现；机制贡献仍未知",
+        "study": {
+          "completed": 3,
+          "success": 2,
+          "calls": 52,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:11"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:11",
+          "experiment:luna-resident:target-identity:11"
+        ],
+        "dev": {
+          "completed": 7,
+          "success": 1,
+          "calls": 228,
+          "invalid": 1,
+          "running": 2,
+          "total": 24,
+          "state": "running",
+          "sources": [
+            "experiment:luna-resident:target-identity:11:full-set"
+          ],
+          "candidate": "candidate:87e7a76780d82274d405bc6140595e6304916c2e40a1e24fabb092040b599e67",
+          "decision": null,
+          "bestGeneration": null,
+          "comparison": "未封存；不能推断完整成功率",
+          "infraNote": "含格式纠正后的监督器版本；历史无效保留"
+        },
+        "validation": null
+      },
+      {
+        "key": "r12",
+        "candidate": "candidate:bf6faa6276adf1ee64249b28b8a1a93ef7c72984fa38768508c8eab71417a481",
+        "harness": 13,
+        "title": "分阶段表面抓取",
+        "note": "局部回退 → 保留负面证据",
+        "study": {
+          "completed": 3,
+          "success": 1,
+          "calls": 102,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:12"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:12",
+          "experiment:luna-resident:target-identity:12"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r13",
+        "candidate": "candidate:6fefcc00b23cb28f0253616f6852994b93ddfebf79ca6d0c87b91af0c03d62f2",
+        "harness": 14,
+        "title": "抬升后段被动观察",
+        "note": "恢复结果，未证明净增益",
+        "study": {
+          "completed": 3,
+          "success": 2,
+          "calls": 55,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:13"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:13",
+          "experiment:luna-resident:target-identity:13"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "r14",
+        "candidate": "candidate:78b44ccab37684254afe857e6d150cc7e06bde97534f7bd09e4cc1546615eb8c",
+        "harness": 15,
+        "title": "减少历史信息与重复提示",
+        "note": "连续多轮无净增益，暂缓此方向",
+        "study": {
+          "completed": 3,
+          "success": 2,
+          "calls": 71,
+          "invalid": 0,
+          "running": 0,
+          "total": 3,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:target-identity:14"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:target-identity:14",
+          "experiment:luna-resident:target-identity:14"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "接触观察",
+        "candidate": "candidate:b5f02cf46d01527a749d9f508328b5880a9108074515711f897a12fabbcd38dd",
+        "harness": 16,
+        "title": "接触 25 步后返回观察",
+        "note": "配对原版 0/2 · 78 calls；无净收益",
+        "study": {
+          "completed": 2,
+          "success": 0,
+          "calls": 119,
+          "invalid": 0,
+          "running": 0,
+          "total": 2,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:contact-observation:1:middle-candidate",
+            "experiment:luna-resident:contact-observation:1:bottom-candidate"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:contact-observation:1",
+          "experiment:luna-resident:contact-observation:1:middle-candidate",
+          "experiment:luna-resident:contact-observation:1:bottom-candidate"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "停止策略",
+        "candidate": "candidate:81f929340e446753f282518e77bab1986a7344a2ad7166fad9dfbeb1c7e5048d",
+        "harness": 17,
+        "title": "区分停止策略与实际成功",
+        "note": "接口有效，机器人实验仍无成功",
+        "study": {
+          "completed": 2,
+          "success": 0,
+          "calls": 128,
+          "invalid": 0,
+          "running": 0,
+          "total": 2,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:termination-policy:1:middle",
+            "experiment:luna-resident:termination-policy:1:bottom"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:termination-policy:1",
+          "experiment:luna-resident:termination-policy:1:middle",
+          "experiment:luna-resident:termination-policy:1:bottom"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "接触简化",
+        "candidate": "candidate:33dfd13d750c9627a73eea3ce67ccc2e3adfad6d4c1301a6dfd64520a3c04904",
+        "harness": 18,
+        "title": "恢复常规接触时长，撤去限步提示",
+        "note": "调用成本下降，抽屉成功仍未解决",
+        "study": {
+          "completed": 2,
+          "success": 0,
+          "calls": 77,
+          "invalid": 0,
+          "running": 0,
+          "total": 2,
+          "state": "completed",
+          "sources": [
+            "experiment:luna-resident:contact-simplification:1:middle",
+            "experiment:luna-resident:contact-simplification:1:bottom"
+          ]
+        },
+        "sources": [
+          "mainline:luna-resident:contact-simplification:1",
+          "experiment:luna-resident:contact-simplification:1:middle",
+          "experiment:luna-resident:contact-simplification:1:bottom"
+        ],
+        "dev": null,
+        "validation": null
+      },
+      {
+        "key": "后续研究",
+        "candidate": "candidate:33dfd13d750c9627a73eea3ce67ccc2e3adfad6d4c1301a6dfd64520a3c04904",
+        "harness": 18,
+        "title": "选中表面与主动腕部视角可行性",
+        "note": "5 个真实来源均放弃判断；尚无新机器人收益",
+        "study": null,
+        "sources": [
+          "local-decision:luna-resident:selected-surface:1:revise"
+        ],
+        "dev": null,
+        "validation": null
+      }
+    ],
+    "maintenance": [
+      {
+        "id": "problem-maintenance-applied:feedback:luna-resident:baseline",
+        "feedback": "feedback:luna-resident:baseline",
+        "version": "B1",
+        "created": 1793930371.6334999,
+        "revisions": [
+          "problem:luna-resident:semantic_target:revision:1",
+          "problem:luna-resident:retention_transport:revision:1",
+          "problem:luna-resident:relational_bowl_placement:revision:1",
+          "problem:luna-resident:drawer_contact:revision:1",
+          "problem:luna-resident:grounding_lifecycle:revision:1",
+          "problem:luna-resident:nonprogress_verification:revision:1"
+        ]
+      },
+      {
+        "id": "problem-maintenance-applied:feedback:luna-resident:target-identity:2",
+        "feedback": "feedback:luna-resident:target-identity:2",
+        "version": "r2",
+        "created": 1793945074.6760747,
+        "revisions": [
+          "problem:luna-resident:semantic_target:revision:2",
+          "problem:luna-resident:retention_transport:revision:2",
+          "problem:luna-resident:relational_bowl_placement:revision:2",
+          "problem:luna-resident:nonprogress_verification:revision:2",
+          "problem:luna-resident:drawer_contact:revision:2",
+          "problem:luna-resident:grounding_lifecycle:revision:2"
+        ]
+      },
+      {
+        "id": "problem-maintenance-applied:feedback:luna-resident:target-identity:3",
+        "feedback": "feedback:luna-resident:target-identity:3",
+        "version": "r3",
+        "created": 1793956935.6754582,
+        "revisions": [
+          "problem:luna-resident:drawer_contact:revision:3",
+          "problem:luna-resident:grounding_lifecycle:revision:3",
+          "problem:luna-resident:nonprogress_verification:revision:3",
+          "problem:luna-resident:relational_bowl_placement:revision:3",
+          "problem:luna-resident:retention_transport:revision:3",
+          "problem:luna-resident:semantic_target:revision:3"
+        ]
+      }
+    ],
+    "problemRows": [
+      {
+        "id": "problem:luna-resident:semantic_target",
+        "title": "目标身份混淆",
+        "revisions": [
+          {
+            "id": "problem:luna-resident:semantic_target:revision:1",
+            "revision": 1,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:baseline",
+            "feedback": "feedback:luna-resident:baseline",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "原目标与实际选择不一致",
+            "evidence": "3 条杂货失败：tomato sauce 被替换为 ketchup",
+            "sourceHash": "59cd085689c66a4c4ec8dd77876283d2b6ab7d2bdf8cc24a109b8bf79a6aae6b",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t00-s0",
+              "baseline-review:luna-resident:libero_10_task-t00-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "feedback:luna-resident:baseline"
+            ],
+            "sourceReason": "Create the initial scoped Problem from this run's complete baseline reviews. No current head exists; no historical-run conclusions imported."
+          },
+          {
+            "id": "problem:luna-resident:semantic_target:revision:2",
+            "revision": 2,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:2",
+            "feedback": "feedback:luna-resident:target-identity:2",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "内嵌比较也会支持错误对象",
+            "evidence": "2 个酱料失败持续；奶酪改善不证明语义修复",
+            "sourceHash": "cc6ab917b72a4fef076aab5506b72796937166f247c3d3debc49a2d7b6321fb4",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t00-s0",
+              "baseline-review:luna-resident:libero_10_task-t00-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_object_task-t02-s0:1",
+              "problem:luna-resident:semantic_target:revision:1"
+            ],
+            "sourceReason": "Append candidate-specific evidence to the existing Problem while retaining baseline history. Semantic aliasing remains in both sauce failures: supported comparisons repeatedly endorse ketchup. The grocery task gain includes correct cheese comparisons and genuine cheese progress, but sauce progress precedes inline activation. Success does not demonstrate semantic counterfactual repair."
+          },
+          {
+            "id": "problem:luna-resident:semantic_target:revision:3",
+            "revision": 3,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:3",
+            "feedback": "feedback:luna-resident:target-identity:3",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "原句正确仍可能拿错物体",
+            "evidence": "2 个杂货失败持续：原句抓取仍选到其他物体",
+            "sourceHash": "5058bfda8dbb5d610e2241efd6da54d84deeb91a2cbe945188c3cfec81f25101",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t00-s0",
+              "baseline-review:luna-resident:libero_10_task-t00-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "feedback:luna-resident:target-identity:3",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_object_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_10_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_object_task-t02-s0:1",
+              "problem:luna-resident:semantic_target:revision:1",
+              "problem:luna-resident:semantic_target:revision:2"
+            ],
+            "sourceReason": "Append r3 evidence to this scoped Problem and preserve prior findings; Both grocery cases remain failures. Text provenance is observed but does not establish semantic or physical target correctness; earlier supported comparisons also misidentified ketchup."
+          }
+        ]
+      },
+      {
+        "id": "problem:luna-resident:retention_transport",
+        "title": "获取、持有、搬运与放置",
+        "revisions": [
+          {
+            "id": "problem:luna-resident:retention_transport:revision:1",
+            "revision": 1,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:baseline",
+            "feedback": "feedback:luna-resident:baseline",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "抓取／张爪信号不证明任务完成",
+            "evidence": "8 条相关失败；部分放置停于张爪或拒绝交接",
+            "sourceHash": "08c78435382a55388197a795e1bb8a0a028a691d79360f0fc19b07b3065e8afb",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t00-s0",
+              "baseline-review:luna-resident:libero_10_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t01-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_task-t02-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "baseline-review:luna-resident:libero_spatial_swap-t01-s0",
+              "baseline-review:luna-resident:libero_spatial_task-t02-s0",
+              "feedback:luna-resident:baseline"
+            ],
+            "sourceReason": "Create the initial scoped Problem from this run's complete baseline reviews. No current head exists; no historical-run conclusions imported."
+          },
+          {
+            "id": "problem:luna-resident:retention_transport:revision:2",
+            "revision": 2,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:2",
+            "feedback": "feedback:luna-resident:target-identity:2",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "真实抓取不保证拿对或送达",
+            "evidence": "新碗回退：抓取标志为真，仍抓错并零步拒放",
+            "sourceHash": "0c460f44819bffe9f53f5541f91324f7a3015d96d7ef436dfa069c3b340fcdcf",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t00-s0",
+              "baseline-review:luna-resident:libero_10_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t01-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_task-t02-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "baseline-review:luna-resident:libero_spatial_swap-t01-s0",
+              "baseline-review:luna-resident:libero_spatial_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_object_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t02-s0:1",
+              "problem:luna-resident:retention_transport:revision:1"
+            ],
+            "sourceReason": "Append candidate-specific evidence to the existing Problem while retaining baseline history. Retention and recipient verification remain unresolved despite real initial bottle/bowl lifts and a spatial gain. New negated-bowl evidence shows true grasp flags alongside rear-bowl and cookie selection, then zero-step rejected placement. Wine-bottle loss of visibility is not proof of off-table loss. Correct naming does not establish a retained intended object."
+          },
+          {
+            "id": "problem:luna-resident:retention_transport:revision:3",
+            "revision": 3,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:3",
+            "feedback": "feedback:luna-resident:target-identity:3",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "区分目标、持有与最终支撑",
+            "evidence": "7 个共同失败、1 个改善；改善双方都已抓到碗",
+            "sourceHash": "a138ae080cf06ecf30832478b93c10dd30819849b8853bfedb5cee0962895940",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t00-s0",
+              "baseline-review:luna-resident:libero_10_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t01-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_task-t02-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "baseline-review:luna-resident:libero_spatial_swap-t01-s0",
+              "baseline-review:luna-resident:libero_spatial_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "feedback:luna-resident:target-identity:3",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_object_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_10_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_10_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_object_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_spatial_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_spatial_task-t02-s0:1",
+              "problem:luna-resident:retention_transport:revision:1",
+              "problem:luna-resident:retention_transport:revision:2"
+            ],
+            "sourceReason": "Append r3 evidence to this scoped Problem and preserve prior findings; Seven shared failures in this scoped manipulation group and one gain. Both sides of the gain already acquire the bowl, so improved outcome does not prove semantic repair or quote-specific retention benefit."
+          }
+        ]
+      },
+      {
+        "id": "problem:luna-resident:relational_bowl_placement",
+        "title": "原始碗实例与直接支撑",
+        "revisions": [
+          {
+            "id": "problem:luna-resident:relational_bowl_placement:revision:1",
+            "revision": 1,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:baseline",
+            "feedback": "feedback:luna-resident:baseline",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "相似碗与叠放导致身份／支撑不明",
+            "evidence": "2 个空间失败；盘子附近有碗仍未成功",
+            "sourceHash": "ad5b55e7d7951ae6ce1e0d04aebcab2630c3efdb3d0803bbc3fe2abaca0a36f6",
+            "sources": [
+              "baseline-review:luna-resident:libero_spatial_swap-t01-s0",
+              "baseline-review:luna-resident:libero_spatial_task-t02-s0",
+              "feedback:luna-resident:baseline"
+            ],
+            "sourceReason": "Create the initial scoped Problem from this run's complete baseline reviews. No current head exists; no historical-run conclusions imported."
+          },
+          {
+            "id": "problem:luna-resident:relational_bowl_placement:revision:2",
+            "revision": 2,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:2",
+            "feedback": "feedback:luna-resident:target-identity:2",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "初始实例不同于移动后的相对位置",
+            "evidence": "1 改善、1 持续失败、1 否定关系任务回退",
+            "sourceHash": "e98bb5b1931e354e1d37505bf6be76c8f7c8e52ab004d3a5c5676acdcc2fbe59",
+            "sources": [
+              "baseline-review:luna-resident:libero_spatial_swap-t01-s0",
+              "baseline-review:luna-resident:libero_spatial_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t02-s0:1",
+              "problem:luna-resident:relational_bowl_placement:revision:1"
+            ],
+            "sourceReason": "Append candidate-specific evidence to the existing Problem while retaining baseline history. Spatial evidence is mixed: one gain without inline comparison, a persistent nearby-plate failure, and a negated-bowl regression. Candidate can preserve far-right words while lifting the rear bowl; first whole-task motion already places a ramekin on the recipient. Initial versus current relational selection and direct support remain distinct unresolved questions."
+          },
+          {
+            "id": "problem:luna-resident:relational_bowl_placement:revision:3",
+            "revision": 3,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:3",
+            "feedback": "feedback:luna-resident:target-identity:3",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "保留原句不足以保持实例对应",
+            "evidence": "2 个 spatial_task 仍失败；存在错碗与嵌套",
+            "sourceHash": "5233000699c7fce36760494d76b795717926eccc90aaa882f91f69da7d424da4",
+            "sources": [
+              "baseline-review:luna-resident:libero_spatial_swap-t01-s0",
+              "baseline-review:luna-resident:libero_spatial_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "feedback:luna-resident:target-identity:3",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_spatial_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_spatial_task-t02-s0:1",
+              "problem:luna-resident:relational_bowl_placement:revision:1",
+              "problem:luna-resident:relational_bowl_placement:revision:2"
+            ],
+            "sourceReason": "Append r3 evidence to this scoped Problem and preserve prior findings; Two shared failures; visible bowl-on-plate or nesting is insufficient to establish the requested relation. Reusing an original spatial phrase after motion does not preserve instance identity."
+          }
+        ]
+      },
+      {
+        "id": "problem:luna-resident:drawer_contact",
+        "title": "抽屉层级与有效接触",
+        "revisions": [
+          {
+            "id": "problem:luna-resident:drawer_contact:revision:1",
+            "revision": 1,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:baseline",
+            "feedback": "feedback:luna-resident:baseline",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "中层抽屉未建立有效开启",
+            "evidence": "反复拉动；2 次完成声明被拒，位移不明确",
+            "sourceHash": "cb650a08caac542352b298174ff2684a4a7c973d6143807e212bf324e200ee67",
+            "sources": [
+              "baseline-review:luna-resident:libero_goal_swap-t00-s0",
+              "feedback:luna-resident:baseline"
+            ],
+            "sourceReason": "Create the initial scoped Problem from this run's complete baseline reviews. No current head exists; no historical-run conclusions imported."
+          },
+          {
+            "id": "problem:luna-resident:drawer_contact:revision:2",
+            "revision": 2,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:2",
+            "feedback": "feedback:luna-resident:target-identity:2",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "范围扩展到选层、接触和几何变化",
+            "evidence": "中层持续失败、底层回退；均未触发内嵌比较",
+            "sourceHash": "3bc033eb982dd7bb13c1b6dc7bd28d72477ee863e5536a142f25fb6af85eba3e",
+            "sources": [
+              "baseline-review:luna-resident:libero_goal_swap-t00-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t00-s0:1",
+              "problem:luna-resident:drawer_contact:revision:1"
+            ],
+            "sourceReason": "Append candidate-specific evidence to the existing Problem while retaining baseline history. Middle-drawer failure persists and bottom-drawer success regresses. Neither case invokes inline pick comparison. In bottom-drawer reference, lowest-handle grounding250 precedes partial opening430 and success527; candidate leaves a higher drawer open and two finish claims fail. Layer selection, changed geometry and contact must be separated; middle-drawer late OOM does not explain all earlier nonprogress."
+          },
+          {
+            "id": "problem:luna-resident:drawer_contact:revision:3",
+            "revision": 3,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:3",
+            "feedback": "feedback:luna-resident:target-identity:3",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "目标层、接触和位移仍需分别核对",
+            "evidence": "2 个共同失败；均未调用改变后的局部抓取路径",
+            "sourceHash": "6251123fd60225f89376ca63aaec54962becb4387b1af7700d555ef186ad1bf1",
+            "sources": [
+              "baseline-review:luna-resident:libero_goal_swap-t00-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "feedback:luna-resident:target-identity:3",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_task-t00-s0:1",
+              "problem:luna-resident:drawer_contact:revision:1",
+              "problem:luna-resident:drawer_contact:revision:2"
+            ],
+            "sourceReason": "Append r3 evidence to this scoped Problem and preserve prior findings; Two shared failures; no direct quote contribution is observed."
+          }
+        ]
+      },
+      {
+        "id": "problem:luna-resident:grounding_lifecycle",
+        "title": "运动后过期 grounding",
+        "revisions": [
+          {
+            "id": "problem:luna-resident:grounding_lifecycle:revision:1",
+            "revision": 1,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:baseline",
+            "feedback": "feedback:luna-resident:baseline",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "运动后继续使用旧定位引用",
+            "evidence": "6 个失败中 8 次 stale_physical_epoch 拒绝",
+            "sourceHash": "e387b5b91cdf117278c0e22ca6b8dea6eaa5e4428fbd34fc4e19d356e59680ba",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t02-s0",
+              "baseline-review:luna-resident:libero_10_task-t00-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t01-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_task-t02-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "feedback:luna-resident:baseline"
+            ],
+            "sourceReason": "Create the initial scoped Problem from this run's complete baseline reviews. No current head exists; no historical-run conclusions imported."
+          },
+          {
+            "id": "problem:luna-resident:grounding_lifecycle:revision:2",
+            "revision": 2,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:2",
+            "feedback": "feedback:luna-resident:target-identity:2",
+            "status": "still_present",
+            "assessment": "unchanged",
+            "judgment": "维持原判断；未实施独立生命周期修复",
+            "evidence": "沿用过期引用证据；轨迹差异不构成修复证明",
+            "sourceHash": "5c351de8768fe605fa63ab21a36379dd8cbfe5b703b4572ec1a0cf797abefe9b",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t02-s0",
+              "baseline-review:luna-resident:libero_10_task-t00-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t01-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_task-t02-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_object_task-t02-s0:1",
+              "problem:luna-resident:grounding_lifecycle:revision:1"
+            ],
+            "sourceReason": "The bilateral reviews retain prior stale-physical-epoch evidence as a lifecycle problem. Revision2 does not implement an isolated grounding-lifecycle repair, and fewer or absent stale errors on a different trajectory would not establish one. The validity guard should remain enforced."
+          },
+          {
+            "id": "problem:luna-resident:grounding_lifecycle:revision:3",
+            "revision": 3,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:3",
+            "feedback": "feedback:luna-resident:target-identity:3",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "有效性保护正确，问题仍需独立修复",
+            "evidence": "r3 酱料任务再出现 2 次拒绝；错物操作早已发生",
+            "sourceHash": "7c196ec44db8902dcec0c557c6e7e0fdf24a9f7007774f8e9e7181483e5e8bd9",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t02-s0",
+              "baseline-review:luna-resident:libero_10_task-t00-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t01-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_task-t02-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "feedback:luna-resident:target-identity:3",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_object_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_object_task-t02-s0:1",
+              "problem:luna-resident:grounding_lifecycle:revision:1",
+              "problem:luna-resident:grounding_lifecycle:revision:2"
+            ],
+            "sourceReason": "Append r3 evidence to this scoped Problem and preserve prior findings; Rejected requests consume decisions and do not execute, but earlier wrong-object manipulation already precedes these errors. This is not evidence of a simulator defect or of a whole-task remedy from removing the errors."
+          }
+        ]
+      },
+      {
+        "id": "problem:luna-resident:nonprogress_verification",
+        "title": "无进展恢复与完成误判",
+        "revisions": [
+          {
+            "id": "problem:luna-resident:nonprogress_verification:revision:1",
+            "revision": 1,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:baseline",
+            "feedback": "feedback:luna-resident:baseline",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "反复恢复未建立真实成功",
+            "evidence": "10 个失败耗尽墙钟预算；7 例有 9 次完成拒绝",
+            "sourceHash": "8bff194279cadb211398761b1c57431afaac94bbff85d8fe916f54135b9e904e",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t00-s0",
+              "baseline-review:luna-resident:libero_10_swap-t02-s0",
+              "baseline-review:luna-resident:libero_10_task-t00-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t00-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t01-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_task-t02-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "baseline-review:luna-resident:libero_spatial_swap-t01-s0",
+              "baseline-review:luna-resident:libero_spatial_task-t02-s0",
+              "feedback:luna-resident:baseline"
+            ],
+            "sourceReason": "Create the initial scoped Problem from this run's complete baseline reviews. No current head exists; no historical-run conclusions imported."
+          },
+          {
+            "id": "problem:luna-resident:nonprogress_verification:revision:2",
+            "revision": 2,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:2",
+            "feedback": "feedback:luna-resident:target-identity:2",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "少调用不能证明恢复策略被修复",
+            "evidence": "仍有 10 个失败；全开发集 calls 390 → 344",
+            "sourceHash": "aa02407f820a576a52555d00cd790a256e8c9a21fe6981ed8d6b3338ad28f833",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t00-s0",
+              "baseline-review:luna-resident:libero_10_swap-t02-s0",
+              "baseline-review:luna-resident:libero_10_task-t00-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t00-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t01-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_task-t02-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "baseline-review:luna-resident:libero_spatial_swap-t01-s0",
+              "baseline-review:luna-resident:libero_spatial_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_object_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t02-s0:1",
+              "problem:luna-resident:nonprogress_verification:revision:1"
+            ],
+            "sourceReason": "Append candidate-specific evidence to the existing Problem while retaining baseline history. Recovery and completion verification remain costly in ten candidate failures, including two new regressions, while two old failures improve. Complete-set calls fall390 to344; this is descriptive metric benefit, not evidence that shorter histories cause success. Rejected finishes persist in drawer/bottle/bowl cases. Some attempts change pose or skill and must not be called literally identical retries."
+          },
+          {
+            "id": "problem:luna-resident:nonprogress_verification:revision:3",
+            "revision": 3,
+            "maintenance": "problem-maintenance-applied:feedback:luna-resident:target-identity:3",
+            "feedback": "feedback:luna-resident:target-identity:3",
+            "status": "still_present",
+            "assessment": "updated",
+            "judgment": "任务收益与恢复成本需分开判断",
+            "evidence": "9 个共同失败；全开发集 calls 344 → 412",
+            "sourceHash": "29b610fbab3a9d463dfd0053f2b466ea648802a9ca6f30eaa941d59d63c31bd6",
+            "sources": [
+              "baseline-review:luna-resident:libero_10_swap-t00-s0",
+              "baseline-review:luna-resident:libero_10_swap-t02-s0",
+              "baseline-review:luna-resident:libero_10_task-t00-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t00-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t01-s0",
+              "baseline-review:luna-resident:libero_goal_swap-t02-s0",
+              "baseline-review:luna-resident:libero_goal_task-t02-s0",
+              "baseline-review:luna-resident:libero_object_task-t02-s0",
+              "baseline-review:luna-resident:libero_spatial_swap-t01-s0",
+              "baseline-review:luna-resident:libero_spatial_task-t02-s0",
+              "feedback:luna-resident:baseline",
+              "feedback:luna-resident:target-identity:2",
+              "feedback:luna-resident:target-identity:3",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_10_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_goal_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_object_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:2:libero_spatial_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_10_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_10_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_swap-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_swap-t01-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_swap-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_goal_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_object_task-t02-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_spatial_task-t00-s0:1",
+              "pair-review:luna-resident:target-identity:3:libero_spatial_task-t02-s0:1",
+              "problem:luna-resident:nonprogress_verification:revision:1",
+              "problem:luna-resident:nonprogress_verification:revision:2"
+            ],
+            "sourceReason": "Append r3 evidence to this scoped Problem and preserve prior findings; The candidate improves one outcome but raises complete-set calls from344 to412 and common-success calls from36 to50; this does not isolate repetition, history length or verification as the cause."
+          }
+        ]
+      }
+    ],
+    "bestRecord": {
+      "scope": "6449f31a97bbc22b1da2e95edf0ed2d509dbfedf0380f62a84c762131e2c1e4e",
+      "candidate": "candidate:f27efd419c11fd6346068d503196378704ee5dcd40d0e73fd564bbf09cbed745",
+      "decision": "promotion:luna-resident:target-identity:3",
+      "generation": 3,
+      "updated": 1793956767.1264803
+    },
+    "sources": {
+      "run": "rsi-20261106-luna-resident",
+      "basis": "registry + sealed episode results + operator validation queue",
+      "capturedAt": "2026-11-06 16:08:53 UTC"
+    },
+    "summaryScore": "14/24 → 15/24"
+  },
+  "ds": {
+    "name": "B1 · DeepSeek Flash no-thinking",
+    "subtitle": "Development seed0 24 · Validation seed1 24 · 2026-11-06 15:08 UTC",
+    "accent": "#be5b23",
+    "baseline": "11/24",
+    "best": "14/24",
+    "calls": "1341 → 922",
+    "validation": "C1 验证 6/24，已测 0/6（非最终结果）",
+    "events": [
+      [
+        "B1",
+        "HF 历史基准\n11/24 · 1341 calls",
+        "B1 · 历史基准\n11/24 · 1341 calls",
+        "无对应 seed1 基准"
+      ],
+      [
+        "F1",
+        "引用恢复 r1\n0/2 · 198 calls；交付 C1",
+        "C1 · 晋升 Best\n14/24 · 922 calls\n5 改善 · 2 回归",
+        "C1 · 独立验证进行中\n6/24 · 已测 0/6"
+      ],
+      [
+        "F2",
+        "引用恢复 r2\n0/2 · 87 calls；被替代",
+        "",
+        ""
+      ],
+      [
+        "P1",
+        "动作核验 r1\n1/2 · 84 calls",
+        "",
+        ""
+      ],
+      [
+        "BR",
+        "有限任务恢复 r1\n1/2 · 66 calls；交付 C2",
+        "C2 · 提前淘汰\n22/24，成功 11/22\n最多 13/24 · 883 calls",
+        "未触发"
+      ],
+      [
+        "M",
+        "移动交接 r1 → r2\n1/2 → 2/2 · 69 → 56 calls",
+        "",
+        ""
+      ],
+      [
+        "F4",
+        "引用恢复 r3 → r4\n1/2 → 2/2 · 181 → 43 calls",
+        "",
+        ""
+      ],
+      [
+        "S",
+        "静止状态序列化修复\n未新增机器人实验",
+        "",
+        ""
+      ],
+      [
+        "A1",
+        "任务语言获取 r1\n0/2 · 125 calls",
+        "",
+        ""
+      ],
+      [
+        "A2",
+        "任务语言获取 r2\n2/2 · 26 calls；交付 C3",
+        "C3 · 开发集进行中\n1/24 · 已测 1/1\n33 calls",
+        "尚未触发"
+      ],
+      [
+        "P2",
+        "动作核验 r2 → r3\n1/2 · 94 → 120 calls",
+        "",
+        ""
+      ],
+      [
+        "P4",
+        "动作核验 r4 排队\n尚无机器人结果",
+        "",
+        ""
+      ]
+    ],
+    "problems": [
+      [
+        "target-identity",
+        "任务指代与实际操作对象不一致",
+        "spatial_swap 改善，仍有错物",
+        "动作语言丢失关系限定；研究原指代及物体"
+      ],
+      [
+        "nonprogress-recovery",
+        "静态查询、重复抓取、拒绝重试",
+        "篮子 88 次读图；抽屉 97 次定位",
+        "延长窗口未破循环；分类三种无进展"
+      ],
+      [
+        "physical-goal-geometry",
+        "抓取／运输／释放／支撑不可靠",
+        "动作完成≠瓶子进入碗",
+        "引用与控制时长不能保证放稳"
+      ],
+      [
+        "stale-grounding",
+        "旧 epoch 反复拒绝",
+        "出现刷新后继续动作",
+        "96 次定位、0 动作步反例"
+      ],
+      [
+        "completion-reconciliation",
+        "完成被拒仍坚持原解释",
+        "部分拒绝后恢复成功",
+        "82 次拒绝完成；77 次连续无运动"
+      ]
+    ],
+    "note": "B1 是 Hugging Face 导入的历史对照，本机未同期重跑。C2 22 条后按成功率上界提前淘汰，未测 2 条不应记为失败；C3 未完成。"
+  }
+};
 const E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const keys=['h0','luna','ds'];let active='h0',scale=1,pscale=1;
+const keys=['h0','luna','ds'];let active=location.hash==='#h0'?'h0':location.hash==='#ds'?'ds':'luna',scale=1,pscale=1;
 function txt(x,y,str,size=14,weight=500,color='#203349',anchor='start'){return '<text x="'+x+'" y="'+y+'" font-size="'+size+'" font-weight="'+weight+'" fill="'+color+'" text-anchor="'+anchor+'">'+E(str)+'</text>'}
 function lines(text){return String(text||'').split('\n')}
 function node(x,y,w,h,label,detail,fill,stroke){let a='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="12" fill="'+fill+'" stroke="'+stroke+'" stroke-width="1.4"/>';a+=txt(x+14,y+27,label,16,750);lines(detail).forEach((l,i)=>a+=txt(x+14,y+52+i*20,l,13,470,'#475c70'));return a}
-function drawFlow(d){const w=1470, gap=152, top=135, height=top+d.events.length*gap+55;let s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+height+'" role="img" aria-label="三列按版本对齐的研究流程图">';s+='<defs><marker id="end" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M1,1 L8,4 L1,7" fill="none" stroke="#637b94" stroke-width="1.5"/></marker></defs>';let cols=[35,528,1021],cw=414;
+function drawFlow(d){if(d.rows)return drawRecordedFlow(d);const w=1470, gap=152, top=135, height=top+d.events.length*gap+55;let s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+height+'" role="img" aria-label="三列按版本对齐的研究流程图">';s+='<defs><marker id="end" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M1,1 L8,4 L1,7" fill="none" stroke="#637b94" stroke-width="1.5"/></marker></defs>';let cols=[35,528,1021],cw=414;
 ['EXPLORATION · 研究版本','DEVELOPMENT · 完整评测','VALIDATION · 独立验证'].forEach((t,i)=>{s+='<rect x="'+(cols[i]-10)+'" y="10" width="'+(cw+20)+'" height="'+(height-15)+'" rx="18" fill="'+['#f1f7fc','#effaf4','#f7f3fd'][i]+'"/>';s+=txt(cols[i]+10,48,t,16,800,['#287297','#27754e','#7858a6'][i])});
 d.events.forEach((e,i)=>{const y=top+i*gap; s+=node(cols[0],y,cw,112,e[0],e[1],'#fff','#afd0e4');if(e[2])s+=node(cols[1],y,cw,112,'DEV · '+e[0],e[2],'#fff','#93cab0');if(e[3])s+=node(cols[2],y,cw,112,'VAL · '+e[0],e[3],'#fff','#c9b8e6');if(i>0){s+='<path d="M'+(cols[0]+cw/2)+' '+(y-gap+112)+' V'+y+'" stroke="#79a1ba" stroke-width="2" marker-end="url(#end)"/>';const prevD=d.events.slice(0,i).map((x,j)=>x[2]?j:-1).filter(x=>x>=0).pop();if(e[2]&&prevD!==undefined)s+='<path d="M'+(cols[1]+cw/2)+' '+(top+prevD*gap+112)+' V'+y+'" stroke="#83b999" stroke-width="2" marker-end="url(#end)"/>';const prevV=d.events.slice(0,i).map((x,j)=>x[3]?j:-1).filter(x=>x>=0).pop();if(e[3]&&prevV!==undefined)s+='<path d="M'+(cols[2]+cw/2)+' '+(top+prevV*gap+112)+' V'+y+'" stroke="#b7a0d9" stroke-width="2" marker-end="url(#end)"/>'}if(e[2])s+='<path d="M'+(cols[0]+cw+4)+' '+(y+56)+' H'+(cols[1]-8)+'" stroke="'+d.accent+'" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#end)"/>';if(e[2]&&e[3])s+='<path d="M'+(cols[1]+cw+4)+' '+(y+56)+' H'+(cols[2]-8)+'" stroke="'+d.accent+'" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#end)"/>'});return s+'</svg>'}
 function drawProblems(d){
+ if(d.maintenance)return drawRecordedProblems(d);
  const isH0=d===DATA.h0,isLuna=d===DATA.luna;
  const heads=isH0?['H0 基准全评 · Revision 1','C1 开发集全评 · Revision 2']:isLuna?['B1 基准审阅 · Revision 1','r2 开发集全评 · Revision 2','r3 开发集全评 · Revision 3']:['B1 历史基准 · Revision 1','C1 开发集全评 · Revision 2','C2 提前淘汰反馈 · Revision 3'];
  const detail=isH0?['建立 4 条 Problem','更新 4 条；全部仍存在']:isLuna?['建立 6 条 Problem','更新 5 条；1 条维持','更新全部 6 条；全部仍存在']:['建立 5 条 Problem','4 条部分改善，1 条仍存在','保留状态，追加失败候选反例'];
@@ -41,9 +1405,99 @@ function drawProblems(d){
  });
  return s+'</svg>';
 }
+// One shared row position per candidate keeps all three lanes aligned.
+function wrapRecorded(text,width,size=13){
+ const canvas=wrapRecorded.canvas||(wrapRecorded.canvas=document.createElement('canvas'));
+ const context=canvas.getContext('2d');context.font=size+'px Inter,"Segoe UI",Arial,"Noto Sans SC",sans-serif';
+ const output=[];
+ for(const paragraph of String(text).split('\n')){
+  let line='';for(const char of paragraph){if(line&&context.measureText(line+char).width>width){output.push(line);line=char}else line+=char}output.push(line);
+ }
+ return output;
+}
+function recordedCard(title,details,source){
+ return {title,lines:details.flatMap(text=>wrapRecorded(text,382)),source};
+}
+function recordedBox(x,y,w,h,card,stroke,attrs=''){
+ let svg='<g '+attrs+'><title>'+E(card.source||card.title)+'</title><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="12" fill="#fff" stroke="'+stroke+'" stroke-width="1.4"/>';
+ svg+=txt(x+14,y+28,card.title,16,750);
+ card.lines.forEach((line,i)=>{svg+=txt(x+14,y+54+i*20,line,13,470,'#475c70')});return svg+'</g>';
+}
+function metricText(m,kind){
+ const full=m.state==='completed'&&m.completed===m.total;
+ const detail=full?[kind+'：'+m.success+'/'+m.total+' 成功（'+(100*m.success/m.total).toFixed(2)+'%）',m.calls+' model calls']:
+ ['未完成 · 进度 '+m.completed+'/'+m.total,'有效子集成功 '+m.success+'/'+m.completed+' · '+m.calls+' calls'];
+ if(m.invalid)detail.push('另 '+m.invalid+' 次无效；不计为任务失败');
+ if(!full&&m.running)detail.push('正在运行 '+m.running+' 条');
+ if(m.state==='needs_diagnosis')detail.push('状态：needs_diagnosis');
+ return detail;
+}
+function drawRecordedFlow(d){
+ const width=1470,cols=[35,528,1021],cw=414,top=115;
+ let bottom=top;
+ const rows=d.rows.map(row=>{
+  const id=row.candidate.split(':')[1].slice(0,8),label=row.key+' · Harness H'+row.harness;
+  const left=recordedCard(label,[row.title,'候选 '+id,...(row.study?metricText(row.study,row.key==='B1'?'初始基线':'局部实验'):['离线可行性审计；未新增候选／机器人轮次']),row.note],row.sources.join('\n'));
+  const dev=row.dev?recordedCard(label,[...metricText(row.dev,'完整开发集'),row.dev.bestGeneration?(row.key==='B1'?'初始化 Best 1':'已晋升 Best '+row.dev.bestGeneration):'尚无晋升决策',row.dev.comparison,...(row.dev.infraNote?[row.dev.infraNote]:[])],row.dev.sources.concat(row.dev.decision||[]).join('\n')):null;
+  const validation=row.validation?recordedCard(label,[...metricText(row.validation,'独立验证集'),row.key==='B1'?'初始 B1 验证':'晋升 Best '+row.dev.bestGeneration+' 后触发','仅保存结果；不参与研究反馈'],row.validation.sources.join('\n')):null;
+  const height=Math.max(...[left,dev,validation].filter(Boolean).map(c=>74+c.lines.length*20));
+  const result={row,left,dev,validation,y:bottom,height};bottom+=height+40;return result;
+ });
+ let svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+width+' '+bottom+'" role="img" aria-label="Luna 研究主线、完整开发集、独立验证按候选横向对齐"><defs><marker id="lunaEnd" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M1,1 L8,4 L1,7" fill="none" stroke="#637b94" stroke-width="1.5"/></marker></defs>';
+ ['EXPLORATION · 研究 / Harness','DEVELOPMENT · 完整开发集','VALIDATION · 独立验证'].forEach((label,i)=>{
+  svg+='<rect x="'+(cols[i]-10)+'" y="10" width="'+(cw+20)+'" height="'+(bottom-20)+'" rx="18" fill="'+['#f1f7fc','#effaf4','#f7f3fd'][i]+'"/>';
+  svg+=txt(cols[i]+10,46,label,16,800,['#287297','#27754e','#7858a6'][i]);
+  svg+=txt(cols[i]+10,73,['按实际研究主线推进','仅显示实际提交版本','初始 B1 或正式晋升后触发'][i],13,500,'#637389');
+ });
+ const previous=[null,null,null];
+ for(const entry of rows){
+  const {row,left,dev,validation,y,height}=entry;
+  [left,dev,validation].forEach((card,i)=>{
+   if(!card)return;
+   if(previous[i])svg+='<path d="M'+(cols[i]+cw/2)+' '+previous[i]+' V'+(y-5)+'" stroke="'+['#79a1ba','#83b999','#b7a0d9'][i]+'" stroke-width="2" marker-end="url(#lunaEnd)"/>';
+   const attrs='data-row="'+E(row.key)+'" data-lane="'+i+'" data-candidate="'+E(row.candidate)+'" data-y="'+y+'"';
+   svg+=recordedBox(cols[i],y,cw,height,card,['#afd0e4','#93cab0','#c9b8e6'][i],attrs);previous[i]=y+height;
+  });
+  const center=y+height/2;
+  if(dev)svg+='<path d="M'+(cols[0]+cw+4)+' '+center+' H'+(cols[1]-8)+'" stroke="'+d.accent+'" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#lunaEnd)"/>';
+  if(validation)svg+='<path d="M'+(cols[1]+cw+4)+' '+center+' H'+(cols[2]-8)+'" stroke="'+d.accent+'" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#lunaEnd)"/>';
+  else if(dev)svg+=txt(cols[2]+20,center,'尚未晋升 · 未触发独立验证',14,500,'#8190a3');
+ }
+ return svg+'</svg>';
+}
+function drawRecordedProblems(d){
+ const width=1550,cw=454,xs=[30,548,1066],top=130;
+ let bottom=top;
+ const rows=d.problemRows.map(problem=>{
+  const cards=problem.revisions.map(node=>recordedCard(problem.title,[
+   '判断：'+node.judgment,'证据：'+node.evidence,
+   '状态：'+(node.status==='still_present'?'仍存在':node.status)+' · '+(node.assessment==='unchanged'?'维持原判断':'本轮更新'),
+   'Problem revision '+node.revision
+  ],node.id+'\n'+node.feedback+'\n'+node.sourceReason+'\n'+node.sources.join('\n')));
+  // Wider cards can use the same conservative wrapping as the flow.
+  const height=Math.max(...cards.map(c=>74+c.lines.length*20));
+  const row={problem,cards,y:bottom,height};bottom+=height+36;return row;
+ });
+ let svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+width+' '+bottom+'" role="img" aria-label="Luna 全局 Problem 按实际维护和 revision 顺序排列"><defs><marker id="lunaRevisionEnd" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M1,1 L8,4 L1,7" fill="none" stroke="#8291a4" stroke-width="1.5"/></marker></defs>';
+ d.maintenance.forEach((maintenance,i)=>{
+  svg+='<rect x="'+(xs[i]-10)+'" y="10" width="'+(cw+20)+'" height="'+(bottom-20)+'" rx="18" fill="'+['#f2f7fc','#f0f9f3','#f7f3fc'][i]+'"/>';
+  svg+=txt(xs[i]+13,42,maintenance.version+' 完整评测后 · 第 '+(i+1)+' 次维护',17,800,['#315d7d','#2a7651','#7150a0'][i]);
+  const nodes=d.problemRows.map(p=>p.revisions[i]);const unchanged=nodes.filter(n=>n.assessment==='unchanged').length;
+  svg+=txt(xs[i]+13,67,i===0?'建立 '+nodes.length+' 项 Problem':'更新 '+(nodes.length-unchanged)+' 项 · 维持 '+unchanged+' 项',13,500,'#5b7287');
+  svg+=txt(xs[i]+13,89,new Date(maintenance.created*1000).toISOString().replace('T',' ').slice(0,19)+' UTC',12,500,'#718198');
+ });
+ rows.forEach(({problem,cards,y,height})=>cards.forEach((card,i)=>{
+  const node=problem.revisions[i];
+  svg+=recordedBox(xs[i],y,cw,height,card,node.assessment==='unchanged'?'#bdc8d3':['#a9cbdc','#a5ceae','#d0bce6'][i],
+   'data-problem="'+E(problem.id)+'" data-revision="'+node.revision+'" data-maintenance="'+E(node.maintenance)+'" data-y="'+y+'"');
+  if(i<cards.length-1)svg+='<path d="M'+(xs[i]+cw+5)+' '+(y+height/2)+' H'+(xs[i+1]-10)+'" stroke="#8291a4" stroke-width="2" marker-end="url(#lunaRevisionEnd)"/>';
+ }));return svg+'</svg>';
+}
+
 function setWidth(el,value){const svg=el.querySelector('svg');if(svg)svg.style.width=(Number(svg.getAttribute('viewBox').split(' ')[2])*value)+'px'}
-function paint(){let d=DATA[active];document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.id===active));document.getElementById('stats').innerHTML=[['初始开发集',d.baseline],['当前 Best 开发集',d.best],['开发集 calls',d.calls],['验证集状态',d.validation]].map(([k,v])=>'<div class="stat"><small>'+E(k)+'</small><strong style="font-size:'+(k==='验证集状态'?'15':'24')+'px">'+E(v)+'</strong></div>').join('');document.getElementById('flow-title').textContent=d.name;document.getElementById('rev').textContent=d.subtitle;document.getElementById('flow').innerHTML=drawFlow(d);document.getElementById('problems').innerHTML=drawProblems(d);document.getElementById('note').textContent=d.note;scale=1;pscale=1;setWidth(document.getElementById('flow'),scale);setWidth(document.getElementById('problems'),pscale);document.getElementById('flow').scrollTop=0;document.getElementById('problems').scrollTop=0;}
-document.getElementById('tabs').innerHTML=keys.map(k=>'<button class="tab" data-id="'+k+'">'+E(DATA[k].name)+'</button>').join('');document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-id]');if(b){active=b.dataset.id;paint()}});
-function zoom(id,diff){if(id==='flow'){scale=diff===0?1:Math.max(.5,Math.min(2.5,scale+diff));setWidth(document.getElementById('flow'),scale)}else{pscale=diff===0?1:Math.max(.5,Math.min(2.5,pscale+diff));setWidth(document.getElementById('problems'),pscale)}}
-[['minus','flow',-.2],['plus','flow',.2],['reset','flow',0],['problem-minus','problems',-.2],['problem-plus','problems',.2],['problem-reset','problems',0]].forEach(([id,x,v])=>document.getElementById(id).addEventListener('click',()=>zoom(x,v)));document.getElementById('summary').innerHTML=keys.map(k=>{let d=DATA[k];return '<article><h3>'+E(d.name)+'</h3><b>'+E(d.baseline)+' → '+E(d.best)+'</b><p>开发集成功数变化 · 24 episodes</p><p>'+E(d.note)+'</p></article>'}).join('');paint();
+function paint(){let d=DATA[active];document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.id===active));document.getElementById('stats').innerHTML=[['初始开发集',d.baseline],['当前 Best 开发集',d.best],['开发集 calls',d.calls],['验证集状态',d.validation]].map(([k,v])=>'<div class="stat"><small>'+E(k)+'</small><strong style="font-size:'+(k==='验证集状态'?'15':'24')+'px">'+E(v)+'</strong></div>').join('');document.getElementById('flow-title').textContent=d.name;document.getElementById('rev').textContent=d.subtitle;document.getElementById('flow').innerHTML=drawFlow(d);document.getElementById('problems').innerHTML=drawProblems(d);document.getElementById('note').textContent=d.note;document.getElementById('snapshot-tag').textContent=d.snapshot?'Luna snapshot · '+d.snapshot:'Fixed snapshot · '+d.subtitle.split(' · ').pop();document.getElementById('problem-note').textContent=d.problemNote||'每列对应一次实际全局维护；同一行始终是同一问题。'+(active==='ds'?'C2 是提前淘汰后的反馈，不是完整 24 条评测。':'');scale=fitScale('flow');pscale=fitScale('problems');setWidth(document.getElementById('flow'),scale);setWidth(document.getElementById('problems'),pscale);document.getElementById('flow').scrollTop=0;document.getElementById('problems').scrollTop=0;}
+document.getElementById('tabs').innerHTML=keys.map(k=>'<button class="tab" data-id="'+k+'">'+E(DATA[k].name)+'</button>').join('');document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-id]');if(b){active=b.dataset.id;history.replaceState(null,'','#'+active);paint()}});
+function fitScale(id){const el=document.getElementById(id),svg=el.querySelector('svg');return Math.min(1,(el.clientWidth-56)/Number(svg.getAttribute('viewBox').split(' ')[2]))}
+function zoom(id,diff){if(id==='flow'){scale=diff===0?fitScale(id):Math.max(.2,Math.min(2.5,scale+diff));setWidth(document.getElementById('flow'),scale)}else{pscale=diff===0?fitScale(id):Math.max(.2,Math.min(2.5,pscale+diff));setWidth(document.getElementById('problems'),pscale)}}
+[['minus','flow',-.2],['plus','flow',.2],['reset','flow',0],['problem-minus','problems',-.2],['problem-plus','problems',.2],['problem-reset','problems',0]].forEach(([id,x,v])=>document.getElementById(id).addEventListener('click',()=>zoom(x,v)));document.getElementById('summary').innerHTML=keys.map(k=>{let d=DATA[k];return '<article><h3>'+E(d.name)+'</h3><b>'+E(d.summaryScore||d.baseline+' → '+d.best)+'</b><p>开发集成功数变化 · 24 episodes</p></article>'}).join('');paint();
 </script></body></html>
